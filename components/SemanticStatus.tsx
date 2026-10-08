@@ -7,11 +7,10 @@ export function SemanticStatus({ state, progress }: { state: SemanticState; prog
   if (state === "off" || state === "idle") return null;
   if (state === "ready") return <span className="sem ok">ค้นตามความหมาย: พร้อม</span>;
   if (state === "error") return <span className="sem err">ค้นตามความหมายใช้ไม่ได้ในเบราว์เซอร์นี้ — แสดงผลค้นคำแทน</span>;
-  const mb = (n: number) => (n / 1e6).toFixed(1);
   return (
     <span className="sem">
-      กำลังโหลดโมเดลค้นตามความหมาย (ครั้งแรกครั้งเดียว)
-      {progress && progress.total > 0 && ` ${mb(progress.loaded)} / ${mb(progress.total)} MB`} — ระหว่างนี้แสดงผลค้นคำไปก่อน
+      กำลังเตรียมค้นตามความหมาย
+      {progress && progress.total > 0 && ` ${Math.min(99, Math.round((progress.loaded / progress.total) * 100))}%`} — ระหว่างนี้ค้นได้ตามปกติ
     </span>
   );
 }

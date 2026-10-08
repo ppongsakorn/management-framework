@@ -12,7 +12,7 @@ const RESULT_LIMIT = 12;
 export function Catalog({ groups, frameworks }: { groups: Group[]; frameworks: Framework[] }) {
   const [query, setQuery] = useState("");
   const [active, setActive] = useState<GroupId | "all">("all");
-  const { hits, semState, progress } = useSearch(searchVariant, frameworks, query, assetBase);
+  const { hits, semState, progress, pending } = useSearch(searchVariant, frameworks, query, assetBase);
   const bySlug = useMemo(() => new Map(frameworks.map((f) => [f.slug, f])), [frameworks]);
 
   // Deep links like /frameworks#plan (from the compass) preselect a group.
@@ -23,10 +23,10 @@ export function Catalog({ groups, frameworks }: { groups: Group[]; frameworks: F
 
   const inGroup = (f: Framework) => active === "all" || f.group === active;
   // v0 keeps the original behaviour (filter, catalogue order); v1+ show a ranked list.
-  const ranked = searchVariant !== "v0" && hits !== null;
+  const ranked = searchVariant !== "v0" && (hits !== null || pending);
   const matched = hits ? new Set(hits.map((h) => h.slug)) : null;
   const visible = ranked
-    ? hits!.map((h) => ({ fw: bySlug.get(h.slug)!, why: h.why })).filter((r) => r.fw && inGroup(r.fw)).slice(0, RESULT_LIMIT)
+    ? (hits ?? []).map((h) => ({ fw: bySlug.get(h.slug)!, why: h.why })).filter((r) => r.fw && inGroup(r.fw)).slice(0, RESULT_LIMIT)
     : frameworks.filter((f) => inGroup(f) && (!matched || matched.has(f.slug))).map((fw) => ({ fw, why: undefined }));
 
   return (
@@ -57,7 +57,9 @@ export function Catalog({ groups, frameworks }: { groups: Group[]; frameworks: F
           ))}
         </div>
         <div className="count" aria-live="polite">
-          {ranked
+          {pending
+            ? "กำลังค้นหา…"
+            : ranked
             ? `${visible.length} framework ที่เกี่ยวข้องที่สุด เรียงตามความใกล้เคียง`
             : query.trim() || active !== "all"
               ? `พบ ${visible.length} กรอบความคิด`
@@ -94,7 +96,7 @@ export function Catalog({ groups, frameworks }: { groups: Group[]; frameworks: F
           );
         })
       )}
-      {!visible.length && (
+      {!visible.length && !pending && (
         <p className="empty">
           ไม่พบกรอบความคิดที่ตรงกับคำค้น — ลองใช้คำอื่นที่อธิบายสถานการณ์
           {aiEnabled && " หรือเล่าให้ที่ปรึกษา AI ฟัง"}
