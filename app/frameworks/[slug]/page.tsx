@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Chat } from "@/components/Chat";
 import { Diagram } from "@/components/Diagram";
-import { frameworks, frameworksIn, getDiagram, getFramework, getGroup } from "@/lib/data";
+import { UseCases } from "@/components/UseCases";
+import { frameworks, frameworksIn, getDiagram, getFramework, getGroup, getUseCases } from "@/lib/data";
 import { aiEnabled } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -23,6 +24,7 @@ export default async function FrameworkPage({ params }: { params: Promise<{ slug
   if (!fw) notFound();
   const group = getGroup(fw.group);
   const svg = getDiagram(fw.slug);
+  const cases = getUseCases(fw.slug);
   const siblings = frameworksIn(fw.group).filter((f) => f.slug !== fw.slug);
   const idx = frameworks.findIndex((f) => f.slug === fw.slug);
   const prev = frameworks[idx - 1];
@@ -80,6 +82,13 @@ export default async function FrameworkPage({ params }: { params: Promise<{ slug
           <h2>ตัวอย่างสถานการณ์</h2>
           <p className="example">{fw.example}</p>
           <p className="source">แนวคิดจาก: {fw.origin}</p>
+
+          {cases.length > 0 && (
+            <>
+              <h2>เคยถูกใช้แก้ปัญหาจริงที่ไหนบ้าง</h2>
+              <UseCases cases={cases} />
+            </>
+          )}
 
           <h2>ตัวอื่นในกลุ่ม &quot;{group.title}&quot;</h2>
           <div className="related">

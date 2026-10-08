@@ -1,10 +1,17 @@
-import { frameworks, groups, getGroup, type Framework } from "@/lib/data";
+import { frameworks, groups, getGroup, getUseCases, type Framework } from "@/lib/data";
 
 /**
  * Stable system prompt: persona + the full catalog. It is byte-identical on every
  * request so it can be prompt-cached; anything request-specific goes after it.
  */
 export const ADVISOR_SYSTEM = buildAdvisorSystem();
+
+/** Documented real-world cases, so the advisor can cite them instead of inventing examples. */
+function useCaseLines(slug: string): string {
+  const cases = getUseCases(slug).filter((c) => !c.disputed);
+  if (!cases.length) return "";
+  return `\n- กรณีจริง: ${cases.map((c) => `${c.who}${c.year ? ` (${c.year})` : ""}: ${c.problem} → ${c.result}`).join(" | ")}`;
+}
 
 function buildAdvisorSystem(): string {
   const catalog = groups
@@ -15,7 +22,7 @@ function buildAdvisorSystem(): string {
           (f) =>
             `### ${f.name} (slug: ${f.slug})\n- ใช้เมื่อ: ${f.when}\n- วิธีทำ: ${f.how}\n- ขั้นตอน: ${f.steps
               .map((s, i) => `${i + 1}) ${s}`)
-              .join(" ")}\n- ตัวอย่าง: ${f.example}\n- แนวคิดจาก: ${f.origin}`,
+              .join(" ")}\n- ตัวอย่าง: ${f.example}\n- แนวคิดจาก: ${f.origin}${useCaseLines(f.slug)}`,
         )
         .join("\n");
       return `## กลุ่ม "${g.title}" (id: ${g.id}) — ${g.question}\n${g.why}\n\n${items}`;
@@ -28,6 +35,7 @@ function buildAdvisorSystem(): string {
 - ตอบเป็นภาษาไทย กระชับ ตรงประเด็น ใช้ศัพท์เทคนิคภาษาอังกฤษได้ตามที่คนทำงานใช้จริง
 - เริ่มจากวินิจฉัยว่าผู้ใช้อยู่ "ขั้นไหนของวงจร" (วิเคราะห์ → ตัดสินใจ → วางแผน → ลงมือทำ → บริหารคน และเลนส์ "คิดให้ชัด" ที่ใช้ทับทุกขั้น) ถ้าข้อมูลไม่พอที่จะแนะนำได้ดี ให้ถามคำถามสั้น ๆ ไม่เกิน 2–3 ข้อก่อน
 - แนะนำ framework จากแคตตาล็อกด้านล่างเป็นหลัก ไม่เกิน 3 ตัวต่อคำตอบ บอกเหตุผลว่าทำไมตัวนี้เหมาะกับสถานการณ์นี้ และถ้าควรใช้หลายตัว ให้บอกลำดับการใช้
+- ถ้ายกตัวอย่างการใช้จริงของบุคคลหรือองค์กร ให้ใช้เฉพาะ "กรณีจริง" ในแคตตาล็อก ห้ามแต่งกรณีหรือตัวเลขขึ้นเอง
 - อ้างถึง framework ในแคตตาล็อกเป็นลิงก์ markdown รูปแบบ [ชื่อ](/frameworks/slug) เสมอ เพื่อให้ผู้ใช้กดไปดูแผนภาพและรายละเอียดได้
 - ถ้าเหมาะกว่า แนะนำ framework นอกแคตตาล็อกได้ แต่บอกให้ชัดว่าไม่ได้อยู่ในเว็บนี้ และห้ามสร้างลิงก์ให้มัน
 - เมื่อให้วิธีลงมือทำ ให้ปรับขั้นตอนและตัวอย่างเข้ากับบริบทจริงของผู้ใช้ (ทีม, เครื่องมือ, ตัวเลข) ไม่ใช่คัดลอกตัวอย่างในแคตตาล็อก

@@ -1,5 +1,6 @@
 import raw from "@/data/frameworks.json";
 import diagrams from "@/data/diagrams.json";
+import useCases from "@/data/use-cases.json";
 
 export type GroupId = "diag" | "dec" | "plan" | "exec" | "ppl" | "think";
 
@@ -53,4 +54,22 @@ export function frameworksIn(group: GroupId): Framework[] {
 /** Pre-rendered SVG (from scripts/render-diagrams.mjs). Trusted, repo-owned markup. */
 export function getDiagram(slug: string): string | undefined {
   return (diagrams as Record<string, string>)[slug];
+}
+
+/** A documented, sourced case of a person or organisation using a framework. */
+export interface UseCase {
+  who: string;
+  country: string;
+  year: string;
+  problem: string;
+  how: string;
+  result: string;
+  searchPhrase: string;
+  sources: { title: string; url: string; lang: string }[];
+  disputed?: boolean;
+  note?: string;
+}
+
+export function getUseCases(slug: string): UseCase[] {
+  return (useCases as Record<string, UseCase[]>)[slug] ?? [];
 }
