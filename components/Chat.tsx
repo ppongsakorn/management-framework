@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { basePath } from "@/lib/site";
 
 interface Turn {
   role: "user" | "assistant";
@@ -99,7 +100,7 @@ export function Chat({
     const show = (s: string) =>
       setTurns((prev) => [...prev.slice(0, -1), { role: "assistant", content: s }]);
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch(`${basePath}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: next, slug }),

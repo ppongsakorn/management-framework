@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Chat } from "@/components/Chat";
 import { Diagram } from "@/components/Diagram";
 import { frameworks, frameworksIn, getDiagram, getFramework, getGroup } from "@/lib/data";
+import { aiEnabled } from "@/lib/site";
 
 export const dynamicParams = false;
 
@@ -53,12 +54,14 @@ export default async function FrameworkPage({ params }: { params: Promise<{ slug
         <h1>{fw.name}</h1>
         <div className="when">{fw.when}</div>
         <p className="how">{fw.how}</p>
-        <a href="#ask-ai" className="jump-ai">
-          ถาม AI เกี่ยวกับ {fw.name} ↓
-        </a>
+        {aiEnabled && (
+          <a href="#ask-ai" className="jump-ai">
+            ถาม AI เกี่ยวกับ {fw.name} ↓
+          </a>
+        )}
       </header>
 
-      <div className="fw-layout">
+      <div className={aiEnabled ? "fw-layout" : "fw-layout solo"}>
         <article className="fw-main">
           {svg && (
             <>
@@ -94,6 +97,7 @@ export default async function FrameworkPage({ params }: { params: Promise<{ slug
           </nav>
         </article>
 
+        {aiEnabled && (
         <Chat
           key={fw.slug}
           id="ask-ai"
@@ -104,6 +108,7 @@ export default async function FrameworkPage({ params }: { params: Promise<{ slug
           intro={`ถามอะไรก็ได้เกี่ยวกับ ${fw.name} หรือเล่าสถานการณ์ของคุณให้ช่วยปรับใช้`}
           starters={starters}
         />
+        )}
       </div>
     </div>
   );
