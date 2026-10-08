@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { FrameworkCard } from "@/components/FrameworkCard";
-import { SemanticStatus } from "@/components/SemanticStatus";
 import { useSearch } from "@/components/useSearch";
 import type { Framework, Group, GroupId } from "@/lib/data";
 import { aiEnabled, assetBase, searchVariant } from "@/lib/site";
@@ -12,7 +11,9 @@ const RESULT_LIMIT = 12;
 export function Catalog({ groups, frameworks }: { groups: Group[]; frameworks: Framework[] }) {
   const [query, setQuery] = useState("");
   const [active, setActive] = useState<GroupId | "all">("all");
-  const { hits, semState, progress, pending } = useSearch(searchVariant, frameworks, query, assetBase);
+  const { hits } = useSearch(searchVariant, frameworks, query, assetBase);
+  // Only for the first few ms of the very first query; show nothing rather than the full list.
+  const pending = searchVariant !== "v0" && query.trim() !== "" && hits === null;
   const bySlug = useMemo(() => new Map(frameworks.map((f) => [f.slug, f])), [frameworks]);
 
   // Deep links like /frameworks#plan (from the compass) preselect a group.
@@ -58,13 +59,12 @@ export function Catalog({ groups, frameworks }: { groups: Group[]; frameworks: F
         </div>
         <div className="count" aria-live="polite">
           {pending
-            ? "กำลังค้นหา…"
+            ? "\u00a0"
             : ranked
             ? `${visible.length} framework ที่เกี่ยวข้องที่สุด เรียงตามความใกล้เคียง`
             : query.trim() || active !== "all"
               ? `พบ ${visible.length} กรอบความคิด`
-              : `ทั้งหมด ${frameworks.length} กรอบความคิด ใน ${groups.length} กลุ่ม`}{" "}
-          <SemanticStatus state={semState} progress={progress} />
+              : `ทั้งหมด ${frameworks.length} กรอบความคิด ใน ${groups.length} กลุ่ม`}
         </div>
       </div>
 
