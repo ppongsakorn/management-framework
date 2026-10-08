@@ -27,9 +27,13 @@ export function loadSemantic(assetBase: string, onProgress?: (p: LoadProgress) =
   if (onProgress) listeners.add(onProgress);
   semantic ??= (async () => {
     const { env, pipeline } = await import("@huggingface/transformers");
-    env.allowRemoteModels = false;
-    env.allowLocalModels = true;
-    env.localModelPath = `${assetBase}/models/`;
+    // Serve the model as a "remote" model hosted on this site. As a local model,
+    // Transformers.js fetches every file in full just to learn its size when a
+    // progress callback is set, so the 35MB model would be downloaded twice.
+    env.allowLocalModels = false;
+    env.allowRemoteModels = true;
+    env.remoteHost = `${location.origin}${assetBase}/models/`;
+    env.remotePathTemplate = "{model}/";
     const files = new Map<string, LoadProgress>();
     const [extractor, index] = await Promise.all([
       pipeline("feature-extraction", "e5-small-th", {
