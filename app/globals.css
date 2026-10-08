@@ -141,6 +141,7 @@ button, input, textarea { font: inherit; color: inherit; }
 .fw-head .how { font-size: 16.5px; margin: 12px 0 4px; max-width: 70ch; }
 .fw-layout { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 28px; align-items: start; margin-top: 24px; }
 .jump-ai { display: none; margin-top: 10px; font-size: 14.5px; font-weight: 600; color: var(--c); }
+.fw-layout.solo { grid-template-columns: minmax(0, 820px); }
 @media (max-width: 960px) {
   .fw-layout { grid-template-columns: 1fr; }
   .chat.side { position: static; max-height: none; }

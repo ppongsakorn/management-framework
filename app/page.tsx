@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { frameworks, frameworksIn, groups, routerPrompts, type GroupId } from "@/lib/data";
+import { aiEnabled, basePath } from "@/lib/site";
 
 // Six equal ring sectors, clockwise from 12 o'clock, in cycle order.
 const SECTORS: { id: GroupId; d: string; label: [number, number]; text: string }[] = [
@@ -24,7 +25,7 @@ function Compass() {
       </defs>
       <g clipPath="url(#ring)">
         {SECTORS.map((s) => (
-          <a key={s.id} href={`/frameworks#${s.id}`}>
+          <a key={s.id} href={`${basePath}/frameworks/#${s.id}`}>
             <path className="sec" d={s.d} fill={`var(--${s.id})`} />
           </a>
         ))}
@@ -61,13 +62,18 @@ export default function Home() {
             ปัญหาของคนที่รู้จักโมเดลเยอะไม่ใช่ &quot;ไม่รู้&quot; แต่คือ &quot;ไม่รู้ว่าตอนนี้ควรใช้ตัวไหน&quot; ที่นี่รวม{" "}
             {frameworks.length} กรอบความคิดด้านการบริหารที่ใช้กันแพร่หลาย เรียงตามวงจรงานของผู้บริหาร
           </p>
-          <p>ทุกตัวมีขั้นตอนลงมือทำ ตัวอย่างจริง แผนภาพสำหรับนำเสนอ และที่ปรึกษา AI ที่ช่วยปรับให้เข้ากับงานของคุณ</p>
+          <p>
+            ทุกตัวมีขั้นตอนลงมือทำ ตัวอย่างสถานการณ์ และแผนภาพสำหรับนำเสนอ
+            {aiEnabled && " พร้อมที่ปรึกษา AI ที่ช่วยปรับให้เข้ากับงานของคุณ"}
+          </p>
           <div className="actions">
-            <Link href="/advisor" className="btn primary">
-              เล่าปัญหาให้ที่ปรึกษา AI ฟัง →
-            </Link>
-            <Link href="/frameworks" className="btn">
-              ดู Framework ทั้งหมด
+            {aiEnabled && (
+              <Link href="/advisor" className="btn primary">
+                เล่าปัญหาให้ที่ปรึกษา AI ฟัง →
+              </Link>
+            )}
+            <Link href="/frameworks" className={aiEnabled ? "btn" : "btn primary"}>
+              ดู Framework ทั้งหมด{aiEnabled ? "" : " →"}
             </Link>
           </div>
         </div>
@@ -111,6 +117,7 @@ export default function Home() {
         ))}
       </div>
 
+      {aiEnabled && (
       <section className="panel ai-band">
         <div>
           <h2>ไม่แน่ใจว่าจะเริ่มจากตัวไหน?</h2>
@@ -122,6 +129,7 @@ export default function Home() {
           เริ่มปรึกษา →
         </Link>
       </section>
+      )}
 
       <section className="panel legend">
         <h2>ทำไมถึงจัดกลุ่มแบบนี้</h2>
@@ -134,7 +142,7 @@ export default function Home() {
             สีไล่จากร้อนไปเย็น ตามระดับ &quot;ความเสี่ยงที่ความรู้สึกจะแทรก&quot;: แดง (ปัญหาไม่ชัด) → เหลือง (ทางแยก) → น้ำเงิน (พิมพ์เขียว) →
             เขียว (เดินได้) ม่วงและเขียวครามแยกออกมาเพราะเป็นมิติคนละแกน
           </li>
-          <li>แต่ละการ์ดอ่านจบใน 10 วินาที: ใช้เมื่อไหร่ → ทำยังไง 1 บรรทัด — เปิดหน้ารายละเอียดเมื่อจะลงมือทำจริง จะได้แผนภาพ ขั้นตอน 5 ข้อ ตัวอย่าง และ AI ช่วยปรับใช้</li>
+          <li>แต่ละการ์ดอ่านจบใน 10 วินาที: ใช้เมื่อไหร่ → ทำยังไง 1 บรรทัด — เปิดหน้ารายละเอียดเมื่อจะลงมือทำจริง จะได้แผนภาพ ขั้นตอน 5 ข้อ และตัวอย่าง</li>
         </ul>
       </section>
     </>

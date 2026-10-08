@@ -18,7 +18,8 @@
 - [สถาปัตยกรรม](#สถาปัตยกรรม)
 - [เริ่มใช้งาน](#เริ่มใช้งาน)
 - [ตัวแปร Environment](#ตัวแปร-environment)
-- [Deploy บน Azure](#deploy-บน-azure)
+- [Deploy แบบ static บน GitHub Pages](#deploy-แบบ-static-บน-github-pages)
+- [Deploy บน Azure (รวมที่ปรึกษา AI)](#deploy-บน-azure-รวมที่ปรึกษา-ai)
 - [เพิ่มหรือแก้ไข Framework](#เพิ่มหรือแก้ไข-framework)
 - [Roadmap](#roadmap)
 - [ลิขสิทธิ์และเครื่องหมายการค้า](#ลิขสิทธิ์และเครื่องหมายการค้า)
@@ -305,10 +306,26 @@ npm run dev                     # เปิด http://localhost:3000
 | `AI_MODEL` | `claude-opus-5-5` | โมเดลที่ใช้ |
 | `AI_EFFORT` | `medium` | `low` · `medium` · `high` · `xhigh` · `max` |
 | `RATE_LIMIT_PER_10MIN` | `30` | จำนวนคำถามสูงสุดต่อ IP ต่อ 10 นาที |
+| `STATIC_EXPORT` | — | ตั้งเป็น `1` เพื่อ build เป็นเว็บ static (ปิดที่ปรึกษา AI) ผลลัพธ์อยู่ที่ `out/` |
+| `PAGES_BASE_PATH` | — | path ย่อยของเว็บ static เช่น `/<repo>` (workflow ตั้งให้อัตโนมัติ) |
 
 ---
 
-## Deploy บน Azure
+## Deploy แบบ static บน GitHub Pages
+
+เวอร์ชัน static มีเนื้อหาครบทุกหน้า (51 framework, ค้นหา, แผนภาพ) แต่**ไม่มีที่ปรึกษา AI** เพราะ GitHub Pages ไม่มี server สำหรับ `/api/chat` — เมนูและส่วนที่เกี่ยวกับ AI จะถูกซ่อนให้อัตโนมัติ
+
+**ตั้งค่าครั้งแรก (ครั้งเดียว):** Settings → Pages → Build and deployment → Source เลือก **GitHub Actions**
+
+จากนั้นทุกครั้งที่ push เข้า `main` workflow `.github/workflows/pages.yml` จะรัน test → build static → deploy ให้ เว็บจะอยู่ที่ `https://<username>.github.io/<repo>/` (สั่งรันเองได้ที่แท็บ Actions → *Deploy static site to GitHub Pages* → Run workflow)
+
+ลอง build แบบ static ในเครื่อง:
+
+```bash
+STATIC_EXPORT=1 PAGES_BASE_PATH=/<repo> npm run build   # ผลลัพธ์อยู่ที่ out/
+```
+
+## Deploy บน Azure (รวมที่ปรึกษา AI)
 
 แอปถูก build เป็น Next.js **standalone** image ขนาดเล็ก รันได้บน AKS, Azure Container Apps หรือ App Service
 

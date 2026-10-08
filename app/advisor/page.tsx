@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Chat, type Starter } from "@/components/Chat";
 import { groups, routerPrompts } from "@/lib/data";
+import { aiEnabled } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "ที่ปรึกษา AI",
@@ -31,6 +32,19 @@ const scenarios = [
 ];
 
 export default function AdvisorPage() {
+  if (!aiEnabled) {
+    return (
+      <div className="page-head">
+        <h1>ที่ปรึกษา AI</h1>
+        <p>เวอร์ชันนี้เป็นเว็บแบบ static จึงยังไม่เปิดใช้ที่ปรึกษา AI — เลือกดู framework ตามสถานการณ์ได้ที่หน้า Frameworks</p>
+        <p style={{ marginTop: 16 }}>
+          <Link href="/frameworks" className="btn primary">
+            ดู Framework ทั้งหมด →
+          </Link>
+        </p>
+      </div>
+    );
+  }
   return (
     <>
       <div className="page-head">
