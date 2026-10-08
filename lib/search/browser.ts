@@ -50,10 +50,10 @@ export function loadSemantic(assetBase: string, onProgress?: (p: LoadProgress) =
         .then((r) => r.json() as Promise<VectorIndexJson>)
         .then(decodeIndex),
     ]);
-    return {
-      index,
-      embed: async (q: string) => (await extractor(`query: ${q}`, { pooling: "mean", normalize: true })).data as Float32Array,
-    };
+    const embed = async (q: string) =>
+      (await extractor(`query: ${q}`, { pooling: "mean", normalize: true })).data as Float32Array;
+    await embed("warm up"); // the first inference is slow; pay it before the visitor types
+    return { index, embed };
   })();
   semantic.catch(() => (semantic = null));
   return semantic;
