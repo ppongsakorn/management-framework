@@ -1,5 +1,8 @@
 # Build the static site (no AI advisor) and publish it to GitHub Pages.
-# One-time setup: Settings → Pages → Build and deployment → Source: "GitHub Actions".
+# The root site uses the current search; /v1/, /v2/ and /v3/ are full copies
+# of the site with experimental search engines, and /compare/ shows them side
+# by side with offline scores. One-time setup: Settings → Pages → Source:
+# "GitHub Actions".
 name: Deploy static site to GitHub Pages
 
 on:
@@ -16,6 +19,11 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+env:
+  NEXT_TELEMETRY_DISABLED: "1"
+  # onnxruntime-node's install script fetches optional CUDA binaries; not needed here.
+  ONNXRUNTIME_NODE_INSTALL: skip
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,19 +33,45 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - id: pages
         uses: actions/configure-pages@v5
       - run: npm ci
       - run: npm test
-      - name: Build static export
-        run: npm run build
+
+      - name: Cache source embedding model
+        uses: actions/cache@v4
+        with:
+          path: .cache/e5-source
+          key: e5-source-761b726d
+      - name: Build Thai search model, vectors and scores
+        run: |
+          pip install --quiet numpy onnx tokenizers wordfreq
+          npm run search:model
+          npm run search:index
+          npm run search:eval
+
+      - name: Build root site (current search) + /compare
+        run: |
+          STATIC_EXPORT=1 SEARCH_VARIANT=v0 PAGES_BASE_PATH="$BASE" npm run build
+          mv out site
         env:
-          STATIC_EXPORT: "1"
-          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
-          NEXT_TELEMETRY_DISABLED: "1"
+          BASE: ${{ steps.pages.outputs.base_path }}
+      - name: Build search variants /v1 /v2 /v3
+        run: |
+          rm -rf public/models public/search   # shared from the root site
+          for v in v1 v2 v3; do
+            STATIC_EXPORT=1 SEARCH_VARIANT=$v PAGES_BASE_PATH="$BASE/$v" PAGES_ASSET_BASE="$BASE" npm run build
+            mv out "site/$v"
+          done
+          du -sh site site/*/ | sort -h | tail -5
+        env:
+          BASE: ${{ steps.pages.outputs.base_path }}
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: out
+          path: site
 
   deploy:
     needs: build

@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Sans_Thai } from "next/font/google";
 import Link from "next/link";
-import { aiEnabled } from "@/lib/site";
+import { aiEnabled, assetBase, searchVariant } from "@/lib/site";
+import { VARIANTS } from "@/lib/search/types";
 import "./globals.css";
 
 const plex = IBM_Plex_Sans_Thai({
@@ -37,6 +38,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="th" className={plex.variable}>
       <body>
+        {searchVariant !== "v0" && (
+          <div className="variant-bar">
+            <div className="wrap">
+              <b>เวอร์ชันทดลองค้นหา {VARIANTS[searchVariant].label}</b>
+              <span>{VARIANTS[searchVariant].summary}</span>
+              <a href={`${assetBase}/compare/`}>เปรียบเทียบทุกเวอร์ชัน →</a>
+            </div>
+          </div>
+        )}
         <header className="site-header">
           <div className="wrap">
             <Link href="/" className="brand">
