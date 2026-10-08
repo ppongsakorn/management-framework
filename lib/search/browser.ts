@@ -25,36 +25,45 @@ const listeners = new Set<(p: LoadProgress) => void>();
 
 export function loadSemantic(assetBase: string, onProgress?: (p: LoadProgress) => void): Promise<Semantic> {
   if (onProgress) listeners.add(onProgress);
-  semantic ??= (async () => {
-    const { env, pipeline } = await import("@huggingface/transformers");
-    // Serve the model as a "remote" model hosted on this site. As a local model,
-    // Transformers.js fetches every file in full just to learn its size when a
-    // progress callback is set, so the 35MB model would be downloaded twice.
-    env.allowLocalModels = false;
-    env.allowRemoteModels = true;
-    env.remoteHost = `${location.origin}${assetBase}/models/`;
-    env.remotePathTemplate = "{model}/";
+  semantic ??= new Promise<Semantic>((resolve, reject) => {
+    const worker = new Worker(new URL("./semantic.worker.ts", import.meta.url), { type: "module" });
     const files = new Map<string, LoadProgress>();
-    const [extractor, index] = await Promise.all([
-      pipeline("feature-extraction", "e5-small-th", {
-        dtype: "q8",
-        device: "wasm",
-        progress_callback: (e: { status: string; file?: string; loaded?: number; total?: number }) => {
-          if (e.status !== "progress" || !e.file || !e.total) return;
-          files.set(e.file, { loaded: e.loaded ?? 0, total: e.total });
-          const sum = [...files.values()].reduce((a, f) => ({ loaded: a.loaded + f.loaded, total: a.total + f.total }), { loaded: 0, total: 0 });
-          listeners.forEach((l) => l(sum));
-        },
-      }),
-      fetch(`${assetBase}/search/vectors.json`)
-        .then((r) => r.json() as Promise<VectorIndexJson>)
-        .then(decodeIndex),
-    ]);
-    const embed = async (q: string) =>
-      (await extractor(`query: ${q}`, { pooling: "mean", normalize: true })).data as Float32Array;
-    await embed("warm up"); // the first inference is slow; pay it before the visitor types
-    return { index, embed };
-  })();
+    const waiting = new Map<number, (v: Float32Array) => void>();
+    let nextId = 0;
+    const index = fetch(`${assetBase}/search/vectors.json`)
+      .then((r) => r.json() as Promise<VectorIndexJson>)
+      .then(decodeIndex);
+
+    worker.onmessage = async (e: MessageEvent) => {
+      const m = e.data;
+      if (m.type === "progress") {
+        files.set(m.file, { loaded: m.loaded, total: m.total });
+        const sum = [...files.values()].reduce((a, f) => ({ loaded: a.loaded + f.loaded, total: a.total + f.total }), { loaded: 0, total: 0 });
+        listeners.forEach((l) => l(sum));
+      } else if (m.type === "vector") {
+        waiting.get(m.id)?.(m.vec);
+        waiting.delete(m.id);
+      } else if (m.type === "ready") {
+        try {
+          resolve({
+            index: await index,
+            embed: (q) =>
+              new Promise((res) => {
+                const id = nextId++;
+                waiting.set(id, res);
+                worker.postMessage({ type: "embed", id, text: q });
+              }),
+          });
+        } catch (err) {
+          reject(err);
+        }
+      } else if (m.type === "error") {
+        reject(new Error(m.message));
+      }
+    };
+    worker.onerror = (e) => reject(new Error(e.message));
+    worker.postMessage({ type: "init", modelBase: `${location.origin}${assetBase}/models/` });
+  });
   semantic.catch(() => (semantic = null));
   return semantic;
 }

@@ -13,13 +13,15 @@ function shouldPreload(): boolean {
 }
 
 /**
- * Runs one search variant. v3 preloads its semantic model once the page is
- * idle, so by the time the visitor types it is usually ready and results
- * arrive already fused (no reshuffle). Until then lexical results are shown.
+ * Runs one search variant. Results always appear immediately; nothing makes
+ * the visitor wait. v3 preloads its semantic model silently once the page is
+ * idle; queries typed after that get fused results (a few tens of ms), and
+ * queries typed before it get lexical results. A list on screen is never
+ * swapped when the model finishes loading — the next keystroke uses it.
  */
 export function useSearch(variant: Variant, docs: SearchDoc[], query: string, assetBase: string) {
   const [lexical, setLexical] = useState<Lexical | null>(null);
-  const [semantic, setSemantic] = useState<Semantic | null>(null);
+  const semantic = useRef<Semantic | null>(null);
   const [hits, setHits] = useState<SearchHit[] | null>(null);
   const [semState, setSemState] = useState<SemanticState>(variant === "v3" ? "idle" : "off");
   const [progress, setProgress] = useState<LoadProgress | null>(null);
@@ -39,7 +41,7 @@ export function useSearch(variant: Variant, docs: SearchDoc[], query: string, as
     setSemState("loading");
     loadSemantic(assetBase, setProgress)
       .then((s) => {
-        setSemantic(s);
+        semantic.current = s;
         setSemState("ready");
       })
       .catch((e) => {
@@ -64,17 +66,30 @@ export function useSearch(variant: Variant, docs: SearchDoc[], query: string, as
       setHits(null);
       return;
     }
-    if (variant !== "v3" || !semantic) {
+    const sem = semantic.current;
+    if (variant !== "v3" || !sem) {
       setHits(lexical(q));
       if (variant === "v3") startSemantic.current(); // no preload (Data Saver) → load now
       return;
     }
-    // Model ready: show only fused results (keep the previous list until they arrive) so nothing reshuffles.
-    hybridSearch(semantic, lexical, q).then((fused) => {
-      if (seq.current === id) setHits(fused);
-    });
-  }, [query, lexical, semantic, variant]);
+    // Fused results normally take a few tens of ms; if they are slower, show lexical ones meanwhile.
+    let fallbackShown = false;
+    const fallback = setTimeout(() => {
+      if (seq.current !== id) return;
+      fallbackShown = true;
+      setHits(lexical(q));
+    }, 100);
+    hybridSearch(sem, lexical, q)
+      .then((fused) => {
+        clearTimeout(fallback);
+        if (seq.current === id && !fallbackShown) setHits(fused);
+      })
+      .catch(() => {
+        clearTimeout(fallback);
+        if (seq.current === id) setHits(lexical(q));
+      });
+    return () => clearTimeout(fallback);
+  }, [query, lexical, variant]);
 
-  const pending = query.trim() !== "" && hits === null && variant !== "v0";
-  return { hits, semState, progress, pending };
+  return { hits, semState, progress };
 }
