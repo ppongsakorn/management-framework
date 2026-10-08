@@ -2,11 +2,18 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { FrameworkCard } from "@/components/FrameworkCard";
+import { SemanticStatus } from "@/components/SemanticStatus";
+import { useSearch } from "@/components/useSearch";
 import type { Framework, Group, GroupId } from "@/lib/data";
+import { aiEnabled, assetBase, searchVariant } from "@/lib/site";
+
+const RESULT_LIMIT = 12;
 
 export function Catalog({ groups, frameworks }: { groups: Group[]; frameworks: Framework[] }) {
   const [query, setQuery] = useState("");
   const [active, setActive] = useState<GroupId | "all">("all");
+  const { hits, semState, progress } = useSearch(searchVariant, frameworks, query, assetBase);
+  const bySlug = useMemo(() => new Map(frameworks.map((f) => [f.slug, f])), [frameworks]);
 
   // Deep links like /frameworks#plan (from the compass) preselect a group.
   useEffect(() => {
@@ -14,18 +21,13 @@ export function Catalog({ groups, frameworks }: { groups: Group[]; frameworks: F
     if (groups.some((g) => g.id === id)) setActive(id as GroupId);
   }, [groups]);
 
-  const index = useMemo(
-    () =>
-      new Map(
-        frameworks.map((f) => [f.slug, [f.name, f.when, f.how, f.example, f.origin, ...f.steps].join(" ").toLowerCase()]),
-      ),
-    [frameworks],
-  );
-
-  const q = query.trim().toLowerCase();
-  const visible = frameworks.filter(
-    (f) => (active === "all" || f.group === active) && (!q || index.get(f.slug)!.includes(q)),
-  );
+  const inGroup = (f: Framework) => active === "all" || f.group === active;
+  // v0 keeps the original behaviour (filter, catalogue order); v1+ show a ranked list.
+  const ranked = searchVariant !== "v0" && hits !== null;
+  const matched = hits ? new Set(hits.map((h) => h.slug)) : null;
+  const visible = ranked
+    ? hits!.map((h) => ({ fw: bySlug.get(h.slug)!, why: h.why })).filter((r) => r.fw && inGroup(r.fw)).slice(0, RESULT_LIMIT)
+    : frameworks.filter((f) => inGroup(f) && (!matched || matched.has(f.slug))).map((fw) => ({ fw, why: undefined }));
 
   return (
     <>
@@ -34,7 +36,7 @@ export function Catalog({ groups, frameworks }: { groups: Group[]; frameworks: F
           type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="ค้นหา เช่น ลำดับความสำคัญ, ประชุม, ทีมใหม่, ค่าใช้จ่าย, dashboard …"
+          placeholder="เล่าสิ่งที่เจอ เช่น งานล้นมือ, ทีมใหม่ทะเลาะกัน, ตัดสินใจเลือก vendor …"
           aria-label="ค้นหากรอบความคิด"
         />
         <div className="filters" role="group" aria-label="กรองตามกลุ่ม">
@@ -55,29 +57,49 @@ export function Catalog({ groups, frameworks }: { groups: Group[]; frameworks: F
           ))}
         </div>
         <div className="count" aria-live="polite">
-          {q || active !== "all" ? `พบ ${visible.length} กรอบความคิด` : `ทั้งหมด ${frameworks.length} กรอบความคิด ใน ${groups.length} กลุ่ม`}
+          {ranked
+            ? `${visible.length} framework ที่เกี่ยวข้องที่สุด เรียงตามความใกล้เคียง`
+            : query.trim() || active !== "all"
+              ? `พบ ${visible.length} กรอบความคิด`
+              : `ทั้งหมด ${frameworks.length} กรอบความคิด ใน ${groups.length} กลุ่ม`}{" "}
+          <SemanticStatus state={semState} progress={progress} />
         </div>
       </div>
 
-      {groups.map((g) => {
-        const items = visible.filter((f) => f.group === g.id);
-        if (!items.length) return null;
-        return (
-          <section key={g.id} id={g.id} className={`group g-${g.id}`}>
-            <header>
-              <h2>{g.title}</h2>
-              <span className="q">{g.question}</span>
-            </header>
-            <p className="why">{g.why}</p>
-            <div className="grid">
-              {items.map((f) => (
-                <FrameworkCard key={f.slug} fw={f} />
-              ))}
-            </div>
-          </section>
-        );
-      })}
-      {!visible.length && <p className="empty">ไม่พบกรอบความคิดที่ตรงกับคำค้น — ลองเล่าสถานการณ์ให้ที่ปรึกษา AI ฟังแทน</p>}
+      {ranked ? (
+        <section className="results">
+          <div className="grid">
+            {visible.map(({ fw, why }) => (
+              <FrameworkCard key={fw.slug} fw={fw} why={why} />
+            ))}
+          </div>
+        </section>
+      ) : (
+        groups.map((g) => {
+          const items = visible.filter((r) => r.fw.group === g.id);
+          if (!items.length) return null;
+          return (
+            <section key={g.id} id={g.id} className={`group g-${g.id}`}>
+              <header>
+                <h2>{g.title}</h2>
+                <span className="q">{g.question}</span>
+              </header>
+              <p className="why">{g.why}</p>
+              <div className="grid">
+                {items.map(({ fw }) => (
+                  <FrameworkCard key={fw.slug} fw={fw} />
+                ))}
+              </div>
+            </section>
+          );
+        })
+      )}
+      {!visible.length && (
+        <p className="empty">
+          ไม่พบกรอบความคิดที่ตรงกับคำค้น — ลองใช้คำอื่นที่อธิบายสถานการณ์
+          {aiEnabled && " หรือเล่าให้ที่ปรึกษา AI ฟัง"}
+        </p>
+      )}
     </>
   );
 }

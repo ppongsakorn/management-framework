@@ -1,0 +1,673 @@
+[
+ {
+  "q": "หาสาเหตุราก",
+  "relevant": [
+   "5-whys",
+   "fishbone-ishikawa"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "ตั้ง KPI ทีม",
+  "relevant": [
+   "okr",
+   "smart-goals"
+  ],
+  "difficulty": "easy",
+  "kind": "goal"
+ },
+ {
+  "q": "วิเคราะห์จุดแข็งจุดอ่อนทีม",
+  "relevant": [
+   "swot"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "ผังก้างปลา",
+  "relevant": [
+   "fishbone-ishikawa"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "จัดลำดับงานด่วนกับงานสำคัญ",
+  "relevant": [
+   "eisenhower-matrix",
+   "moscow"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "กฎ 80/20",
+  "relevant": [
+   "pareto-80-20"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "ตารางให้คะแนนเปรียบเทียบตัวเลือก",
+  "relevant": [
+   "weighted-decision-matrix"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "กำหนดคนรับผิดชอบงาน",
+  "relevant": [
+   "raci",
+   "delegation-levels"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "บอร์ดงาน to do doing done",
+  "relevant": [
+   "kanban"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "ประชุมสรุปบทเรียนหลังจบโปรเจกต์",
+  "relevant": [
+   "retrospective"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "ตั้งเป้าหมายให้วัดผลได้",
+  "relevant": [
+   "smart-goals",
+   "okr"
+  ],
+  "difficulty": "easy",
+  "kind": "goal"
+ },
+ {
+  "q": "วิเคราะห์คู่แข่งในอุตสาหกรรม",
+  "relevant": [
+   "porters-5-forces",
+   "swot"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "ปัจจัยภายนอก การเมือง เศรษฐกิจ กฎหมาย",
+  "relevant": [
+   "pestel",
+   "scenario-planning"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "สายงานวิกฤต โปรเจกต์",
+  "relevant": [
+   "critical-path"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "ความปลอดภัยทางใจในทีม",
+  "relevant": [
+   "psychological-safety"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "ภาวะผู้นำตามสถานการณ์",
+  "relevant": [
+   "situational-leadership"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "อคติยืนยันความเชื่อตัวเอง",
+  "relevant": [
+   "confirmation-bias-check"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "วิธีให้ feedback ตรงๆ แต่ไม่ทำร้ายใจ",
+  "relevant": [
+   "radical-candor"
+  ],
+  "difficulty": "easy",
+  "kind": "question"
+ },
+ {
+  "q": "ขั้นตอนการพัฒนาทีม forming storming",
+  "relevant": [
+   "tuckmans-stages"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "ปัญหาเดิมกลับมาอีกแล้ว แก้ไม่จบสักที",
+  "relevant": [
+   "5-whys",
+   "iceberg-model"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "ในทีมเถียงกันไม่จบว่าเป็นความผิดใคร ปัญหามาจากหลายทาง",
+  "relevant": [
+   "fishbone-ishikawa"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "งานเยอะมาก ทุกอย่างบอกว่าด่วนหมด",
+  "relevant": [
+   "eisenhower-matrix",
+   "pareto-80-20"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "คนน้อย งบน้อย ควรเลือกทำอะไรก่อน",
+  "relevant": [
+   "pareto-80-20",
+   "opportunity-cost",
+   "eisenhower-matrix"
+  ],
+  "difficulty": "medium",
+  "kind": "question"
+ },
+ {
+  "q": "เลือกซัพพลายเออร์จากหลายเจ้า เกณฑ์เยอะ",
+  "relevant": [
+   "weighted-decision-matrix"
+  ],
+  "difficulty": "medium",
+  "kind": "question"
+ },
+ {
+  "q": "ลูกค้าขอเพิ่มฟีเจอร์เรื่อยๆ จนโปรเจกต์บวม",
+  "relevant": [
+   "moscow",
+   "opportunity-cost"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "งานหลุด ไม่มีใครทำ เพราะนึกว่าอีกคนทำแล้ว",
+  "relevant": [
+   "raci"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "ไม่รู้ว่าใครในทีมกำลังทำอะไรอยู่บ้าง",
+  "relevant": [
+   "kanban"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "งานไม่เคยเสร็จ เพราะรอให้เพอร์เฟกต์ก่อน",
+  "relevant": [
+   "sprint-timebox"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "ทำโปรเจกต์เสร็จแล้วก็ลืม ไม่ได้เรียนรู้อะไรเลย",
+  "relevant": [
+   "retrospective",
+   "pdca"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "รู้ว่ายอดตกก็ตอนสิ้นไตรมาสแล้ว แก้ไม่ทัน",
+  "relevant": [
+   "feedback-loop"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "อีเมลเล็กๆ น้อยๆ ค้างเต็มไปหมด",
+  "relevant": [
+   "two-minute-rule"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "ลูกน้องบางคนต้องสอนทีละขั้น บางคนอยากให้ปล่อย",
+  "relevant": [
+   "situational-leadership",
+   "delegation-levels"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "รับน้องใหม่เข้าทีม แล้วทีมเริ่มขัดแย้งกัน",
+  "relevant": [
+   "tuckmans-stages"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "มอบงานไปแล้วยังต้องคอยตามทุกเรื่อง",
+  "relevant": [
+   "delegation-levels"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "ผลงานลูกน้องตก ไม่รู้ว่าทำไม่ได้หรือไม่อยากทำ",
+  "relevant": [
+   "skill-will-matrix"
+  ],
+  "difficulty": "medium",
+  "kind": "question"
+ },
+ {
+  "q": "ตัวเลขในรายงานสวย แต่หน้างานจริงแย่",
+  "relevant": [
+   "map-territory"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "ก่อนเปิดตัวโปรเจกต์ อยากรู้ว่าอะไรจะพังได้บ้าง",
+  "relevant": [
+   "pre-mortem",
+   "inversion"
+  ],
+  "difficulty": "medium",
+  "kind": "goal"
+ },
+ {
+  "q": "อยากขยายธุรกิจ ไม่รู้จะไปตลาดใหม่หรือทำสินค้าใหม่",
+  "relevant": [
+   "ansoff-matrix"
+  ],
+  "difficulty": "medium",
+  "kind": "goal"
+ },
+ {
+  "q": "สินค้าหลายตัว ตัวไหนควรเลิกทำ ตัวไหนควรทุ่ม",
+  "relevant": [
+   "bcg-matrix",
+   "pareto-80-20"
+  ],
+  "difficulty": "medium",
+  "kind": "question"
+ },
+ {
+  "q": "แก้หลายจุดแล้ว งานก็ยังออกช้าเหมือนเดิม",
+  "relevant": [
+   "theory-of-constraints"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "โปรเจกต์มีงานต่อกันหลายทอด กลัวส่งไม่ทันเดดไลน์",
+  "relevant": [
+   "critical-path"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "ไม่รู้ว่าตอนนี้เราห่างจากเป้าแค่ไหน",
+  "relevant": [
+   "gap-analysis"
+  ],
+  "difficulty": "medium",
+  "kind": "question"
+ },
+ {
+  "q": "วางแผนรับมือถ้าเศรษฐกิจแย่ลงหรือดีขึ้น",
+  "relevant": [
+   "scenario-planning"
+  ],
+  "difficulty": "medium",
+  "kind": "goal"
+ },
+ {
+  "q": "ทีมตัดสินใจช้า เรื่องเล็กก็ต้องประชุมใหญ่",
+  "relevant": [
+   "reversible-vs-irreversible"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "คิดจะลาออกไปทำธุรกิจตัวเองดีไหม",
+  "relevant": [
+   "regret-minimization"
+  ],
+  "difficulty": "medium",
+  "kind": "question"
+ },
+ {
+  "q": "ลังเลระหว่างสองข้อเสนองาน ดีทั้งคู่",
+  "relevant": [
+   "rubber-band-model",
+   "regret-minimization"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "โยนเหรียญไม่ได้ ต้องคำนวณว่าคุ้มเสี่ยงไหม",
+  "relevant": [
+   "expected-value",
+   "probabilistic-thinking"
+  ],
+  "difficulty": "medium",
+  "kind": "question"
+ },
+ {
+  "q": "นโยบายใหม่ดูดี แต่กลัวผลข้างเคียงทีหลัง",
+  "relevant": [
+   "second-order-thinking"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "โดนสั่งให้ตัดสินใจเรื่องที่เราไม่ถนัดเลย",
+  "relevant": [
+   "circle-of-competence"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "ทีมเข้าใจกันผิดบ่อย พูดกันคนละเรื่อง",
+  "relevant": [
+   "johari-window"
+  ],
+  "difficulty": "medium",
+  "kind": "symptom"
+ },
+ {
+  "q": "ลูกน้องเงียบตลอดเวลาประชุม",
+  "relevant": [
+   "psychological-safety",
+   "johari-window"
+  ],
+  "difficulty": "hard",
+  "kind": "symptom"
+ },
+ {
+  "q": "ลงทุนไปแล้วเลยไม่อยากหยุด",
+  "relevant": [
+   "sunk-cost"
+  ],
+  "difficulty": "hard",
+  "kind": "symptom"
+ },
+ {
+  "q": "เพื่อนร่วมงานตั้งใจแกล้งเราแน่ๆ",
+  "relevant": [
+   "hanlons-razor"
+  ],
+  "difficulty": "hard",
+  "kind": "symptom"
+ },
+ {
+  "q": "เขาทำแบบนี้มาตลอด เพราะเคยทำกันมาแบบนี้",
+  "relevant": [
+   "first-principles"
+  ],
+  "difficulty": "hard",
+  "kind": "symptom"
+ },
+ {
+  "q": "ไฟไหม้ทุกวัน ดับไฟจนไม่ได้ทำงานจริง",
+  "relevant": [
+   "eisenhower-matrix",
+   "iceberg-model"
+  ],
+  "difficulty": "hard",
+  "kind": "symptom"
+ },
+ {
+  "q": "ดูแต่คนที่รวยจากหุ้นแล้วอยากทำตาม",
+  "relevant": [
+   "survivorship-bias"
+  ],
+  "difficulty": "hard",
+  "kind": "symptom"
+ },
+ {
+  "q": "หาแต่ข้อมูลที่เข้าข้างไอเดียตัวเอง",
+  "relevant": [
+   "confirmation-bias-check"
+  ],
+  "difficulty": "hard",
+  "kind": "symptom"
+ },
+ {
+  "q": "ทฤษฎีสมคบคิดเต็มห้องประชุม คำอธิบายซับซ้อนเกิน",
+  "relevant": [
+   "occams-razor"
+  ],
+  "difficulty": "hard",
+  "kind": "symptom"
+ },
+ {
+  "q": "หัวหน้าถามว่าจะสำเร็จไหม ตอบได้แค่ใช่หรือไม่",
+  "relevant": [
+   "probabilistic-thinking"
+  ],
+  "difficulty": "hard",
+  "kind": "symptom"
+ },
+ {
+  "q": "อยากลองดูว่าถ้าทำจะเป็นยังไง แต่ทดลองจริงไม่ได้",
+  "relevant": [
+   "thought-experiment"
+  ],
+  "difficulty": "hard",
+  "kind": "question"
+ },
+ {
+  "q": "ยิ่งออกกฎเพิ่ม คนยิ่งหาช่องโหว่",
+  "relevant": [
+   "second-order-thinking",
+   "iceberg-model"
+  ],
+  "difficulty": "hard",
+  "kind": "symptom"
+ },
+ {
+  "q": "คนเก่าลาออกทีละคน แต่ละครั้งเหตุผลต่างกัน",
+  "relevant": [
+   "iceberg-model",
+   "5-whys"
+  ],
+  "difficulty": "hard",
+  "kind": "symptom"
+ },
+ {
+  "q": "รับงานเพิ่มทุกอย่างจนไม่มีเวลาทำของสำคัญ",
+  "relevant": [
+   "opportunity-cost",
+   "eisenhower-matrix"
+  ],
+  "difficulty": "hard",
+  "kind": "symptom"
+ },
+ {
+  "q": "อยากรู้ว่าทำยังไงให้พังแน่ๆ จะได้เลี่ยง",
+  "relevant": [
+   "inversion"
+  ],
+  "difficulty": "hard",
+  "kind": "question"
+ },
+ {
+  "q": "ทีมดูมั่นใจเกินไปทั้งที่ยังไม่เริ่มงาน",
+  "relevant": [
+   "pre-mortem"
+  ],
+  "difficulty": "hard",
+  "kind": "symptom"
+ },
+ {
+  "q": "เขียนแผนห้าปีแล้วไม่รู้พรุ่งนี้ทำอะไร",
+  "relevant": [
+   "backcasting"
+  ],
+  "difficulty": "hard",
+  "kind": "symptom"
+ },
+ {
+  "q": "แผนกหนึ่งทำงานช้า ทั้งบริษัทต้องรอ",
+  "relevant": [
+   "theory-of-constraints",
+   "critical-path"
+  ],
+  "difficulty": "hard",
+  "kind": "symptom"
+ },
+ {
+  "q": "ทำแบบเดิมทุกปีแต่ไม่เคยดีขึ้น",
+  "relevant": [
+   "pdca",
+   "retrospective"
+  ],
+  "difficulty": "hard",
+  "kind": "symptom"
+ },
+ {
+  "q": "พี่ในทีมเก่งมาก แต่ช่วงนี้หมดไฟ",
+  "relevant": [
+   "skill-will-matrix",
+   "situational-leadership"
+  ],
+  "difficulty": "hard",
+  "kind": "symptom"
+ },
+ {
+  "q": "ไม่รู้ว่าคนอื่นมองเรายังไง",
+  "relevant": [
+   "johari-window"
+  ],
+  "difficulty": "hard",
+  "kind": "question"
+ },
+ {
+  "q": "ตลาดนี้ยังน่าลงไปเล่นไหม กำไรบางลงทุกปี",
+  "relevant": [
+   "porters-5-forces",
+   "bcg-matrix"
+  ],
+  "difficulty": "hard",
+  "kind": "question"
+ },
+ {
+  "q": "prioritize งาน ยังไงดี",
+  "relevant": [
+   "eisenhower-matrix",
+   "moscow",
+   "pareto-80-20"
+  ],
+  "difficulty": "medium",
+  "kind": "english"
+ },
+ {
+  "q": "root cause",
+  "relevant": [
+   "5-whys",
+   "fishbone-ishikawa"
+  ],
+  "difficulty": "easy",
+  "kind": "english"
+ },
+ {
+  "q": "scope creep",
+  "relevant": [
+   "moscow"
+  ],
+  "difficulty": "medium",
+  "kind": "english"
+ },
+ {
+  "q": "bottleneck ในกระบวนการ",
+  "relevant": [
+   "theory-of-constraints"
+  ],
+  "difficulty": "medium",
+  "kind": "english"
+ },
+ {
+  "q": "team ไม่กล้า speak up",
+  "relevant": [
+   "psychological-safety"
+  ],
+  "difficulty": "hard",
+  "kind": "english"
+ },
+ {
+  "q": "ส่ง feedback ให้ลูกน้องแบบ direct",
+  "relevant": [
+   "radical-candor"
+  ],
+  "difficulty": "medium",
+  "kind": "english"
+ },
+ {
+  "q": "micromanage ลูกน้องอยู่หรือเปล่า",
+  "relevant": [
+   "delegation-levels",
+   "situational-leadership"
+  ],
+  "difficulty": "hard",
+  "kind": "english"
+ },
+ {
+  "q": "one-way door decision",
+  "relevant": [
+   "reversible-vs-irreversible"
+  ],
+  "difficulty": "hard",
+  "kind": "english"
+ },
+ {
+  "q": "what could go wrong before launch",
+  "relevant": [
+   "pre-mortem"
+  ],
+  "difficulty": "hard",
+  "kind": "english"
+ }
+]
