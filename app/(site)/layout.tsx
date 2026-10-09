@@ -40,6 +40,9 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         เนื้อหาเรียบเรียงใหม่จากแนวคิดด้านการบริหารที่เผยแพร่ทั่วไป และให้เครดิตผู้ริเริ่มแนวคิดไว้ในหน้าของแต่ละ framework ·
         ชื่อ framework บางรายการอาจเป็นเครื่องหมายการค้าของเจ้าของ · ตัวอย่างสถานการณ์เป็นเรื่องสมมติ ส่วนกรณีจริงมีแหล่งอ้างอิงกำกับ
         {aiEnabled && " · คำแนะนำจาก AI เป็นข้อมูลประกอบการตัดสินใจ ไม่ใช่คำตัดสินแทนคุณ"}
+        <span className="footer-links">
+          <Link href="/updates">ประวัติการอัปเดต</Link> · <Link href="/architecture">สถาปัตยกรรมระบบ</Link>
+        </span>
         <a className="to-mobile" href={`${basePath}/mobile/`} data-view="mobile">
           เปิดแบบแอปมือถือ
         </a>

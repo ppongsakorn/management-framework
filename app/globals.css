@@ -287,3 +287,26 @@ button, input, textarea { font: inherit; color: inherit; }
 .to-mobile { display: none; margin-top: 10px; color: var(--accent); font-weight: 600; }
 @media (max-width: 760px) { .to-mobile { display: block; } }
 .latest { margin-top: 16px; }
+
+/* Architecture page */
+.arch h2 { font-size: 21px; margin: 36px 0 8px; }
+.arch > p { max-width: 75ch; line-height: 1.75; }
+.arch code { font-size: 0.9em; background: var(--paper); border: 1px solid var(--line); border-radius: 5px; padding: 0 5px; }
+.arch-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 16px 0 8px; }
+.arch-stats div { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; }
+.arch-stats dt { font-size: 13px; color: var(--ink2); }
+.arch-stats dd { margin: 2px 0 0; font-size: 24px; font-weight: 700; }
+.arch-fig { margin: 12px 0 8px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 12px; overflow-x: auto; }
+.arch-fig svg { display: block; width: 100%; min-width: 760px; height: auto; }
+.arch-table { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.arch-table table { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 640px; }
+.arch-table th, .arch-table td { text-align: left; vertical-align: top; padding: 10px 14px; border-top: 1px solid var(--line); }
+.arch-table thead th { border-top: 0; font-size: 13px; color: var(--ink2); font-weight: 600; }
+.arch-table tbody th { font-weight: 600; white-space: nowrap; }
+.arch-table td:last-child { color: var(--ink2); }
+.arch-decisions { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; }
+.arch-decisions li { display: grid; gap: 4px; background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; padding: 12px 14px; line-height: 1.65; }
+.arch-decisions b { font-size: 15.5px; }
+.arch-decisions span { color: var(--ink2); font-size: 14.5px; }
+.arch-tree { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; overflow-x: auto; font-size: 13.5px; line-height: 1.7; }
+.footer-links { display: block; margin-top: 10px; } .footer-links a { color: var(--accent); text-decoration: none; }
