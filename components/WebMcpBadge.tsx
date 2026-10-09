@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { WEBMCP_TOOL_COUNT } from "@/lib/webmcp";
 
 /** "WebMCP" chip. The six-colour border spins and the status turns green when the browser exposes document.modelContext. */
 export function WebMcpBadge({ compact }: { compact?: boolean }) {
@@ -15,8 +16,8 @@ export function WebMcpBadge({ compact }: { compact?: boolean }) {
     <Link
       href="/architecture#webmcp"
       className={`webmcp${active ? " on" : ""}${compact ? " compact" : ""}`}
-      title={active ? "เบราว์เซอร์นี้รองรับ WebMCP — AI agent เรียกใช้เครื่องมือของหน้านี้ได้ 5 ตัว" : "หน้านี้เปิดเครื่องมือให้ AI agent ในเบราว์เซอร์ตามร่างมาตรฐาน WebMCP"}
-      aria-label={active ? "WebMCP active, 5 tools" : "WebMCP ready"}
+      title={active ? `เบราว์เซอร์นี้รองรับ WebMCP — AI agent เรียกใช้เครื่องมือของหน้านี้ได้ ${WEBMCP_TOOL_COUNT} ตัว` : "หน้านี้เปิดเครื่องมือให้ AI agent ในเบราว์เซอร์ตามร่างมาตรฐาน WebMCP"}
+      aria-label={active ? `WebMCP active, ${WEBMCP_TOOL_COUNT} tools` : "WebMCP ready"}
     >
       <svg className="webmcp-ic" viewBox="0 0 20 20" aria-hidden="true">
         <circle cx="4" cy="10" r="2.4" />
@@ -27,7 +28,7 @@ export function WebMcpBadge({ compact }: { compact?: boolean }) {
       <span className="webmcp-name">WebMCP</span>
       <span className="webmcp-state">
         <i aria-hidden="true" />
-        {active ? "LIVE · 5 TOOLS" : "READY"}
+        {active ? `LIVE · ${WEBMCP_TOOL_COUNT} TOOLS` : "READY"}
       </span>
     </Link>
   );

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Chat } from "@/components/Chat";
 import { Diagram } from "@/components/Diagram";
+import { RelatedFrameworks } from "@/components/RelatedFrameworks";
 import { UseCases } from "@/components/UseCases";
 import { frameworks, frameworksIn, getDiagram, getFramework, getGroup, getUseCases } from "@/lib/data";
 import { aiEnabled } from "@/lib/site";
@@ -87,6 +88,13 @@ export default async function FrameworkPage({ params }: { params: Promise<{ slug
             <>
               <h2>เคยถูกใช้แก้ปัญหาจริงที่ไหนบ้าง</h2>
               <UseCases cases={cases} />
+            </>
+          )}
+
+          {fw.related && (
+            <>
+              <h2>ใช้ร่วมกับตัวไหนได้บ้าง</h2>
+              <RelatedFrameworks fw={fw} all={frameworks} hrefFor={(s) => `/frameworks/${s}`} />
             </>
           )}
 

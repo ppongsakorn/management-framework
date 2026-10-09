@@ -1,4 +1,5 @@
 import { Arrow, Box, Fig, Lane, Note } from "@/components/arch/svg";
+import { WEBMCP_TOOL_COUNT } from "@/lib/webmcp";
 
 export interface ArchNumbers {
   frameworks: number;
@@ -44,7 +45,7 @@ export function SystemDiagram({ n }: { n: ArchNumbers }) {
       <Box x={X[3]} y={rows(1)} w={W} t="ค้นหาตามคำ + วลี" s="BM25 + phrase · main thread" tone="ppl" />
       <Box x={X[3]} y={rows(2)} w={W} t="Web Worker" s="Transformers.js + ONNX (wasm)" tone="ppl" strong />
       <Box x={X[3]} y={rows(3)} w={W} t="jsDelivr CDN" s="ONNX Runtime wasm ~5.5 MB" tone="ppl" />
-      <Box x={X[3]} y={rows(4)} w={W} t="WebMCP tools" s="document.modelContext · 5 tools" tone="ppl" strong />
+      <Box x={X[3]} y={rows(4)} w={W} t="WebMCP tools" s={`document.modelContext · ${WEBMCP_TOOL_COUNT} tools`} tone="ppl" strong />
 
       {[0, 1, 2].map((i) => (
         <Arrow key={i} id={id} d={`M${X[i] + W + 8} 190 H${X[i + 1] - 9}`} />

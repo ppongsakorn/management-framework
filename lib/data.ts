@@ -21,6 +21,8 @@ export interface Framework {
   example: string;
   /** Discipline the idea comes from, plus its originator when widely credited. */
   origin: string;
+  /** Other frameworks to use first, alongside, or next (slugs). */
+  related?: { before?: string[]; with?: string[]; after?: string[] };
   diagram: { type: string; spec: unknown };
 }
 
