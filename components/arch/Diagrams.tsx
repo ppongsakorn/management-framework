@@ -33,11 +33,11 @@ export function SystemDiagram({ n }: { n: ArchNumbers }) {
       <Box x={X[1]} y={rows(1)} w={W} t="render-diagrams" s="spec → SVG ล่วงหน้า" tone="dec" />
       <Box x={X[1]} y={rows(2)} w={W} t="build-search-model" s="ตัด vocab e5 เหลือ 34.8 MB" tone="dec" />
       <Box x={X[1]} y={rows(3)} w={W} t="search:index + eval" s={`${fmt(n.vectors)} เวกเตอร์ + คะแนน`} tone="dec" />
-      <Box x={X[1]} y={rows(4)} w={W} t="next build × 4" s="root (v0) · v1 · v2 · v3" tone="dec" strong />
+      <Box x={X[1]} y={rows(4)} w={W} t="next build × 5" s="root (v3) · /v0 /v1 /v2 /v3" tone="dec" strong />
 
       <Box x={X[2]} y={rows(0)} w={W} t="/  เว็บหลัก (desktop)" s="HTML ที่ render ไว้แล้ว" tone="exec" />
       <Box x={X[2]} y={rows(1)} w={W} t="/mobile  แอปมือถือ" s="หน้าจอแยกสำหรับมือถือ" tone="exec" />
-      <Box x={X[2]} y={rows(2)} w={W} t="/v1 /v2 /v3 + /compare" s="เวอร์ชันทดลองการค้นหา" tone="exec" />
+      <Box x={X[2]} y={rows(2)} w={W} t="/v0–/v3 + /compare" s="เวอร์ชันทดลองการค้นหา" tone="exec" />
       <Box x={X[2]} y={rows(3)} w={W} t="/models/e5-small-th" s="ONNX int8 · gzip ~25 MB" tone="exec" />
       <Box x={X[2]} y={rows(4)} w={W} t="/search/vectors.json" s="เวกเตอร์ int8 ที่คำนวณไว้" tone="exec" />
 

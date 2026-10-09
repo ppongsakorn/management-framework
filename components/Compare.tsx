@@ -6,7 +6,7 @@ import { SemanticStatus } from "@/components/SemanticStatus";
 import { useSearch } from "@/components/useSearch";
 import type { Framework } from "@/lib/data";
 import { VARIANTS, type Variant } from "@/lib/search/types";
-import { assetBase } from "@/lib/site";
+import { DEFAULT_VARIANT, assetBase } from "@/lib/site";
 
 const ORDER: Variant[] = ["v0", "v1", "v2", "v3"];
 const EXAMPLES = ["งานเข้ามาเยอะจนไม่รู้จะเริ่มอะไรก่อน", "ทีมใหม่เถียงกันทุกเรื่อง", "เลือก vendor จาก 3 เจ้า", "ลูกทีมไม่กล้าบอกปัญหา", "root cause"];
@@ -44,8 +44,8 @@ function Column({ variant, frameworks, query }: { variant: Variant; frameworks: 
       ) : (
         <p className="muted">ไม่พบผล</p>
       )}
-      <a className="try" href={`${assetBase}${variant === "v0" ? "" : `/${variant}`}/frameworks/`}>
-        ลองใช้ทั้งเว็บ ({variant === "v0" ? "เว็บหลัก" : `/${variant}/`}) →
+      <a className="try" href={`${assetBase}${variant === DEFAULT_VARIANT ? "" : `/${variant}`}/frameworks/`}>
+        ลองใช้ทั้งเว็บ ({variant === DEFAULT_VARIANT ? "เว็บหลัก" : `/${variant}/`}) →
       </a>
     </section>
   );
