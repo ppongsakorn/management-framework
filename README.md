@@ -262,7 +262,8 @@ lib/
   prompt.ts                 system prompt ของที่ปรึกษา
   ai.ts                     เลือก provider, model, effort
   rateLimit.ts              จำกัดจำนวนครั้งต่อ IP
-data/                       frameworks.json (แหล่งข้อมูลเดียว) · diagrams.json สร้างอัตโนมัติ ไม่เก็บใน git
+data/                       frameworks.json (แหล่งข้อมูลเดียว) · use-cases.json กรณีจริงพร้อมแหล่งอ้างอิง ·
+                            search-phrases.json · diagrams.json สร้างอัตโนมัติ ไม่เก็บใน git
 scripts/                    ตัววาดแผนภาพ (diagram-renderer) และสคริปต์ render
 tests/                      ตรวจความครบถ้วนของข้อมูล
 ```
@@ -362,6 +363,20 @@ docker run -p 3000:3000 -e ANTHROPIC_API_KEY=... management-framework
 2. เลือกแผนภาพจาก `matrix`, `flow`, `cycle`, `stack`, `split`, `tree`, `table`, `radial`, `fishbone`, `lanes`, `gantt`, `timeline`, `bars2`, `pareto`, `rings`, `hier` (ข้อความใช้ `|` ขึ้นบรรทัดใหม่)
 3. รัน `npm test` แล้วเปิด `npm run dev` ดูแผนภาพ (แผนภาพจะ render ใหม่ให้อัตโนมัติ)
 4. ที่ปรึกษา AI จะรู้จัก framework ใหม่อัตโนมัติ เพราะ system prompt สร้างจาก `data/frameworks.json`
+
+### กรณีจริง (use cases)
+
+`data/use-cases.json` เก็บกรณีที่บุคคลหรือองค์กรนำ framework ไปใช้จริง แยกตาม `slug` แต่ละกรณีต้องมีแหล่งอ้างอิงที่เปิดตรวจแล้วอย่างน้อย 1 แหล่ง เขียนสรุปด้วยภาษาของเราเอง ไม่คัดลอกต้นฉบับ
+
+```jsonc
+{ "who": "Toyota", "country": "JP", "year": "1950s",
+  "problem": "…", "how": "…", "result": "…",           // ภาษาไทย เฉพาะข้อเท็จจริงที่ตรวจได้
+  "searchPhrase": "ปัญหาเดิมกลับมาอีก",                 // คำค้นแบบที่ผู้ใช้พิมพ์ (ใส่ใน search-phrases.json ด้วย)
+  "sources": [{ "title": "…", "url": "https://…", "lang": "ja" }],
+  "disputed": true, "note": "…" }                       // ถ้าเรื่องเล่ายังเป็นที่ถกเถียง
+```
+
+กรณีที่ไม่ได้ติด `disputed` จะถูกส่งให้ที่ปรึกษา AI ด้วย เพื่อให้ยกตัวอย่างจากกรณีจริงแทนการแต่งเอง
 
 ---
 
