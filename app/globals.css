@@ -265,3 +265,25 @@ button, input, textarea { font: inherit; color: inherit; }
 .case-src a:hover { color: var(--c); }
 .case-src small { margin-left: 4px; font-size: 10.5px; border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; text-decoration: none; display: inline-block; }
 @media (max-width: 560px) { .case dl { grid-template-columns: 1fr; gap: 0; } .case dt { padding-top: 6px; } }
+
+/* History log */
+.changelog { list-style: none; margin: 12px 0 40px; padding: 0 0 0 18px; border-left: 2px solid var(--line); display: grid; gap: 18px; max-width: 820px; }
+.change { position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; }
+.change::before { content: ""; position: absolute; left: -26px; top: 20px; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--accent); }
+.change.k-content::before { border-color: var(--exec); }
+.change.k-launch::before { background: var(--accent); }
+.change-meta { display: flex; gap: 10px; align-items: center; font-size: 13px; color: var(--ink2); }
+.change-meta .kind { border: 1px solid var(--line); border-radius: 999px; padding: 0 8px; font-size: 12px; }
+.change h3 { margin: 4px 0 6px; font-size: 17px; }
+.change ul { margin: 0; padding-left: 20px; line-height: 1.7; }
+.change-links { margin: 8px 0 0; display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 14px; }
+.change-links a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.latest-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.latest h2 { margin: 0 0 8px; font-size: 17px; }
+.latest-head a { color: var(--accent); text-decoration: none; font-size: 14px; font-weight: 600; }
+.latest ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.latest li { display: flex; gap: 12px; align-items: baseline; }
+.latest time { flex: none; font-size: 13px; color: var(--ink2); min-width: 86px; }
+.to-mobile { display: none; margin-top: 10px; color: var(--accent); font-weight: 600; }
+@media (max-width: 760px) { .to-mobile { display: block; } }
+.latest { margin-top: 16px; }

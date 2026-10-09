@@ -251,12 +251,15 @@ flowchart LR
 
 ```
 app/
-  page.tsx                  หน้าแรก — เข็มทิศ + ตัวช่วยเลือกกลุ่ม
-  frameworks/page.tsx       แคตตาล็อก (ค้นหา + กรอง)
-  frameworks/[slug]/        หน้ารายละเอียด + AI ประจำหน้า
-  advisor/page.tsx          หน้าปรึกษา AI
-  api/chat/route.ts         endpoint สำหรับ stream คำตอบ
-components/                 Catalog, Chat, Diagram, FrameworkCard
+  (site)/                   เว็บ desktop (layout มี header/footer)
+    page.tsx                หน้าแรก — เข็มทิศ + ตัวช่วยเลือกกลุ่ม + อัปเดตล่าสุด
+    frameworks/page.tsx     แคตตาล็อก (ค้นหา + กรอง)
+    frameworks/[slug]/      หน้ารายละเอียด + กรณีจริง + AI ประจำหน้า
+    updates/page.tsx        ประวัติการอัปเดต
+    advisor/page.tsx        หน้าปรึกษา AI
+  mobile/                   แอปมือถือ: หน้าแรก, search, g/[group], f/[slug], updates
+  api/chat/route.server.ts  endpoint สำหรับ stream คำตอบ (เฉพาะโหมด server)
+components/                 Catalog, Chat, Diagram, FrameworkCard, UseCases, Changelog, mobile/*
 lib/
   data.ts                   อ่านข้อมูล framework / กลุ่ม / แผนภาพ
   prompt.ts                 system prompt ของที่ปรึกษา
@@ -377,6 +380,28 @@ docker run -p 3000:3000 -e ANTHROPIC_API_KEY=... management-framework
 ```
 
 กรณีที่ไม่ได้ติด `disputed` จะถูกส่งให้ที่ปรึกษา AI ด้วย เพื่อให้ยกตัวอย่างจากกรณีจริงแทนการแต่งเอง
+
+### บันทึกการอัปเดต (history log)
+
+ทุกครั้งที่เพิ่มหรือแก้เนื้อหา/ฟีเจอร์ ให้เพิ่มรายการไว้บนสุดของ `data/changelog.json` (เรียงจากล่าสุด) รายการจะแสดงที่หน้า `/updates` ในกล่อง "อัปเดตล่าสุด" บนหน้าแรก และในแท็บอัปเดตของแอปมือถือ
+
+```jsonc
+{ "date": "2026-10-09", "kind": "content",          // launch | content | feature | fix
+  "title": "สรุปสั้น ๆ ว่าเปลี่ยนอะไร",
+  "items": ["รายละเอียด…"],
+  "links": [{ "label": "ดูตัวอย่าง", "href": "/frameworks/5-whys/" }] }  // path ของเว็บ desktop; แอปมือถือแปลงให้เอง
+```
+
+`npm test` จะตรวจรูปแบบวันที่และลำดับให้
+
+## มุมมองมือถือ (/mobile)
+
+มือถือมีหน้าจอของตัวเองที่ `/mobile` แยกจากเว็บ desktop (ไม่ใช่แค่ responsive): แถบเมนูด้านล่าง, ค้นหาเต็มจอ, หน้า framework แบ่งเป็นแท็บ ขั้นตอน · แผนภาพ · ตัวอย่าง · กรณีจริง
+
+- เปิดเว็บด้วยจอกว้างไม่เกิน 760px จะถูกพาไปหน้ามือถือที่ตรงกันอัตโนมัติ (`lib/mobile.ts`) เช่น `/frameworks/pdca/` → `/mobile/f/pdca/`
+- แตะ "เว็บเต็ม" ในแอปเพื่ออยู่เว็บ desktop ต่อ (จำไว้ใน localStorage) และกด "เปิดแบบแอปมือถือ" ท้ายหน้าเพื่อกลับ
+- หน้าจอมือถืออยู่ใน `app/mobile/` ส่วนเว็บ desktop อยู่ใน `app/(site)/` ทั้งคู่ใช้ข้อมูลชุดเดียวกัน
+- หน้ามือถือตั้ง `noindex` เพราะหน้า desktop เป็นต้นฉบับสำหรับ search engine
 
 ---
 
