@@ -5095,5 +5095,1145 @@
    ],
    "note": "ใช้ได้ทั้งเป็นตัวอย่างเชิงบวก (การตั้งกลไก) และเคสเตือนใจ (เมื่อกลไกถูกลดบทบาท)"
   }
+ ],
+ "cynefin": [
+  {
+   "who": "กรมตำรวจเมือง Palatine รัฐ Illinois (รองผู้บัญชาการ Walter Gasior)",
+   "event": "บทความ HBR ของ Snowden และ Boone ปี 2007",
+   "country": "US",
+   "year": "1993",
+   "problem": "หลังเหตุกราดยิงในร้านฟาสต์ฟู้ดที่มีผู้เสียชีวิต 7 คน ตำรวจต้องรับมือครอบครัวผู้สูญเสีย ชุมชนที่หวาดกลัว งานประจำของหน่วย และสื่อมวลชนพร้อมกัน",
+   "how": "Snowden และ Boone ใช้กรณีนี้อธิบายว่าผู้นำเผชิญหลาย domain ของ Cynefin ในเวลาเดียวกัน โดย Gasior จัดการงานประจำแบบ clear/complicated ส่วนเรื่องความเชื่อมั่นของชุมชนซึ่งเป็น complex เขาเปิดเวทีให้เจ้าของธุรกิจ นักเรียน ครู และผู้ปกครองมาแลกเปลี่ยนข้อกังวลและรับฟังข้อเท็จจริง แทนที่จะสั่งการจากบนลงล่าง",
+   "result": "บทความระบุว่าแนวทางนี้ปล่อยให้ทางออกเกิดขึ้นจากชุมชนเอง และ Gasior ผ่านสถานการณ์ไปได้ด้วยดี แต่ไม่มีตัวเลขผลลัพธ์เชิงปริมาณ",
+   "searchPhrase": "เจอวิกฤตหลายเรื่องพร้อมกัน ไม่รู้ว่าเรื่องไหนควรสั่งการ เรื่องไหนควรเปิดให้ทีมหาทางออกเอง",
+   "sources": [
+    {
+     "title": "A Leader's Framework for Decision Making (HBR, Nov 2007) – reprint PDF",
+     "url": "https://www.isbe.net/Documents_Ed_Stat/Leaders_Framework_Decision_Making.pdf",
+     "lang": "en"
+    }
+   ],
+   "note": "เป็นกรณีเปิดเรื่องในบทความต้นฉบับของผู้คิดค้น framework; ตีความย้อนหลังโดยผู้เขียน ไม่ใช่การใช้ Cynefin ณ เวลาเกิดเหตุ"
+  },
+  {
+   "who": "Centre for Strategic Futures สำนักนายกรัฐมนตรีสิงคโปร์ และโครงการ RAHS",
+   "event": "เว็บไซต์ CSF ว่าด้วย Scenario Planning Plus และบทความ HBR ปี 2007",
+   "country": "SG",
+   "year": "2007",
+   "problem": "รัฐบาลสิงคโปร์ต้องการเครื่องมือจัดประเภทปัญหาเชิงยุทธศาสตร์เพื่อเลือกวิธีรับมือความเสี่ยงและแนวโน้มอนาคตที่ไม่แน่นอน",
+   "how": "บทความ HBR ระบุว่า Cynefin เป็นองค์ประกอบสำคัญของโครงการ Risk Assessment and Horizon Scanning (RAHS) ของสิงคโปร์ และปัจจุบัน CSF ใช้ Cynefin ในขั้น Defining Focus ของกระบวนการ Scenario Planning Plus เพื่อจัดปัญหาเข้า 5 domain (simple, complicated, complex, chaotic, disorder) แล้วจับคู่วิธีแก้ให้ตรง domain",
+   "result": "หน่วยงานยังคงระบุ Cynefin เป็นเครื่องมือมาตรฐานในกระบวนการวางแผนฉากทัศน์ของรัฐบาล แต่ไม่ได้เผยแพร่ผลลัพธ์เชิงตัวเลข",
+   "searchPhrase": "ภาครัฐอยากมีวิธีแยกประเภทปัญหานโยบายก่อนเลือกเครื่องมือวางแผนอนาคต",
+   "sources": [
+    {
+     "title": "Our Approach – Centre for Strategic Futures, Singapore",
+     "url": "https://www.csf.gov.sg/our-work/our-approach/",
+     "lang": "en"
+    },
+    {
+     "title": "A Leader's Framework for Decision Making (HBR, Nov 2007)",
+     "url": "https://www.isbe.net/Documents_Ed_Stat/Leaders_Framework_Decision_Making.pdf",
+     "lang": "en"
+    }
+   ],
+   "note": "Snowden มีส่วนร่วมออกแบบ RAHS รุ่นแรกเอง จึงถือเป็นแหล่งข้อมูลที่ไม่เป็นกลางทั้งหมด"
+  },
+  {
+   "who": "รัฐบาลเดนมาร์กและหน่วยงานสาธารณสุขช่วงต้นโควิด-19 (วิเคราะห์โดย Rubin และ de Vries)",
+   "event": "บทความวิชาการใน Policy Design and Practice ปี 2020",
+   "country": "DK",
+   "year": "2020",
+   "problem": "ในเดือนมีนาคม 2020 นายกรัฐมนตรีเดนมาร์กประกาศปิดโรงเรียน ให้ข้าราชการทำงานที่บ้าน และปิดพรมแดนภายในไม่กี่วัน ขณะที่หน่วยงานสาธารณสุขยังต้องการหลักฐานทางวิทยาศาสตร์ก่อนตัดสินใจ",
+   "how": "นักวิจัยใช้ Cynefin เป็นกรอบวิเคราะห์ พบว่ารัฐบาลตัดสินใจใน chaotic frame (ต้องลงมือเร็วเพื่อกันหายนะ หลักฐานไม่ใช่ตัวตัดสิน) ส่วนผู้เชี่ยวชาญสาธารณสุขอยู่ใน complicated frame (ตัดสินใจตามหลักฐานและทบทวนตามข้อมูลใหม่) ทำให้สองฝ่ายขัดแย้งกันทั้งในที่สาธารณะและภายใน",
+   "result": "บทความสรุปว่าความต่างของ sensemaking frame อธิบายรอยร้าวระหว่างนักการเมืองกับผู้เชี่ยวชาญได้ และเสนอให้ใช้ Cynefin ช่วยสื่อสารว่ากำลังตัดสินใจใน domain ใด",
+   "searchPhrase": "ผู้บริหารกับฝ่ายผู้เชี่ยวชาญมองวิกฤตคนละแบบ ฝ่ายหนึ่งอยากตัดสินใจทันที อีกฝ่ายรอข้อมูล",
+   "sources": [
+    {
+     "title": "Diverging sensemaking frames during the initial phases of the COVID-19 outbreak in Denmark (Policy Design and Practice 3(3), 2020)",
+     "url": "https://rucforsk.ruc.dk/ws/files/76795788/Diverging_sensemaking_frames_during_the_initial_phases_of_the_COVID_19_outbreak_in_Denmark.pdf",
+     "lang": "en"
+    }
+   ],
+   "note": "เป็นการนำ Cynefin มาวิเคราะห์การตัดสินใจของรัฐบาลย้อนหลังโดยนักวิชาการ ไม่ใช่รัฐบาลเดนมาร์กใช้ framework เอง"
+  },
+  {
+   "who": "Joint Research Centre ของคณะกรรมาธิการยุโรป ร่วมกับ Cynefin Centre",
+   "event": "คู่มือ Managing complexity (and chaos) in times of crisis ของ EU",
+   "country": "EU",
+   "year": "2020",
+   "problem": "ผู้กำหนดนโยบายยุโรปต้องตัดสินใจท่ามกลางวิกฤตโควิด-19 ที่สถานการณ์เปลี่ยนเร็วและไม่มีคำตอบสำเร็จรูป",
+   "how": "JRC จัดพิมพ์คู่มือภาคสนามที่เขียนโดย Dave Snowden และ Alessandro Rancati (JRC123629) ใช้ Cynefin เป็นฐาน เสนอขั้นตอน Assess–Adapt–Exapt–Transcend คือประเมินว่าเป็นวิกฤตแบบใด ตั้งทีมเล็ก (crews) และเครือข่ายรับสัญญาณ นำทรัพยากรที่มีมาใช้ในบทบาทใหม่ และถอดบทเรียนก่อนความทรงจำองค์กรเลือนหาย",
+   "result": "คู่มือเผยแพร่โดยสำนักพิมพ์ของสหภาพยุโรปเพื่อสนับสนุน sense-making ในกระบวนการนโยบายของ EU โดยระบุว่าไม่ถือเป็นจุดยืนทางนโยบายของคณะกรรมาธิการ",
+   "searchPhrase": "ต้องการคู่มือตัดสินใจช่วงวิกฤตที่ไม่มีใครรู้คำตอบล่วงหน้า",
+   "sources": [
+    {
+     "title": "Field guide to managing complexity (and chaos) in times of crisis – Cynefin wiki",
+     "url": "https://cynefin.io/wiki/Field_guide_to_managing_complexity_(and_chaos)_in_times_of_crisis",
+     "lang": "en"
+    },
+    {
+     "title": "EU Field Guide announcement – The Cynefin Co (Feb 2021)",
+     "url": "https://thecynefin.co/eufieldguideannouncement/",
+     "lang": "en"
+    }
+   ],
+   "note": "แหล่งข้อมูลหลักมาจากฝั่งผู้พัฒนา framework; ยังไม่มีการประเมินผลการใช้คู่มือเผยแพร่"
+  },
+  {
+   "who": "Civil Service Leadership Academy สำนักคณะรัฐมนตรีสหราชอาณาจักร",
+   "event": "ประกาศหลักสูตร Leading in Complexity บน GOV.UK ปี 2020",
+   "country": "GB",
+   "year": "2020",
+   "problem": "ผู้นำระดับสูงในราชการพลเรือนอังกฤษต้องตอบสนองต่อสภาพแวดล้อมที่ซับซ้อนและไม่แน่นอนมากขึ้น",
+   "how": "สำนักคณะรัฐมนตรีจัดชุดเวิร์กช็อปออนไลน์ 3 ครั้งภายใต้ชื่อ Leading in Complexity โดยใช้ Cynefin Model เป็นกรอบช่วยให้ผู้นำเข้าใจว่าควรตอบสนองอย่างไรในบริบทของตน",
+   "result": "หลักสูตรเผยแพร่เป็น guidance อย่างเป็นทางการของรัฐบาล (14 ต.ค. 2020) แต่ไม่มีการรายงานผลลัพธ์",
+   "searchPhrase": "อยากฝึกผู้บริหารภาครัฐให้แยกแยะปัญหาซับซ้อนกับปัญหาที่มีคำตอบชัดเจน",
+   "sources": [
+    {
+     "title": "Leading in Complexity series – GOV.UK (Cabinet Office)",
+     "url": "https://www.gov.uk/government/publications/leading-in-complexity-series",
+     "lang": "en"
+    }
+   ]
+  },
+  {
+   "who": "Telstra (บริษัทโทรคมนาคมออสเตรเลีย) ทีม IT ของ Kim Ballestrin",
+   "event": "บทความ Lean Post ของ Lean Enterprise Institute ปี 2015",
+   "country": "AU",
+   "year": "2015",
+   "problem": "งานโครงการช่วงเริ่มต้นมีความไม่แน่นอนสูง ทีมเสียเวลาถกเถียงบนสมมติฐานและเวิร์กช็อปมักหลุดประเด็น",
+   "how": "ทีมใช้ Cynefin คัดกรองขอบเขตงาน (เขียว/เหลือง/ขาว) และแยกรายการงานเป็นสามแบบ: ประเมินง่าย ต้องวิเคราะห์กับผู้เชี่ยวชาญ และ can of worms ที่ต้องทดลองสำรวจก่อน เพื่อเลือกวิธีประชุมให้เหมาะกับแต่ละประเภท",
+   "result": "ผู้เขียนรายงานว่าช่วยให้ทำงานละเอียดเฉพาะส่วนที่ขอบเขตชัดและเปลี่ยนการถกเถียงจากสมมติฐานเป็นข้อเท็จจริง แต่ไม่มีตัวเลขเชิงปริมาณ",
+   "searchPhrase": "วางแผนโปรเจกต์ช่วงต้น ไม่รู้ว่างานไหนประเมินได้เลย งานไหนต้องทดลองก่อน",
+   "sources": [
+    {
+     "title": "Using Cynefin to Solve Problems While Navigating Uncertainty – Lean Enterprise Institute",
+     "url": "https://www.lean.org/the-lean-post/articles/using-cynefin-to-solve-problems-while-navigating-uncertainty",
+     "lang": "en"
+    }
+   ],
+   "note": "เป็นบันทึกประสบการณ์ของผู้ปฏิบัติงานเอง"
+  },
+  {
+   "who": "Classmethod (บริษัทไอทีญี่ปุ่น) ทีมซัพพอร์ตผลิตภัณฑ์วิเคราะห์ข้อมูล",
+   "event": "บล็อก DevelopersIO ของ Classmethod ปี 2019",
+   "country": "JP",
+   "year": "2019",
+   "problem": "ทีมซัพพอร์ตเทคนิคสำหรับ Tableau และ Alteryx ไม่เคยกำหนดแนวทางการทำงาน และอยากลดเวลาแก้ปัญหาให้ลูกค้า",
+   "how": "หัวหน้าทีมจัดคำถามของลูกค้าเข้า 5 domain ของ Cynefin พร้อมกำหนดวิธีตอบแต่ละแบบ เช่น Simple ตอบด้วยเทมเพลต/FAQ, Complicated ถามผู้เชี่ยวชาญ, Complex ทำซ้ำปัญหาให้กลายเป็น Complicated, Chaotic พูดคุยเจาะความต้องการ และ Disorder ส่งต่อทีมอื่น",
+   "result": "ทีมตกลงใช้แนวทางนี้เป็นหลักปฏิบัติ แต่บทความยังไม่ได้รายงานผลเชิงตัวเลข",
+   "searchPhrase": "ทีมซัพพอร์ตอยากแบ่งประเภทเคสลูกค้าเพื่อตอบให้เร็วขึ้น",
+   "sources": [
+    {
+     "title": "データ分析製品テクニカルサポートチームの行動指針（Cynefin framework）– DevelopersIO",
+     "url": "https://dev.classmethod.jp/articles/da-product-support-cynefin-framework/",
+     "lang": "ja"
+    }
+   ]
+  }
+ ],
+ "value-stream-mapping": [
+  {
+   "who": "Ziehl-Abegg (Thailand) โรงงานผลิตพัดลมอุตสาหกรรม จ.ระยอง",
+   "event": "กรณีศึกษาของ Kaizen Institute ประเทศไทย",
+   "country": "TH",
+   "year": "",
+   "problem": "ประสิทธิภาพสายประกอบอยู่ที่ 57% ต่ำกว่าเป้า 85% สินค้าคงคลังรวมกว่า 227 ล้านบาท lead time 14 วัน และกิจกรรมที่ไม่สร้างคุณค่าสูงถึง 75–78%",
+   "how": "ที่ปรึกษาทำ Value Stream Analysis จากการสังเกตหน้างาน (gemba) ร่วมกับ yamazumi, การล่า muda, วิเคราะห์การไหลของข้อมูล และต้นทุน BOM แล้วจัดทำแผน kaizen events กว่า 10 ครั้งใน 4 ด้าน คือผลิตภาพ จัดซื้อ วางแผน และคุณภาพ",
+   "result": "บริษัทที่ปรึกษารายงานว่าประหยัดได้ 95.6 ล้านบาทต่อปี ผลผลิตต่อชั่วโมงแรงงานเพิ่มราว 2 เท่า วันคงคลังวัตถุดิบลดจาก 176 เหลือ 48 วัน และกึ่งสำเร็จรูปจาก 29 เหลือ 2 วัน",
+   "searchPhrase": "โรงงานสต็อกบวม lead time ยาว อยากหาว่าจุดไหนเสียเวลามากที่สุด",
+   "sources": [
+    {
+     "title": "Driving operational excellence through Value Stream Analysis at Ziehl-Abegg Thailand – Kaizen Institute",
+     "url": "https://kaizen.com/th/uncategorized-th/oe-vsa-ziehl-abegg-thailand/",
+     "lang": "en"
+    }
+   ],
+   "note": "ผลลัพธ์รายงานโดยบริษัทที่ปรึกษา (vendor) และหน้าเว็บไม่ระบุปีที่ดำเนินการ"
+  },
+  {
+   "who": "Toyota และ Lean Enterprise Institute (Mike Rother และ John Shook)",
+   "event": "หนังสือ Learning to See ของ LEI และพจนานุกรมลีนของ LEI",
+   "country": "JP",
+   "year": "1998",
+   "problem": "ผู้ผลิตนอก Toyota มองเห็นแต่การปรับปรุงจุดเดียว ไม่เห็นการไหลของวัสดุและข้อมูลทั้งสายธารตั้งแต่ซัพพลายเออร์ถึงลูกค้า",
+   "how": "LEI ระบุว่าเทคนิคนี้ Toyota สร้างขึ้นในชื่อ material and information flow diagram ภายใต้ Toyota Production System และ Rother กับ Shook นำมาเขียนเป็นคู่มือทีละขั้น Learning to See ที่สอนการวาดแผนที่สถานะปัจจุบันและอนาคตด้วยดินสอและกระดาษ",
+   "result": "หนังสือได้รับรางวัล Shingo Research Prize ปี 1999 และ LEI ระบุว่าเป็นผลงานที่ทำให้ value-stream mapping แพร่หลายไปทั่วโลก",
+   "searchPhrase": "อยากเห็นภาพรวมกระบวนการผลิตทั้งสายว่าเสียเวลารอตรงไหน",
+   "sources": [
+    {
+     "title": "Value-Stream Mapping – Lean Lexicon, Lean Enterprise Institute",
+     "url": "https://www.lean.org/lexicon-terms/value-stream-mapping/",
+     "lang": "en"
+    },
+    {
+     "title": "Learning to See – Lean Enterprise Institute store",
+     "url": "https://www.lean.org/store/book/learning-to-see/",
+     "lang": "en"
+    }
+   ],
+   "note": "แหล่งข้อมูลมาจาก LEI ซึ่งเป็นผู้จัดพิมพ์เอง"
+  },
+  {
+   "who": "ThedaCare แผนกรังสีรักษามะเร็ง รัฐ Wisconsin",
+   "event": "กรณีศึกษาของ American Hospital Association ปี 2009",
+   "country": "US",
+   "year": "2009",
+   "problem": "โรงพยาบาลกำลังลงทุนเครื่อง CyberKnife และต้องการใช้ให้คุ้ม แต่ผู้ป่วยรอนานและกระบวนการมีขั้นตอนที่ไม่สร้างคุณค่าจำนวนมาก",
+   "how": "ทีมจากแผนกรังสี แผนกอื่น และผู้ป่วยร่วมกันวาด value stream ตั้งแต่โทรนัดครั้งแรกจนจบการรักษา พบว่าผู้ป่วยเห็นคุณค่าเพียง 10% ของกระบวนการ จากนั้นจัด rapid improvement events ต่อเนื่องเพื่อตัดงานซ้ำซ้อน",
+   "result": "เวลาจากส่งตัวถึงเริ่มรักษาลดจาก 26 วันเหลือ 16 วันในปีแรกและ 7 วันในปีถัดมา ผลิตภาพเพิ่ม 30% แล้วเพิ่มอีก 58% และจ้างพนักงานใหม่เพียง 2 คนแทนที่คาดว่าจะต้องจ้าง 3.7 FTE",
+   "searchPhrase": "ผู้ป่วยรอคิวรักษานานหลายสัปดาห์ อยากลดเวลารอโดยไม่ต้องเพิ่มคน",
+   "sources": [
+    {
+     "title": "Streamlining Radiation Oncology Practices to Increase Patient Satisfaction – AHA case study (PDF)",
+     "url": "https://www.aha.org/system/files/hpoe/Case_Studies/ThedaCare_Radiation_streamlining.pdf",
+     "lang": "en"
+    }
+   ],
+   "note": "ตัวเลขเป็นรายงานของโรงพยาบาลเองผ่าน AHA"
+  },
+  {
+   "who": "Virginia Mason Medical Center เมือง Seattle",
+   "event": "บทความของ Virginia Mason Institute ปี 2016",
+   "country": "US",
+   "year": "2016",
+   "problem": "กระบวนการดูแลผู้ป่วยมีความล่าช้าและของเสียที่ทีมงานมองไม่เห็นเพราะคุ้นชินกับมุมมองของผู้ให้บริการ",
+   "how": "โรงพยาบาลวาด value stream map จากมุมมองผู้ป่วยโดยอาศัยการสังเกตหน้างานจริง ใช้ lead time, cycle time และ wait time เป็นตัวชี้วัดสุขภาพกระบวนการ และใช้แผนที่นี้ทั่วทั้งโรงพยาบาล คลินิก ซัพพลายเชน และงานสำนักงาน",
+   "result": "สถาบันระบุว่าแผนที่ช่วยปรับปรุงการตรวจจับ sepsis ระยะแรก ลดการหกล้มของผู้ป่วยและความผิดพลาดด้านยา แต่บทความไม่ให้ตัวเลข",
+   "searchPhrase": "โรงพยาบาลอยากมองกระบวนการจากสายตาคนไข้เพื่อหาจุดที่เสียเวลา",
+   "sources": [
+    {
+     "title": "Why Is a Value Stream Map Important for Transforming Patient Care and Decreasing Costs? – Virginia Mason Institute",
+     "url": "https://www.virginiamasoninstitute.org/why-is-a-value-stream-map-important-for-transforming-patient-care-and-decreasing-costs/",
+     "lang": "en"
+    }
+   ],
+   "note": "แหล่งข้อมูลเป็นของสถาบันที่ให้คำปรึกษาของโรงพยาบาลเอง และไม่มีผลเชิงปริมาณ"
+  },
+  {
+   "who": "โรงพยาบาลรัฐขนาดใหญ่ในสเปน แผนกเคมีบำบัดผู้ป่วยนอก (Oncology Day Hospital)",
+   "event": "บทความวิจัยใน Int. J. Environmental Research and Public Health ปี 2022",
+   "country": "ES",
+   "year": "2022",
+   "problem": "ผู้ป่วยเคมีบำบัดราว 28,000 รายต่อปีต้องเจาะเลือด พบแพทย์ และรับยาในวันเดียวกัน บางรายอยู่ในโรงพยาบาลเกิน 8 ชั่วโมง และภาระงานพยาบาลขึ้นลงเป็นช่วง",
+   "how": "ทีมสหสาขาเดินตามผู้ป่วยหน้างาน วาดแผนที่สถานะปัจจุบัน ระบุสาเหตุการรอใน 3 ช่วง แล้วออกแบบสถานะอนาคตด้วย takt time และการปรับระดับภาระงาน (heijunka) โดยเสนอทางเลือกเช่นแยกการเจาะเลือดไปทำที่ศูนย์แพทย์ใกล้บ้านหรือแยกเป็นสองวัน",
+   "result": "เวลารอระหว่างนัดเฉลี่ยราว 300 นาที คาดว่าลดเหลือประมาณ 80 นาทีในแบบที่ทำได้จริง (ลด 73%) และสัดส่วนเวลาที่สร้างคุณค่าเพิ่มจากราว 38% เป็น 75%",
+   "searchPhrase": "คนไข้นอกต้องรอคิวหลายชั่วโมงระหว่างเจาะเลือด พบหมอ และรับยา",
+   "sources": [
+    {
+     "title": "Applying Value Stream Mapping to Improve the Delivery of Patient Care in the Oncology Day Hospital (IJERPH 2022)",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8998329/",
+     "lang": "en"
+    }
+   ],
+   "note": "ตัวเลขเป็นการจำลองสถานะอนาคตในงานวิจัย ไม่ใช่ผลหลังนำไปใช้จริง"
+  },
+  {
+   "who": "โรงงานผลิตถุงมือยางธรรมชาติ จ.สงขลา (วิทยานิพนธ์ ม.สงขลานครินทร์)",
+   "event": "วิทยานิพนธ์ปริญญาโท คณะวิทยาการจัดการ ม.อ. ปี 2562",
+   "country": "TH",
+   "year": "2019",
+   "problem": "กระบวนการผลิตถุงมือยางมีขั้นตอนและความสูญเปล่าแฝงอยู่ ทำให้ lead time ยาวกว่าที่ควร",
+   "how": "ผู้วิจัยวาดแผนภาพสายธารคุณค่าสถานะปัจจุบัน ใช้ผังก้างปลา 5W1H และ ECRS ค้นหาและกำจัดความสูญเปล่า แล้ววาดแผนที่สถานะอนาคตเพื่อเทียบก่อน-หลัง",
+   "result": "จำนวนกิจกรรมการผลิตลดลง 17.78% และ lead time รวมลดลง 9.69%",
+   "searchPhrase": "โรงงานอยากลดขั้นตอนที่ไม่จำเป็นในสายการผลิต",
+   "sources": [
+    {
+     "title": "การปรับปรุงกระบวนการผลิตด้วยการประยุกต์ใช้แนวคิดลีน กรณีศึกษา: โรงงานผลิตถุงมือยาง จ.สงขลา – PSU Knowledge Bank",
+     "url": "https://kb.psu.ac.th/items/b55e2831-9d5d-46b0-93f7-169049783419/full",
+     "lang": "th"
+    }
+   ]
+  },
+  {
+   "who": "โรงพิมพ์รุ่งเจริญการพิมพ์ กรุงเทพฯ (งานวิจัย ม.แม่ฟ้าหลวง)",
+   "event": "บทความวารสาร Social Innovation and Lifelong Learning ปี 2560",
+   "country": "TH",
+   "year": "2017",
+   "problem": "โรงพิมพ์ขนาดเล็กที่มีพนักงาน 6 คนมีกิจกรรมซ้ำซ้อนและบันทึกข้อมูลผิดพลาด ทำให้รอบเวลาการผลิตยาว",
+   "how": "ผู้วิจัยวาดแผนผังสายธารคุณค่าสถานะปัจจุบันและอนาคต ใช้หลัก ECRS ตัดกิจกรรมที่ไม่สร้างคุณค่า รวมและจัดลำดับกิจกรรมใหม่ และนำระบบคอมพิวเตอร์มาช่วยบันทึกข้อมูล",
+   "result": "รอบเวลาการผลิตรวมลดจาก 1,972 นาทีเหลือ 1,831 นาที (ลดลง 141 นาที หรือราว 7%)",
+   "searchPhrase": "ธุรกิจเล็กอยากลดเวลาทำงานต่อออเดอร์โดยไม่ต้องลงทุนมาก",
+   "sources": [
+    {
+     "title": "การประยุกต์ใช้แผนผังสายธารคุณค่าในการจัดการกระบวนการผลิตของโรงพิมพ์ขนาดเล็ก – ThaiJO",
+     "url": "https://so01.tci-thaijo.org/index.php/FEU/article/view/68718",
+     "lang": "th"
+    }
+   ],
+   "note": "บทคัดย่อภาษาไทยระบุ 7.5% ส่วนภาษาอังกฤษระบุ 7.15% ซึ่งตรงกับตัวเลขดิบ"
+  },
+  {
+   "who": "Classmethod (บริษัทไอทีญี่ปุ่น) โครงการพัฒนาซอฟต์แวร์ภายใน",
+   "event": "บล็อก DevelopersIO ว่าด้วย Value Stream Mapping ปี 2018",
+   "country": "JP",
+   "year": "2018",
+   "problem": "ฟีเจอร์ใช้เวลานานกว่าจะถึงมือผู้ใช้ แต่ทีมไม่รู้ว่าเวลาหายไปตรงไหนของวงจร DevOps",
+   "how": "Product owner ทีมพัฒนา และ Scrum Master จากสองสำนักงานร่วมวาด value stream ของฟีเจอร์ตั้งแต่ไอเดียจนผู้ใช้ใช้งานจริงภายใน 2 ชั่วโมง ทำเครื่องหมายความสูญเปล่า เช่น การรอ deploy ที่กำหนดวันตายตัว และการส่งต่องาน",
+   "result": "พบว่า lead time รวม 48 วันเป็นเวลาทำงานจริงเพียง 20 วัน (รอ 28 วัน) และผู้เขียนประเมินว่าการ deploy ตามต้องการร่วมกับ pipeline อัตโนมัติจะลดได้ถึง 18 วัน",
+   "searchPhrase": "ทีมซอฟต์แวร์ส่งงานช้า อยากรู้ว่าเวลาไปจมกับการรออะไร",
+   "sources": [
+    {
+     "title": "Value Stream Mappingをやってみた – DevelopersIO (Classmethod)",
+     "url": "https://dev.classmethod.jp/articles/value-stream-mapping/",
+     "lang": "ja"
+    }
+   ],
+   "note": "ตัวเลขที่ลดได้เป็นการประมาณการของผู้เขียน ยังไม่ใช่ผลหลังปรับปรุง"
+  },
+  {
+   "who": "บริษัทไอทีในลัตเวีย (งานวิจัย University of Latvia)",
+   "event": "บทความใน Baltic Journal of Modern Computing ปี 2018",
+   "country": "LV",
+   "year": "2018",
+   "problem": "กระบวนการรับคำขอจากลูกค้าจนส่งมอบใช้เวลาเฉลี่ย 1,045 นาที (ราว 2 วัน) โดยมีเวลารอแฝงอยู่",
+   "how": "ผู้วิจัยใช้ VSM บันทึกขั้นตอนตั้งแต่ลงทะเบียนคำขอใน issue tracker ผ่านการทบทวนของ project manager การทดสอบ จนถึงการส่งมอบ แล้ววิเคราะห์ความสูญเปล่าตามหลักลีน",
+   "result": "ระบุศักยภาพลด lead time รวมจาก 1,045 เหลือ 885 นาที (15.3%) และเวลารอจาก 135 เหลือ 85 นาที (37%)",
+   "searchPhrase": "บริษัทซอฟต์แวร์อยากลดเวลาตั้งแต่รับคำขอลูกค้าจนส่งมอบ",
+   "sources": [
+    {
+     "title": "Application of LEAN Principles to Improve Business Processes: a Case Study in Latvian IT Company (BJMC 6(3), 2018)",
+     "url": "https://arxiv.org/pdf/2007.04696",
+     "lang": "en"
+    }
+   ],
+   "note": "เป็นศักยภาพที่ระบุจากแผนที่ ไม่ใช่ผลที่วัดหลังนำไปใช้"
+  }
+ ],
+ "rice-scoring": [
+  {
+   "who": "Intercom (Sean McBride, product manager)",
+   "event": "บทความต้นฉบับ RICE บนบล็อก Intercom ปี 2018",
+   "country": "IE",
+   "year": "2018",
+   "problem": "ทีม product ของ Intercom เปรียบเทียบไอเดียบน roadmap อย่างสม่ำเสมอไม่ได้ เพราะระบบให้คะแนนที่มีอยู่ไม่เอื้อให้เทียบกันได้",
+   "how": "ทีมสร้างสูตรจากหลักการพื้นฐาน: Reach (ลูกค้าที่กระทบต่อไตรมาสจากข้อมูลจริง) × Impact (3/2/1/0.5/0.25) × Confidence (100/80/50%) ÷ Effort (คน-เดือน) แล้วทดสอบและปรับปรุงกับงานจริง เช่น การเปลี่ยน signup funnel ที่กระทบ 450 ลูกค้าต่อไตรมาส",
+   "result": "RICE กลายเป็นเครื่องมือจัดลำดับมาตรฐานของ Intercom และถูกนำไปใช้แพร่หลายในวงการ product management โดยผู้เขียนย้ำว่าคะแนนใช้ประกอบการตัดสินใจ ไม่ใช่สั่งการ",
+   "searchPhrase": "มีไอเดียฟีเจอร์เยอะ ถกกันไม่จบว่าจะทำอะไรก่อน",
+   "sources": [
+    {
+     "title": "RICE: Simple prioritization for product managers – Intercom",
+     "url": "https://www.intercom.com/blog/rice-simple-prioritization-for-product-managers/",
+     "lang": "en"
+    }
+   ],
+   "note": "Intercom มีสำนักงานใหญ่ที่ซานฟรานซิสโกและดับลิน"
+  },
+  {
+   "who": "SendGrid ทีม Developer Experience (Matt Bernier)",
+   "event": "บล็อกของ SendGrid เผยแพร่ซ้ำโดย Linux Foundation ปี 2017",
+   "country": "US",
+   "year": "2017",
+   "problem": "ทีม 2 คนดูแลไลบรารีโอเพนซอร์สมี backlog มากกว่ากำลัง และงานที่มีผลกระทบสูงมักถูกกลบด้วยงานที่ใหญ่หรือเด่นกว่า",
+   "how": "ทีมให้คะแนนทุกรายการด้วย Reach × Impact × Confidence ÷ Effort ในสเปรดชีต โดยนับ Reach จากจำนวนผู้ใช้ API และ mail ใช้ Effort เป็น story points แล้วเรียงเป็น Kanban backlog พร้อมตัวปรับตามลำดับความสำคัญของบริษัทและกำหนดส่ง",
+   "result": "ผู้เขียนรายงานว่า velocity ของทีมเพิ่มเป็นสองเท่าตั้งแต่ sprint แรก",
+   "searchPhrase": "ทีมเล็กงานล้น อยากมีวิธีเรียงลำดับ backlog ที่อธิบายได้",
+   "sources": [
+    {
+     "title": "Double Your Development Velocity without Growing Your Team – Linux Foundation blog (SendGrid)",
+     "url": "https://www.linuxfoundation.org/blog/double-development-velocity-without-growing-team/",
+     "lang": "en"
+    }
+   ],
+   "note": "ผลลัพธ์รายงานโดยบริษัทเอง ไม่มีตัวชี้วัดอื่น"
+  },
+  {
+   "who": "GrowthHackers และ Sean Ellis (ผู้คิดค้น ICE score)",
+   "event": "เซสชัน Building a Company Wide Growth Culture ที่ SaaStr Annual 2016",
+   "country": "US",
+   "year": "2016",
+   "problem": "ทีม growth มีไอเดียทดลองค้างกว่า 700 รายการ และต้องเลือกให้ได้ว่าจะทดสอบอะไรก่อนโดยไม่ให้ CEO เป็นคนชี้ขาด",
+   "how": "Ellis ให้ทุกไอเดียเขียนเป็นสมมติฐานแล้วให้คะแนน Impact, Confidence และ Ease ข้อละ 1–10 สมาชิกพิตช์ไอเดียคนละ 1 นาทีทุกสัปดาห์ แล้วทีมเลือก 3–5 การทดลองจากคะแนน ไม่ใช่จากตำแหน่ง",
+   "result": "Ellis เล่าว่าการทดลองฝังสื่ออัตโนมัติเพิ่ม embed ได้ 41% และอ้างกรณี Twitter ที่เพิ่มการทดสอบเป็นราว 10 ครั้งต่อสัปดาห์แล้วเติบโตต่อเนื่อง",
+   "searchPhrase": "มีไอเดียทดลองการตลาดเยอะมาก อยากเลือกอย่างเป็นระบบไม่ใช่ตามเสียงหัวหน้า",
+   "sources": [
+    {
+     "title": "Sean Ellis, Founder & CEO of GrowthHackers: Building a Company Wide Growth Culture – SaaStr transcript",
+     "url": "https://www.saastr.com/sean-ellis-founder-ceo-of-growthhackers-building-a-company-wide-growth-culture-video-transcript/",
+     "lang": "en"
+    }
+   ],
+   "note": "ตัวเลขเป็นคำบอกเล่าของ Ellis ในงานสัมมนา ไม่ได้ตรวจสอบอิสระ; ICE เป็นต้นแบบที่ RICE ต่อยอด"
+  }
+ ],
+ "cost-of-delay": [
+  {
+   "who": "Maersk Line (Joshua Arnold และ Özlem Yüce)",
+   "event": "Experience report ที่ Agile2013 และเว็บไซต์ Black Swan Farming",
+   "country": "DK",
+   "year": "2013",
+   "problem": "พอร์ตโฟลิโอไอทีมูลค่า 100 ล้านดอลลาร์ถูกจัดลำดับด้วยความรู้สึกและสมมติฐานที่ไม่ได้พูดออกมา และการเน้นลดต้นทุนทำให้งานส่งมอบล่าช้า",
+   "how": "ทีมประเมิน Cost of Delay ของแต่ละฟีเจอร์แล้วจัดลำดับด้วย CD3 (Cost of Delay หารระยะเวลา) ทำให้การแลกเปลี่ยนทางเศรษฐศาสตร์มองเห็นได้ และเปลี่ยนจุดเน้นจากประสิทธิภาพและต้นทุนไปที่ความเร็วและคุณค่า",
+   "result": "พบฟีเจอร์หนึ่งที่ Cost of Delay เกิน 200,000 ดอลลาร์ต่อสัปดาห์แต่รอคิวอยู่ 38 สัปดาห์ (เสียรายได้ราว 8 ล้านดอลลาร์) และผู้เขียนรายงานว่าคุณค่าที่ส่งมอบ ความเร็ว และคุณภาพดีขึ้นอย่างมีนัยสำคัญโดยไม่ให้ตัวเลขรวม",
+   "searchPhrase": "โปรเจกต์ไอทีเลือกทำตามใครเสียงดัง อยากมีตัวเลขว่าการเลื่อนงานแต่ละชิ้นเสียเงินเท่าไร",
+   "sources": [
+    {
+     "title": "Cost of Delay – Black Swan Farming (Maersk Line example)",
+     "url": "https://blackswanfarming.com/cost-of-delay",
+     "lang": "en"
+    },
+    {
+     "title": "Experience Report: Maersk Line – Black Swan Farming",
+     "url": "https://blackswanfarming.com/experience-report-maersk-line/",
+     "lang": "en"
+    }
+   ],
+   "note": "รายงานโดยที่ปรึกษาผู้ดำเนินโครงการเอง"
+  },
+  {
+   "who": "Government Digital Service ทีม Platform Health ของ GOV.UK",
+   "event": "บล็อก Inside GOV.UK ปี 2019",
+   "country": "GB",
+   "year": "2019",
+   "problem": "ทีมดูแลแพลตฟอร์ม GOV.UK ต้องตัดสินใจว่าจะแก้บั๊กตัวไหนก่อน โดยบั๊กบางตัวกระทบบริการอ่อนไหว เช่น อัตราค่าจ้างวันหยุด",
+   "how": "ทีมคำนวณ Priority score = Problem score (reach × severity, หารครึ่งถ้ามีทางเลี่ยง) + Cost of delay (ชั่วโมงที่เสียไปต่อเดือนหากไม่แก้ 0–9) + Long-term value (0–2) และให้ทีมปรับลำดับตามกลยุทธ์ได้",
+   "result": "ระบบคะแนนถูกใช้เป็นแนวปฏิบัติของทีมและเผยแพร่สาธารณะ โดยบทความอธิบายว่าบั๊กที่สะสมต้นทุนเวลาทุกวันจะไต่ขึ้นมาในคิวเร็วขึ้น แต่ไม่มีตัวเลขผลลัพธ์",
+   "searchPhrase": "บั๊กเยอะ แก้ไม่ทัน อยากมีเกณฑ์ว่าตัวไหนปล่อยไว้แล้วเสียหายมากที่สุด",
+   "sources": [
+    {
+     "title": "How we prioritise bug fixes on GOV.UK – Inside GOV.UK blog",
+     "url": "https://insidegovuk.blog.gov.uk/2019/10/25/how-we-prioritise-bug-fixes-on-gov-uk/",
+     "lang": "en"
+    }
+   ],
+   "note": "ใช้ Cost of Delay เป็นองค์ประกอบในคะแนนรวม ไม่ใช่ WSJF เต็มรูปแบบ"
+  },
+  {
+   "who": "กองทัพอากาศสหรัฐ Kessel Run Software Factory (งานวิจัย AFIT)",
+   "event": "วิทยานิพนธ์ Air Force Institute of Technology ปี 2021",
+   "country": "US",
+   "year": "2021",
+   "problem": "หน่วยพัฒนาซอฟต์แวร์ของกองทัพต้องการวิธีอธิบายและจัดลำดับการตัดสินใจด้านงบประมาณ กำลังคน และกลยุทธ์ที่แข่งขันกัน",
+   "how": "ผู้วิจัยสร้างกรอบ Cost of Delay ต้นแบบที่ปรับให้เข้ากับภาครัฐ (ไม่อิงกำไร) แล้วนำไปทดลองประเมินกับ Kessel Run",
+   "result": "งานวิจัยเสนอว่าหน่วยงานกลาโหมสามารถใช้กรอบ cost minimization ทำการวิเคราะห์นี้ได้ และพบว่า software factory นิยมโมเดลต้นทุนแบบง่ายมากกว่าโมเดล machine learning",
+   "searchPhrase": "หน่วยงานรัฐไม่มีกำไรเป็นตัววัด จะคิดต้นทุนของความล่าช้าอย่างไร",
+   "sources": [
+    {
+     "title": "Developing a Cost of Delay (CoD) Framework for the DoD & Analyzing the Current State of Air Force Agile Cost Estimation – AFIT Scholar",
+     "url": "https://scholar.afit.edu/etd/4946",
+     "lang": "en"
+    }
+   ],
+   "note": "เป็นต้นแบบเชิงวิจัย ยังไม่ใช่การนำไปใช้ถาวร"
+  },
+  {
+   "who": "Department of Health and Social Care สหราชอาณาจักร (ชุมชน Health Product People)",
+   "event": "บล็อก Digital health and social care ของรัฐบาลอังกฤษ ปี 2018",
+   "country": "GB",
+   "year": "2018",
+   "problem": "ทีมผลิตภัณฑ์ดิจิทัลในหน่วยงานสุขภาพหลายแห่งมีทรัพยากรและงบจำกัด ต้องเลือกว่าจะลงแรงกับงานใดก่อน",
+   "how": "ในงานรวมตัวของ product manager จาก DHSC, CQC, NHS Digital และ PHE มีการนำเสนอ Cost of Delay เป็นวิธีเปรียบเทียบความเร่งด่วนกับคุณค่า ควบคู่กับเทคนิคอื่นเช่น matrix และ Pandora",
+   "result": "บทความสรุปแนวทางที่แต่ละทีมใช้ แต่ไม่รายงานผลลัพธ์ของการใช้ Cost of Delay",
+   "searchPhrase": "หน่วยงานภาครัฐอยากเปรียบเทียบความเร่งด่วนกับคุณค่าของโปรเจกต์ดิจิทัล",
+   "sources": [
+    {
+     "title": "Health Product People: prioritisation – Digital health and social care blog (GOV.UK)",
+     "url": "https://digitalhealth.blog.gov.uk/2018/09/27/health-product-people-prioritisation/",
+     "lang": "en"
+    }
+   ],
+   "note": "เป็นการแนะนำวิธีในชุมชนปฏิบัติ ไม่ใช่กรณีศึกษาที่มีผลวัดได้"
+  },
+  {
+   "who": "โครงการซอฟต์แวร์ขนาดใหญ่ของกระทรวงกลาโหมสหรัฐ (Keith Korzec, SEI/CMU)",
+   "event": "บล็อก Software Engineering Institute ปี 2020",
+   "country": "US",
+   "year": "2020",
+   "problem": "โครงการ DoD ที่ใช้ SAFe พบว่า WSJF เน้นมูลค่าเงินซึ่งไม่ตรงเป้าหมายภารกิจ ต้องเทียบทุกรายการกับกันทั้งหมด (backlog 100 รายการใช้ 400 การเปรียบเทียบ) และคณะกรรมการมักถูกผู้อาวุโสชี้นำ",
+   "how": "ผู้เขียนทดลองวิธี mission-based prioritization แทน โดยให้น้ำหนักพารามิเตอร์ภารกิจครั้งเดียว แล้วเช็กว่าแต่ละฟีเจอร์เข้าเกณฑ์ใด ให้คะแนนความยากและความไม่แน่นอน 1–5 และคำนวณลำดับด้วย Excel",
+   "result": "ในการทดลองกับกลุ่ม 19 คน การให้น้ำหนักใช้เวลาราว 2 ชั่วโมงและจัดลำดับ 55 ฟีเจอร์ได้ในราว 1 ชั่วโมง ผู้เขียนระบุว่าผลดีกว่าที่คาดแต่ไม่มีตัวชี้วัดเป็นทางการ",
+   "searchPhrase": "ใช้ WSJF แล้วเสียเวลาประชุมเยอะ และคะแนนไม่สะท้อนเป้าหมายองค์กรที่ไม่ใช่กำไร",
+   "sources": [
+    {
+     "title": "Mission-Based Prioritization: A New Method to Sequence Features, Capabilities, and Epics – SEI Blog",
+     "url": "https://sei.cmu.edu/blog/mission-based-prioritization-new-method-sequence-features-capabilities-and-epics",
+     "lang": "en"
+    }
+   ],
+   "disputed": true,
+   "note": "เป็นกรณีที่วิจารณ์ข้อจำกัดของ WSJF ในภาครัฐและเสนอทางเลือก ไม่ใช่กรณีความสำเร็จ"
+  }
+ ],
+ "north-star-metric": [
+  {
+   "who": "Amplitude (Justin Bauer, Chief Product Officer)",
+   "event": "บล็อก Amplitude เรื่องการปรับ North Star ปี 2019",
+   "country": "US",
+   "year": "2019",
+   "problem": "North Star เดิมคือ Weekly Querying Users ทำนาย retention ได้ แต่ไม่สะท้อนพันธกิจที่ต้องการให้ทั้งทีมของลูกค้าเรียนรู้ร่วมกัน ไม่ใช่แค่คนเดียวค้นข้อมูล",
+   "how": "ทีมวิเคราะห์การใช้งาน ทำ network graph เทียบลูกค้าที่ประสบความสำเร็จกับที่ยังไม่ใช้เต็มที่ และหาค่าสหสัมพันธ์กับข้อมูลสัญญา จนเปลี่ยน North Star เป็น Weekly Learning Users (ผู้ใช้ที่แชร์ข้อค้นพบและมีคนอ่านอย่างน้อย 2 คนใน 7 วัน) พร้อม input metrics เช่น Activated Accounts และ Broadcasted Learnings",
+   "result": "บริษัทรายงานว่า WLU ต่อองค์กรที่ใช้งานเพิ่มขึ้น 50% ใน 6 เดือนก่อนหน้า และฐานผู้ใช้เติบโตกว่า 4 เท่าใน 2 ปี",
+   "searchPhrase": "ตัวชี้วัดหลักของผลิตภัณฑ์ไม่สะท้อนคุณค่าจริงที่ลูกค้าได้ อยากเปลี่ยนให้ตรงพันธกิจ",
+   "sources": [
+    {
+     "title": "Evolving the Product North Star Metric – Amplitude",
+     "url": "https://www.amplitude.com/blog/evolving-the-product-north-star-metric",
+     "lang": "en"
+    }
+   ],
+   "note": "ตัวเลขรายงานโดยบริษัทเอง และ Amplitude เป็นผู้ผลักดันแนวคิด North Star เชิงพาณิชย์"
+  },
+  {
+   "who": "Slack (Stewart Butterfield ผู้ก่อตั้ง)",
+   "event": "บทสัมภาษณ์ First Round Review ปี 2015",
+   "country": "US",
+   "year": "2015",
+   "problem": "Slack ต้องรู้ว่าทีมลูกค้าแบบไหนที่ 'ได้ลองใช้จริง' เพื่อโฟกัสการเติบโตกับสัญญาณที่ทำนายการใช้งานต่อเนื่องได้",
+   "how": "จากข้อมูลการใช้งาน Butterfield กำหนดเกณฑ์ว่าทีมที่แลกเปลี่ยนข้อความครบ 2,000 ข้อความถือว่าได้ลอง Slack จริง (ทีม 50 คนราว 10 ชั่วโมง ทีม 10 คนราว 1 สัปดาห์) และใช้ตัวเลขนี้เป็นเป้าหมายพาผู้ใช้ไปถึง",
+   "result": "Butterfield ระบุว่าหลังผ่าน 2,000 ข้อความ ลูกค้า 93% ยังใช้ Slack อยู่",
+   "searchPhrase": "อยากรู้ว่าผู้ใช้ต้องใช้งานถึงจุดไหนถึงจะติดและไม่เลิกใช้",
+   "sources": [
+    {
+     "title": "From 0 to $1B – Slack's Founder Shares Their Epic Launch Strategy – First Round Review",
+     "url": "https://review.firstround.com/from-0-to-1b-slacks-founder-shares-their-epic-launch-strategy/",
+     "lang": "en"
+    }
+   ],
+   "note": "บทสัมภาษณ์ไม่ได้ใช้คำว่า north star metric โดยตรง แต่มักถูกยกเป็นตัวอย่าง activation/north star ในวงการ"
+  },
+  {
+   "who": "Airbnb",
+   "event": "จดหมายชี้แจง ก.ล.ต. สหรัฐ (SEC) ก่อน IPO ปี 2020",
+   "country": "US",
+   "year": "2020",
+   "problem": "ก่อนเข้าตลาดหุ้น Airbnb ต้องอธิบายต่อ SEC ว่าตัวเลขเดียวใดที่สะท้อนขนาดกิจกรรมบนแพลตฟอร์มและขับเคลื่อนผลประกอบการ",
+   "how": "Airbnb นิยาม Nights and Experiences Booked (จำนวนคืนที่พักและที่นั่งประสบการณ์ที่จอง หักยกเลิก) เป็น key business metric โดยระบุว่าเป็น 'มาตรวัดเดียวที่สำคัญของขนาดกิจกรรมบนแพลตฟอร์ม' และรายงานตัวเลขนี้ทุกไตรมาส",
+   "result": "Airbnb ยืนยันต่อ SEC ว่าการรวมคืนที่พักและที่นั่งประสบการณ์ให้มาตรวัดเดียวของขนาดกิจกรรมบนแพลตฟอร์ม และยังคงรายงานตัวชี้วัดนี้ในจดหมายถึงผู้ถือหุ้นทุกไตรมาส",
+   "searchPhrase": "ธุรกิจแพลตฟอร์มสองฝั่งอยากได้ตัวเลขเดียวที่บอกว่าคุณค่าถึงทั้งผู้ซื้อและผู้ขาย",
+   "sources": [
+    {
+     "title": "Airbnb, Inc. – SEC response letter (DRSLTR), 30 Sept 2020",
+     "url": "https://www.sec.gov/Archives/edgar/data/1559720/000095012320010023/filename1.htm",
+     "lang": "en"
+    }
+   ],
+   "note": "Airbnb ใช้คำว่า key business metric ไม่ใช่ north star metric; ปัจจุบันบริษัทรายงานตัวชี้วัดนี้ต่อสาธารณะในฐานะตัวเลขหลักของธุรกิจ"
+  },
+  {
+   "who": "Spotify (ทีม Confidence แพลตฟอร์มทดลองของ Spotify)",
+   "event": "อภิธานศัพท์ของ Spotify Confidence",
+   "country": "SE",
+   "year": "2026",
+   "problem": "ทีมฟีเจอร์ย่อยเช่นทีมค้นหา ไม่สามารถใช้ตัวชี้วัดระดับบริษัทวัดผลการทดลองแต่ละครั้งได้โดยตรง",
+   "how": "Spotify ระบุในเอกสารของตนว่า north star metric คือตัวเลขเดียวที่จับคุณค่าที่ผลิตภัณฑ์มอบให้ผู้ใช้ โดยยกเวลาฟังเพลง (time spent listening) เป็นตัวอย่างของ Spotify และให้ทีมค้นหาใช้ตัวชี้วัดเฉพาะที่พิสูจน์แล้วว่าสัมพันธ์กับผลรวม เช่น สัดส่วนการค้นหาที่นำไปสู่การเล่นเพลง",
+   "result": "เอกสารอธิบายว่าทีมค้นหาไม่ใช้ชั่วโมงฟังรวมเป็นตัวชี้วัดความสำเร็จของการทดลอง แต่ใช้ตัวชี้วัดย่อยที่ validate แล้ว",
+   "searchPhrase": "ทีมย่อยจะวัดผลการทดลองอย่างไรให้เชื่อมกับตัวชี้วัดใหญ่ของบริษัท",
+   "sources": [
+    {
+     "title": "What is a North Star Metric? – Spotify Confidence glossary",
+     "url": "https://confidence.spotify.com/glossary/north-star-metric",
+     "lang": "en"
+    }
+   ],
+   "note": "เป็นเอกสารอธิบายแนวคิดที่ยกตัวอย่าง Spotify เอง ไม่ใช่การประกาศ north star อย่างเป็นทางการ"
+  },
+  {
+   "who": "Facebook ทีม Growth ยุคแรก (Chamath Palihapitiya)",
+   "event": "บทความโปรไฟล์ของ TechCrunch ปี 2021",
+   "country": "US",
+   "year": "2008",
+   "problem": "Facebook ต้องหาตัวชี้วัดนำที่บอกว่าผู้ใช้ใหม่จะกลับมาใช้งานต่อหรือไม่ เพื่อโฟกัสทีม growth ทั้งทีม",
+   "how": "ทีม growth ที่ขับเคลื่อนด้วยข้อมูลพบว่าผู้ใช้ใหม่ต้องเจอเพื่อน 7 คนให้เร็ว จึงสร้างฟีเจอร์แนะนำเพื่อนซึ่งได้แรงบันดาลใจจาก LinkedIn เพื่อผลักดันตัวเลขนี้",
+   "result": "TechCrunch ระบุว่าฟีเจอร์แนะนำเพื่อนเป็นหนึ่งในความสำเร็จใหญ่ของทีม และ Facebook เติบโตเป็นแพลตฟอร์มระดับพันล้านผู้ใช้",
+   "searchPhrase": "ผู้ใช้สมัครแล้วหาย อยากรู้พฤติกรรมช่วงแรกที่ทำให้คนอยู่ต่อ",
+   "sources": [
+    {
+     "title": "Chamath Palihapitiya is coming to Disrupt – TechCrunch",
+     "url": "https://techcrunch.com/2021/09/15/chamath-palihapitiya-is-coming-to-disrupt/",
+     "lang": "en"
+    }
+   ],
+   "disputed": true,
+   "note": "เวอร์ชัน '7 เพื่อนใน 10 วัน' มาจากคำบอกเล่าในงานสัมมนาที่ไม่มีบันทึกต้นฉบับ แหล่งที่เปิดได้ยืนยันเพียง 'เจ็ดเพื่อนอย่างรวดเร็ว' และปีที่ใช้เป็นช่วงประมาณที่ Palihapitiya นำทีม growth"
+  }
+ ],
+ "slo-error-budget": [
+  {
+   "who": "Google (ทีม SRE ของบริการ Chubby)",
+   "event": "กรณี Global Chubby Planned Outage ในหนังสือ Site Reliability Engineering ของ Google",
+   "country": "US",
+   "year": "2016",
+   "problem": "Chubby (lock service ภายในของ Google) เสถียรเกินกว่า SLO ที่ตั้งไว้มาก จนทีมอื่น ๆ พากันสร้างระบบที่พึ่งพา Chubby โดยคิดว่ามันจะไม่มีวันล่ม",
+   "how": "ทีม SRE กำหนดว่า Chubby ต้องทำได้ตาม SLO แต่ต้องไม่ดีเกิน SLO มากนัก ถ้าไตรมาสไหนไม่มีเหตุขัดข้องจริงจน availability ต่ำกว่าเป้า ทีมจะจงใจปิดระบบแบบควบคุมเพื่อใช้ error budget ที่เหลือ",
+   "result": "การปิดระบบตามแผนช่วยให้ทีมค้นพบ dependency ที่ไม่สมเหตุสมผลได้เร็วหลังจากถูกเพิ่มเข้ามา และเจ้าของบริการต้องออกแบบระบบให้ทนต่อการที่ Chubby ล่มได้",
+   "searchPhrase": "ระบบเสถียรเกินไปจนทีมอื่นพึ่งพามากเกิน ควรใช้ error budget อย่างไร",
+   "sources": [
+    {
+     "title": "Site Reliability Engineering — Chapter 4: Service Level Objectives (sidebar: The Global Chubby Planned Outage)",
+     "url": "https://sre.google/sre-book/service-level-objectives/",
+     "lang": "en"
+    }
+   ]
+  },
+  {
+   "who": "Evernote",
+   "event": "กรณีศึกษา SLO ของ Evernote ใน The Site Reliability Workbook ของ Google",
+   "country": "US",
+   "year": "2017",
+   "problem": "ทีม dev กับ ops ขัดแย้งกัน ฝั่ง dev ถูกข้อกำหนดด้านปฏิบัติการหน่วงจนออก feature ช้า ส่วน ops หงุดหงิดเมื่อโค้ดใหม่ทำให้ production มีปัญหา ขณะที่บริษัทกำลังย้ายจาก data center ของตนเองไป Google Cloud",
+   "how": "กำหนด SLO แรกเป็น uptime 99.95% ต่อเดือนปฏิทิน วัดด้วย prober ภายนอก นับช่วง maintenance เป็น downtime ด้วย และจัดประชุมทบทวน SLO รายเดือนร่วมกับทีม CRE ของ Google โดยใช้ dashboard ชุดเดียวกัน",
+   "result": "ภายใน 9 เดือน Evernote ปรับ SLO มาแล้ว 2 รอบ และในปี 2017 ใช้การคำนวณ SLO ช่วยลดจำนวน release window ของงานใหญ่จาก 5 เหลือ 2 ครั้งเพื่อจำกัดผลกระทบต่อลูกค้า",
+   "searchPhrase": "ทีมพัฒนากับทีมปฏิบัติการทะเลาะกันเรื่องความเร็วออก feature กับความเสถียร",
+   "sources": [
+    {
+     "title": "The Site Reliability Workbook — Chapter 3: SLO Engineering Case Studies (Evernote)",
+     "url": "https://sre.google/workbook/slo-engineering-case-studies/",
+     "lang": "en"
+    },
+    {
+     "title": "SLO Adoption and Usage in Site Reliability Engineering (Google/O'Reilly report)",
+     "url": "https://static.googleusercontent.com/media/sre.google/en//static/pdf/SloAdoptionAndUsageInSre.pdf",
+     "lang": "en"
+    }
+   ],
+   "note": "เป็นกรณีศึกษาที่ Google และ Evernote เขียนร่วมกัน (ลูกค้าของ Google Cloud) ตัวเลขเป็นข้อมูลที่บริษัทรายงานเอง"
+  },
+  {
+   "who": "The Home Depot",
+   "event": "กรณีศึกษา SLO ของ The Home Depot ใน The Site Reliability Workbook ของ Google",
+   "country": "US",
+   "year": "2018",
+   "problem": "หลังย้ายจาก monolith ไป microservices ที่ทีมเล็ก ๆ เป็นเจ้าของ การ monitoring กระจัดกระจาย หาสาเหตุ outage ใช้เวลาหลายชั่วโมง และ downtime ตามแผนของทีมหนึ่งมักทำให้ทีมที่พึ่งพากันประหลาดใจ",
+   "how": "สร้างกรอบ VALET (Volume, Availability, Latency, Errors, Tickets) เป็นภาษากลางของ SLO ผู้บริหารเป็นสปอนเซอร์ มีหลักสูตรอบรม รายงานรายสัปดาห์ถึงผู้บริหาร ใส่เป้า SLO ไว้ในการประเมินผลผู้จัดการฝ่ายพัฒนา และสร้างเครื่องมือเก็บข้อมูล SLO อัตโนมัติ",
+   "result": "จำนวนบริการที่ติดตาม SLO เพิ่มจากราว 50 เป็น 800 บริการภายในเวลาไม่ถึงหนึ่งปี โดยบริษัทระบุว่าขั้นต่อไปคือสร้างวัฒนธรรม error budget แบบเดียวกับ Google",
+   "searchPhrase": "ย้ายไป microservices แล้วไม่มีมาตรฐานกลางวัดความเสถียรของแต่ละบริการ",
+   "sources": [
+    {
+     "title": "The Site Reliability Workbook — Chapter 3: SLO Engineering Case Studies (The Home Depot)",
+     "url": "https://sre.google/workbook/slo-engineering-case-studies/",
+     "lang": "en"
+    }
+   ],
+   "note": "ขณะเขียนกรณีศึกษา Home Depot ใช้ SLO แล้วแต่ยังไม่ได้ใช้นโยบาย error budget เต็มรูปแบบ"
+  },
+  {
+   "who": "Schlumberger (ทีม Software Integrated Solutions / DELFI)",
+   "event": "รายงาน SLO Adoption and Usage in Site Reliability Engineering ของ Google",
+   "country": "US",
+   "year": "2018",
+   "problem": "เมื่อเปลี่ยนจากขายซอฟต์แวร์แบบแผ่น CD/DVD มาเป็น SaaS บนคลาวด์ (DELFI) ในปี 2018 ทีมต้องออก feature เร็วขึ้นมากโดยไม่มีวิธีร่วมกันในการวัดว่าบริการยังเชื่อถือได้",
+   "how": "ทำงานกับทีม CRE ของ Google กำหนด user journey และ SLI/SLO เช่น หน้า portal, login, logout สร้างเครื่องมือติดตาม SLI เทียบ SLO แบบ rolling 30 วัน และจัด workshop กับ book club หนังสือ SRE ในศูนย์เทคโนโลยีทั่วโลก",
+   "result": "การวัด SLI เผยว่าผู้ใช้อัปโหลดไฟล์ในแอปหนึ่งสำเร็จเพียง 20–30% ธุรกิจจึงจัดทรัพยากรแก้จนสูงกว่า SLO และ SLO ที่เข้มที่สุดของบริษัทถูกปรับเป็น 99.55% ส่วนแนวคิด error budget ยังอยู่ระหว่างนำเข้าสู่การตัดสินใจของ product manager",
+   "searchPhrase": "เปลี่ยนจากซอฟต์แวร์ติดตั้งเป็น SaaS แล้วไม่รู้ว่าควรวัดความเสถียรอย่างไร",
+   "sources": [
+    {
+     "title": "SLO Adoption and Usage in Site Reliability Engineering — Chapter 6: SLO Implementation Case Studies (Schlumberger)",
+     "url": "https://static.googleusercontent.com/media/sre.google/en//static/pdf/SloAdoptionAndUsageInSre.pdf",
+     "lang": "en"
+    }
+   ],
+   "note": "รายงานจัดทำโดย Google ร่วมกับ O'Reilly ตัวเลขเป็นข้อมูลที่ Schlumberger ให้ไว้เอง"
+  },
+  {
+   "who": "Google SRE (ทีม Customer Reliability Engineering)",
+   "event": "ตัวอย่างนโยบาย Error Budget ใน The Site Reliability Workbook และบทความ CRE Life Lessons",
+   "country": "US",
+   "year": "2018",
+   "problem": "ทีมที่มี SLO แล้วมักไม่รู้ว่าเมื่อใช้ error budget หมดควรทำอะไร และใครมีอำนาจหยุด release",
+   "how": "Google เผยแพร่นโยบายตัวอย่าง: ถ้าบริการใช้ error budget เกินในช่วง 4 สัปดาห์ ให้หยุดการเปลี่ยนแปลงและ release ทั้งหมดยกเว้นปัญหา P0 และ security fix จนกว่าจะกลับมาอยู่ใน SLO เหตุการณ์เดียวที่กิน budget เกิน 20% ต้องทำ postmortem พร้อม action item ระดับ P0 และข้อโต้แย้งให้ส่งถึง CTO",
+   "result": "เอกสารนี้กลายเป็นแม่แบบนโยบาย error budget ที่ถูกอ้างอิงอย่างกว้างขวาง และบล็อก CRE ของ Google อธิบายเพิ่มว่าเมื่อ budget หมดควรแยกสาเหตุ (release, ความผิดพลาดต่อเนื่อง, outage ใหญ่, dependency ภายนอก) ก่อนเลือกวิธีแก้",
+   "searchPhrase": "ใช้ error budget หมดแล้วควรหยุด release หรือไม่ ใครตัดสินใจ",
+   "sources": [
+    {
+     "title": "The Site Reliability Workbook — Appendix B: Example Error Budget Policy",
+     "url": "https://sre.google/workbook/error-budget-policy/",
+     "lang": "en"
+    },
+    {
+     "title": "Understanding error budget overspend — CRE life lessons (Google Cloud Blog, 2018)",
+     "url": "https://cloud.google.com/blog/products/gcp/understanding-error-budget-overspend-cre-life-lessons",
+     "lang": "en"
+    }
+   ],
+   "note": "เป็นนโยบายตัวอย่างสำหรับบริการสมมติ (Example Game Service) ที่ Google เผยแพร่ ไม่ใช่ตัวเลขผลลัพธ์ของบริการจริง"
+  }
+ ],
+ "kotters-8-steps": [
+  {
+   "who": "The Hospital for Sick Children (SickKids) โทรอนโต",
+   "event": "บทความ Improving on-time surgical starts ใน Canadian Journal of Surgery ปี 2010",
+   "country": "CA",
+   "year": "2005",
+   "problem": "ห้องผ่าตัดเริ่มเคสแรกตรงเวลา 8:00 น. ได้เพียงประมาณ 6% สาเหตุหลักคือวิสัญญีแพทย์และศัลยแพทย์ยังไม่พร้อม และผู้ป่วยยังไม่ถูกเตรียม",
+   "how": "ตั้ง task force สหสาขาที่นำโดยศัลยแพทย์และพยาบาล ดำเนินตาม 8 ขั้นของ Kotter ตั้งแต่สร้างความเร่งด่วน กำหนดนิยาม on-time start เพิ่มเจ้าหน้าที่รับผู้ป่วยวันเดียวกัน จัด huddle เวลา 7:35 น. ทุกเช้า ติดผลรายวัน และให้รางวัลเล็ก ๆ เมื่อทำได้ 100% ติดกันสามวัน",
+   "result": "สัดส่วนเคสแรกที่เริ่มตรง 8:00 น. เพิ่มจากราว 6% เป็นราว 60% ภายในประมาณ 9 เดือน แม้จะยังไม่ถึงเป้า 90% ก็ตาม",
+   "searchPhrase": "ห้องผ่าตัดเริ่มงานสายทุกเช้า อยากเปลี่ยนพฤติกรรมทีมทั้งหมด",
+   "sources": [
+    {
+     "title": "Wright JG, Roche A, Khoury AE. Improving on-time surgical starts in an operating room. Can J Surg 2010;53(3):167–170",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2878988",
+     "lang": "en"
+    }
+   ]
+  },
+  {
+   "who": "Saint Anthony's Medical Center เซนต์หลุยส์",
+   "event": "การนำเสนอ Mission Possible: Using Kotter's Change Model ในงาน Sigma Leadership Connection 2016",
+   "country": "US",
+   "year": "2016",
+   "problem": "อัตราการล้างมือของบุคลากรต่ำกว่ามาตรฐาน 90% ของ The Joint Commission ซึ่งโรงพยาบาลต้องแสดงการปรับปรุง",
+   "how": "ใช้ 8 ขั้นของ Kotter: สร้างความเร่งด่วนจากมาตรฐานการรับรอง ตั้ง taskforce สหสาขาประชุมรายสัปดาห์ 6 เดือน สื่อสารผ่านประชุม/อีเมล/จดหมายข่าว เพิ่มเจลล้างมือ ณ จุดดูแล ฉลองชัยชนะระยะสั้นระดับหน่วย และฝังเข้าปฐมนิเทศพนักงานใหม่กับการตรวจสอบรายเดือน",
+   "result": "โรงพยาบาลรายงานว่าอัตราการล้างมือขึ้นถึงมาตรฐาน 90% และการติดเชื้อในโรงพยาบาลลดลง (ไม่ระบุตัวเลข)",
+   "searchPhrase": "บุคลากรไม่ทำตามมาตรฐานความปลอดภัย อยากเปลี่ยนให้ยั่งยืน",
+   "sources": [
+    {
+     "title": "Mission Possible: Using Kotter's Change Model to Drive Sustainable Change, a Case Study (Sigma Theta Tau Leadership Connection 2016)",
+     "url": "https://stti.confex.com/stti/lc16/webprogram/Paper80204.html",
+     "lang": "en"
+    }
+   ],
+   "note": "เป็นบทคัดย่อการนำเสนอในงานประชุม ไม่ใช่บทความวิจัยฉบับเต็ม"
+  },
+  {
+   "who": "โรงพยาบาลชุมชนขนาด 25 เตียง 8 แห่งในรัฐไอโอวา",
+   "event": "งานวิจัยการนำ team huddles ไปใช้ใน Journal of Nursing Management ปี 2018",
+   "country": "US",
+   "year": "2018",
+   "problem": "โรงพยาบาลชนบทต้องการนำ team huddle (การประชุมสั้นก่อนเข้าเวร) จากโปรแกรม TeamSTEPPS ไปใช้เพื่อปรับปรุงการสื่อสารและความปลอดภัยผู้ป่วย แต่ไม่รู้ว่าทำไมบางแห่งสำเร็จบางแห่งล้มเหลว",
+   "how": "นักวิจัยจาก University of Iowa ใช้ 8 ขั้นของ Kotter เป็นกรอบวิเคราะห์ว่าแต่ละโรงพยาบาลทำขั้นตอนใดบ้าง เช่น ใช้ข้อมูลสำรวจสร้างความเร่งด่วน ตั้งทีมนำ นำร่องในหน่วยเล็กเพื่อชัยชนะระยะสั้น แล้วขยายและติดตามผล",
+   "result": "โรงพยาบาลที่ทำครบทุกระยะมี huddle กลายเป็นกิจวัตร ส่วนแห่งที่ข้ามขั้นสร้างความเร่งด่วนหรือไม่มีชัยชนะระยะสั้นมักระงับหรือจำกัดการใช้ huddle",
+   "searchPhrase": "นำแนวปฏิบัติใหม่ไปใช้หลายสาขา บางแห่งสำเร็จบางแห่งล้มเหลว",
+   "sources": [
+    {
+     "title": "Baloh J, Zhu X, Ward MM. Implementing team huddles in small rural hospitals: How does the Kotter model of change apply? J Nurs Manag 2018;26(5):571–578",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6900979",
+     "lang": "en"
+    }
+   ]
+  },
+  {
+   "who": "ศูนย์สุขภาพชุมชน (FQHC) ในชนบทรัฐเคนทักกี",
+   "event": "บทความใน Preventing Chronic Disease (CDC) ปี 2019",
+   "country": "US",
+   "year": "2019",
+   "problem": "ศูนย์ต้องการปิดช่องว่างการให้บริการป้องกันโรค (care gaps) และลดความเหลื่อมล้ำทางสุขภาพของผู้ป่วย จึงนำโมเดล proactive office encounter มาใช้",
+   "how": "นักวิจัยสัมภาษณ์บุคลากร 21 คนที่เกี่ยวข้องกับการนำไปใช้ และวิเคราะห์เทียบกับ 8 ขั้นของ Kotter เพื่อดูว่าขั้นใดทำได้ดีและขั้นใดยังขาด",
+   "result": "พบหลักฐานของขั้นที่ 1–7 แต่ขั้นที่ 8 (ฝังการเปลี่ยนแปลงลงในวัฒนธรรมองค์กร) ยังเป็นจุดที่ต้องปรับปรุง",
+   "searchPhrase": "เปลี่ยนกระบวนการดูแลผู้ป่วยแล้วแต่ไม่แน่ใจว่าจะยั่งยืนหรือไม่",
+   "sources": [
+    {
+     "title": "Carman AL et al. A Change-Management Approach to Closing Care Gaps in a Federally Qualified Health Center: A Rural Kentucky Case Study. Prev Chronic Dis 2019;16",
+     "url": "https://stacks.cdc.gov/view/cdc/81274",
+     "lang": "en"
+    }
+   ]
+  },
+  {
+   "who": "Turku University of Applied Sciences (TUAS)",
+   "event": "บทความ Leading and Communicating Change in an Engineering Faculty Merger ปี 2019",
+   "country": "FI",
+   "year": "2019",
+   "problem": "มหาวิทยาลัยต้องควบรวมสองคณะเป็น Faculty of Engineering and Business ท่ามกลางการปรับโครงสร้างองค์กรหลายระลอก",
+   "how": "ผู้บริหารและนักวิจัยของ TUAS วิเคราะห์เอกสารภายในและการนำเสนอช่วงปี 2016–2018 เทียบกับ 8 ขั้นของ Kotter เพื่อประเมินว่าการนำและการสื่อสารการเปลี่ยนแปลงทำครบหรือไม่",
+   "result": "พบหลักฐานของ 6 ขั้นแรก ส่วน 2 ขั้นสุดท้ายต้องใช้เวลานานกว่านี้จึงจะประเมินได้ และผู้เขียนสรุปว่าโมเดลใช้ประเมินการนำการเปลี่ยนแปลงในสถาบันอุดมศึกษาได้",
+   "searchPhrase": "ควบรวมหน่วยงานสองแห่ง จะสื่อสารและนำการเปลี่ยนแปลงอย่างไร",
+   "sources": [
+    {
+     "title": "Holopainen K et al. Leading and Communicating Change in an Engineering Faculty Merger (2019)",
+     "url": "https://linuxconsult01.ita.chalmers.se/knowledge-library/documents/leading-and-communicating-change-engineering-faculty-merger",
+     "lang": "en"
+    }
+   ]
+  },
+  {
+   "who": "บริษัทผู้ผลิตแห่งหนึ่งในยุโรป (32 โรงงาน ไม่เปิดเผยชื่อ)",
+   "event": "กรณีศึกษา Using Kotter's model to implement change ในเอกสารการสอนของ University of Bergamo",
+   "country": "IT",
+   "year": "n/a",
+   "problem": "คะแนนความผูกพันพนักงานต่ำต่อเนื่องหลายปี ส่งผลต่อ KPI ด้านคุณภาพ ต้นทุน และบริการ และโครงการแก้ไขหลายครั้งก่อนหน้านี้ไม่ได้ผล",
+   "how": "ที่ปรึกษาภายนอกกับผู้จัดการด้านขีดความสามารถองค์กรตั้ง Guiding Team 10 คนจากผู้นำที่มีอิทธิพล สร้างกรอบประเมิน 32 โรงงานตาม 50 มาตรฐานที่กระทบความผูกพัน ให้หัวหน้าโรงงานประเมินไขว้กันเพื่อการพัฒนา และผูกการเป็นผู้ประเมินกับเส้นทางเลื่อนตำแหน่ง",
+   "result": "ผู้เขียนรายงานว่าความผูกพันพนักงาน การรักษาคน และผลประกอบการดีขึ้น และระบบยังใช้อยู่หลายปีต่อมา แต่ยอมรับว่าขั้น 'สร้างวิสัยทัศน์' เป็นจุดอ่อนที่สุด",
+   "searchPhrase": "พนักงานไม่ผูกพันกับองค์กร ทำโครงการหลายรอบแล้วไม่เห็นผล",
+   "sources": [
+    {
+     "title": "Case Study: Using Kotter's model to implement change (University of Bergamo e-learning material)",
+     "url": "https://elearning15.unibg.it/mod/resource/view.php?id=169486",
+     "lang": "en"
+    }
+   ],
+   "note": "เป็นบันทึกของที่ปรึกษาที่ทำโครงการ ไม่ระบุชื่อบริษัท ปี และตัวเลขผลลัพธ์ ใช้เป็นสื่อการสอน"
+  },
+  {
+   "who": "องค์กรระดับโลกแห่งหนึ่งที่ดำเนินการในประเทศไทย",
+   "event": "สารนิพนธ์ Organizational change in IT technology inside a global organization วิทยาลัยการจัดการ มหาวิทยาลัยมหิดล",
+   "country": "TH",
+   "year": "2014",
+   "problem": "องค์กรต้องเปลี่ยนระบบเทคโนโลยี IT ทั่วทั้งองค์กร โดยส่วนที่ศึกษาคือผลกระทบในประเทศไทย และต้องการหาอุปสรรค ความไม่สอดคล้อง และความซ้ำซ้อนในกระบวนการ",
+   "how": "ผู้วิจัยใช้ 8 ขั้นของ Kotter เป็นกรอบวิเคราะห์กระบวนการเปลี่ยนแปลง ผ่านการสัมภาษณ์เชิงลึกและการสังเกตแบบไม่มีส่วนร่วม",
+   "result": "บทคัดย่อระบุว่าการเปลี่ยนแปลงดำเนินไปได้ดีและสำเร็จทั้งด้านประสิทธิผลและความคุ้มค่า โดยโมเดลให้น้ำหนักกับการสร้างทีมนำและการกำหนดวิสัยทัศน์มากที่สุด",
+   "searchPhrase": "เปลี่ยนระบบ IT ทั่วองค์กรในสาขาประเทศไทย จะบริหารการเปลี่ยนแปลงอย่างไร",
+   "sources": [
+    {
+     "title": "Kangvansong P. Organizational change in IT technology inside a global organization (CMMU thematic paper, 2014)",
+     "url": "https://archive.cm.mahidol.ac.th/handle/123456789/658?mode=full",
+     "lang": "en"
+    }
+   ],
+   "note": "เข้าถึงได้เฉพาะบทคัดย่อ ไม่ระบุชื่อองค์กรและไม่มีตัวเลขผลลัพธ์"
+  }
+ ],
+ "adkar": [
+  {
+   "who": "Colorado Department of Transportation (CDOT)",
+   "event": "กรณีศึกษาลูกค้าของ Prosci: CDOT",
+   "country": "US",
+   "year": "2018",
+   "problem": "ประชากรโคโลราโดคาดว่าจะเพิ่มเกือบเท่าตัวภายในปี 2050 ขณะที่งบประมาณจำกัด หน่วยงานต้องปรับกระบวนการแบบ lean แต่เจอแรงต้านภายใน",
+   "how": "ใช้ ADKAR คู่กับหลัก lean อบรมผู้บริหาร ผู้จัดการ และพนักงานตามบทบาท บรรยายบทบาทสปอนเซอร์ให้ผู้บริหาร และตั้งเครือข่าย change agent 8–14 คนในแต่ละภูมิภาคทั้ง 5 แห่งบวกสำนักงานใหญ่",
+   "result": "Prosci รายงานว่าอัตราข้อผิดพลาดในแผนกใบอนุญาตรถบรรทุกเกินขนาดลดลงถึง 55% ตัดขั้นตอนที่ไม่จำเป็น 23 ขั้นในกระบวนการตรวจสัญญา และลดเวลาตรวจสัญญาจาก 5 วันเหลือ 3 วัน",
+   "searchPhrase": "หน่วยงานราชการจะปรับกระบวนการแบบ lean แต่พนักงานต่อต้าน",
+   "sources": [
+    {
+     "title": "Prosci success story: Colorado Department of Transportation",
+     "url": "https://prosci.com/resources/success-stories/cdot",
+     "lang": "en"
+    }
+   ],
+   "note": "เป็นเอกสารการตลาดของ Prosci (เจ้าของโมเดล ADKAR) ตัวเลขไม่ได้ถูกตรวจสอบอิสระ"
+  },
+  {
+   "who": "Mayo Clinic",
+   "event": "บทความใน Management in Healthcare เรื่องกรอบวัดผลการเปลี่ยนแปลงตอนย้ายไประบบ Epic",
+   "country": "US",
+   "year": "2018",
+   "problem": "Mayo Clinic เปลี่ยนไปใช้ Epic เป็นระบบเวชระเบียนและ revenue cycle เดียวทั่วทุกวิทยาเขต ซึ่งบริษัทเรียกว่าเป็นโครงการเปลี่ยนแปลงใหญ่ที่สุดในประวัติศาสตร์ 150 ปี และต้องการรู้ว่าการบริหารการเปลี่ยนแปลงช่วยให้คนรับระบบใหม่ได้มากแค่ไหน",
+   "how": "ตั้งโครงสร้างกำกับสามกลุ่ม (ผู้นำ, โครงการ, การเปลี่ยนแปลง) และสร้างแบบสำรวจที่ผูกคำถามเข้ากับ 5 ระยะของ ADKAR และองค์ประกอบกลยุทธ์การเปลี่ยนแปลง 6 ด้าน แล้วสร้างระบบข้อมูลแสดงผลหลายล้านแถวแยกตามพื้นที่",
+   "result": "ผู้เขียนรายงานว่าการออกแบบแบบสำรวจเป็นส่วนง่าย ส่วนที่ยากคือการสร้างโครงสร้างข้อมูลเพื่อวิเคราะห์ทุกพื้นที่ที่ได้รับผลกระทบ บทคัดย่อไม่ระบุตัวเลขการยอมรับระบบ",
+   "searchPhrase": "จะวัดได้อย่างไรว่าพนักงานพร้อมรับระบบใหม่ขององค์กรขนาดใหญ่",
+   "sources": [
+    {
+     "title": "Leung CY et al. Change management: A framework for measuring and implementing organisational change. Management in Healthcare 5(4)",
+     "url": "https://henrystewartpublications.com/mih/ChangemanagementAframework",
+     "lang": "en"
+    }
+   ],
+   "note": "เข้าถึงได้เฉพาะบทคัดย่อ ไม่มีตัวเลขผลลัพธ์"
+  },
+  {
+   "who": "Cancer Institute NSW",
+   "event": "บทคัดย่อการนำเสนอในงาน COSA ASM & IPOS Congress 2025",
+   "country": "AU",
+   "year": "2025",
+   "problem": "ต้องนำระบบ electronic Patient-Reported Measures ไปใช้พร้อมกันใน 45 หน่วยบริการมะเร็งทั่วรัฐนิวเซาท์เวลส์ โดยบุคลากรมองว่าซ้ำซ้อนและไม่มีเวลา",
+   "how": "ผูกกิจกรรมเข้ากับแต่ละระยะของ ADKAR: Awareness/Desire ด้วยการมีส่วนร่วมของผู้มีส่วนได้ส่วนเสียเฉพาะกลุ่ม, Knowledge ด้วยการอบรมตามบทบาท, Ability ด้วยการแก้ปัญหาและปรับ workflow หน้างาน, Reinforcement ด้วยการติดตามผลการใช้งาน",
+   "result": "ผู้นำเสนอระบุว่าการบริหารการเปลี่ยนแปลงอย่างมีโครงสร้างทำให้นำนวัตกรรมดิจิทัลไปใช้ในวงกว้างได้สำเร็จ และได้ checklist ที่ถ่ายโอนไปใช้ที่อื่นได้ (ไม่ระบุอัตราการใช้งาน)",
+   "searchPhrase": "นำระบบดิจิทัลใหม่ไปใช้หลายสิบสาขาพร้อมกัน บุคลากรบอกว่าไม่มีเวลา",
+   "sources": [
+    {
+     "title": "Gazzard A et al. Digital Transformation in Oncology Care: A case study for the implementation of patient reported outcomes (COSA/IPOS 2025, abstract 127)",
+     "url": "https://cosa-ipos-2025.p.asnevents.com.au/days/2025-11-13/abstract/126328",
+     "lang": "en"
+    }
+   ],
+   "note": "เป็นบทคัดย่อการประชุมวิชาการ ไม่มีตัวเลขเชิงปริมาณ"
+  },
+  {
+   "who": "University of Geneva",
+   "event": "บทความ The use of ADKAR to instil change in the accessibility of university websites ในงาน W4A 2022",
+   "country": "CH",
+   "year": "2022",
+   "problem": "มหาวิทยาลัยออกนโยบายและแผนปฏิบัติการด้าน web accessibility ใหม่ และต้องให้ผู้ดูแลเว็บกว่า 80 คนเปลี่ยนวิธีทำงาน",
+   "how": "ใช้ ADKAR ออกแบบแบบสอบถามวัดความพร้อมของผู้ดูแลเว็บในแต่ละมิติ (Awareness, Desire, Knowledge, Ability, Reinforcement) เพื่อเลือกมาตรการให้เหมาะกับแต่ละกลุ่ม",
+   "result": "คะแนน Awareness สูง แต่ Reinforcement (ความมั่นใจว่าการเปลี่ยนแปลงจะยั่งยืน) เป็นด้านที่ต้องเร่งแก้ และมาตรการที่เหมาะสมต่างกันตามโปรไฟล์ของผู้ตอบ",
+   "searchPhrase": "ออกนโยบายใหม่แล้วอยากรู้ว่าพนักงานติดอยู่ที่ขั้นไหน รู้ อยาก หรือทำไม่เป็น",
+   "sources": [
+    {
+     "title": "Rodríguez Vázquez S. The use of ADKAR to instil change in the accessibility of university websites. W4A '22 (Archive ouverte UNIGE)",
+     "url": "https://archive-ouverte.unige.ch/unige:161253",
+     "lang": "en"
+    }
+   ]
+  },
+  {
+   "who": "หน่วยงานภาครัฐแห่งหนึ่งในสหราชอาณาจักร (พนักงานกว่า 2,000 คน)",
+   "event": "กรณีศึกษาลูกค้าของ Prosci: UK public sector organisation",
+   "country": "GB",
+   "year": "2023",
+   "problem": "หน่วยงานต้องรับมือความท้าทายทางการเมือง สังคม และเทคโนโลยีหลายด้านพร้อมกัน และต้องการให้ทีมมีเครื่องมือทำให้การเปลี่ยนแปลงหลายโครงการ 'ลงจอด' ได้",
+   "how": "ผู้อำนวยการโครงการและหัวหน้าทีมธุรกิจ 7 คนเรียนหลักสูตร Prosci Practitioner คณะกรรมการบริหารเข้า sponsor briefing ผู้จัดการได้รับแนะนำ ADKAR เป็นเครื่องมือ และซื้อสิทธิ์สื่อของ Prosci มาทำหลักสูตรภายในเอง",
+   "result": "Prosci รายงานว่ามีผู้นำ 8 คนได้รับการรับรอง มีแนวทางสปอนเซอร์ทั่วองค์กร และมีการจัด session ADKAR ภายในต่อเนื่อง (ไม่มีตัวเลขผลลัพธ์เชิงธุรกิจ)",
+   "searchPhrase": "องค์กรมีโครงการเปลี่ยนแปลงหลายเรื่องพร้อมกัน จะสร้างความสามารถด้าน change management ภายในอย่างไร",
+   "sources": [
+    {
+     "title": "Prosci success story: Public sector organisation to respond better to a variety of challenges",
+     "url": "https://www.prosci.com/resources/success-stories/public-sector-organisation-to-respond-better-to-a-variety-of-challenges",
+     "lang": "en"
+    }
+   ],
+   "note": "เอกสารการตลาดของ Prosci ไม่เปิดเผยชื่อหน่วยงาน และไม่มีตัวเลขผลลัพธ์"
+  }
+ ],
+ "grow-coaching": [
+  {
+   "who": "Google (re:Work / Project Oxygen)",
+   "event": "คู่มือ re:Work ของ Google เรื่อง Coach using the GROW model และงานวิจัย Project Oxygen",
+   "country": "US",
+   "year": "2008",
+   "problem": "ช่วงต้นทศวรรษ 2000 Google เคยเชื่อว่าผู้จัดการไม่สำคัญ จึงทำวิจัย Project Oxygen วิเคราะห์ข้อมูลกว่า 10,000 จุดจากการประเมินผลและแบบสำรวจ เพื่อหาว่าผู้จัดการที่ดีทำอะไรต่างจากคนอื่น",
+   "how": "ผลวิจัยพบว่า 'เป็นโค้ชที่ดี' เป็นหนึ่งในพฤติกรรมสำคัญของผู้จัดการที่มีประสิทธิภาพสูง Google จึงนำโมเดล GROW (Goal: คุณต้องการอะไร, Reality: ตอนนี้เกิดอะไรขึ้น, Options: ทำอะไรได้บ้าง, Will: จะทำอะไร) มาใช้สอนผู้จัดการให้สนทนาแบบโค้ชกับลูกทีม",
+   "result": "Google รายงานว่าทีมที่มีผู้จัดการประสิทธิภาพสูงมีผลงานดีกว่า มีความสุขมากกว่า และลาออกน้อยกว่า และผลวิจัยถูกฝังในกรอบความรับผิดชอบผู้จัดการและหลักสูตรของ Google School for Leaders",
+   "searchPhrase": "อยากให้ผู้จัดการโค้ชลูกทีมเป็น ไม่ใช่แค่สั่งงาน ใช้กรอบอะไรดี",
+   "sources": [
+    {
+     "title": "re:Work — Guide: Coach using the GROW model",
+     "url": "https://rework.withgoogle.com/intl/en/guides/coach-using-the-grow-model",
+     "lang": "en"
+    },
+    {
+     "title": "re:Work — Following the data: the research behind great managers (Project Oxygen)",
+     "url": "https://rework.withgoogle.com/intl/en/guides/following-the-data-the-research-behind-great-managers",
+     "lang": "en"
+    }
+   ],
+   "note": "Project Oxygen วัดผลของ 'การโค้ช' โดยรวม ไม่ได้วัดผลของโมเดล GROW แยกต่างหาก ปีที่ระบุเป็นช่วงเริ่มโครงการตามแหล่งข้อมูลรอง"
+  },
+  {
+   "who": "Companies House (หน่วยงานจดทะเบียนบริษัทของสหราชอาณาจักร)",
+   "event": "บล็อกทางการของ Companies House เรื่องเครือข่ายโค้ชภายใน ปี 2018",
+   "country": "GB",
+   "year": "2011",
+   "problem": "หน่วยงานต้องการช่วยพนักงานพัฒนาศักยภาพและเตรียมตัวสำหรับการประชุมแบบตัวต่อตัวกับหัวหน้าโดยไม่ต้องพึ่งโค้ชภายนอก",
+   "how": "ตั้งเครือข่ายโค้ชภายในที่ผ่านการรับรอง ILM ตั้งแต่ปี 2011 ให้บริการโค้ชตัวต่อตัวและ workshop โดยใช้โมเดล GROW ของ Sir John Whitmore (Goal, Reality, Options, Way forward) เป็นเครื่องมือหลัก และร่วมมือกับโค้ชของ Intellectual Property Office",
+   "result": "เครือข่ายได้เข้ารอบสุดท้าย 1 ใน 7 จากผู้สมัครราว 350 รายในรางวัล CIPD Best Coaching and Mentoring Initiative (ไม่ได้รับรางวัล) และหน่วยงานระบุว่าตำแหน่ง people coach ที่ตั้งใหม่ประสบความสำเร็จมาก",
+   "searchPhrase": "สร้างเครือข่ายโค้ชภายในองค์กรราชการโดยไม่จ้างโค้ชภายนอก",
+   "sources": [
+    {
+     "title": "Companies House blog: Companies House coaching network (26 Oct 2018)",
+     "url": "https://companieshouse.blog.gov.uk/2018/10/26/companies-house-coaching-network/",
+     "lang": "en"
+    }
+   ],
+   "note": "เป็นบล็อกของหน่วยงานเอง ไม่มีตัวเลขจำนวนโค้ชหรือผลลัพธ์เชิงปริมาณ"
+  },
+  {
+   "who": "BlastOne Malaysia Sdn Bhd",
+   "event": "บทความ Managerial coaching to improve on organizational performance ใน Global Business Management Review ปี 2023",
+   "country": "MY",
+   "year": "2023",
+   "problem": "บริษัทพลาดเป้ายอดขาย กำไร อัตราการลาออก คุณภาพสินค้า และความพึงพอใจลูกค้าติดต่อกันหลายปี โดยพบว่าพนักงานขาดทักษะตั้งเป้าหมายและหมกมุ่นกับปัญหารายวันมากกว่าหาทางออก",
+   "how": "นักวิจัยจาก Universiti Utara Malaysia วิเคราะห์ความสามารถในการแข่งขันด้วย RBV, I/O model และ SWOT แล้วเสนอให้ใช้ GROW เน้นสองมิติคือการตั้งเป้าหมายและ mindset แบบมุ่งหาทางออก",
+   "result": "บทความสรุปว่า GROW จะช่วยแก้จุดอ่อนภายในส่วนใหญ่และสร้างวัฒนธรรมโค้ช แต่เป็นข้อสรุปเชิงวิเคราะห์ ยังไม่มีการวัดผลหลังนำไปใช้จริง",
+   "searchPhrase": "ทีมพลาดเป้าหลายปี พนักงานติดอยู่กับปัญหาเฉพาะหน้า จะโค้ชอย่างไร",
+   "sources": [
+    {
+     "title": "Kuan CM, Abu Bakar H. Managerial coaching to improve on organizational performance: A case study of a multinational company. Global Business Management Review 15(2), 2023",
+     "url": "https://e-journal.uum.edu.my/index.php/gbmr/article/view/21999",
+     "lang": "en"
+    }
+   ],
+   "note": "ไม่มีข้อมูลผลลัพธ์หลังการนำไปใช้"
+  },
+  {
+   "who": "องค์กรเทคโนโลยีแห่งหนึ่ง (กรณีศึกษาจาก NSBM Green University ศรีลังกา)",
+   "event": "บทความ Coaching for Excellence ในงานประชุม ICOBI 2018",
+   "country": "LK",
+   "year": "2018",
+   "problem": "องค์กรต้องการพัฒนาผู้นำให้มี mindset ด้านการพัฒนาคน ผ่านการฝึกทักษะโค้ช",
+   "how": "ใช้โมเดล P3 GROWTHS ซึ่งต่อยอดจาก GROW ผ่าน workshop เข้มข้นและการโค้ชภายใต้การกำกับ แล้วประเมินทักษะเป็นระยะหลายช่วงเวลา",
+   "result": "ผู้เขียนรายงานว่าทักษะที่ประเมินดีขึ้นในทางบวก ถือว่าโปรแกรมมีประสิทธิผล แต่ไม่ให้ตัวเลข",
+   "searchPhrase": "ฝึกผู้นำให้โค้ชลูกน้องเป็น แล้ววัดผลอย่างไร",
+   "sources": [
+    {
+     "title": "Silva P, Cooray R, Booso K. Coaching for Excellence: A Case Study in Growing Leaders with a People Development Mindset (NSBM, 2018)",
+     "url": "https://nspace.nsbm.ac.lk/items/f9351666-4640-40ce-b9df-07f14278b5f4",
+     "lang": "en"
+    }
+   ],
+   "note": "ใช้โมเดลที่ดัดแปลงจาก GROW ไม่ระบุชื่อองค์กรและไม่มีตัวเลข"
+  },
+  {
+   "who": "บริษัทซอฟต์แวร์ใน S&P 500 (ไม่เปิดเผยชื่อ)",
+   "event": "กรณีศึกษาลูกค้าของ InsideOut Development จากการสำรวจโดย TechValidate ปี 2020",
+   "country": "US",
+   "year": "2020",
+   "problem": "ผู้จัดการฟังไม่เก่ง สนทนาไม่เกิดผล ไม่กล้าคุยเรื่องยาก และพนักงานไม่เติบโต",
+   "how": "นำหลักสูตร InsideOut Coaching ที่ใช้โมเดล GROW มาอบรมผู้นำทั้งหมด โดยรับรองวิทยากรภายในและใช้การอบรมออนไลน์ในพื้นที่ที่ไม่มีวิทยากร",
+   "result": "บริษัทระบุว่าผู้นำ 100% ผ่านการอบรม GROW และเห็นผลด้านคุณภาพการสนทนาระหว่างผู้จัดการกับพนักงานภายในไม่กี่สัปดาห์ (ไม่มีตัวเลขผลลัพธ์อื่น)",
+   "searchPhrase": "ผู้จัดการไม่กล้าคุยเรื่องยากกับลูกน้อง อยากอบรมทักษะโค้ชทั้งองค์กร",
+   "sources": [
+    {
+     "title": "InsideOut Development case study: S&P 500 Computer Software Company",
+     "url": "https://insideoutdev.com/case-study/s-p-500-computer-software/",
+     "lang": "en"
+    }
+   ],
+   "note": "เอกสารการตลาดของผู้ให้บริการอบรม อิงแบบสำรวจความพึงพอใจลูกค้า ไม่ระบุชื่อบริษัท"
+  }
+ ],
+ "goodharts-law": [
+  {
+   "who": "Wells Fargo",
+   "event": "เรื่องอื้อฉาวบัญชีปลอมของ Wells Fargo ปี 2016 (คำสั่ง CFPB)",
+   "country": "US",
+   "year": "2016",
+   "problem": "ธนาคารตั้งเป้ายอดขายและโครงการจูงใจเพื่อผลักดัน cross-selling ให้ลูกค้าเดิมเปิดบัญชีและบัตรเพิ่ม โดยไม่ได้ติดตามโครงการอย่างเพียงพอ",
+   "how": "พนักงานเปิดบัญชีเงินฝากและบัตรเครดิตโดยลูกค้าไม่รู้ตัว รวมถึงโยกเงินจากบัญชีจริงไปใส่บัญชีใหม่ เพื่อให้ยอดนับเข้าเป้าและได้ค่าตอบแทนเพิ่ม",
+   "result": "CFPB ระบุว่ามีบัญชีเงินฝากและบัตรเครดิตกว่า 2 ล้านบัญชีที่อาจไม่ได้รับอนุญาต ธนาคารถูกปรับรวม 185 ล้านดอลลาร์ (CFPB 100 ล้าน, OCC 35 ล้าน, นครลอสแอนเจลิส 50 ล้าน) และต้องคืนค่าธรรมเนียมลูกค้า",
+   "searchPhrase": "ตั้งเป้ายอดขายแรงมากจนพนักงานโกงตัวเลข",
+   "sources": [
+    {
+     "title": "CFPB press release: Consumer Financial Protection Bureau Fines Wells Fargo $100 Million for Widespread Illegal Practice of Secretly Opening Unauthorized Accounts (8 Sep 2016)",
+     "url": "https://www.consumerfinance.gov/about-us/newsroom/consumer-financial-protection-bureau-fines-wells-fargo-100-million-widespread-illegal-practice-secretly-opening-unauthorized-accounts/",
+     "lang": "en"
+    }
+   ]
+  },
+  {
+   "who": "Wells Fargo (หลังเรื่องอื้อฉาว)",
+   "event": "รายงานสอบสวนของคณะกรรมการอิสระ Wells Fargo เรื่องแนวปฏิบัติการขายของ Community Bank ปี 2017",
+   "country": "US",
+   "year": "2016",
+   "problem": "หลังถูกเปิดโปงว่าเป้ายอดขายสินค้าผลักดันให้เปิดบัญชีปลอม ธนาคารต้องออกแบบตัวชี้วัดและค่าตอบแทนของพนักงานสาขาใหม่เพื่อไม่ให้ถูกเล่นแร่แปรธาตุอีก",
+   "how": "วันที่ 13 กันยายน 2016 ธนาคารประกาศยกเลิกเป้ายอดขายสินค้าในธนาคารรายย่อยโดยความเห็นชอบของคณะกรรมการ และในเดือนมกราคม 2017 เริ่มใช้โครงการจูงใจใหม่ที่เน้นการบริการลูกค้าแทนการขายสินค้า",
+   "result": "เป้ายอดขายสินค้ารายบุคคลถูกยกเลิกและแทนที่ด้วยโครงการจูงใจที่เน้นบริการลูกค้า โดยรายงานไม่ระบุตัวเลขผลลัพธ์ของโครงการใหม่",
+   "searchPhrase": "ออกแบบ KPI และค่าตอบแทนพนักงานขายใหม่ไม่ให้ถูกโกงตัวเลข",
+   "sources": [
+    {
+     "title": "Independent Directors of the Board of Wells Fargo & Company — Sales Practices Investigation Report (SEC filing DEFA14A, April 2017)",
+     "url": "https://www.sec.gov/Archives/edgar/data/0000072971/000119312517118654/d375947ddefa14a.htm",
+     "lang": "en"
+    }
+   ],
+   "note": "เป็นตัวอย่างเชิงบวกของการออกแบบตัวชี้วัดใหม่ แต่ยังไม่มีหลักฐานผลลัพธ์เชิงปริมาณของโครงการใหม่ในแหล่งที่อ้าง"
+  },
+  {
+   "who": "รัฐบาลอาณานิคมฝรั่งเศสในฮานอย",
+   "event": "การล่าหนูครั้งใหญ่ที่ฮานอย ปี 1902 (งานวิจัยของ Michael G. Vann)",
+   "country": "VN",
+   "year": "1902",
+   "problem": "ระบบท่อระบายน้ำใหม่ในย่านฝรั่งเศสกลายเป็นแหล่งเพาะพันธุ์หนู และกาฬโรคเริ่มระบาด ทางการจึงตั้งค่าหัวหนูให้ประชาชนนำหางหนูมาแลกเงิน",
+   "how": "เมื่อหางหนูกลายเป็นตัวชี้วัด ชาวบ้านตัดหางแล้วปล่อยหนูให้ไปขยายพันธุ์ต่อ และเกษตรกรรอบเมืองเริ่มเพาะพันธุ์หนูเพื่อเอาค่าหัว จนเห็นหนูไร้หางเดินทั่วเมือง",
+   "result": "โครงการถูกยกเลิก และตามบันทึกของนักประวัติศาสตร์ ฮานอยมีหนูมากกว่าตอนเริ่มโครงการ",
+   "searchPhrase": "ให้รางวัลตามจำนวนที่กำจัดได้ แต่คนกลับสร้างปัญหาเพิ่มเพื่อเอารางวัล",
+   "sources": [
+    {
+     "title": "Saigoneer: How Hanoi's Infectious Rats and Impish Locals Bamboozled the French in 1902 (interview with historian Michael Vann)",
+     "url": "https://saigoneer.com/hanoi-heritage/23265-author-michael-vann-on-hanoi-s-infamous-colonial-rat-hunt",
+     "lang": "en"
+    },
+    {
+     "title": "Bibek Debroy, Cobra skin and rat tails (The Week, 2019)",
+     "url": "https://www.theweek.in/columns/bibek-debroy/2019/11/01/cobra-skin-and-rat-tails.html",
+     "lang": "en"
+    }
+   ],
+   "note": "อิงเอกสารจดหมายเหตุอาณานิคมที่ Michael Vann ค้นพบ และตีพิมพ์ในหนังสือ The Great Hanoi Rat Hunt"
+  },
+  {
+   "who": "NHS England (แผนกฉุกเฉินของโรงพยาบาลในอังกฤษ)",
+   "event": "เป้า 4 ชั่วโมงในแผนกฉุกเฉินของ NHS และงานวิจัยใน BMJ ปี 2005",
+   "country": "GB",
+   "year": "2005",
+   "problem": "NHS Plan กำหนดว่าผู้ป่วยฉุกเฉิน 98% ต้องออกจากแผนกภายใน 4 ชั่วโมง ซึ่งกลายเป็นตัวชี้วัดหลักที่โรงพยาบาลต้องทำให้ได้",
+   "how": "นักวิจัยจาก University of Sheffield วิเคราะห์ข้อมูลผู้ป่วย 428,593 รายจากแผนกฉุกเฉิน 83 แห่งในเดือนเมษายน 2004 เพื่อดูการกระจายของเวลาที่อยู่ในแผนกรอบ ๆ เส้น 4 ชั่วโมง",
+   "result": "ผู้ป่วยที่รับไว้รักษาต่อถึง 12.3% (ราว 1 ใน 8) ถูกย้ายออกจากแผนกฉุกเฉินในช่วง 20 นาทีสุดท้ายก่อนครบ 4 ชั่วโมง และกลุ่มนี้มีอายุมากกว่า ผู้เขียนเตือนว่าต้องตรวจสอบว่าเป้าหมายสร้างการปรับปรุงที่มีความหมายต่อผู้ป่วยจริงหรือไม่",
+   "searchPhrase": "ตั้งเป้าเวลารอแล้วคนทำงานเร่งปิดเคสก่อนเส้นตายแทนที่จะดูแลตามความจำเป็น",
+   "sources": [
+    {
+     "title": "Locker TE, Mason SM. Analysis of the distribution of time that patients spend in emergency departments. BMJ 2005;330:1188–1189",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC558017",
+     "lang": "en"
+    },
+    {
+     "title": "Nigel Hawkes, Happy Hour in the A&E (Straight Statistics / Full Fact, 2009)",
+     "url": "https://straightstatistics.fullfact.org/article/happy-hour-ae",
+     "lang": "en"
+    }
+   ],
+   "note": "ผู้เขียนงานวิจัยระบุว่าไม่มีข้อมูลระดับชาติก่อนมีเป้าหมาย จึงตีความได้จำกัด"
+  },
+  {
+   "who": "Atlanta Public Schools",
+   "event": "เรื่องอื้อฉาวการโกงข้อสอบของโรงเรียนรัฐแอตแลนตา (รายงานสอบสวนของรัฐจอร์เจีย ปี 2011)",
+   "country": "US",
+   "year": "2011",
+   "problem": "ระบบ 'เป้าหมาย' ของผู้อำนวยการเขตกำหนดให้คะแนนสอบ CRCT ต้องเพิ่มขึ้นทุกปี ผู้บริหารโรงเรียนที่พลาดเป้าเสี่ยงถูกเปลี่ยนตัว ส่วนโรงเรียนที่ทำได้ 70% ของเป้าได้โบนัส และคะแนนยังผูกกับ Adequate Yearly Progress ตามกฎหมาย No Child Left Behind",
+   "how": "ครูและผู้บริหารบอกคำตอบนักเรียน แก้คำตอบผิดให้ถูก และแก้ไขเอกสาร บางแห่งจัด 'changing parties' ขณะที่ผู้ไม่ร่วมมือถูกลงโทษ จนเกิดวัฒนธรรมแห่งความกลัว",
+   "result": "รายงานสอบสวนที่ส่งถึงผู้ว่าการรัฐในปี 2011 พบนักการศึกษา 178 คนเกี่ยวข้อง (82 คนสารภาพ) ใน 44 จาก 56 โรงเรียนที่ตรวจสอบ และในปี 2015 จำเลย 11 จาก 12 คนถูกตัดสินว่ามีความผิดรวมถึงข้อหา racketeering",
+   "searchPhrase": "ผูกโบนัสกับคะแนนสอบแล้วเกิดการโกงทั้งระบบ",
+   "sources": [
+    {
+     "title": "Georgia Public Policy Foundation: The Atlanta Public Schools Cheating Scandal",
+     "url": "https://www.georgiapolicy.org/news/the-atlanta-public-schools-cheating-scandal/",
+     "lang": "en"
+    }
+   ]
+  },
+  {
+   "who": "ตำรวจอังกฤษและเวลส์ / Home Office",
+   "event": "รายงาน Caught red-handed ของ Public Administration Select Committee และคำตอบของรัฐบาล (Cm 8910) ปี 2014",
+   "country": "GB",
+   "year": "2014",
+   "problem": "ตำรวจหลายพื้นที่บันทึกอาชญากรรมต่ำกว่าความจริง โดยเฉพาะคดีทางเพศ เนื่องจากเป้าหมายเชิงตัวเลขที่อิงสถิติอาชญากรรมสร้างแรงจูงใจให้บันทึกผิด",
+   "how": "คณะกรรมาธิการสภาสามัญสรุปว่าเป้าหมายเชิงตัวเลขที่ตั้งภายในสร้าง perverse incentives ให้บันทึกคดีผิดและบั่นทอนคุณภาพข้อมูล จึงแนะนำให้รื้อฟื้นการตรวจสอบภายนอก ไม่ควรใช้สถิติอาชญากรรมประเมินผลงานหรือตัดสินการเลื่อนตำแหน่ง และให้ผู้บัญชาการตำรวจ (PCC) เลิกตั้งเป้าแบบนี้",
+   "result": "สถิติอาชญากรรมที่ตำรวจบันทึกถูกถอดสถานะ 'National Statistics' และรัฐบาลตอบว่าได้ยกเลิกเป้าหมายส่วนกลางแล้ว พร้อมนำ Crime Outcomes Framework ใหม่มาใช้ในเดือนเมษายน 2014 เพื่อลดแรงจูงใจไม่บันทึกคดี โดยรัฐมนตรีมหาดไทยไม่สนับสนุนให้ PCC ตั้งเป้าท้องถิ่น",
+   "searchPhrase": "ใช้สถิติเป็นเป้าหมายแล้วหน่วยงานแต่งตัวเลขแทนที่จะแก้ปัญหาจริง",
+   "sources": [
+    {
+     "title": "Government Response to the PASC 13th Report: Caught red-handed: Why we can't count on Police Recorded Crime statistics (Cm 8910, July 2014)",
+     "url": "https://assets.publishing.service.gov.uk/media/5a7e135e40f0b6230268902d/41437_Cm_8910_Print_Ready.pdf",
+     "lang": "en"
+    },
+    {
+     "title": "GOV.UK policy paper page: Caught red-handed (Home Office, 11 July 2014)",
+     "url": "https://www.gov.uk/government/publications/caught-red-handed-why-we-cant-count-on-police-recorded-crime-statistics",
+     "lang": "en"
+    }
+   ]
+  },
+  {
+   "who": "Volkswagen AG",
+   "event": "เรื่องอื้อฉาวการโกงค่าไอเสียดีเซลของ Volkswagen ปี 2015",
+   "country": "DE",
+   "year": "2015",
+   "problem": "รถดีเซลต้องผ่านการทดสอบค่าไนโตรเจนออกไซด์ (NOx) ตามมาตรฐานของสหรัฐฯ ซึ่งการทดสอบในห้องปฏิบัติการกลายเป็นเป้าหมายที่ต้องผ่านให้ได้",
+   "how": "ซอฟต์แวร์ในเครื่องยนต์ EA 189 ตรวจจับได้ว่ากำลังถูกทดสอบและเปิดระบบควบคุมไอเสียเต็มที่เฉพาะตอนนั้น ซึ่ง VW ยอมรับในปี 2015 ว่าเข้าข่าย 'defeat device' ตามกฎหมายสิ่งแวดล้อมสหรัฐฯ",
+   "result": "EPA ออก Notice of Violation วันที่ 18 กันยายน 2015 VW แจ้งว่ามีรถราว 11 ล้านคันทั่วโลกที่ได้รับผลกระทบ และตั้งสำรองค่าใช้จ่าย 16.2 พันล้านยูโรในปี 2015 กับอีก 6.4 พันล้านยูโรในปี 2016",
+   "searchPhrase": "ทีมทำทุกวิถีทางให้ผ่านการตรวจสอบแทนที่จะแก้ปัญหาที่แท้จริง",
+   "sources": [
+    {
+     "title": "Volkswagen AG Annual Report 2016 — Notes: Key events (diesel issue)",
+     "url": "https://annualreport2016.volkswagenag.com/notes/basis-of-presentation/key-events.html",
+     "lang": "en"
+    }
+   ]
+  },
+  {
+   "who": "โรงเรียนประถมในเขตเมืองแห่งหนึ่งในรัฐเท็กซัส",
+   "event": "งานวิจัย Below the Bubble เรื่องระบบความรับผิดชอบของเท็กซัส ใน American Educational Research Journal ปี 2005",
+   "country": "US",
+   "year": "2005",
+   "problem": "ระบบ Texas Accountability System (ต้นแบบของ No Child Left Behind) จัดอันดับโรงเรียนจากสัดส่วนนักเรียนที่สอบผ่าน ทำให้ 'คะแนนสอบ' กลายเป็นนิยามของการสอนที่ดี",
+   "how": "ครูทำ 'educational triage' ทุ่มทรัพยากรให้ 'bubble kids' ที่ใกล้เส้นผ่าน ละเลยนักเรียนที่อ่อนมาก และส่งนักเรียนคะแนนต่ำไปโครงการการศึกษาพิเศษเพื่อไม่ให้ถูกนับในอันดับของโรงเรียน",
+   "result": "งานวิจัยสรุปว่าคะแนนที่ดูดีขึ้นเกิดจากการจัดสรรทรัพยากรตามตัวชี้วัด ไม่ใช่การเรียนรู้ที่ดีขึ้นทั่วถึง และสภาพแวดล้อมนี้เปลี่ยนอัตลักษณ์วิชาชีพของครู",
+   "searchPhrase": "วัดผลด้วยสัดส่วนคนผ่านเกณฑ์ ทีมเลยทุ่มให้แค่คนที่เกือบผ่าน",
+   "sources": [
+    {
+     "title": "Booher-Jennings J. Below the Bubble: 'Educational Triage' and the Texas Accountability System. American Educational Research Journal 2005;42(2):231–268",
+     "url": "https://collaborate.princeton.edu/en/publications/below-the-bubble-educational-triage-and-the-texas-accountability-/",
+     "lang": "en"
+    }
+   ],
+   "note": "เป็นการศึกษาโรงเรียนเดียว ไม่ใช่ตัวแทนระดับชาติ"
+  },
+  {
+   "who": "รัฐบาลอาณานิคมอังกฤษในเดลี (เรื่องเล่า)",
+   "event": "เรื่องเล่า 'Cobra effect' เรื่องค่าหัวงูเห่าในเดลี",
+   "country": "IN",
+   "year": "n/a",
+   "problem": "ตามเรื่องเล่า ทางการตั้งค่าหัวงูเห่าเพื่อลดจำนวนงูในเดลี",
+   "how": "เรื่องเล่าระบุว่าชาวบ้านเพาะพันธุ์งูเห่าเพื่อเอาค่าหัว และเมื่อโครงการถูกยกเลิกก็ปล่อยงูทิ้ง ทำให้งูเพิ่มขึ้น",
+   "result": "ไม่พบหลักฐานทางประวัติศาสตร์ว่าเหตุการณ์นี้เกิดขึ้นจริง นักเศรษฐศาสตร์ Bibek Debroy ระบุว่าเป็นเรื่องเล่า (apocryphal) ต่างจากกรณีหนูที่ฮานอยซึ่งมีเอกสารยืนยัน",
+   "searchPhrase": "ตัวอย่างคลาสสิกเรื่องแรงจูงใจย้อนกลับที่ใช้สอนแต่ไม่มีหลักฐาน",
+   "sources": [
+    {
+     "title": "Bibek Debroy, Cobra skin and rat tails (The Week, 1 Nov 2019)",
+     "url": "https://www.theweek.in/columns/bibek-debroy/2019/11/01/cobra-skin-and-rat-tails.html",
+     "lang": "en"
+    }
+   ],
+   "disputed": true,
+   "note": "เป็นเรื่องเล่าที่ถูกอ้างถึงบ่อยแต่ไม่มีเอกสารยืนยัน ควรนำเสนอเป็นนิทานประกอบ ไม่ใช่ข้อเท็จจริง"
+  }
  ]
 }
