@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Sans_Thai } from "next/font/google";
+import { frameworks } from "@/lib/data";
 import "./globals.css";
 
 const plex = IBM_Plex_Sans_Thai({
@@ -12,7 +13,7 @@ const plex = IBM_Plex_Sans_Thai({
 export const metadata: Metadata = {
   title: { default: "เข็มทิศกรอบความคิด — หยิบ Framework ให้ถูกสถานการณ์", template: "%s · เข็มทิศกรอบความคิด" },
   description:
-    "เรียนรู้ 51 management framework จัดกลุ่มตามคำถามที่ผู้บริหารกำลังถาม พร้อมขั้นตอนลงมือทำ ตัวอย่าง และแผนภาพสำหรับนำเสนอ",
+    `เรียนรู้ ${frameworks.length} management framework จัดกลุ่มตามคำถามที่ผู้บริหารกำลังถาม พร้อมขั้นตอนลงมือทำ ตัวอย่าง และแผนภาพสำหรับนำเสนอ`,
 };
 
 export const viewport: Viewport = {

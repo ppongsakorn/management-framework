@@ -503,7 +503,8 @@
   "q": "ยิ่งออกกฎเพิ่ม คนยิ่งหาช่องโหว่",
   "relevant": [
    "second-order-thinking",
-   "iceberg-model"
+   "iceberg-model",
+   "goodharts-law"
   ],
   "difficulty": "hard",
   "kind": "symptom"
@@ -554,7 +555,8 @@
   "q": "แผนกหนึ่งทำงานช้า ทั้งบริษัทต้องรอ",
   "relevant": [
    "theory-of-constraints",
-   "critical-path"
+   "critical-path",
+   "value-stream-mapping"
   ],
   "difficulty": "hard",
   "kind": "symptom"
@@ -599,7 +601,9 @@
   "relevant": [
    "eisenhower-matrix",
    "moscow",
-   "pareto-80-20"
+   "pareto-80-20",
+   "rice-scoring",
+   "cost-of-delay"
   ],
   "difficulty": "medium",
   "kind": "english"
@@ -649,7 +653,8 @@
   "q": "micromanage ลูกน้องอยู่หรือเปล่า",
   "relevant": [
    "delegation-levels",
-   "situational-leadership"
+   "situational-leadership",
+   "grow-coaching"
   ],
   "difficulty": "hard",
   "kind": "english"
@@ -669,5 +674,173 @@
   ],
   "difficulty": "hard",
   "kind": "english"
+ },
+ {
+  "q": "แยกประเภทปัญหาก่อนเลือกวิธี",
+  "relevant": [
+   "cynefin"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "ปัญหานี้ควรวางแผนให้ครบหรือลองทำก่อนดี",
+  "relevant": [
+   "cynefin"
+  ],
+  "difficulty": "medium",
+  "kind": "situation"
+ },
+ {
+  "q": "งานข้ามฝ่ายใช้เวลาสามสัปดาห์ ทั้งที่ลงมือจริงไม่กี่ชั่วโมง",
+  "relevant": [
+   "value-stream-mapping",
+   "theory-of-constraints"
+  ],
+  "difficulty": "hard",
+  "kind": "situation"
+ },
+ {
+  "q": "หาว่าเวลาหายไปตรงไหนในกระบวนการ",
+  "relevant": [
+   "value-stream-mapping"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "backlog มีสามสิบรายการ จะเลือกทำอะไรก่อน",
+  "relevant": [
+   "rice-scoring",
+   "cost-of-delay",
+   "moscow"
+  ],
+  "difficulty": "medium",
+  "kind": "situation"
+ },
+ {
+  "q": "ให้คะแนนฟีเจอร์เพื่อจัดลำดับ",
+  "relevant": [
+   "rice-scoring",
+   "weighted-decision-matrix"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "ถ้าทำช้าไปอาทิตย์นึงเสียเงินเท่าไร",
+  "relevant": [
+   "cost-of-delay"
+  ],
+  "difficulty": "medium",
+  "kind": "situation"
+ },
+ {
+  "q": "ผู้บริหารดูรายงานสิบสองตัวเลขแล้วถามว่าธุรกิจดีขึ้นไหม",
+  "relevant": [
+   "north-star-metric"
+  ],
+  "difficulty": "hard",
+  "kind": "situation"
+ },
+ {
+  "q": "metric หลักตัวเดียวของทีม",
+  "relevant": [
+   "north-star-metric"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "ฝ่ายธุรกิจอยากให้ระบบไม่พลาดเลย ทีมอยากปล่อยของใหม่",
+  "relevant": [
+   "slo-error-budget"
+  ],
+  "difficulty": "medium",
+  "kind": "situation"
+ },
+ {
+  "q": "ตั้ง sla ให้ data pipeline",
+  "relevant": [
+   "slo-error-budget"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "จะย้ายทั้งบริษัทไปใช้ระบบใหม่ กลัวประกาศแล้วไม่มีใครตาม",
+  "relevant": [
+   "kotters-8-steps",
+   "adkar"
+  ],
+  "difficulty": "medium",
+  "kind": "situation"
+ },
+ {
+  "q": "ขั้นตอนนำการเปลี่ยนแปลงองค์กร",
+  "relevant": [
+   "kotters-8-steps"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "อบรมไปสองรอบแล้ว คนก็ยังไม่ใช้ระบบใหม่",
+  "relevant": [
+   "adkar"
+  ],
+  "difficulty": "medium",
+  "kind": "situation"
+ },
+ {
+  "q": "ลูกน้องมาถามเรื่องเดิมทุกอาทิตย์ อยากให้เขาคิดเองได้",
+  "relevant": [
+   "grow-coaching",
+   "delegation-levels"
+  ],
+  "difficulty": "medium",
+  "kind": "situation"
+ },
+ {
+  "q": "วิธีโค้ชลูกทีมใน one on one",
+  "relevant": [
+   "grow-coaching"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "ตั้งแต่ผูก kpi กับโบนัส เลขขึ้นสวยแต่ลูกค้าบ่นหนักขึ้น",
+  "relevant": [
+   "goodharts-law"
+  ],
+  "difficulty": "medium",
+  "kind": "situation"
+ },
+ {
+  "q": "kpi ถูกปั่นจนเชื่อไม่ได้",
+  "relevant": [
+   "goodharts-law"
+  ],
+  "difficulty": "easy",
+  "kind": "keyword"
+ },
+ {
+  "q": "ทีมทำงานเพื่อตัวเลขไม่ใช่เพื่อผลงานจริง",
+  "relevant": [
+   "goodharts-law",
+   "map-territory"
+  ],
+  "difficulty": "hard",
+  "kind": "situation"
+ },
+ {
+  "q": "คนเก่าต่อต้านของใหม่เพราะเสียอำนาจ",
+  "relevant": [
+   "adkar",
+   "kotters-8-steps"
+  ],
+  "difficulty": "hard",
+  "kind": "situation"
  }
 ]
