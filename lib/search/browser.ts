@@ -21,6 +21,18 @@ export interface Semantic {
 
 export type LoadProgress = { loaded: number; total: number };
 let semantic: Promise<Semantic> | null = null;
+let ready: Semantic | null = null;
+
+/** The semantic model once it has finished loading, else null (never triggers a download). */
+export function semanticIfReady(): Semantic | null {
+  return ready;
+}
+
+/** Skip the background download on Data Saver or very slow connections; such visitors load it on first search. */
+export function shouldPreload(): boolean {
+  const c = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+  return !(c?.saveData || c?.effectiveType === "slow-2g" || c?.effectiveType === "2g");
+}
 const listeners = new Set<(p: LoadProgress) => void>();
 
 export function loadSemantic(assetBase: string, onProgress?: (p: LoadProgress) => void): Promise<Semantic> {
@@ -64,6 +76,7 @@ export function loadSemantic(assetBase: string, onProgress?: (p: LoadProgress) =
     worker.onerror = (e) => reject(new Error(e.message));
     worker.postMessage({ type: "init", modelBase: `${location.origin}${assetBase}/models/` });
   });
+  semantic.then((s) => (ready = s), () => {});
   semantic.catch(() => (semantic = null));
   return semantic;
 }

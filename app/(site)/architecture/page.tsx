@@ -103,7 +103,7 @@ export default function ArchitecturePage() {
             <tr><th>Tool</th><th>รับ</th><th>คืน</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row">search_frameworks</th><td>สถานการณ์เป็นภาษาคน</td><td>framework ที่ตรง พร้อมวลีที่ตรงและ URL (ใช้ระบบค้นหา v2 ในเบราว์เซอร์)</td></tr>
+            <tr><th scope="row">search_frameworks</th><td>สถานการณ์เป็นภาษาคน</td><td>framework ที่ตรง พร้อมวลีที่ตรงและ URL จัดอันดับเหมือนช่องค้นหาบนหน้าจอ (วลี + โมเดลความหมาย v3 เมื่อโหลดเสร็จ ถ้ายังไม่เสร็จตอบทันทีด้วยผลแบบวลีและบอกสถานะ)</td></tr>
             <tr><th scope="row">get_current_page</th><td>—</td><td>หน้าที่ผู้ใช้กำลังดู: ชนิดหน้า framework/กลุ่ม คำค้น ตัวกรอง แท็บบนมือถือ และ framework ที่เห็นในผลลัพธ์</td></tr>
             <tr><th scope="row">list_frameworks</th><td>กลุ่ม (ไม่บังคับ)</td><td>รายการทั้งหมดพร้อม "ใช้เมื่อ"</td></tr>
             <tr><th scope="row">get_framework</th><td>slug</td><td>ขั้นตอน 5 ข้อ ตัวอย่าง แนวคิดต้นทาง</td></tr>
