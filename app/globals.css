@@ -255,6 +255,7 @@ button, input, textarea { font: inherit; color: inherit; }
 .case-who { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-bottom: 6px; }
 .case-who b { font-size: 16px; }
 .case-who span { font-size: 13px; color: var(--ink2); }
+.case-event { font-size: 13.5px; color: var(--ink2); margin: -2px 0 8px; }
 .case dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; line-height: 1.6; }
 .case dt { font-size: 13px; font-weight: 600; color: var(--c); padding-top: 2px; }
 .case dd { margin: 0; min-width: 0; }

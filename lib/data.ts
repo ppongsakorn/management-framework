@@ -59,6 +59,8 @@ export function getDiagram(slug: string): string | undefined {
 /** A documented, sourced case of a person or organisation using a framework. */
 export interface UseCase {
   who: string;
+  /** The public event or document the case comes from, e.g. "เหตุฐานข้อมูล GitLab.com ล่ม 31 ม.ค. 2017". */
+  event: string;
   country: string;
   year: string;
   problem: string;

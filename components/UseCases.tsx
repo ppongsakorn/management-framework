@@ -16,6 +16,7 @@ export function UseCases({ cases }: { cases: UseCase[] }) {
               {[c.country, c.year].filter(Boolean).join(" · ")}
             </span>
           </div>
+          <p className="case-event">เหตุการณ์: {c.event}</p>
           <dl>
             <dt>ปัญหา</dt>
             <dd>{c.problem}</dd>

@@ -35,3 +35,16 @@ test("every framework has a diagram spec that renders cleanly", () => {
     assert.ok(!/<script|on\w+=/i.test(svg), `${f.slug} svg contains script/handlers`);
   }
 });
+
+test("every use case names its event and cites a source", () => {
+  const cases = JSON.parse(fs.readFileSync("data/use-cases.json", "utf8"));
+  const slugs = new Set(frameworks.map((f) => f.slug));
+  for (const [slug, list] of Object.entries(cases)) {
+    assert.ok(slugs.has(slug), `use cases for unknown framework ${slug}`);
+    for (const c of list) {
+      for (const k of ["who", "event", "problem", "how", "result", "searchPhrase"]) assert.ok(c[k], `${slug} / ${c.who} missing ${k}`);
+      assert.ok(c.sources.length > 0, `${slug} / ${c.who} has no source`);
+      for (const s of c.sources) assert.match(s.url, /^https?:\/\//, `${slug} / ${c.who} source url`);
+    }
+  }
+});
