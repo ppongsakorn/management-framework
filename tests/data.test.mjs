@@ -62,3 +62,19 @@ test("history log is valid and newest first", () => {
     for (const l of c.links ?? []) assert.match(l.href, /^\//, `${c.title} links must be site paths`);
   }
 });
+
+test("related frameworks point at real, different frameworks", () => {
+  const slugs = new Set(frameworks.map((f) => f.slug));
+  for (const f of frameworks) {
+    const rel = f.related ?? {};
+    assert.ok(Object.values(rel).flat().length > 0, `${f.slug} has no related frameworks`);
+    for (const [kind, list] of Object.entries(rel)) {
+      assert.ok(["before", "with", "after"].includes(kind), `${f.slug} related.${kind}`);
+      assert.ok(list.length <= 3, `${f.slug} related.${kind} has more than 3`);
+      for (const s of list) {
+        assert.ok(slugs.has(s), `${f.slug} relates to unknown ${s}`);
+        assert.notEqual(s, f.slug, `${f.slug} relates to itself`);
+      }
+    }
+  }
+});

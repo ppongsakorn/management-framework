@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Diagram } from "@/components/Diagram";
 import { MTabs } from "@/components/mobile/MTabs";
+import { RelatedFrameworks } from "@/components/RelatedFrameworks";
 import { MTop } from "@/components/mobile/MTop";
 import { UseCases } from "@/components/UseCases";
 import { frameworks, frameworksIn, getDiagram, getFramework, getGroup, getUseCases } from "@/lib/data";
@@ -64,6 +65,12 @@ export default async function MobileFramework({ params }: { params: Promise<{ sl
         <>
           <p className="m-example">{fw.example}</p>
           <p className="m-origin">แนวคิดจาก: {fw.origin}</p>
+          {fw.related && (
+            <>
+              <h2 className="m-h2">ใช้ร่วมกับตัวไหนได้บ้าง</h2>
+              <RelatedFrameworks fw={fw} all={frameworks} hrefFor={(s) => `/mobile/f/${s}`} />
+            </>
+          )}
         </>
       ),
     },

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { phraseEngine } from "@/lib/search/lexical";
 import type { Framework, UseCase } from "@/lib/data";
 import { basePath } from "@/lib/site";
+import { WEBMCP_TOOL_COUNT } from "@/lib/webmcp";
 
 /**
  * WebMCP (W3C WebML CG draft): registers the site's search and content as
@@ -90,7 +91,21 @@ export function WebMcp({ frameworks, useCases }: { frameworks: Framework[]; useC
         execute: async ({ slug }) => {
           const f = bySlug.get(String(slug));
           if (!f) return { error: `unknown slug: ${slug}`, hint: "call list_frameworks for valid slugs" };
-          return { ...summary(f), steps: f.steps, example: f.example, origin: f.origin, useCaseCount: (useCases[f.slug] ?? []).length };
+          return { ...summary(f), steps: f.steps, example: f.example, origin: f.origin, related: f.related ?? {}, useCaseCount: (useCases[f.slug] ?? []).length };
+        },
+      },
+      {
+        name: "suggest_sequence",
+        title: "ลำดับการใช้ framework",
+        description:
+          "Given a framework slug, return the order to use related frameworks in: those to use before it, those that work alongside it, and those to use next, each with its 'use when' line and page URL. Use it to turn one recommendation into a short plan.",
+        inputSchema: { type: "object", properties: { slug: { type: "string", description: "Framework slug, e.g. 'okr' (from search_frameworks)" } }, required: ["slug"] },
+        annotations: { readOnlyHint: true },
+        execute: async ({ slug }) => {
+          const f = bySlug.get(String(slug));
+          if (!f) return { error: `unknown slug: ${slug}`, hint: "call list_frameworks for valid slugs" };
+          const pick = (list?: string[]) => (list ?? []).map((s) => bySlug.get(s)).filter((x): x is Framework => !!x).map((x) => ({ ...summary(x) }));
+          return { framework: summary(f), before: pick(f.related?.before), alongside: pick(f.related?.with), next: pick(f.related?.after) };
         },
       },
       {
@@ -121,6 +136,7 @@ export function WebMcp({ frameworks, useCases }: { frameworks: Framework[]; useC
       },
     ];
 
+    if (tools.length !== WEBMCP_TOOL_COUNT) console.warn("WebMCP tool count differs from WEBMCP_TOOL_COUNT", tools.length);
     for (const t of tools) ctx.registerTool(t, { signal: ac.signal }).catch((e) => console.warn("WebMCP register failed", t.name, e));
     return () => ac.abort();
   }, [frameworks, useCases]);

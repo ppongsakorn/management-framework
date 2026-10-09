@@ -2,6 +2,25 @@
   {
     "date": "2026-10-09",
     "kind": "feature",
+    "title": "บอกลำดับการใช้ framework: ใช้ก่อน · ใช้คู่ · ใช้ต่อ",
+    "items": [
+      "ทุก framework มีหัวข้อ \"ใช้ร่วมกับตัวไหนได้บ้าง\" แบ่งเป็น ใช้ก่อน / ใช้คู่กัน / ใช้ต่อ พร้อมลิงก์ ทั้งบนเว็บและแอปมือถือ",
+      "WebMCP เพิ่ม tool suggest_sequence (รวมเป็น 6 tool) ให้ AI agent เปลี่ยนคำแนะนำ framework เดียวเป็นแผนหลายขั้น และ get_framework คืนข้อมูลนี้ด้วย"
+    ],
+    "links": [
+      {
+        "label": "ดูตัวอย่าง: OKR",
+        "href": "/frameworks/okr/"
+      },
+      {
+        "label": "Kotter's 8 Steps",
+        "href": "/frameworks/kotters-8-steps/"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-09",
+    "kind": "feature",
     "title": "รองรับ WebMCP ให้ AI agent ในเบราว์เซอร์เรียกใช้เว็บเป็นเครื่องมือ",
     "items": [
       "ทุกหน้าลงทะเบียน 5 tool แบบอ่านอย่างเดียวผ่าน document.modelContext: ค้นหาจากสถานการณ์, รายการ framework, รายละเอียด, กรณีจริงพร้อมแหล่งอ้างอิง และเปิดหน้า",
