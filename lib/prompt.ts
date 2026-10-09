@@ -10,7 +10,7 @@ export const ADVISOR_SYSTEM = buildAdvisorSystem();
 function useCaseLines(slug: string): string {
   const cases = getUseCases(slug).filter((c) => !c.disputed);
   if (!cases.length) return "";
-  return `\n- กรณีจริง: ${cases.map((c) => `${c.who}${c.year ? ` (${c.year})` : ""}: ${c.problem} → ${c.result}`).join(" | ")}`;
+  return `\n- กรณีจริง: ${cases.map((c) => `${c.who} [${c.event}]: ${c.problem} → ${c.result}`).join(" | ")}`;
 }
 
 function buildAdvisorSystem(): string {

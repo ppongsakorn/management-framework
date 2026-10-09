@@ -369,7 +369,7 @@ docker run -p 3000:3000 -e ANTHROPIC_API_KEY=... management-framework
 `data/use-cases.json` เก็บกรณีที่บุคคลหรือองค์กรนำ framework ไปใช้จริง แยกตาม `slug` แต่ละกรณีต้องมีแหล่งอ้างอิงที่เปิดตรวจแล้วอย่างน้อย 1 แหล่ง เขียนสรุปด้วยภาษาของเราเอง ไม่คัดลอกต้นฉบับ
 
 ```jsonc
-{ "who": "Toyota", "country": "JP", "year": "1950s",
+{ "who": "Toyota", "event": "เหตุการณ์หรือเอกสารต้นทาง", "country": "JP", "year": "1950s",
   "problem": "…", "how": "…", "result": "…",           // ภาษาไทย เฉพาะข้อเท็จจริงที่ตรวจได้
   "searchPhrase": "ปัญหาเดิมกลับมาอีก",                 // คำค้นแบบที่ผู้ใช้พิมพ์ (ใส่ใน search-phrases.json ด้วย)
   "sources": [{ "title": "…", "url": "https://…", "lang": "ja" }],
