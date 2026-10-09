@@ -1,6 +1,27 @@
 [
   {
     "date": "2026-10-09",
+    "kind": "content",
+    "title": "เพิ่ม 10 framework ใหม่ รวมเป็น 61 ตัว",
+    "items": [
+      "วิเคราะห์: Cynefin, Value Stream Mapping · ตัดสินใจ: RICE Scoring, Cost of Delay · วางแผน: North Star Metric · ลงมือทำ: SLO / Error Budget · บริหารคน: Kotter's 8 Steps, ADKAR, GROW Coaching · คิดให้ชัด: Goodhart's Law",
+      "ปิดช่องว่างเรื่องการบริหารการเปลี่ยนแปลง การปั่นตัวชี้วัด การจัดลำดับงานแบบ product team ความน่าเชื่อถือของระบบ และการโค้ช",
+      "ทุกตัวมีขั้นตอน ตัวอย่าง แผนภาพ และกรณีจริง 60 กรณีพร้อมแหล่งอ้างอิง (รวมทั้งเว็บ 326 กรณี) เช่น Wells Fargo, Volkswagen, Maersk, Slack, Google SRE, โรงพยาบาล SickKids และโรงงานในไทย",
+      "คำค้นทดสอบเพิ่มเป็น 100 ข้อ ความแม่นของการค้นหา v3 อยู่ที่ MRR 0.92"
+    ],
+    "links": [
+      {
+        "label": "ดูตัวอย่าง: Goodhart's Law",
+        "href": "/frameworks/goodharts-law/"
+      },
+      {
+        "label": "Cynefin",
+        "href": "/frameworks/cynefin/"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-09",
     "kind": "feature",
     "title": "หน้าสถาปัตยกรรมระบบ",
     "items": [
