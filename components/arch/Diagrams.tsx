@@ -5,6 +5,7 @@ export interface ArchNumbers {
   cases: number;
   phrases: number;
   vectors: number;
+  queries: number;
 }
 
 const fmt = (n: number) => n.toLocaleString("en-US");
@@ -15,7 +16,7 @@ export function SystemDiagram({ n }: { n: ArchNumbers }) {
   const W = 205, X = [10, 255, 500, 745];
   const rows = (i: number) => 64 + i * 56;
   return (
-    <Fig id={id} h={530} title="ภาพรวมระบบ: ข้อมูลใน repo ถูก build บน GitHub Actions แล้วเผยแพร่เป็นไฟล์ static บน GitHub Pages ให้เบราว์เซอร์ทำงานเอง">
+    <Fig id={id} h={530} title="ภาพรวมระบบ: ข้อมูลใน repo ถูก build บน GitHub Actions แล้วเผยแพร่เป็นไฟล์ static บน GitHub Pages ให้เบราว์เซอร์ทำงานเอง รวมถึงเปิดเครื่องมือ WebMCP ให้ AI agent">
       <Lane x={X[0] - 6} y={4} w={W + 12} h={346} t="1 ข้อมูลใน repo" s="JSON คือแหล่งความจริงเดียว" tone="plan" />
       <Lane x={X[1] - 6} y={4} w={W + 12} h={346} t="2 GitHub Actions" s="รันทุกครั้งที่ push เข้า main" tone="dec" />
       <Lane x={X[2] - 6} y={4} w={W + 12} h={346} t="3 GitHub Pages" s="ไฟล์ static ผ่าน CDN + HTTPS" tone="exec" />
@@ -25,7 +26,7 @@ export function SystemDiagram({ n }: { n: ArchNumbers }) {
       <Box x={X[0]} y={rows(1)} w={W} t="use-cases.json" s={`${fmt(n.cases)} กรณีจริง + แหล่งอ้างอิง`} tone="plan" />
       <Box x={X[0]} y={rows(2)} w={W} t="search-phrases.json" s={`${fmt(n.phrases)} วลีสถานการณ์`} tone="plan" />
       <Box x={X[0]} y={rows(3)} w={W} t="changelog.json" s="ประวัติการอัปเดต" tone="plan" />
-      <Box x={X[0]} y={rows(4)} w={W} t="search-queries.json" s="80 คำค้นทดสอบแบบ blind" tone="plan" />
+      <Box x={X[0]} y={rows(4)} w={W} t="search-queries.json" s={`${n.queries} คำค้นทดสอบแบบ blind`} tone="plan" />
 
       <Box x={X[1]} y={rows(0)} w={W} t="npm test" s="ตรวจความครบของข้อมูล" tone="dec" />
       <Box x={X[1]} y={rows(1)} w={W} t="render-diagrams" s="spec → SVG ล่วงหน้า" tone="dec" />
@@ -43,7 +44,7 @@ export function SystemDiagram({ n }: { n: ArchNumbers }) {
       <Box x={X[3]} y={rows(1)} w={W} t="ค้นหาตามคำ + วลี" s="BM25 + phrase · main thread" tone="ppl" />
       <Box x={X[3]} y={rows(2)} w={W} t="Web Worker" s="Transformers.js + ONNX (wasm)" tone="ppl" strong />
       <Box x={X[3]} y={rows(3)} w={W} t="jsDelivr CDN" s="ONNX Runtime wasm ~5.5 MB" tone="ppl" />
-      <Box x={X[3]} y={rows(4)} w={W} t="localStorage" s="จำว่าเลือกเว็บเต็ม" tone="ppl" />
+      <Box x={X[3]} y={rows(4)} w={W} t="WebMCP tools" s="document.modelContext · 5 tools" tone="ppl" strong />
 
       {[0, 1, 2].map((i) => (
         <Arrow key={i} id={id} d={`M${X[i] + W + 8} 190 H${X[i + 1] - 9}`} />

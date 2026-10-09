@@ -310,3 +310,17 @@ button, input, textarea { font: inherit; color: inherit; }
 .arch-decisions span { color: var(--ink2); font-size: 14.5px; }
 .arch-tree { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; overflow-x: auto; font-size: 13.5px; line-height: 1.7; }
 .footer-links { display: block; margin-top: 10px; } .footer-links a { color: var(--accent); text-decoration: none; }
+
+/* WebMCP badge: a quiet pill that lights up when the browser exposes the API */
+.webmcp-badge { display: inline-flex; align-items: center; gap: 7px; padding: 4px 11px 4px 9px; border-radius: 999px; border: 1px solid var(--line); background: var(--paper); font-size: 12.5px; color: var(--ink2); text-decoration: none; white-space: nowrap; letter-spacing: 0.01em; transition: border-color 0.2s, box-shadow 0.2s; }
+.webmcp-badge b { font-weight: 700; color: var(--ink); font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; }
+.webmcp-badge:hover { border-color: var(--accent); }
+.webmcp-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink2); opacity: 0.5; }
+.webmcp-badge.on { border-color: color-mix(in srgb, var(--exec) 55%, var(--line)); box-shadow: 0 0 0 3px color-mix(in srgb, var(--exec) 14%, transparent); }
+.webmcp-badge.on .webmcp-dot { background: var(--exec); opacity: 1; box-shadow: 0 0 8px var(--exec); animation: webmcp-pulse 2.2s ease-in-out infinite; }
+.webmcp-badge.on span { color: var(--exec); font-weight: 600; }
+@keyframes webmcp-pulse { 0%, 100% { box-shadow: 0 0 4px var(--exec); } 50% { box-shadow: 0 0 12px var(--exec); } }
+@media (prefers-reduced-motion: reduce) { .webmcp-badge.on .webmcp-dot { animation: none; } }
+.nav .webmcp-badge { margin-right: 4px; }
+@media (max-width: 760px) { .nav .webmcp-badge span { display: none; } }
+.m-hero .webmcp-badge { margin-top: 12px; }

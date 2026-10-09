@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ContentDiagram, RoutingDiagram, SearchDiagram, SystemDiagram, type ArchNumbers } from "@/components/arch/Diagrams";
 import phrases from "@/data/search-phrases.json";
 import useCases from "@/data/use-cases.json";
+import queries from "@/tests/search-queries.json";
 import { frameworks } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ const n: ArchNumbers = {
   cases: Object.values(useCases as Record<string, unknown[]>).reduce((s, l) => s + l.length, 0),
   phrases: phraseCount,
   vectors: frameworks.length + phraseCount,
+  queries: (queries as unknown[]).length,
 };
 
 const STACK: [string, string, string][] = [
@@ -26,6 +28,7 @@ const STACK: [string, string, string][] = [
   ["แผนภาพ", "SVG ที่ render ตอน build (scripts/diagram-renderer.mjs)", "16 แบบ เช่น matrix, flow, fishbone · ไม่มี JS ฝั่งผู้ใช้"],
   ["ค้นหาตามคำ", "MiniSearch (BM25) + Intl.Segmenter('th')", "ตัดคำไทยด้วยเบราว์เซอร์ ไม่ต้องโหลดพจนานุกรม"],
   ["ค้นหาตามความหมาย", "multilingual-e5-small (int8 ONNX, MIT) · Transformers.js 4 · ONNX Runtime Web", "ตัด vocab จาก 250k เหลือ 32.5k คำย่อย ผลตัดคำเหมือนต้นฉบับ"],
+  ["WebMCP", "document.modelContext (W3C WebML CG draft)", "ลงทะเบียน 5 tool แบบอ่านอย่างเดียวให้ AI agent ในเบราว์เซอร์เรียก ค้นหา/อ่านเนื้อหา/กรณีจริง"],
   ["CI/CD", "GitHub Actions → GitHub Pages", "push เข้า main = ทดสอบ, สร้างโมเดล, ประเมินผล, deploy อัตโนมัติ"],
   ["AI (ทางเลือก)", "Anthropic SDK · claude-opus-5-5 · Microsoft Foundry", "prompt caching, effort ปรับได้, rate limit ต่อ IP"],
   ["ทดสอบ", "node:test · eval 80 คำค้นแบบ blind", "ตรวจข้อมูลทุกไฟล์ และวัดคะแนนค้นหา (hit@k, MRR) ทุกครั้งที่ deploy"],
@@ -72,7 +75,7 @@ export default function ArchitecturePage() {
       <h2>2. การค้นหา</h2>
       <p>
         ผู้ใช้พิมพ์สถานการณ์ด้วยภาษาตัวเอง ระบบค้นสองทางพร้อมกัน: ค้นตามคำและวลีสถานการณ์ (ทันที) กับค้นตามความหมายด้วยโมเดล e5 ใน Web Worker
-        แล้วรวมอันดับด้วย Reciprocal Rank Fusion ผลทดสอบล่าสุดกับคำค้น 80 ข้อ: v2 MRR 0.87, v3 MRR 0.90 —{" "}
+        แล้วรวมอันดับด้วย Reciprocal Rank Fusion ผลทดสอบล่าสุดกับคำค้น 100 ข้อ: v2 MRR 0.87, v3 MRR 0.91 —{" "}
         <Link href="/compare">ดูหน้าเปรียบเทียบ</Link>
       </p>
       <SearchDiagram n={n} />
@@ -87,7 +90,28 @@ export default function ArchitecturePage() {
       <p>กรณีจริงทุกกรณีผ่านการตรวจแหล่งอ้างอิง แล้วถูกใช้ซ้ำในสามที่ ส่วนประวัติการอัปเดตเขียนครั้งเดียวแสดงได้ทุกหน้าจอ</p>
       <ContentDiagram />
 
-      <h2>5. เทคโนโลยีที่ใช้</h2>
+      <h2 id="webmcp">5. WebMCP: ให้ AI agent เรียกใช้เว็บเป็นเครื่องมือ</h2>
+      <p>
+        ทุกหน้าลงทะเบียนเครื่องมือผ่าน <code>document.modelContext</code> ตามร่างมาตรฐาน WebMCP เพื่อให้ agent ในเบราว์เซอร์ (เช่น Edge Canary เปิด flag{" "}
+        <code>enable-webmcp-testing</code>) ค้นหาและอ่านเนื้อหาแบบมีโครงสร้างแทนการอ่านหน้าจอ เครื่องมือทั้งหมดอ่านอย่างเดียวและติดป้าย{" "}
+        <code>readOnlyHint</code> เบราว์เซอร์ที่ไม่รองรับจะไม่เห็นอะไรเปลี่ยน
+      </p>
+      <div className="arch-table">
+        <table>
+          <thead>
+            <tr><th>Tool</th><th>รับ</th><th>คืน</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">search_frameworks</th><td>สถานการณ์เป็นภาษาคน</td><td>framework ที่ตรง พร้อมวลีที่ตรงและ URL (ใช้ระบบค้นหา v2 ในเบราว์เซอร์)</td></tr>
+            <tr><th scope="row">list_frameworks</th><td>กลุ่ม (ไม่บังคับ)</td><td>รายการทั้งหมดพร้อม "ใช้เมื่อ"</td></tr>
+            <tr><th scope="row">get_framework</th><td>slug</td><td>ขั้นตอน 5 ข้อ ตัวอย่าง แนวคิดต้นทาง</td></tr>
+            <tr><th scope="row">list_use_cases</th><td>slug</td><td>กรณีจริงพร้อมเหตุการณ์ ผลลัพธ์ และลิงก์อ้างอิง (ติดป้าย untrustedContentHint เพราะมีข้อความจากแหล่งภายนอก)</td></tr>
+            <tr><th scope="row">open_framework</th><td>slug</td><td>พาแท็บนี้ไปหน้านั้น</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>6. เทคโนโลยีที่ใช้</h2>
       <div className="arch-table">
         <table>
           <thead>
@@ -101,18 +125,18 @@ export default function ArchitecturePage() {
         </table>
       </div>
 
-      <h2>6. การตัดสินใจเชิงสถาปัตยกรรม</h2>
+      <h2>7. การตัดสินใจเชิงสถาปัตยกรรม</h2>
       <ul className="arch-decisions">
         {DECISIONS.map(([t, d]) => (
           <li key={t}><b>{t}</b><span>{d}</span></li>
         ))}
       </ul>
 
-      <h2>7. โครงสร้างโค้ด</h2>
+      <h2>8. โครงสร้างโค้ด</h2>
       <pre className="arch-tree">{`app/(site)/        เว็บ desktop: หน้าแรก, frameworks, updates, compare, architecture
 app/mobile/        แอปมือถือ: หน้าแรก, search, g/[group], f/[slug], updates
 app/api/chat/      ที่ปรึกษา AI (เฉพาะโหมด server)
-components/        Catalog, Diagram, UseCases, Changelog, mobile/*, arch/*
+components/        Catalog, Diagram, UseCases, Changelog, WebMcp, mobile/*, arch/*
 lib/search/        tokenize, lexical (BM25 + วลี), semantic, worker, RRF
 data/              frameworks · use-cases · search-phrases · changelog (.json)
 scripts/           render แผนภาพ, ตัดโมเดล, สร้างเวกเตอร์, ประเมินผล
