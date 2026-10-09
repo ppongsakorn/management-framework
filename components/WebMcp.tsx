@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { buildTools } from "@/lib/webmcp-tools";
+import { buildTools, warmUp } from "@/lib/webmcp-tools";
 import { WEBMCP_TOOL_COUNT } from "@/lib/webmcp";
 
 /**
@@ -28,6 +28,7 @@ export function WebMcp() {
     const tools = buildTools();
     if (tools.length !== WEBMCP_TOOL_COUNT) console.warn("WebMCP tool count differs from WEBMCP_TOOL_COUNT", tools.length);
     for (const t of tools) ctx.registerTool(t, { signal: ac.signal }).catch((e) => console.warn("WebMCP register failed", t.name, e));
+    warmUp();
     return () => ac.abort();
   }, []);
   return null;

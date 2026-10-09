@@ -1,16 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { hybridSearch, lexicalEngine, loadSemantic, type Lexical, type LoadProgress, type Semantic } from "@/lib/search/browser";
+import { hybridSearch, lexicalEngine, loadSemantic, shouldPreload, type Lexical, type LoadProgress, type Semantic } from "@/lib/search/browser";
 import type { SearchDoc, SearchHit, Variant } from "@/lib/search/types";
 
 export type SemanticState = "off" | "idle" | "loading" | "ready" | "error";
-
-/** Skip the background download on Data Saver or very slow connections; such visitors load it on first search. */
-function shouldPreload(): boolean {
-  const c = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
-  return !(c?.saveData || c?.effectiveType === "slow-2g" || c?.effectiveType === "2g");
-}
 
 /**
  * Runs one search variant. Results always appear immediately; nothing makes

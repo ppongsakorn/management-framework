@@ -1,7 +1,6 @@
 import type { Framework, Group, UseCase } from "@/lib/data";
-import { phraseEngine } from "@/lib/search/lexical";
 import { tokenize } from "@/lib/search/tokenize";
-import { basePath } from "@/lib/site";
+import { assetBase, basePath, searchVariant } from "@/lib/site";
 
 /**
  * WebMCP tools (document.modelContext, W3C WebML CG draft). Every tool is
@@ -29,7 +28,7 @@ interface Data {
 let loading: Promise<Data> | null = null;
 function load(): Promise<Data> {
   loading ??= (async () => {
-    const [fw, uc, ph] = await Promise.all([import("@/data/frameworks.json"), import("@/data/use-cases.json"), import("@/data/search-phrases.json")]);
+    const [fw, uc, ph, { phraseEngine }] = await Promise.all([import("@/data/frameworks.json"), import("@/data/use-cases.json"), import("@/data/search-phrases.json"), import("@/lib/search/lexical")]);
     const frameworks = fw.default.frameworks as unknown as Framework[];
     return {
       frameworks,
@@ -40,6 +39,29 @@ function load(): Promise<Data> {
     };
   })();
   return loading;
+}
+
+/**
+ * The on-screen search of this build (v3 = phrases + semantic model) is what search_frameworks
+ * answers with, so an agent and the visitor see the same ranking. The model is loaded in the
+ * background; until it is ready the tool answers at once from the phrase engine and says so.
+ */
+let semanticStarted = false;
+async function startSemantic() {
+  if (searchVariant !== "v3" || semanticStarted) return;
+  semanticStarted = true;
+  const { loadSemantic } = await import("@/lib/search/browser");
+  loadSemantic(assetBase).catch((e) => console.warn("WebMCP: semantic model unavailable, using phrase search", e));
+}
+
+/** Called once the tools are registered: start the model download when the page is idle (not on Data Saver / 2G). */
+export function warmUp() {
+  if (searchVariant !== "v3") return;
+  const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 1500));
+  idle(async () => {
+    const { shouldPreload } = await import("@/lib/search/browser");
+    if (shouldPreload()) void startSemantic();
+  }, { timeout: 3000 });
 }
 
 const isMobile = () => location.pathname.startsWith(`${basePath}/mobile`);
@@ -98,7 +120,7 @@ export function buildTools(): ModelContextTool[] {
       name: "search_frameworks",
       title: "ค้นหา framework จากสถานการณ์",
       description:
-        "Find management frameworks for a situation described in plain Thai or English (e.g. 'ทีมใหม่เถียงกันทุกเรื่อง', 'backlog too long'). Returns the best matches with the phrase each one matched and a page URL. Use get_framework for the full steps.",
+        "Find management frameworks for a situation described in plain Thai or English (e.g. 'ทีมใหม่เถียงกันทุกเรื่อง', 'backlog too long'). Returns the best matches with the phrase each one matched and a page URL, ranked the same way as the on-screen search (phrases plus a semantic model once it has loaded; the result says which ranking was used). Use get_framework for the full steps.",
       inputSchema: {
         type: "object",
         properties: {
@@ -112,8 +134,25 @@ export function buildTools(): ModelContextTool[] {
         const q = str(query);
         if (!q) return { results: [] };
         const d = await load();
-        const hits = d.search(q).slice(0, clamp(limit, 5, 10));
-        return { query: q, results: hits.map((h) => ({ ...summary(d.bySlug.get(h.slug)!), matchedPhrase: h.why ?? null })) };
+        let hits = d.search(q);
+        let ranking = "phrase";
+        let semanticModel = searchVariant === "v3" ? "loading" : "not used on this build";
+        if (searchVariant === "v3") {
+          const { semanticIfReady, hybridSearch } = await import("@/lib/search/browser");
+          const sem = semanticIfReady();
+          if (sem) {
+            hits = await hybridSearch(sem, d.search, q);
+            ranking = "semantic+phrase";
+            semanticModel = "ready";
+          } else void startSemantic();
+        }
+        return {
+          query: q,
+          ranking,
+          semanticModel,
+          ...(semanticModel === "loading" ? { hint: "The semantic model is still loading in the page; repeat this call in a few seconds for the same ranking the visitor sees." } : {}),
+          results: hits.slice(0, clamp(limit, 5, 10)).map((h) => ({ ...summary(d.bySlug.get(h.slug)!), matchedPhrase: h.why ?? null })),
+        };
       },
     },
     {
