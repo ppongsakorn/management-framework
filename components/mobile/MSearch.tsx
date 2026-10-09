@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearch } from "@/components/useSearch";
 import type { Framework } from "@/lib/data";
 import { assetBase, searchVariant } from "@/lib/site";
@@ -14,6 +14,17 @@ const EXAMPLES = ["งานล้นมือ ทุกอย่างด่ว
 /** Full-screen search: the field sits at the top, results are tappable rows. */
 export function MSearch({ frameworks }: { frameworks: Framework[] }) {
   const [query, setQuery] = useState("");
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("q");
+    if (q) setQuery(q);
+    setReady(true);
+  }, []);
+  useEffect(() => {
+    if (!ready) return;
+    const q = query.trim();
+    window.history.replaceState(null, "", `${window.location.pathname}${q ? `?${new URLSearchParams({ q })}` : ""}`);
+  }, [ready, query]);
   const { hits } = useSearch(variant, frameworks, query, assetBase);
   const bySlug = useMemo(() => new Map(frameworks.map((f) => [f.slug, f])), [frameworks]);
   const q = query.trim();

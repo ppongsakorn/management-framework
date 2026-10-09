@@ -29,7 +29,7 @@ const STACK: [string, string, string][] = [
   ["แผนภาพ", "SVG ที่ render ตอน build (scripts/diagram-renderer.mjs)", "16 แบบ เช่น matrix, flow, fishbone · ไม่มี JS ฝั่งผู้ใช้"],
   ["ค้นหาตามคำ", "MiniSearch (BM25) + Intl.Segmenter('th')", "ตัดคำไทยด้วยเบราว์เซอร์ ไม่ต้องโหลดพจนานุกรม"],
   ["ค้นหาตามความหมาย", "multilingual-e5-small (int8 ONNX, MIT) · Transformers.js 4 · ONNX Runtime Web", "ตัด vocab จาก 250k เหลือ 32.5k คำย่อย ผลตัดคำเหมือนต้นฉบับ"],
-  ["WebMCP", "document.modelContext (W3C WebML CG draft)", `ลงทะเบียน ${WEBMCP_TOOL_COUNT} tool แบบอ่านอย่างเดียวให้ AI agent ในเบราว์เซอร์เรียก ค้นหา/อ่านเนื้อหา/ลำดับการใช้/กรณีจริง`],
+  ["WebMCP", "document.modelContext (W3C WebML CG draft)", `ลงทะเบียน ${WEBMCP_TOOL_COUNT} tool แบบอ่านอย่างเดียวให้ AI agent ในเบราว์เซอร์เรียก ค้นหา/อ่านเนื้อหา/เปรียบเทียบ/ลำดับการใช้/กรณีจริง/รู้ว่าผู้ใช้ดูอะไรอยู่`],
   ["CI/CD", "GitHub Actions → GitHub Pages", "push เข้า main = ทดสอบ, สร้างโมเดล, ประเมินผล, deploy อัตโนมัติ"],
   ["AI (ทางเลือก)", "Anthropic SDK · claude-opus-5-5 · Microsoft Foundry", "prompt caching, effort ปรับได้, rate limit ต่อ IP"],
   ["ทดสอบ", "node:test · eval 80 คำค้นแบบ blind", "ตรวจข้อมูลทุกไฟล์ และวัดคะแนนค้นหา (hit@k, MRR) ทุกครั้งที่ deploy"],
@@ -95,7 +95,7 @@ export default function ArchitecturePage() {
       <p>
         ทุกหน้าลงทะเบียนเครื่องมือผ่าน <code>document.modelContext</code> ตามร่างมาตรฐาน WebMCP เพื่อให้ agent ในเบราว์เซอร์ (เช่น Edge Canary เปิด flag{" "}
         <code>enable-webmcp-testing</code>) ค้นหาและอ่านเนื้อหาแบบมีโครงสร้างแทนการอ่านหน้าจอ เครื่องมือทั้งหมดอ่านอย่างเดียวและติดป้าย{" "}
-        <code>readOnlyHint</code> เบราว์เซอร์ที่ไม่รองรับจะไม่เห็นอะไรเปลี่ยน
+        <code>readOnlyHint</code> เบราว์เซอร์ที่ไม่รองรับจะไม่เห็นอะไรเปลี่ยนและไม่ต้องโหลดข้อมูลเพิ่ม เพราะข้อมูลของ tool (framework กรณีจริง วลีค้นหา) ถูกโหลดแบบ lazy เฉพาะเมื่อมี agent เรียกใช้จริง
       </p>
       <div className="arch-table">
         <table>
@@ -104,10 +104,14 @@ export default function ArchitecturePage() {
           </thead>
           <tbody>
             <tr><th scope="row">search_frameworks</th><td>สถานการณ์เป็นภาษาคน</td><td>framework ที่ตรง พร้อมวลีที่ตรงและ URL (ใช้ระบบค้นหา v2 ในเบราว์เซอร์)</td></tr>
+            <tr><th scope="row">get_current_page</th><td>—</td><td>หน้าที่ผู้ใช้กำลังดู: ชนิดหน้า framework/กลุ่ม คำค้น ตัวกรอง แท็บบนมือถือ และ framework ที่เห็นในผลลัพธ์</td></tr>
             <tr><th scope="row">list_frameworks</th><td>กลุ่ม (ไม่บังคับ)</td><td>รายการทั้งหมดพร้อม "ใช้เมื่อ"</td></tr>
             <tr><th scope="row">get_framework</th><td>slug</td><td>ขั้นตอน 5 ข้อ ตัวอย่าง แนวคิดต้นทาง</td></tr>
+            <tr><th scope="row">compare_frameworks</th><td>2–3 slug</td><td>ตารางเทียบ ใช้เมื่อ / วิธี / ขั้นตอน / ตัวอย่าง / ต้นทาง พร้อมความสัมพันธ์ระหว่างกัน</td></tr>
             <tr><th scope="row">suggest_sequence</th><td>slug</td><td>ลำดับการใช้ ใช้ก่อน / ใช้คู่ / ใช้ต่อ พร้อม "ใช้เมื่อ" และ URL ของแต่ละตัว</td></tr>
             <tr><th scope="row">list_use_cases</th><td>slug</td><td>กรณีจริงพร้อมเหตุการณ์ ผลลัพธ์ และลิงก์อ้างอิง (ติดป้าย untrustedContentHint เพราะมีข้อความจากแหล่งภายนอก)</td></tr>
+            <tr><th scope="row">search_use_cases</th><td>ประเทศ / องค์กร / slug / คำสำคัญ</td><td>กรณีจริงข้ามทุก framework (ไม่ใส่อะไรจะได้ภาพรวมจำนวนตามประเทศ)</td></tr>
+            <tr><th scope="row">show_in_catalogue</th><td>คำค้น + กลุ่ม</td><td>พาผู้ใช้ไปแคตตาล็อกพร้อมคำค้นและกลุ่มใน URL (<code>?q=…&amp;g=…</code>) แชร์และรีโหลดได้</td></tr>
             <tr><th scope="row">open_framework</th><td>slug</td><td>พาแท็บนี้ไปหน้านั้น</td></tr>
           </tbody>
         </table>
