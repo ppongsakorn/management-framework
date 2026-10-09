@@ -16,11 +16,26 @@ export function Catalog({ groups, frameworks }: { groups: Group[]; frameworks: F
   const pending = searchVariant !== "v0" && query.trim() !== "" && hits === null;
   const bySlug = useMemo(() => new Map(frameworks.map((f) => [f.slug, f])), [frameworks]);
 
-  // Deep links like /frameworks#plan (from the compass) preselect a group.
+  // Deep links preselect the search and group: /frameworks?q=…&g=plan, or /frameworks#plan from the compass.
+  const [ready, setReady] = useState(false);
   useEffect(() => {
-    const id = window.location.hash.slice(1);
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("q");
+    if (q) setQuery(q);
+    const id = params.get("g") || window.location.hash.slice(1);
     if (groups.some((g) => g.id === id)) setActive(id as GroupId);
+    setReady(true);
   }, [groups]);
+
+  // Keep the address bar in step so a result can be shared or reloaded.
+  useEffect(() => {
+    if (!ready) return;
+    const params = new URLSearchParams();
+    if (query.trim()) params.set("q", query.trim());
+    if (active !== "all") params.set("g", active);
+    const qs = params.toString();
+    window.history.replaceState(null, "", `${window.location.pathname}${qs ? `?${qs}` : ""}`);
+  }, [ready, query, active]);
 
   const inGroup = (f: Framework) => active === "all" || f.group === active;
   // v0 keeps the original behaviour (filter, catalogue order); v1+ show a ranked list.
