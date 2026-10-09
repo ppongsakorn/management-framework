@@ -6,7 +6,7 @@ import { useSearch } from "@/components/useSearch";
 import type { Framework } from "@/lib/data";
 import { assetBase, searchVariant } from "@/lib/site";
 
-// Phones type whole situations, which substring matching (v0) can't handle; v2 needs no model download.
+// Phones type whole situations, which substring matching (the /v0 baseline) can't handle, so it uses v2 there.
 const variant = searchVariant === "v0" ? "v2" : searchVariant;
 
 const EXAMPLES = ["งานล้นมือ ทุกอย่างด่วนหมด", "ทีมใหม่เถียงกันทุกเรื่อง", "ปัญหาเดิมกลับมาอีก", "เลือก vendor ไม่ถูก", "โปรเจกต์ช้ากว่าแผน", "ลงทุนไปเยอะแล้ว ไม่อยากหยุด"];

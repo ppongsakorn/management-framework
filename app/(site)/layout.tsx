@@ -2,7 +2,7 @@ import Link from "next/link";
 import { CompassMark } from "@/components/CompassMark";
 import { WebMcp } from "@/components/WebMcp";
 import { WebMcpBadge } from "@/components/WebMcpBadge";
-import { aiEnabled, assetBase, basePath, searchVariant } from "@/lib/site";
+import { DEFAULT_VARIANT, aiEnabled, assetBase, basePath, searchVariant } from "@/lib/site";
 import { VARIANTS } from "@/lib/search/types";
 import { mobileRedirectScript } from "@/lib/mobile";
 
@@ -11,7 +11,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
     <>
       {/* Phones go to the app view unless the visitor chose the full site. Runs before paint. */}
       <script dangerouslySetInnerHTML={{ __html: mobileRedirectScript(basePath) }} />
-      {searchVariant !== "v0" && (
+      {searchVariant !== DEFAULT_VARIANT && (
         <div className="variant-bar">
           <div className="wrap">
             <b>เวอร์ชันทดลองค้นหา {VARIANTS[searchVariant].label}</b>

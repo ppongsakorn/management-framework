@@ -53,16 +53,16 @@ jobs:
           npm run search:index
           npm run search:eval
 
-      - name: Build root site (current search) + /compare
+      - name: Build root site (search v3) + /compare
         run: |
-          STATIC_EXPORT=1 SEARCH_VARIANT=v0 PAGES_BASE_PATH="$BASE" npm run build
+          STATIC_EXPORT=1 SEARCH_VARIANT=v3 PAGES_BASE_PATH="$BASE" npm run build
           mv out site
         env:
           BASE: ${{ steps.pages.outputs.base_path }}
-      - name: Build search variants /v1 /v2 /v3
+      - name: Build search variants /v0 /v1 /v2 /v3 (/v3 kept so earlier links still work)
         run: |
           rm -rf public/models public/search   # shared from the root site
-          for v in v1 v2 v3; do
+          for v in v0 v1 v2 v3; do
             STATIC_EXPORT=1 SEARCH_VARIANT=$v PAGES_BASE_PATH="$BASE/$v" PAGES_ASSET_BASE="$BASE" npm run build
             mv out "site/$v"
           done
