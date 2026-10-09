@@ -5,7 +5,7 @@ import { aiEnabled } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Frameworks ทั้งหมด",
-  description: "51 กรอบความคิดสำหรับผู้บริหาร จัดกลุ่มตามวงจร วิเคราะห์ → ตัดสินใจ → วางแผน → ลงมือทำ → บริหารคน และคิดให้ชัด",
+  description: `${frameworks.length} กรอบความคิดสำหรับผู้บริหาร จัดกลุ่มตามวงจร วิเคราะห์ → ตัดสินใจ → วางแผน → ลงมือทำ → บริหารคน และคิดให้ชัด`,
 };
 
 export default function FrameworksPage() {

@@ -14,7 +14,7 @@ test("six groups in cycle order", () => {
 });
 
 test("every framework is complete and uniquely addressable", () => {
-  assert.equal(frameworks.length, 51);
+  assert.ok(frameworks.length >= 51, `expected at least 51 frameworks, got ${frameworks.length}`);
   const slugs = new Set();
   for (const f of frameworks) {
     assert.match(f.slug, /^[a-z0-9]+(-[a-z0-9]+)*$/, f.name);
