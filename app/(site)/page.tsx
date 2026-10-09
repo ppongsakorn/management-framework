@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { frameworks, frameworksIn, groups, routerPrompts, type GroupId } from "@/lib/data";
 import { aiEnabled, basePath } from "@/lib/site";
+import { changelog, thaiDate } from "@/lib/changelog";
 
 // Six equal ring sectors, clockwise from 12 o'clock, in cycle order.
 const SECTORS: { id: GroupId; d: string; label: [number, number]; text: string }[] = [
@@ -92,6 +93,21 @@ export default function Home() {
                   <small>→ {g.title}</small>
                 </span>
               </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="panel latest">
+        <div className="latest-head">
+          <h2>อัปเดตล่าสุด</h2>
+          <Link href="/updates">ดูทั้งหมด →</Link>
+        </div>
+        <ul>
+          {changelog.slice(0, 3).map((c, i) => (
+            <li key={i}>
+              <time dateTime={c.date}>{thaiDate(c.date)}</time>
+              <span>{c.title}</span>
             </li>
           ))}
         </ul>

@@ -48,3 +48,17 @@ test("every use case names its event and cites a source", () => {
     }
   }
 });
+
+test("history log is valid and newest first", () => {
+  const log = JSON.parse(fs.readFileSync("data/changelog.json", "utf8"));
+  assert.ok(log.length > 0);
+  let prev = "9999-12-31";
+  for (const c of log) {
+    assert.match(c.date, /^\d{4}-\d{2}-\d{2}$/, c.title);
+    assert.ok(c.date <= prev, `${c.title} is out of order`);
+    prev = c.date;
+    assert.ok(["launch", "content", "feature", "fix"].includes(c.kind), `${c.title} kind`);
+    assert.ok(c.title && c.items.length > 0, `${c.date} needs a title and items`);
+    for (const l of c.links ?? []) assert.match(l.href, /^\//, `${c.title} links must be site paths`);
+  }
+});
