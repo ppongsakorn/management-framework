@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MTop } from "@/components/mobile/MTop";
+import { WebMcpBadge } from "@/components/WebMcpBadge";
 import { changelog, thaiDate } from "@/lib/changelog";
 import { frameworks, frameworksIn, groups, routerPrompts } from "@/lib/data";
 
@@ -18,6 +19,7 @@ export default function MobileHome() {
             </svg>
             เล่าสิ่งที่เจอ เช่น งานล้นมือ
           </Link>
+          <WebMcpBadge />
         </section>
 
         <h2 className="m-h2">ตอนนี้คุณกำลังพูดประโยคไหน?</h2>

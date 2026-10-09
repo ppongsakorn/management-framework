@@ -1,5 +1,9 @@
 import Link from "next/link";
 import { CompassMark } from "@/components/CompassMark";
+import { WebMcp } from "@/components/WebMcp";
+import { WebMcpBadge } from "@/components/WebMcpBadge";
+import useCases from "@/data/use-cases.json";
+import { frameworks, type UseCase } from "@/lib/data";
 import { aiEnabled, assetBase, basePath, searchVariant } from "@/lib/site";
 import { VARIANTS } from "@/lib/search/types";
 import { mobileRedirectScript } from "@/lib/mobile";
@@ -25,6 +29,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
             <span>เข็มทิศกรอบความคิด</span>
           </Link>
           <nav className="nav" aria-label="หลัก">
+            <WebMcpBadge />
             <Link href="/frameworks">Frameworks</Link>
             <Link href="/updates">อัปเดต</Link>
             {aiEnabled && (
@@ -35,6 +40,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
           </nav>
         </div>
       </header>
+      <WebMcp frameworks={frameworks} useCases={useCases as Record<string, UseCase[]>} />
       <main className="wrap">{children}</main>
       <footer className="wrap site-footer">
         เนื้อหาเรียบเรียงใหม่จากแนวคิดด้านการบริหารที่เผยแพร่ทั่วไป และให้เครดิตผู้ริเริ่มแนวคิดไว้ในหน้าของแต่ละ framework ·
