@@ -35,5 +35,5 @@
 
 ## งานส่งต่อ
 
-[รายการ issue drafts](issues/README.md) มีปัญหา หลักฐาน ขอบเขตและตรวจรับ ขณะเตรียมไฟล์นี้ GitHub connection ยังสร้าง issue ไม่ได้ (403 Resource not accessible by integration); ไฟล์เหล่านี้เป็น drafts ไม่ใช่ GitHub issue ที่เปิดแล้ว
+[รายการงานส่งต่อ](issues/README.md) มีปัญหา หลักฐาน ขอบเขตและตรวจรับ เปิด GitHub issues #20–#23 แล้วผ่านเบราว์เซอร์ที่ล็อกอินของเจ้าของ เพราะ GitHub connection ตอบ 403 สำหรับการเขียน issue ไฟล์ briefs ในโฟลเดอร์นี้เก็บรายละเอียดประกอบงานเหล่านั้น
 
