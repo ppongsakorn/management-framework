@@ -164,7 +164,50 @@
             }
           ]
         }
-      }
+      },
+      "visuals": [
+        {
+          "type": "image",
+          "width": 1672,
+          "height": 941,
+          "status": "prototype",
+          "generatedOn": "2026-10-11",
+          "generatedBy": "OpenAI session imagegen",
+          "id": "fishbone-minimal-v1",
+          "label": "Minimal · ตัวอย่างการใช้",
+          "style": "minimal",
+          "src": "/images/frameworks/fishbone/minimal-v1.png",
+          "alt": "ผังก้างปลาแยกสาเหตุงานรายวันพลาด SLA 6 ครั้งต่อเดือนเป็น 6 หมวด โดยเน้นไฟล์ต้นทางมาช้าซึ่งสัมพันธ์กับ 4 ใน 6 ครั้ง",
+          "caption": "ตัวอย่างสมมติ: ตรวจ log พบ 4 ใน 6 ครั้งที่พลาด SLA มีไฟล์ต้นทางมาช้า จึงตกลงเวลาส่งไฟล์และปรับงานให้รันขนาน",
+          "language": "en",
+          "promptId": "fishbone-minimal-v1",
+          "contentNotes": [
+            "สีเน้นใช้ --diag (#b5322e) จากเว็บเดิม",
+            "สาเหตุบนก้างเป็นสมมติฐานที่ต้องตรวจสอบด้วยข้อมูลจริง",
+            "ข้อความภาษาอังกฤษในภาพอ้างอิงตัวอย่างสมมติของ framework; ต้องมีคำอธิบายภาษาไทยในหน้าเว็บ"
+          ]
+        },
+        {
+          "type": "image",
+          "width": 1672,
+          "height": 941,
+          "status": "prototype",
+          "generatedOn": "2026-10-11",
+          "generatedBy": "OpenAI session imagegen",
+          "id": "fishbone-illustrated-v1",
+          "label": "ภาพแนวคิด · ชุดอ้างอิง",
+          "style": "illustrated",
+          "src": "/images/frameworks/fishbone/illustrated-v1.png",
+          "alt": "ภาพแนวคิดก้างปลาพร้อมสัญลักษณ์ 6 กลุ่มสาเหตุโดยไม่มีข้อความ",
+          "caption": "ภาพแนวคิดชุดแรกสำหรับเปรียบเทียบรูปแบบการนำเสนอ",
+          "language": "none",
+          "promptId": "fishbone-illustrated-v1",
+          "contentNotes": [
+            "ภาพชุดแรกยังไม่มีชื่อปัญหาและสาเหตุจากตัวอย่างใน repo",
+            "เก็บเป็นภาพอ้างอิง ไม่ควรเลือกเป็นภาพเริ่มต้นของหน้ารายละเอียด"
+          ]
+        }
+      ]
     },
     {
       "slug": "swot",
@@ -662,7 +705,50 @@
             }
           ]
         }
-      }
+      },
+      "visuals": [
+        {
+          "type": "image",
+          "width": 1672,
+          "height": 941,
+          "status": "prototype",
+          "generatedOn": "2026-10-11",
+          "generatedBy": "OpenAI session imagegen",
+          "id": "priority-matrix-minimal-v1",
+          "label": "Minimal · ตัวอย่างการใช้",
+          "style": "minimal",
+          "src": "/images/frameworks/priority-matrix/minimal-v1.png",
+          "alt": "ตารางสำคัญกับด่วน 4 ช่อง: แก้รายงานวันนี้ กันเวลาเขียนคู่มือ on-call มอบหมายดึงข้อมูลฝ่ายขาย และยกเลิกประชุมที่ไม่มีวาระ",
+          "caption": "ตัวอย่างสมมติ: กันเช้าวันพุธ 2 ชั่วโมงไว้เขียนคู่มือ on-call เพื่อให้งานสำคัญที่ไม่ด่วนมีเวลาในปฏิทินจริง",
+          "language": "en",
+          "promptId": "priority-matrix-minimal-v1",
+          "contentNotes": [
+            "สีเน้นใช้ --dec (#c7791a) จากเว็บเดิม",
+            "แถวบนสำคัญ แถวล่างไม่สำคัญ; คอลัมน์ซ้ายด่วน คอลัมน์ขวาไม่ด่วน",
+            "ข้อความภาษาอังกฤษในภาพต้องมีคำอธิบายภาษาไทยประกอบ"
+          ]
+        },
+        {
+          "type": "image",
+          "width": 1672,
+          "height": 941,
+          "status": "prototype",
+          "generatedOn": "2026-10-11",
+          "generatedBy": "OpenAI session imagegen",
+          "id": "priority-matrix-illustrated-v1",
+          "label": "ภาพแนวคิด · ชุดอ้างอิง",
+          "style": "illustrated",
+          "src": "/images/frameworks/priority-matrix/illustrated-v1.png",
+          "alt": "ภาพแนวคิด 4 ช่องใช้สัญลักษณ์งานเร่งด่วน การวางแผน การแจ้งเตือน และการพัก โดยไม่มีชื่อแกน",
+          "caption": "ภาพแนวคิดชุดแรกสำหรับเปรียบเทียบรูปแบบการนำเสนอ",
+          "language": "none",
+          "promptId": "priority-matrix-illustrated-v1",
+          "contentNotes": [
+            "ไม่มีชื่อแกนและคำแนะนำในภาพ ต้องอ่านเนื้อหาประกอบ",
+            "เก็บเป็นภาพอ้างอิง ไม่ควรเลือกเป็นภาพเริ่มต้นของหน้ารายละเอียด"
+          ]
+        }
+      ]
     },
     {
       "slug": "pareto-80-20",
@@ -2078,7 +2164,50 @@
           ],
           "note": "ทุกแถวมี A คนเดียว — นิยามรายได้เป็นของฝ่ายการเงิน ไม่ใช่ของผู้ขอ"
         }
-      }
+      },
+      "visuals": [
+        {
+          "type": "image",
+          "width": 1672,
+          "height": 941,
+          "status": "prototype",
+          "generatedOn": "2026-10-11",
+          "generatedBy": "OpenAI session imagegen",
+          "id": "raci-minimal-v1",
+          "label": "Minimal · ตัวอย่างการใช้",
+          "style": "minimal",
+          "src": "/images/frameworks/raci/minimal-v1.png",
+          "alt": "ตาราง RACI ของงานข้อมูล 4 งานและ 5 บทบาท ทุกแถวมี A คนเดียว โดยฝ่ายการเงินเป็น A ของงานแก้นิยามรายได้",
+          "caption": "ตัวอย่างสมมติ: วิศวกรข้อมูลเป็นผู้แก้นิยามรายได้ แต่ฝ่ายการเงินเป็นผู้รับผิดชอบสุดท้ายและต้องอนุมัติก่อนลงมือ",
+          "language": "en",
+          "promptId": "raci-minimal-v1",
+          "contentNotes": [
+            "สีเน้นใช้ --exec (#2b7a4b) จากเว็บเดิม",
+            "R ผู้ทำ; A ผู้รับผิดชอบสุดท้าย; C ผู้ต้องปรึกษาก่อน; I ผู้รับแจ้ง",
+            "ตารางในภาพตรงกับ diagram.spec เดิมทั้ง 4 แถว ต้องเก็บตารางแบบข้อความที่เข้าถึงได้ในหน้าเว็บด้วย"
+          ]
+        },
+        {
+          "type": "image",
+          "width": 1672,
+          "height": 941,
+          "status": "prototype",
+          "generatedOn": "2026-10-11",
+          "generatedBy": "OpenAI session imagegen",
+          "id": "raci-illustrated-v1",
+          "label": "ภาพแนวคิด · ชุดอ้างอิง",
+          "style": "illustrated",
+          "src": "/images/frameworks/raci/illustrated-v1.png",
+          "alt": "ภาพแนวคิดผู้ทำงาน ผู้นำ ที่ปรึกษา และผู้รับข่าวสารรอบชิ้นงานกลาง",
+          "caption": "ภาพแนวคิดชุดแรกสำหรับเปรียบเทียบรูปแบบการนำเสนอ",
+          "language": "none",
+          "promptId": "raci-illustrated-v1",
+          "contentNotes": [
+            "ภาพนี้ยังไม่แสดงตารางบทบาทต่อหนึ่งงาน จึงใช้แทนตาราง RACI โดยลำพังไม่ได้",
+            "เก็บเป็นภาพอ้างอิง ไม่ควรเลือกเป็นภาพเริ่มต้นของหน้ารายละเอียด"
+          ]
+        }
+      ]
     },
     {
       "slug": "moscow",

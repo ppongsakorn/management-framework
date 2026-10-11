@@ -24,6 +24,26 @@ export interface Framework {
   /** Other frameworks to use first, alongside, or next (slugs). */
   related?: { before?: string[]; with?: string[]; after?: string[] };
   diagram: { type: string; spec: unknown };
+  /** Optional image prototypes; src is relative to public, without the deployment base path. */
+  visuals?: FrameworkVisual[];
+}
+
+export interface FrameworkVisual {
+  id: string;
+  label: string;
+  type: "image";
+  style: "minimal" | "illustrated";
+  src: string;
+  alt: string;
+  caption: string;
+  language: "en" | "none";
+  width: number;
+  height: number;
+  status: "prototype";
+  generatedOn: string;
+  generatedBy: "OpenAI session imagegen";
+  promptId: string;
+  contentNotes: string[];
 }
 
 export const groups = raw.groups as Group[];
