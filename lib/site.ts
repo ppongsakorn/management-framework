@@ -5,10 +5,13 @@ import type { Variant } from "@/lib/search/types";
  * - basePath: set when the site is served from a sub-path, e.g. GitHub Pages `/<repo>`.
  * - assetBase: where the shared search assets (model, vectors, eval) live; the
  *   variant builds under /v0 … /v3 share the root site's copy.
+ * - envName: prd (main), stg or dev; the last two are previews with a banner and noindex.
  * - aiEnabled: false for the static export, which has no server for /api/chat.
  * - searchVariant: which search engine the catalogue uses (see lib/search/types.ts).
  *   The main site uses DEFAULT_VARIANT; the others are comparison builds.
  */
+export const envName = (process.env.NEXT_PUBLIC_ENV || "prd") as "prd" | "stg" | "dev";
+export const isProd = envName === "prd";
 export const DEFAULT_VARIANT: Variant = "v3";
 export const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 export const assetBase = process.env.NEXT_PUBLIC_ASSET_BASE ?? basePath;

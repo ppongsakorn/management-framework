@@ -3,7 +3,10 @@
  * between desktop and mobile URLs and remember the visitor's choice of view.
  */
 
-const KEY = "view"; // localStorage: "full" = stay on the desktop site
+import { envName, isProd } from "@/lib/site";
+
+// localStorage: "full" = stay on the desktop site. stg/dev share an origin with prd, so each gets its own key.
+const KEY = isProd ? "view" : `view-${envName}`;
 
 /** Desktop path → the matching mobile screen, or null when there is none (e.g. /compare). */
 export function toMobilePath(path: string, hash = ""): string | null {

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MTabBar } from "@/components/mobile/MTabBar";
 import { WebMcp } from "@/components/WebMcp";
+import { EnvBar } from "@/components/EnvBar";
 import { fullSiteChoiceScript } from "@/lib/mobile";
 import "./mobile.css";
 
@@ -12,6 +13,7 @@ export default function MobileLayout({ children }: { children: React.ReactNode }
   return (
     <div className="m-app">
       <script dangerouslySetInnerHTML={{ __html: fullSiteChoiceScript() }} />
+      <EnvBar />
       <WebMcp />
       {children}
       <MTabBar />

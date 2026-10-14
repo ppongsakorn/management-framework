@@ -1,0 +1,44 @@
+# Promote a change one step up: dev -> stg, or stg -> main (production).
+# Opens a pull request so the change is reviewed and merged on purpose; merging
+# it triggers the Pages workflow. Needs Settings -> Actions -> General ->
+# "Allow GitHub Actions to create and approve pull requests".
+name: Promote
+
+on:
+  workflow_dispatch:
+    inputs:
+      step:
+        description: Which promotion to open
+        type: choice
+        required: true
+        options:
+          - dev -> stg
+          - stg -> main (production)
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Open the pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          STEP: ${{ inputs.step }}
+        run: |
+          case "$STEP" in
+            "dev -> stg") head=dev; base=stg ;;
+            *) head=stg; base=main ;;
+          esac
+          ahead=$(git rev-list --count "origin/$base..origin/$head")
+          if [ "$ahead" = 0 ]; then echo "$head has nothing new for $base"; exit 0; fi
+          existing=$(gh pr list --head "$head" --base "$base" --state open --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then echo "PR #$existing is already open"; exit 0; fi
+          gh pr create --head "$head" --base "$base" \
+            --title "Promote $head to $base" \
+            --body "Promotes $ahead commit(s) from \`$head\` to \`$base\`. Check the preview first, then merge with a merge commit (not squash or rebase) so the branches stay in step."
