@@ -1,4 +1,4 @@
-import { frameworks, groups, getGroup, getUseCases, type Framework } from "@/lib/data";
+import { frameworks, groups, getGroup, getUseCases, type Framework, type UseCase } from "@/lib/data";
 
 /**
  * Stable system prompt: persona + the full catalog. It is byte-identical on every
@@ -10,7 +10,14 @@ export const ADVISOR_SYSTEM = buildAdvisorSystem();
 function useCaseLines(slug: string): string {
   const cases = getUseCases(slug).filter((c) => !c.disputed);
   if (!cases.length) return "";
-  return `\n- กรณีจริง: ${cases.map((c) => `${c.who} [${c.event}]: ${c.problem} → ${c.result}`).join(" | ")}`;
+  return `\n- กรณีจริง: ${cases.map(caseLine).join(" | ")}`;
+}
+
+/** One case with its evidence caveat and source links, so the advisor can qualify what it cites. */
+export function caseLine(c: UseCase): string {
+  const note = c.note ? ` (ข้อจำกัดของหลักฐาน: ${c.note})` : "";
+  const src = c.sources.length ? ` (แหล่งอ้างอิง: ${c.sources.map((x) => x.url).join(" , ")})` : "";
+  return `${c.who} [${c.event}]: ${c.problem} → ${c.result}${note}${src}`;
 }
 
 function buildAdvisorSystem(): string {
@@ -36,6 +43,7 @@ function buildAdvisorSystem(): string {
 - เริ่มจากวินิจฉัยว่าผู้ใช้อยู่ "ขั้นไหนของวงจร" (วิเคราะห์ → ตัดสินใจ → วางแผน → ลงมือทำ → บริหารคน และเลนส์ "คิดให้ชัด" ที่ใช้ทับทุกขั้น) ถ้าข้อมูลไม่พอที่จะแนะนำได้ดี ให้ถามคำถามสั้น ๆ ไม่เกิน 2–3 ข้อก่อน
 - แนะนำ framework จากแคตตาล็อกด้านล่างเป็นหลัก ไม่เกิน 3 ตัวต่อคำตอบ บอกเหตุผลว่าทำไมตัวนี้เหมาะกับสถานการณ์นี้ และถ้าควรใช้หลายตัว ให้บอกลำดับการใช้
 - ถ้ายกตัวอย่างการใช้จริงของบุคคลหรือองค์กร ให้ใช้เฉพาะ "กรณีจริง" ในแคตตาล็อก ห้ามแต่งกรณีหรือตัวเลขขึ้นเอง
+- ถ้ากรณีจริงมี "ข้อจำกัดของหลักฐาน" ให้บอกผู้ใช้ด้วยทุกครั้งที่ยกกรณีนั้น และห้ามยกผลที่ผู้ขายหรือองค์กรรายงานเอง ผลจำลอง หรือผลที่ยังเป็นแผน ว่าเป็นหลักฐานพิสูจน์ว่า framework เป็นสาเหตุของผลนั้น ให้เรียกว่า "รายงานว่า" และใส่ลิงก์แหล่งอ้างอิงเมื่อผู้ใช้ต้องการตรวจสอบ
 - อ้างถึง framework ในแคตตาล็อกเป็นลิงก์ markdown รูปแบบ [ชื่อ](/frameworks/slug) เสมอ เพื่อให้ผู้ใช้กดไปดูแผนภาพและรายละเอียดได้
 - ถ้าเหมาะกว่า แนะนำ framework นอกแคตตาล็อกได้ แต่บอกให้ชัดว่าไม่ได้อยู่ในเว็บนี้ และห้ามสร้างลิงก์ให้มัน
 - เมื่อให้วิธีลงมือทำ ให้ปรับขั้นตอนและตัวอย่างเข้ากับบริบทจริงของผู้ใช้ (ทีม, เครื่องมือ, ตัวเลข) ไม่ใช่คัดลอกตัวอย่างในแคตตาล็อก
