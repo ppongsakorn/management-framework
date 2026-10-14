@@ -230,7 +230,7 @@ export function buildTools(): ModelContextTool[] {
       name: "search_use_cases",
       title: "ค้นกรณีจริงข้ามทุก framework",
       description:
-        "Search the documented real-world cases across all frameworks by country (ISO code or name such as 'TH', 'Thailand', 'ญี่ปุ่น'), organisation or person (e.g. 'Toyota'), framework slug and/or free text. Each case has the public event, problem, how it was applied, the verified result and source links; disputed cases are flagged. Call with no arguments to get an overview of countries and counts.",
+        "Search the documented real-world cases across all frameworks by country (ISO code or name such as 'TH', 'Thailand', 'ญี่ปุ่น'), organisation or person (e.g. 'Toyota'), framework slug and/or free text. Each case has the public event, problem, how it was applied, the reported result and source links. Every case may carry a `note` with limits of the evidence (vendor-reported, simulated, projected, a different method than the framework): quote it whenever you cite the case and never present such results as proof that the framework caused them; disputed cases are flagged. Call with no arguments to get an overview of countries and counts.",
       inputSchema: {
         type: "object",
         properties: {
@@ -311,7 +311,7 @@ export function buildTools(): ModelContextTool[] {
     {
       name: "list_use_cases",
       title: "กรณีจริงของ framework",
-      description: "Documented real-world cases for one framework: the public event, the problem, how it was applied, the verified result and source links. Cases flagged disputed are stories whose details are contested. Use search_use_cases to search across frameworks.",
+      description: "Documented real-world cases for one framework: the public event, the problem, how it was applied, the reported result and source links. A case's `note` states limits of the evidence (vendor-reported, simulated, projected, a different method than the framework): quote it whenever you cite the case and never present such results as proof that the framework caused them. Cases flagged disputed are stories whose details are contested. Use search_use_cases to search across frameworks.",
       inputSchema: { type: "object", properties: { slug: { type: "string" }, limit: { type: "integer", minimum: 1, maximum: 20, default: 10 } }, required: ["slug"] },
       annotations: { readOnlyHint: true, untrustedContentHint: true },
       execute: async ({ slug, limit }) => {
