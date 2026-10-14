@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CompassMark } from "@/components/CompassMark";
+import { EnvBar } from "@/components/EnvBar";
 import { WebMcp } from "@/components/WebMcp";
 import { WebMcpBadge } from "@/components/WebMcpBadge";
 import { DEFAULT_VARIANT, aiEnabled, assetBase, basePath, searchVariant } from "@/lib/site";
@@ -11,6 +12,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
     <>
       {/* Phones go to the app view unless the visitor chose the full site. Runs before paint. */}
       <script dangerouslySetInnerHTML={{ __html: mobileRedirectScript(basePath) }} />
+      <EnvBar />
       {searchVariant !== DEFAULT_VARIANT && (
         <div className="variant-bar">
           <div className="wrap">

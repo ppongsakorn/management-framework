@@ -1,13 +1,18 @@
 # Build the static site (no AI advisor) and publish it to GitHub Pages.
-# The root site uses the current search; /v1/, /v2/ and /v3/ are full copies
-# of the site with experimental search engines, and /compare/ shows them side
-# by side with offline scores. One-time setup: Settings → Pages → Source:
-# "GitHub Actions".
+# Three environments share one Pages site, one branch each:
+#   main -> /          (prd, with /v0 /v1 /v2 /v3 search comparison builds and /compare)
+#   stg  -> /stg/      (staging)
+#   dev  -> /dev/      (development)
+# A push to any of the three rebuilds all three from their branch heads and
+# redeploys, so a push to dev never removes production. Promote with PRs:
+# dev -> stg -> main (see the "Promote" workflow). One-time setup: Settings ->
+# Pages -> Source: "GitHub Actions"; Settings -> Environments -> github-pages
+# must allow deployments from main, stg and dev.
 name: Deploy static site to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, stg, dev]
   workflow_dispatch:
 
 permissions:
@@ -28,47 +33,76 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Always build from the branch heads, whichever branch triggered the run.
       - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          path: src/prd
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: src/prd/package-lock.json
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - id: pages
         uses: actions/configure-pages@v5
-      - run: npm ci
-      - run: npm test
-
+      - name: Check out stg and dev (skipped while a branch does not exist yet)
+        working-directory: src/prd
+        run: |
+          for e in stg dev; do
+            if git ls-remote --exit-code --heads origin "$e" >/dev/null; then
+              git fetch --quiet origin "$e"
+              git worktree add "../$e" "origin/$e"
+            else
+              echo "::warning::branch $e not found, /$e/ is not deployed"
+            fi
+          done
+          ls ..
       - name: Cache source embedding model
         uses: actions/cache@v4
         with:
-          path: .cache/e5-source
+          path: src/prd/.cache/e5-source
           key: e5-source-761b726d
-      - name: Build Thai search model, vectors and scores
-        run: |
-          pip install --quiet numpy onnx tokenizers wordfreq
-          npm run search:model
-          npm run search:index
-          npm run search:eval
+      - run: pip install --quiet numpy onnx tokenizers wordfreq
 
-      - name: Build root site (search v3) + /compare
-        run: |
-          STATIC_EXPORT=1 SEARCH_VARIANT=v3 PAGES_BASE_PATH="$BASE" npm run build
-          mv out site
+      # Each environment is self-contained: its own tests, search model and
+      # vectors (they depend on that branch's data) and its own base path.
+      - name: Build environments
         env:
           BASE: ${{ steps.pages.outputs.base_path }}
-      - name: Build search variants /v0 /v1 /v2 /v3 (/v3 kept so earlier links still work)
         run: |
-          rm -rf public/models public/search   # shared from the root site
+          build_env() { # name, base path, destination under site/
+            local name=$1 base=$2 dest=$3
+            cd "$GITHUB_WORKSPACE/src/$name"
+            echo "::group::$name ($base)"
+            npm ci
+            npm test
+            mkdir -p .cache
+            if [ "$name" != prd ]; then ln -sfn "$GITHUB_WORKSPACE/src/prd/.cache/e5-source" .cache/e5-source; fi
+            npm run search:model
+            npm run search:index
+            npm run search:eval
+            STATIC_EXPORT=1 SEARCH_VARIANT=v3 PAGES_ENV=$name PAGES_BASE_PATH="$base" npm run build
+            mkdir -p "$(dirname "$dest")"
+            mv out "$dest"
+            echo "::endgroup::"
+          }
+          build_env prd "$BASE" "$GITHUB_WORKSPACE/site"
+          # /v0 /v1 /v2 /v3 comparison builds of production share the root's model
+          cd "$GITHUB_WORKSPACE/src/prd"
+          rm -rf public/models public/search
           for v in v0 v1 v2 v3; do
             STATIC_EXPORT=1 SEARCH_VARIANT=$v PAGES_BASE_PATH="$BASE/$v" PAGES_ASSET_BASE="$BASE" npm run build
-            mv out "site/$v"
+            mv out "$GITHUB_WORKSPACE/site/$v"
           done
-          du -sh site site/*/ | sort -h | tail -5
-        env:
-          BASE: ${{ steps.pages.outputs.base_path }}
+          for e in stg dev; do
+            if [ -d "$GITHUB_WORKSPACE/src/$e" ]; then build_env "$e" "$BASE/$e" "$GITHUB_WORKSPACE/site/$e"; fi
+          done
+          cd "$GITHUB_WORKSPACE"
+          du -sh site site/*/ | sort -h | tail -8
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

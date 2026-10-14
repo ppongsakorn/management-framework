@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Sans_Thai } from "next/font/google";
 import { frameworks } from "@/lib/data";
+import { isProd } from "@/lib/site";
 import "./globals.css";
 
 const plex = IBM_Plex_Sans_Thai({
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   title: { default: "เข็มทิศกรอบความคิด — หยิบ Framework ให้ถูกสถานการณ์", template: "%s · เข็มทิศกรอบความคิด" },
   description:
     `เรียนรู้ ${frameworks.length} management framework จัดกลุ่มตามคำถามที่ผู้บริหารกำลังถาม พร้อมขั้นตอนลงมือทำ ตัวอย่าง และแผนภาพสำหรับนำเสนอ`,
+  // stg and dev are previews: keep them out of search results.
+  ...(isProd ? {} : { robots: { index: false, follow: false } }),
 };
 
 export const viewport: Viewport = {

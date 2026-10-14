@@ -9,7 +9,11 @@ const basePath = isStatic ? process.env.PAGES_BASE_PATH ?? "" : "";
 // (the variant builds under /v0 … /v3 reuse the root site's copy).
 // The default is v3 (the main site); without public/models, e.g. a local `npm run dev`,
 // it falls back to lexical results, or run with SEARCH_VARIANT=v2.
+// PAGES_ENV names the deployment (prd | stg | dev, see .github/workflows/pages.yml);
+// stg and dev show a banner, carry noindex and keep their own localStorage keys.
+const envName = process.env.PAGES_ENV ?? "prd";
 const searchEnv = {
+  NEXT_PUBLIC_ENV: envName,
   NEXT_PUBLIC_SEARCH_VARIANT: process.env.SEARCH_VARIANT ?? "v3",
   NEXT_PUBLIC_ASSET_BASE: isStatic ? process.env.PAGES_ASSET_BASE ?? basePath : "",
 };
