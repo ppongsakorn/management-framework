@@ -5,6 +5,9 @@ import { execFileSync } from "node:child_process";
 
 const cases = Object.values(JSON.parse(fs.readFileSync("data/use-cases.json", "utf8"))).flat();
 
+// data/diagrams.json is generated (npm run data) and lib/data.ts imports it; CI runs the tests before any build.
+execFileSync("npm", ["run", "--silent", "data"], { stdio: "ignore" });
+
 /** Run a snippet of TypeScript against the app's own modules (path aliases work under tsx). */
 function tsx(code) {
   return execFileSync("npx", ["tsx", "-e", code], { encoding: "utf8", maxBuffer: 1 << 26 });
