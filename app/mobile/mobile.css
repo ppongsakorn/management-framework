@@ -85,3 +85,5 @@
 .m-app .cases { gap: 10px; }
 .m-app .case dl { grid-template-columns: 1fr; gap: 0; }
 .m-app .case dt { padding-top: 6px; }
+
+.m-top .m-action { margin-left: auto; display: flex; align-items: center; }
