@@ -357,3 +357,13 @@ button, input, textarea { font: inherit; color: inherit; }
 .rel-item small { display: block; font-weight: 400; font-size: 12.5px; color: var(--ink2); margin-top: 2px; }
 .rel-dot { flex: none; width: 8px; height: 8px; margin-top: 6px; border-radius: 50%; background: var(--c); }
 .m-app .related-flow { grid-template-columns: 1fr; }
+
+/* Share / copy link (components/ShareButton.tsx) */
+.share-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 4px; }
+.share-btn { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); color: var(--ink); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
+.share-btn:hover { border-color: var(--c, var(--ink2)); color: var(--c, var(--ink)); }
+.share-btn:focus-visible { outline: 2px solid var(--c, var(--ink)); outline-offset: 2px; }
+.share-btn.share-icon { width: 44px; padding: 0; justify-content: center; border-color: transparent; background: transparent; color: var(--c, var(--ink)); }
+.share-toast { position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom) + 84px); transform: translate(-50%, 12px); max-width: calc(100vw - 32px); padding: 10px 18px; border-radius: 999px; background: var(--ink); color: var(--bg); font-size: 14.5px; font-weight: 600; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; z-index: 60; }
+.share-toast.show { opacity: 1; transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) { .share-toast { transition: none; } }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Chat } from "@/components/Chat";
 import { Diagram } from "@/components/Diagram";
+import { ShareButton } from "@/components/ShareButton";
 import { RelatedFrameworks } from "@/components/RelatedFrameworks";
 import { UseCases } from "@/components/UseCases";
 import { frameworks, frameworksIn, getDiagram, getFramework, getGroup, getUseCases } from "@/lib/data";
@@ -57,6 +58,10 @@ export default async function FrameworkPage({ params }: { params: Promise<{ slug
         <h1>{fw.name}</h1>
         <div className="when">{fw.when}</div>
         <p className="how">{fw.how}</p>
+        <div className="share-row">
+          <ShareButton slug={fw.slug} title={fw.name} text={`${fw.name} — ${fw.when}`} kind="share" />
+          <ShareButton slug={fw.slug} title={fw.name} text={`${fw.name} — ${fw.when}`} kind="copy" />
+        </div>
         {aiEnabled && (
           <a href="#ask-ai" className="jump-ai">
             ถาม AI เกี่ยวกับ {fw.name} ↓

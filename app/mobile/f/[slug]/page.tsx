@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Diagram } from "@/components/Diagram";
 import { MTabs } from "@/components/mobile/MTabs";
+import { ShareButton } from "@/components/ShareButton";
 import { RelatedFrameworks } from "@/components/RelatedFrameworks";
 import { MTop } from "@/components/mobile/MTop";
 import { UseCases } from "@/components/UseCases";
@@ -81,7 +82,10 @@ export default async function MobileFramework({ params }: { params: Promise<{ sl
 
   return (
     <div className={`g-${fw.group}`}>
-      <MTop back={{ href: `/mobile/g/${group.id}`, label: group.title }} />
+      <MTop
+        back={{ href: `/mobile/g/${group.id}`, label: group.title }}
+        action={<ShareButton slug={fw.slug} title={fw.name} text={`${fw.name} — ${fw.when}`} kind="icon" />}
+      />
       <main className="m-screen m-fw">
         <header className="m-head">
           <span className="m-tag">
@@ -93,6 +97,10 @@ export default async function MobileFramework({ params }: { params: Promise<{ sl
             <b>ใช้เมื่อ</b> {fw.when}
           </p>
           <p className="m-how">{fw.how}</p>
+          <div className="share-row">
+            <ShareButton slug={fw.slug} title={fw.name} text={`${fw.name} — ${fw.when}`} kind="share" />
+            <ShareButton slug={fw.slug} title={fw.name} text={`${fw.name} — ${fw.when}`} kind="copy" />
+          </div>
         </header>
         <MTabs tabs={tabs} />
         <nav className="m-pager" aria-label="ก่อนหน้า / ถัดไป">
