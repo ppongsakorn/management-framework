@@ -2,7 +2,7 @@
 
 Public Thai educational site about management frameworks, with an optional AI advisor.
 Live: https://ppongsakorn.github.io/management-framework/ (GitHub Pages, auto-deploys on push to `main`).
-Owner: a Data & AI Team Lead; examples in the content are written for a data team on an Azure stack.
+Owner: a Data & AI Team Lead; examples in the content are written for a data team on an Azure stack, except 5 Whys, whose example the owner had rewritten for a general audience (a restaurant, 2026-11-15) to match its clip. Ask before moving other frameworks' examples.
 
 ## How the owner wants to work
 
