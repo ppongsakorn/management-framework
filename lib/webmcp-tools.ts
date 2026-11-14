@@ -180,7 +180,7 @@ export function buildTools(): ModelContextTool[] {
         const f = d.bySlug.get(str(slug));
         if (!f) return unknownSlug(slug);
         const v = d.videos[f.slug];
-        const video = v ? { title: v.title, durationSec: v.durationSec, url: watchUrl(v), aiGenerated: v.madeWith.ai } : null;
+        const video = v ? { title: v.title, durationSec: v.durationSec, url: new URL(watchUrl(v), location.origin).href, aiGenerated: v.madeWith.ai } : null;
         return { ...summary(f), steps: f.steps, example: f.example, origin: f.origin, related: f.related ?? {}, useCaseCount: (d.useCases[f.slug] ?? []).length, video };
       },
     },

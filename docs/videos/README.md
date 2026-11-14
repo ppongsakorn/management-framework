@@ -1,13 +1,13 @@
 # คลิปอธิบาย framework
 
-หน้า framework แต่ละตัวมีที่สำหรับคลิปอธิบายสั้น ๆ (60–90 วินาที) repo นี้ไม่ได้ทำคลิปเอง แต่เตรียม **brief** ให้ skill และ tool ที่ทำคลิปใช้เป็นวัตถุดิบ แล้วรับคลิปที่เสร็จกลับมาลงทะเบียนใน `data/videos.json`
+หน้า framework แต่ละตัวมีที่สำหรับคลิปอธิบายสั้น ๆ (60–120 วินาที) repo นี้เตรียม **brief** ให้เครื่องมือทำคลิปใช้เป็นวัตถุดิบ แล้วรับคลิปที่เสร็จกลับมาเก็บใน `public/videos/` และลงทะเบียนใน `data/videos.json`
 
 ```
 data/frameworks.json ──► npm run video:brief ──► brief.json · brief.md · diagram.svg
                                                         │
-                                          skill + tool ทำคลิป, เจ้าของตรวจ
+                              ภาพ: Claude Motion · เสียง: ElevenLabs · เจ้าของตรวจ
                                                         │
-              YouTube หรือไฟล์ https ◄── อัปโหลด ◄────────┘
+              public/videos/<slug>.webm ◄── เข้ารหัส WebM ◄┘
                         │
                         ▼
           npm run video:add ──► data/videos.json ──► หน้าเว็บ · การ์ด · แอปมือถือ · WebMCP
@@ -15,51 +15,57 @@ data/frameworks.json ──► npm run video:brief ──► brief.json · brief
 
 ## เครื่องมือที่ใช้ทำคลิป
 
-| | ชื่อ | ลิงก์ | หมายเหตุ |
-|---|---|---|---|
-| Skill | _ยังไม่ได้เชื่อม_ | | ขั้นตอนที่ agent ทำตาม: อ่าน brief → สั่ง tool → ส่งให้เจ้าของตรวจ → ลงทะเบียน |
-| Tool | _ยังไม่ได้เชื่อม_ | | ตัวทำภาพ เสียงบรรยาย และตัดต่อ |
+| | ชื่อ | หมายเหตุ |
+|---|---|---|
+| ภาพ | Claude Motion (artifact แบบ Motion บน claude.ai) | ภาพเป็นโค้ดแอนิเมชัน ไม่มีเสียงในตัว ได้ไฟล์วิดีโอจากปุ่ม Export บนหน้าคลิป หรือเรนเดอร์ทีละเฟรมในเครื่องด้วยตัวเรนเดอร์ของ Motion |
+| เสียงพากย์ | ElevenLabs `eleven_v3` | ภาษาไทยใช้ได้เฉพาะรุ่น v3/v4 (รุ่น multilingual v2 และ flash ไม่มีไทย) ตั้ง `language_code: "th"` และใช้ endpoint `with-timestamps` เพื่อได้เวลาของแต่ละตัวอักษรไว้จัดจังหวะภาพและซับ |
+| ตรวจการออกเสียง | Whisper large-v3 ในเครื่อง (`check_takes.py` ของชุดเครื่องมือพากย์เสียง) | วัด CER ของเสียงเทียบบท ค่าที่ผิดจากชื่ออังกฤษหรือตัวเลขไม่ใช่ความผิดของเสียง แต่ยังต้องฟังเองเรื่องวรรณยุกต์ |
 
-เมื่อเชื่อมแล้ว ให้เติมตารางนี้ และใช้ชื่อเดียวกันใน `--tool` / `--skill` ตอนลงทะเบียน
+ใส่ชื่อเครื่องมือเดียวกันใน `--tool` ตอนลงทะเบียน หน้าเว็บแสดงชื่อนี้ใต้คลิป
 
 ## ทำคลิปหนึ่งตัว
 
-1. **สร้าง brief**: `npm run video:brief -- <slug>` (หรือ `--all`) ได้ไฟล์ใน `.cache/video-briefs/<slug>/` (ไม่เข้า git)
-   - `brief.json` ให้ skill/tool อ่าน: ฉากตามลำดับ (`scenes`) ข้อความที่พูดได้ (`scenes[].source`) กติกา (`rules`) และสเปกไฟล์ (`deliver`)
-   - `brief.md` เนื้อหาเดียวกันสำหรับคนอ่าน
-   - `diagram.svg` แผนภาพของ framework สีตามกลุ่ม พื้นขาว ใช้ในฉาก diagram ได้ทันที
-2. **ทำคลิป** ด้วย tool ตาม brief: hook → idea → diagram → 5 ขั้นตอน → ตัวอย่างสมมติ → (กรณีจริง ไม่บังคับ) → ปิดด้วยเครดิตและตัวที่ใช้ต่อ
-3. **เจ้าของตรวจ** ก่อนเผยแพร่: เนื้อหาไม่เกินจาก brief, ฉากตัวอย่างมีป้าย "ตัวอย่างสมมติ", กรณีจริงแสดงแหล่งอ้างอิงและข้อจำกัดของหลักฐาน, ไม่มีโลโก้ ปกหนังสือ หรือเสียง/ภาพของบุคคลจริง
-4. **อัปโหลด** ไป YouTube (Unlisted หรือ Public) หรือที่เก็บไฟล์ที่ให้ URL แบบ https
-5. **ลงทะเบียน**:
+1. **สร้าง brief**: `npm run video:brief -- <slug>` ได้ไฟล์ใน `.cache/video-briefs/<slug>/` (ไม่เข้า git)
+   - `brief.json` ฉากตามลำดับ (`scenes`) ข้อความที่พูดได้ (`scenes[].source`) กติกา (`rules`) และสเปกไฟล์ (`deliver`)
+   - `brief.md` เนื้อหาเดียวกันสำหรับคนอ่าน, `diagram.svg` แผนภาพสีตามกลุ่ม
+2. **เขียนบทพากย์แยกตามฉาก** จากข้อมูลใน brief เท่านั้น ชื่ออังกฤษเขียนตามเสียงอ่าน (เช่น "ไฟว์วายส์") ส่วนซับใช้ตัวสะกดจริง
+3. **สร้างเสียงก่อนภาพ** ทีละฉาก แล้วใช้ความยาวเสียงจริงกำหนดความยาวฉาก (ปัดเป็นจำนวนเฟรมเต็มที่ 30fps ให้ภาพกับเสียงไม่เลื่อน) และเวลาของคำสำคัญกำหนดจังหวะที่ของบนจอโผล่
+4. **ทำภาพใน Claude Motion** ตาม brief: hook → หลักคิด → แผนภาพ → 5 ขั้นตอน → ตัวอย่างสมมติ (มีป้ายตลอดฉาก) → กรณีจริงพร้อมแหล่งอ้างอิงบนจอ (ไม่บังคับ) → ปิดด้วยเครดิตและตัวที่ใช้ต่อ
+5. **เจ้าของตรวจ** ก่อนเผยแพร่: เนื้อหาไม่เกินจาก brief, ไม่มีโลโก้ ปกหนังสือ หรือเสียง/ภาพของบุคคลจริง, ฟังการออกเสียงคำที่ Whisper ทักไว้
+6. **เข้ารหัสเป็น WebM** (VP9 + Opus) แล้ววางใน `public/videos/` พร้อมภาพปกและซับ:
    ```bash
-   npm run video:add -- fishbone-ishikawa --youtube https://youtu.be/<id> --duration 1:24 \
-     --tool "<ชื่อ tool>" --skill "<ชื่อ skill>" --title "Fishbone ใน 90 วินาที" --hash <briefHash จาก brief>
+   ffmpeg -framerate 30 -i frames/%05d.png -i narration.wav -c:v libvpx-vp9 -b:v 0 -crf 34 -row-mt 1 \
+     -pix_fmt yuv420p -c:a libopus -b:a 64k -ac 1 -shortest public/videos/<slug>.webm
    ```
-   ไฟล์ที่ host เอง: `--file https://…/fishbone.mp4 --poster https://…/fishbone.jpg --captions https://…/fishbone.th.vtt`
+   ภาพปกเป็น WebP 1280×720 (`public/videos/<slug>.webp`) ซับเป็น WebVTT (`public/videos/<slug>.th.vtt`)
+7. **ลงทะเบียน**:
+   ```bash
+   npm run video:add -- 5-whys --file videos/5-whys.webm --poster videos/5-whys.webp \
+     --captions videos/5-whys.th.vtt --duration 1:49 --tool "Claude Motion + ElevenLabs" --hash <briefHash จาก brief>
+   ```
    ถ้าเสียงและภาพไม่ได้สร้างด้วย AI ให้ใส่ `--no-ai` (ค่าเริ่มต้นคือแสดงว่า "สร้างด้วยเครื่องมือ AI")
-6. **ส่งขึ้นเว็บ** ตาม flow ปกติ: `npm test` → เพิ่มรายการใน `data/changelog.json` → branch `feature/video-<slug>` จาก `dev` → PR เข้า `dev` → ตรวจบน `/dev/` → promote
+8. **ส่งขึ้นเว็บ** ตาม flow ปกติ: `npm test` → เพิ่มรายการใน `data/changelog.json` → branch `feature/video-<slug>` จาก `dev` → PR เข้า `dev` → ตรวจบน `/dev/` → promote
 
 ## ข้อมูลใน `data/videos.json`
 
 ```jsonc
 {
-  "fishbone-ishikawa": {
-    "title": "Fishbone ใน 90 วินาที",
-    "durationSec": 84,
+  "5-whys": {
+    "title": "5 Whys ใน 2 นาที",
+    "durationSec": 109,
     "lang": "th",
-    "aspect": "16:9",                                   // หรือ "9:16"
-    "source": { "kind": "youtube", "id": "<11 ตัวอักษร>" }, // หรือ { "kind": "file", "src": "https://….mp4" }
-    "poster": "https://….jpg",                          // ไม่บังคับ
-    "captions": [{ "src": "https://….vtt", "lang": "th", "label": "ไทย" }], // เฉพาะ kind file
-    "madeWith": { "tool": "…", "skill": "…", "date": "2026-11-14", "ai": true },
-    "briefHash": "91cdd5f29161",                        // brief ที่ใช้ทำคลิป
-    "note": "…"                                         // ไม่บังคับ แสดงใต้คลิป
+    "aspect": "16:9",                                        // หรือ "9:16"
+    "source": { "kind": "file", "src": "videos/5-whys.webm" }, // ไฟล์ใน public/ (ไม่มี / นำหน้า), หรือ https URL, หรือ { "kind": "youtube", "id": "…" }
+    "poster": "videos/5-whys.webp",                          // ไม่บังคับ
+    "captions": [{ "src": "videos/5-whys.th.vtt", "lang": "th", "label": "ไทย" }], // เฉพาะ kind file
+    "madeWith": { "tool": "Claude Motion + ElevenLabs", "date": "2026-11-14", "ai": true },
+    "briefHash": "6989e68ffe67",                             // brief ที่ใช้ทำคลิป
+    "note": "…"                                              // ไม่บังคับ แสดงใต้คลิป
   }
 }
 ```
 
-`npm test` ตรวจทุกรายการ (`scripts/video-lib.mjs` → `videoProblems`): slug มีจริง, ไฟล์ต้องเป็น https นอก repo, YouTube id ถูกรูปแบบ, ความยาว 10–600 วินาที, ต้องบอกว่าใช้ AI หรือไม่, ไม่มี field สะกดผิด
+`npm test` ตรวจทุกรายการ (`scripts/video-lib.mjs` → `videoProblems`): slug มีจริง, ไฟล์ใน repo ต้องอยู่ใน `public/videos/` มีอยู่จริงและไม่เกิน 20 MB ต่อไฟล์, ไฟล์ภายนอกต้องเป็น https, YouTube id ถูกรูปแบบ, ความยาว 10–600 วินาที, ต้องบอกว่าใช้ AI หรือไม่, ไม่มี field สะกดผิด
 
 ## คลิปที่เนื้อหาเปลี่ยนไปแล้ว
 
@@ -68,7 +74,7 @@ data/frameworks.json ──► npm run video:brief ──► brief.json · brief
 ## หน้าเว็บแสดงคลิปอย่างไร
 
 - หน้า framework บน desktop: หัวข้อ "คลิปอธิบาย" เป็นส่วนแรกก่อนแผนภาพ, มือถือ: ใต้หัวเรื่องก่อนแท็บ
-- ก่อนกดเล่นเป็นแค่ภาพปก (ภาพ `poster` หรือปกที่วาดจากชื่อและสีกลุ่ม) ไม่โหลดอะไรจาก YouTube หรือ host ไฟล์ หน้าจึงเบาเท่าเดิมและไม่มี cookie ของบุคคลที่สาม กดแล้วจึงเปิด `youtube-nocookie.com` หรือ `<video>`
+- ก่อนกดเล่นเป็นแค่ภาพปก ไม่โหลดตัวคลิป กดแล้วจึงเปิด `<video>` (หรือ `youtube-nocookie.com` สำหรับคลิป YouTube)
 - ใต้คลิปบอกความยาวและเครื่องมือที่ใช้ ถ้า `madeWith.ai` เป็น true จะเขียนว่า "สร้างด้วยเครื่องมือ AI"
 - การ์ดในหน้า Frameworks และรายการในแอปมือถือมีป้าย "▶ มีคลิป m:ss"
 - WebMCP `get_framework` คืน `video` (title, durationSec, url, aiGenerated) หรือ `null`
@@ -76,18 +82,16 @@ data/frameworks.json ──► npm run video:brief ──► brief.json · brief
 
 ## เก็บไฟล์คลิปที่ไหน
 
-ไฟล์วิดีโอห้ามเข้า repo หรือ `public/`: workflow build เว็บ 7 ชุด (prd, /v0–/v3, /stg, /dev) ทุกชุดจะ copy ไฟล์ซ้ำ ขณะที่ GitHub Pages จำกัดเว็บไว้ 1 GB และ repo เป็น public
+เจ้าของเลือก (14 พ.ย. 2026) ให้เก็บคลิปใน repo ที่ `public/videos/` เป็น **WebM (VP9 + Opus)** เพราะไฟล์เล็กกว่า MP4 ที่คุณภาพเท่ากัน และหน้าเว็บดึงจากเว็บเดียวกัน ไม่ต้องพึ่งบริการภายนอก ซับจากเว็บเดียวกันจึงไม่ต้องตั้ง CORS
 
-| | YouTube (Unlisted/Public) | ไฟล์ https เช่น Azure Blob Storage |
-|---|---|---|
-| ค่าใช้จ่าย | ฟรี | ค่าเก็บ + ค่า egress (คลิปละ ~10–20 MB) |
-| เล่นบนมือถือ | ปรับความชัดตามเน็ตอัตโนมัติ | ไฟล์เดียว ความชัดเดียว |
-| คำบรรยาย | ใช้ subtitle ของ YouTube | ไฟล์ `.vtt` และต้องเปิด CORS (`Access-Control-Allow-Origin`) ที่ host ทั้งไฟล์คลิปและ `.vtt` ถ้าไม่เปิด คลิปที่มีคำบรรยายจะเล่นไม่ได้เลย |
-| ความเป็นส่วนตัว | YouTube เห็นเมื่อผู้ชมกดเล่น | ไม่มีบุคคลที่สาม |
-| ใช้ซ้ำที่อื่น | แชร์ / โพสต์ต่อได้ทันที | ต้องอัปโหลดแยก |
+- **ไม่ให้ไฟล์ซ้ำเกินจำเป็น**: workflow build เว็บ 7 ชุด แต่ `/v0`–`/v3` ลบ `public/videos` ก่อน build และดึงจากชุดหลักผ่าน `assetBase` (เหมือนโมเดลค้นหา) จึงมีสำเนาเฉพาะ prd, `/stg/` และ `/dev/` GitHub Pages จำกัดเว็บไว้ 1 GB
+- **เพดาน 20 MB ต่อไฟล์** (test บังคับ) GitHub เตือนที่ 50 MB และไม่รับไฟล์เกิน 100 MB
+- **ประวัติ git โตทุกครั้งที่แทนไฟล์** แม้ลบภายหลังก็ยังอยู่ใน history จึงควรแทนคลิปเมื่อจำเป็นจริงเท่านั้น
+- ยังลงทะเบียนคลิป YouTube หรือไฟล์ https ภายนอกได้เหมือนเดิม ไฟล์ภายนอกที่มีซับต้องเปิด CORS ที่ host
 
 ## ข้อจำกัดที่รู้แล้ว
 
+- WebM เล่นได้ใน Chrome, Edge, Firefox และ Android ส่วน Safari/iPhone รุ่นเก่าบางรุ่นอาจเล่นไม่ได้ (ยังไม่ได้ทดสอบบนอุปกรณ์จริง) ถ้าเจอปัญหา ให้เพิ่มไฟล์ MP4 สำรอง
 - iOS Safari อาจต้องแตะเล่นซ้ำอีกครั้งใน YouTube player
 - คลิปละหนึ่งตัวต่อ framework, ยังไม่มีบทย่อย (chapters) ที่กระโดดไปแต่ละขั้นตอน
 - ยังไม่มี structured data แบบ VideoObject สำหรับ search engine

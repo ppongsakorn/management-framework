@@ -2,6 +2,7 @@
 // and the rules a registered clip in data/videos.json must follow.
 // Used by scripts/video.mjs (CLI) and tests/videos.test.mjs. See docs/videos/README.md.
 import crypto from "node:crypto";
+import fs from "node:fs";
 import { renderDiagram } from "./diagram-renderer.mjs";
 
 export const BRIEF_VERSION = 1;
@@ -163,12 +164,34 @@ export function parseDuration(input) {
 }
 
 const HTTPS = /^https:\/\/[^\s"'<>]+$/;
+// Clips kept in the repo live in public/videos/ and are named by a path relative to the site
+// (e.g. "videos/5-whys.webm"). The page resolves it against the root build's base path, so the
+// comparison builds share one copy. Each file is capped so the repo and the Pages site stay small.
+export const SITE_MEDIA_DIR = "videos";
+export const MAX_FILE_MB = 20;
+const SITE_PATH = (ext) => new RegExp(`^${SITE_MEDIA_DIR}/[a-z0-9][a-z0-9.-]*\\.(${ext})$`);
+const VIDEO_PATH = SITE_PATH("webm|mp4"), POSTER_PATH = SITE_PATH("webp|jpg|jpeg|png"), VTT_PATH = SITE_PATH("vtt");
 const KEYS = new Set(["title", "durationSec", "lang", "aspect", "source", "poster", "captions", "madeWith", "briefHash", "note"]);
 
-/** Problems with one registered clip; an empty list means it may be published. */
-export function videoProblems(slug, v, slugs) {
+/**
+ * Problems with one registered clip ([] means it may be published). With `publicDir`, files kept in the
+ * repo must also exist there and stay under MAX_FILE_MB.
+ */
+export function videoProblems(slug, v, slugs, { publicDir } = {}) {
   const p = [];
   const need = (ok, msg) => ok || p.push(msg);
+  const local = (path, what) => {
+    if (!publicDir) return;
+    const file = `${publicDir}/${path}`;
+    if (!fs.existsSync(file)) return p.push(`${what}: ${path} is not in public/`);
+    const mb = fs.statSync(file).size / 1048576;
+    need(mb <= MAX_FILE_MB, `${what}: ${path} is ${mb.toFixed(1)} MB, over the ${MAX_FILE_MB} MB cap`);
+  };
+  const place = (value, re, ext, what) => {
+    if (HTTPS.test(value ?? "")) return need(new RegExp(`\\.(${ext})(\\?|$)`, "i").test(value), `${what}: an https URL to a .${ext.split("|").join(" or .")} file`);
+    if (re.test(value ?? "")) return local(value, what);
+    p.push(`${what}: an https URL, or a file in public/${SITE_MEDIA_DIR}/ named like ${SITE_MEDIA_DIR}/<slug>.${ext.split("|")[0]}`);
+  };
   need(slugs.has(slug), `unknown framework ${slug}`);
   if (!v || typeof v !== "object") return [...p, "entry must be an object"];
   for (const k of Object.keys(v)) need(KEYS.has(k), `unknown field ${k}`);
@@ -181,14 +204,13 @@ export function videoProblems(slug, v, slugs) {
     need(YT_ID.test(src.id ?? ""), "source.id: an 11-character YouTube id");
     need(!v.captions, "captions: YouTube clips use YouTube subtitles; captions is for self-hosted files");
   } else if (src.kind === "file") {
-    // Files live outside the repo: Pages builds the site several times over and caps it at 1 GB.
-    need(HTTPS.test(src.src ?? "") && /\.(mp4|webm)(\?|$)/i.test(src.src ?? ""), "source.src: an https URL to an .mp4 or .webm file");
+    place(src.src, VIDEO_PATH, "webm|mp4", "source.src");
   } else p.push("source.kind: youtube or file");
-  if (v.poster !== undefined) need(HTTPS.test(v.poster), "poster: an https URL");
+  if (v.poster !== undefined) place(v.poster, POSTER_PATH, "webp|jpg|jpeg|png", "poster");
   if (v.captions !== undefined) {
     need(Array.isArray(v.captions) && v.captions.length > 0, "captions: a non-empty list");
     for (const c of Array.isArray(v.captions) ? v.captions : []) {
-      need(HTTPS.test(c.src ?? "") && /\.vtt(\?|$)/i.test(c.src ?? ""), "captions[].src: an https URL to a .vtt file");
+      place(c.src, VTT_PATH, "vtt", "captions[].src");
       need(/^[a-z]{2}$/.test(c.lang ?? "") && typeof c.label === "string" && c.label.length > 0, "captions[]: lang and label");
     }
   }

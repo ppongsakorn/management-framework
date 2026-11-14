@@ -4,8 +4,8 @@
 //
 //   node scripts/video.mjs brief <slug…> | --all [--out .cache/video-briefs]
 //       writes <out>/<slug>/brief.json, brief.md and diagram.svg for the clip maker
-//   node scripts/video.mjs add <slug> (--youtube <id|url> | --file <https url>) --duration <m:ss>
-//       --tool <name> [--skill <name>] [--title <text>] [--poster <url>] [--captions <url.vtt>]
+//   node scripts/video.mjs add <slug> (--youtube <id|url> | --file <videos/x.webm | https url>) --duration <m:ss>
+//       --tool <name> [--skill <name>] [--title <text>] [--poster <videos/x.webp | url>] [--captions <videos/x.th.vtt | url>]
 //       [--aspect 16:9|9:16] [--date YYYY-MM-DD] [--no-ai] [--note <text>] [--hash <briefHash>]
 //       registers (or replaces) the clip of a framework in data/videos.json
 //   node scripts/video.mjs remove <slug>
@@ -17,6 +17,9 @@ import { parseArgs } from "node:util";
 import { briefHash, briefMarkdown, buildBrief, parseDuration, standaloneDiagram, videoProblems, youtubeId } from "./video-lib.mjs";
 
 const VIDEOS = "data/videos.json";
+const PUBLIC = "public";
+// "public/videos/x.webm" and "videos/x.webm" name the same file; the entry keeps the site-relative form
+const sitePath = (v) => (v && !/^https:/.test(v) ? v.replace(/^\.?\/?public\//, "") : v);
 const read = (f) => JSON.parse(fs.readFileSync(f, "utf8"));
 const { groups, frameworks } = read("data/frameworks.json");
 const useCases = read("data/use-cases.json");
@@ -84,7 +87,7 @@ if (cmd === "brief") {
     const id = youtubeId(values.youtube);
     if (!id) fail(`not a YouTube id or URL: ${values.youtube}`);
     source = { kind: "youtube", id };
-  } else source = { kind: "file", src: values.file };
+  } else source = { kind: "file", src: sitePath(values.file) };
   const current = briefHash(fw);
   if (values.hash && values.hash !== current) {
     console.warn(`video: warning: the clip was made from brief ${values.hash}, but ${fw.slug} has changed since (now ${current}); "check" will list it as outdated`);
@@ -95,13 +98,13 @@ if (cmd === "brief") {
     lang: values.lang,
     aspect: values.aspect,
     source,
-    ...(values.poster && { poster: values.poster }),
-    ...(values.captions && { captions: values.captions.map((src) => ({ src, lang: values.lang, label: values.lang === "th" ? "ไทย" : values.lang.toUpperCase() })) }),
+    ...(values.poster && { poster: sitePath(values.poster) }),
+    ...(values.captions && { captions: values.captions.map((src) => ({ src: sitePath(src), lang: values.lang, label: values.lang === "th" ? "ไทย" : values.lang.toUpperCase() })) }),
     madeWith: { tool: values.tool, ...(values.skill && { skill: values.skill }), date: values.date, ai: !values["no-ai"] },
     briefHash: values.hash ?? current,
     ...(values.note && { note: values.note }),
   };
-  const problems = videoProblems(fw.slug, entry, slugs);
+  const problems = videoProblems(fw.slug, entry, slugs, { publicDir: PUBLIC });
   if (problems.length) fail(`not registered:\n  - ${problems.join("\n  - ")}`);
   const videos = fs.existsSync(VIDEOS) ? read(VIDEOS) : {};
   const replaced = !!videos[fw.slug];
@@ -119,7 +122,7 @@ if (cmd === "brief") {
   const videos = read(VIDEOS);
   let bad = 0;
   for (const [slug, v] of Object.entries(videos)) {
-    const problems = videoProblems(slug, v, slugs);
+    const problems = videoProblems(slug, v, slugs, { publicDir: PUBLIC });
     if (problems.length) {
       bad++;
       console.log(`✗ ${slug}: ${problems.join("; ")}`);

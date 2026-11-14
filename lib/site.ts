@@ -3,8 +3,8 @@ import type { Variant } from "@/lib/search/types";
 /**
  * Build-time switches (see next.config.ts):
  * - basePath: set when the site is served from a sub-path, e.g. GitHub Pages `/<repo>`.
- * - assetBase: where the shared search assets (model, vectors, eval) live; the
- *   variant builds under /v0 … /v3 share the root site's copy.
+ * - assetBase: where the shared assets (search model, vectors, eval, explainer clips) live;
+ *   the variant builds under /v0 … /v3 share the root site's copy.
  * - envName: prd (main), stg or dev; the last two are previews with a banner and noindex.
  * - aiEnabled: false for the static export, which has no server for /api/chat.
  * - searchVariant: which search engine the catalogue uses (see lib/search/types.ts).

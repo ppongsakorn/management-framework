@@ -393,7 +393,7 @@ docker run -p 3000:3000 -e ANTHROPIC_API_KEY=... management-framework
 
 ### คลิปอธิบาย (videos)
 
-`data/videos.json` เก็บคลิปอธิบายของแต่ละ framework (YouTube หรือไฟล์ https ภายนอก ไฟล์วิดีโอไม่เข้า repo) คลิปทำด้วย skill/tool ภายนอกจาก brief ที่ repo สร้างให้ (`npm run video:brief -- <slug>`) แล้วลงทะเบียนด้วย `npm run video:add` ขั้นตอนและรูปแบบข้อมูลทั้งหมดอยู่ที่ [docs/videos/README.md](docs/videos/README.md)
+`data/videos.json` เก็บคลิปอธิบายของแต่ละ framework ตัวคลิปเก็บใน repo ที่ `public/videos/` เป็น WebM (ไม่เกิน 20 MB ต่อไฟล์) หรือจะเป็น YouTube / ไฟล์ https ภายนอกก็ได้ ภาพทำด้วย Claude Motion และเสียงพากย์ด้วย ElevenLabs จาก brief ที่ repo สร้างให้ (`npm run video:brief -- <slug>`) แล้วลงทะเบียนด้วย `npm run video:add` ขั้นตอนและรูปแบบข้อมูลทั้งหมดอยู่ที่ [docs/videos/README.md](docs/videos/README.md)
 
 ### บันทึกการอัปเดต (history log)
 

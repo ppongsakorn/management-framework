@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { formatDuration, watchUrl, type FrameworkVideo } from "@/lib/video";
+import { formatDuration, isExternal, mediaUrl, watchUrl, type FrameworkVideo } from "@/lib/video";
 
 const mime = (src: string) => (/\.webm(\?|$)/i.test(src) ? "video/webm" : "video/mp4");
 
@@ -15,6 +15,9 @@ export function VideoPlayer({ video, name }: { video: FrameworkVideo; name: stri
   const player = useRef<HTMLIFrameElement & HTMLVideoElement>(null);
   const len = formatDuration(video.durationSec);
   const { source } = video;
+  const poster = video.poster ? mediaUrl(video.poster) : undefined;
+  // Subtitles from another site need CORS there, so the player asks for it only in that case.
+  const cors = source.kind === "file" && !!video.captions?.length && [source.src, ...video.captions.map((c) => c.src)].some(isExternal);
 
   // The play button is replaced by the player; keep keyboard focus on it.
   useEffect(() => {
@@ -26,8 +29,8 @@ export function VideoPlayer({ video, name }: { video: FrameworkVideo; name: stri
       <div className="vid-frame">
         {!playing ? (
           <button type="button" className="vid-facade" onClick={() => setPlaying(true)} aria-label={`เล่นคลิปอธิบาย ${name} ยาว ${len} นาที`}>
-            {video.poster ? (
-              <img src={video.poster} alt="" loading="lazy" decoding="async" />
+            {poster ? (
+              <img src={poster} alt="" loading="lazy" decoding="async" />
             ) : (
               <span className="vid-name" aria-hidden="true">
                 {name}
@@ -52,11 +55,10 @@ export function VideoPlayer({ video, name }: { video: FrameworkVideo; name: stri
             referrerPolicy="strict-origin-when-cross-origin"
           />
         ) : (
-          // Cross-origin subtitles need CORS, so the player asks for it only when there are some.
-          <video ref={player} controls autoPlay playsInline preload="metadata" poster={video.poster} crossOrigin={video.captions ? "anonymous" : undefined}>
-            <source src={source.src} type={mime(source.src)} />
+          <video ref={player} controls autoPlay playsInline preload="metadata" poster={poster} crossOrigin={cors ? "anonymous" : undefined}>
+            <source src={mediaUrl(source.src)} type={mime(source.src)} />
             {video.captions?.map((c, i) => (
-              <track key={c.src} kind="subtitles" src={c.src} srcLang={c.lang} label={c.label} default={i === 0} />
+              <track key={c.src} kind="subtitles" src={mediaUrl(c.src)} srcLang={c.lang} label={c.label} default={i === 0} />
             ))}
           </video>
         )}
