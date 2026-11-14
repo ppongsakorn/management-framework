@@ -104,7 +104,7 @@ export default async function MobileFramework({ params }: { params: Promise<{ sl
             <ShareButton slug={fw.slug} title={fw.name} text={`${fw.name} — ${fw.when}`} kind="copy" />
           </div>
         </header>
-        {video && <VideoPlayer video={video} name={fw.name} />}
+        {video && <VideoPlayer video={video} size="mobile" name={fw.name} />}
         <MTabs tabs={tabs} />
         <nav className="m-pager" aria-label="ก่อนหน้า / ถัดไป">
           {prev ? (

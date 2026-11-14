@@ -22,7 +22,7 @@ export default async function MobileGroup({ params }: { params: Promise<{ group:
   const g = groups.find((x) => x.id === id);
   if (!g) notFound();
   const items = frameworksIn(g.id as GroupId);
-  const videos = videoLengths();
+  const videos = videoLengths("mobile");
   return (
     <div className={`g-${g.id}`}>
       <MTop back={{ href: "/mobile", label: "หน้าแรก" }} />

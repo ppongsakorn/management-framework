@@ -76,7 +76,7 @@ export default async function FrameworkPage({ params }: { params: Promise<{ slug
           {video && (
             <>
               <h2>คลิปอธิบาย</h2>
-              <VideoPlayer video={video} name={fw.name} />
+              <VideoPlayer video={video} size="desktop" name={fw.name} />
             </>
           )}
 

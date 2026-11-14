@@ -2,9 +2,10 @@
 // and the rules a registered clip in data/videos.json must follow.
 // Used by scripts/video.mjs (CLI) and tests/videos.test.mjs. See docs/videos/README.md.
 import crypto from "node:crypto";
+import fs from "node:fs";
 import { renderDiagram } from "./diagram-renderer.mjs";
 
-export const BRIEF_VERSION = 1;
+export const BRIEF_VERSION = 2;
 export const SITE_URL = "https://ppongsakorn.github.io/management-framework";
 
 /** Light-theme values of the CSS tokens in app/globals.css, so a diagram renders outside the site. */
@@ -52,7 +53,7 @@ export function buildBrief(fw, { groups, frameworks, useCases }) {
     { id: "idea", seconds: [8, 12], purpose: `บอกชื่อ ${fw.name} และหลักคิดในประโยคเดียว`, onScreen: `${fw.name} — ${fw.how}`, source: { name: fw.name, how: fw.how } },
     { id: "diagram", seconds: [10, 15], purpose: "พาดูแผนภาพ ชี้ทีละส่วนตามลำดับที่อ่าน", visual: "diagram.svg", source: { diagram: fw.diagram } },
     ...fw.steps.map((s, i) => ({ id: `step-${i + 1}`, seconds: [5, 9], purpose: `ขั้นที่ ${i + 1} จาก 5`, onScreen: s, source: { step: s } })),
-    { id: "example", seconds: [10, 15], purpose: "เล่าตัวอย่างงานทีมข้อมูล ต้องมีป้าย \"ตัวอย่างสมมติ\" บนจอตลอดฉาก", label: "ตัวอย่างสมมติ", onScreen: fw.example, source: { example: fw.example } },
+    { id: "example", seconds: [15, 25], purpose: "แต่งตัวอย่างสมมติจากธุรกิจที่คนทั่วไปเข้าใจง่าย (ร้านอาหาร โรงแรม ฟาร์ม ร้านค้า) ใช้โครงเดียวกับตัวอย่างใน source ซึ่งเป็นงานทีมข้อมูล ห้ามยกตัวอย่างทีมข้อมูลมาใช้ตรง ๆ ต้องมีป้าย \"ตัวอย่างสมมติ\" บนจอตลอดฉาก", label: "ตัวอย่างสมมติ", source: { example: fw.example } },
   ];
   if (kase) {
     scenes.push({
@@ -67,7 +68,7 @@ export function buildBrief(fw, { groups, frameworks, useCases }) {
   scenes.push({
     id: "close",
     seconds: [5, 8],
-    purpose: "ให้เครดิตที่มาของแนวคิด แล้วชวนไปอ่านต่อที่หน้าเว็บ" + (next ? ` และบอกตัวที่ใช้ต่อ (${next.name})` : ""),
+    purpose: "ให้เครดิตที่มาของแนวคิด ชวนไปดูวิธีเต็มที่หน้าเว็บ" + (next ? ` และทิ้งท้ายให้อยากดูตัวต่อไป (${next.name})` : "") + " แล้วบอกว่าคลิปสร้างด้วยเครื่องมือ AI",
     onScreen: `แนวคิดจาก: ${fw.origin}`,
     source: { origin: fw.origin, next: next ? { slug: next.slug, name: next.name } : null, pageUrl: `${SITE_URL}/frameworks/${fw.slug}/` },
   });
@@ -81,27 +82,28 @@ export function buildBrief(fw, { groups, frameworks, useCases }) {
     pageUrl: `${SITE_URL}/frameworks/${fw.slug}/`,
     target: {
       language: "th",
-      audience: "หัวหน้าทีมและคนทำงานสายข้อมูล ที่อยากรู้ว่าเมื่อไรควรใช้ framework นี้และใช้อย่างไรใน 1–2 นาที",
-      durationSec: { ideal: [60, 90], max: 120 },
-      aspect: "16:9",
-      tone: "ชัด กระชับ เป็นกันเอง เหมือนหัวหน้าทีมอธิบายให้ลูกทีมฟัง",
+      audience: "คนทั่วไปที่เลื่อนเจอบนโซเชียลหรือเปิดจากหน้าเว็บ อยากเข้าใจว่า framework นี้คืออะไร ใช้ตอนไหน ภายในราว 1 นาที",
+      durationSec: { ideal: [45, 75], max: 90 },
+      sizes: { desktop: "16:9 (1920×1080) สำหรับหน้าเว็บ", mobile: "9:16 (1080×1920) สำหรับแอปมือถือและโซเชียล ข้อความห่างขอบบน 250 ล่าง 420 ขวา 120 px" },
+      tone: "สนุก ตื่นเต้น ชวนค้นหา จังหวะเร็วแบบเกมโชว์สั้น ๆ แต่ข้อเท็จจริงตรงกับ brief และจบแบบอยากดู framework ตัวต่อไป",
     },
     scenes,
     rules: [
-      "เล่าด้วยคำของเราเอง จากข้อมูลใน scenes[].source เท่านั้น ห้ามเติมตัวเลข ชื่อคน ชื่อบริษัท หรือข้อเท็จจริงที่ไม่มีใน brief",
-      "ตัวอย่างในฉาก example เป็นสถานการณ์สมมติ ต้องมีป้าย \"ตัวอย่างสมมติ\" บนจอ ห้ามเล่าเหมือนเป็นเรื่องจริง",
+      "เล่าด้วยคำของเราเอง ข้อเท็จจริงของ framework (ชื่อ หลักคิด ขั้นตอน ที่มา กรณีจริง) มาจาก scenes[].source เท่านั้น ห้ามเติมตัวเลข ชื่อคน ชื่อบริษัท หรือข้อเท็จจริงที่ไม่มีใน brief",
+      "ฉาก example แต่งใหม่จากธุรกิจที่คนทั่วไปเข้าใจง่าย เป็นสถานการณ์สมมติ ต้องมีป้าย \"ตัวอย่างสมมติ\" บนจอ ห้ามเล่าเหมือนเป็นเรื่องจริง ห้ามใช้ชื่อร้านหรือแบรนด์จริง",
       "ฉาก case (ถ้าใช้) ต้องแสดงชื่อแหล่งอ้างอิงบนจอ ถ้ามี note ให้พูดข้อจำกัดของหลักฐานด้วย ผลลัพธ์ที่องค์กรรายงานเองห้ามพูดเหมือนเป็นข้อพิสูจน์",
-      "ห้ามใช้โลโก้ ปกหนังสือ ภาพหรือเสียงของบุคคลจริง และเพลงที่ไม่มีสิทธิ์ใช้ ภาพเป็นกราฟิกเรียบ ใช้สีกลุ่ม group.color บนพื้น group.background หรือขาว",
+      "ห้ามใช้โลโก้ ปกหนังสือ ภาพหรือเสียงของบุคคลจริง และเพลงที่ไม่มีสิทธิ์ใช้ ภาพเป็นกราฟิกสีสดได้ ไม่มีหน้าคนสมจริง",
       "คำอังกฤษในวงเล็บ เช่น (Time Boxing) ให้คงไว้บนจอ ตัวอักษรไทยใช้ฟอนต์ที่อ่านง่าย ไม่เล็กกว่า 4% ของความสูงภาพ",
-      "ใส่คำบรรยายภาษาไทย (ไฟล์ WebVTT แยก หรือ subtitle ของแพลตฟอร์ม) ให้ตรงกับเสียงพูด",
-      "ถ้าเสียงหรือภาพสร้างด้วย AI ให้บอกตอนลงทะเบียน (madeWith.ai) หน้าเว็บจะแสดงให้ผู้ชมเห็น",
+      "ทำ 2 ขนาดจากเรื่องเดียวกัน: 16:9 สำหรับหน้าเว็บ desktop และ 9:16 สำหรับมือถือและโซเชียล จัดภาพใหม่ทั้งคู่ ห้าม crop",
+      "ข้อความบนจอขึ้นตามเสียงพูดและใช้แทนซับ เพราะคนดูโซเชียลมักปิดเสียง",
+      "ถ้าเสียงหรือภาพสร้างด้วย AI ให้บอกในคลิปและตอนลงทะเบียน (madeWith.ai) หน้าเว็บจะแสดงให้ผู้ชมเห็น",
     ],
     deliver: {
-      video: "MP4 (H.264 + AAC) 1920×1080 30fps เปิด faststart หรืออัปโหลด YouTube แบบ Unlisted/Public",
-      poster: "JPG 1280×720 (ไม่บังคับ ถ้าไม่มี หน้าเว็บวาดปกให้เองจากชื่อและสีกลุ่ม)",
-      captions: "WebVTT ภาษาไทย (สำหรับไฟล์ MP4 ที่ host เอง; YouTube ใช้ subtitle ของ YouTube)",
-      hosting: "ห้ามใส่ไฟล์วิดีโอใน repo หรือ public/ ใช้ YouTube หรือที่เก็บไฟล์ที่ให้ URL แบบ https",
-      register: `npm run video:add -- ${fw.slug} --youtube <id หรือ URL> --duration <m:ss> --tool "<ชื่อเครื่องมือ>" --skill "<ชื่อ skill>" --title "<ชื่อคลิป>"`,
+      web: `WebM (VP9 + Opus) 30fps 2 ไฟล์ใน public/videos/: ${fw.slug}.webm (1920×1080) และ ${fw.slug}-mobile.webm (1080×1920) ไม่เกิน 20 MB ต่อไฟล์`,
+      poster: `WebP ${fw.slug}.webp (1280×720) และ ${fw.slug}-mobile.webp (720×1280)`,
+      social: "MP4 (H.264 + AAC, faststart) ทั้ง 2 ขนาด สำหรับ Facebook, Instagram, TikTok ไม่เข้า git โพสต์พร้อมลิงก์กลับหน้า framework (ติด utm_source ตามแพลตฟอร์ม)",
+      sound: "เสียงพากย์ เพลง และเสียงประกอบจาก ElevenLabs ผสมหลังเรนเดอร์ภาพ (Claude Motion ใส่ไฟล์เสียงเองไม่ได้)",
+      register: `npm run video:add -- ${fw.slug} --size desktop --file videos/${fw.slug}.webm --poster videos/${fw.slug}.webp --duration <m:ss> --tool "<ชื่อเครื่องมือ>" --hash ${briefHash(fw)} แล้วทำซ้ำด้วย --size mobile --file videos/${fw.slug}-mobile.webm --poster videos/${fw.slug}-mobile.webp`,
     },
   };
 }
@@ -115,7 +117,7 @@ export function briefMarkdown(b) {
     `- กลุ่ม: ${b.group.title} — ${b.group.question} · สี ${b.group.color} บนพื้น ${b.group.background}`,
     `- หน้าเว็บ: ${b.pageUrl}`,
     `- ผู้ชม: ${b.target.audience}`,
-    `- ความยาว: ${b.target.durationSec.ideal.join("–")} วินาที (ไม่เกิน ${b.target.durationSec.max}) · ภาพ ${b.target.aspect} · ภาษา ${b.target.language} · โทน: ${b.target.tone}`,
+    `- ความยาว: ${b.target.durationSec.ideal.join("–")} วินาที (ไม่เกิน ${b.target.durationSec.max}) · ขนาด ${Object.values(b.target.sizes).join(" และ ")} · ภาษา ${b.target.language} · โทน: ${b.target.tone}`,
     "",
     "## ฉาก",
     "",
@@ -163,33 +165,65 @@ export function parseDuration(input) {
 }
 
 const HTTPS = /^https:\/\/[^\s"'<>]+$/;
-const KEYS = new Set(["title", "durationSec", "lang", "aspect", "source", "poster", "captions", "madeWith", "briefHash", "note"]);
+// Clips kept in the repo live in public/videos/ and are named by a path relative to the site
+// (e.g. "videos/5-whys.webm"). The page resolves it against the root build's base path, so the
+// comparison builds share one copy. Each file is capped so the repo and the Pages site stay small.
+export const SITE_MEDIA_DIR = "videos";
+export const MAX_FILE_MB = 20;
+const SITE_PATH = (ext) => new RegExp(`^${SITE_MEDIA_DIR}/[a-z0-9][a-z0-9.-]*\\.(${ext})$`);
+const VIDEO_PATH = SITE_PATH("webm|mp4"), POSTER_PATH = SITE_PATH("webp|jpg|jpeg|png"), VTT_PATH = SITE_PATH("vtt");
+const KEYS = new Set(["lang", "desktop", "mobile", "madeWith", "briefHash", "note"]);
+const CLIP_KEYS = new Set(["title", "durationSec", "aspect", "source", "poster", "captions"]);
+/** Every framework's clip comes in both sizes: 16:9 for the desktop page, 9:16 for the phone app and social posts. */
+export const SIZES = { desktop: "16:9", mobile: "9:16" };
 
-/** Problems with one registered clip; an empty list means it may be published. */
-export function videoProblems(slug, v, slugs) {
+/**
+ * Problems with one registered clip ([] means it may be published). With `publicDir`, files kept in the
+ * repo must also exist there and stay under MAX_FILE_MB. `partial` lets `video:add` register one size first.
+ */
+export function videoProblems(slug, v, slugs, { publicDir, partial } = {}) {
   const p = [];
   const need = (ok, msg) => ok || p.push(msg);
+  const local = (path, what) => {
+    if (!publicDir) return;
+    const file = `${publicDir}/${path}`;
+    if (!fs.existsSync(file)) return p.push(`${what}: ${path} is not in public/`);
+    const mb = fs.statSync(file).size / 1048576;
+    need(mb <= MAX_FILE_MB, `${what}: ${path} is ${mb.toFixed(1)} MB, over the ${MAX_FILE_MB} MB cap`);
+  };
+  const place = (value, re, ext, what) => {
+    if (HTTPS.test(value ?? "")) return need(new RegExp(`\\.(${ext})(\\?|$)`, "i").test(value), `${what}: an https URL to a .${ext.split("|").join(" or .")} file`);
+    if (re.test(value ?? "")) return local(value, what);
+    p.push(`${what}: an https URL, or a file in public/${SITE_MEDIA_DIR}/ named like ${SITE_MEDIA_DIR}/<slug>.${ext.split("|")[0]}`);
+  };
   need(slugs.has(slug), `unknown framework ${slug}`);
   if (!v || typeof v !== "object") return [...p, "entry must be an object"];
   for (const k of Object.keys(v)) need(KEYS.has(k), `unknown field ${k}`);
-  need(typeof v.title === "string" && v.title.trim().length > 0 && v.title.length <= 80, "title: 1–80 characters");
-  need(Number.isInteger(v.durationSec) && v.durationSec >= 10 && v.durationSec <= 600, "durationSec: whole seconds, 10–600");
   need(/^[a-z]{2}$/.test(v.lang ?? ""), "lang: two-letter code, e.g. th");
-  need(["16:9", "9:16"].includes(v.aspect), "aspect: 16:9 or 9:16");
-  const src = v.source ?? {};
-  if (src.kind === "youtube") {
-    need(YT_ID.test(src.id ?? ""), "source.id: an 11-character YouTube id");
-    need(!v.captions, "captions: YouTube clips use YouTube subtitles; captions is for self-hosted files");
-  } else if (src.kind === "file") {
-    // Files live outside the repo: Pages builds the site several times over and caps it at 1 GB.
-    need(HTTPS.test(src.src ?? "") && /\.(mp4|webm)(\?|$)/i.test(src.src ?? ""), "source.src: an https URL to an .mp4 or .webm file");
-  } else p.push("source.kind: youtube or file");
-  if (v.poster !== undefined) need(HTTPS.test(v.poster), "poster: an https URL");
-  if (v.captions !== undefined) {
-    need(Array.isArray(v.captions) && v.captions.length > 0, "captions: a non-empty list");
-    for (const c of Array.isArray(v.captions) ? v.captions : []) {
-      need(HTTPS.test(c.src ?? "") && /\.vtt(\?|$)/i.test(c.src ?? ""), "captions[].src: an https URL to a .vtt file");
-      need(/^[a-z]{2}$/.test(c.lang ?? "") && typeof c.label === "string" && c.label.length > 0, "captions[]: lang and label");
+  for (const [size, aspect] of Object.entries(SIZES)) {
+    const c = v[size];
+    if (c === undefined) {
+      if (!partial) p.push(`${size}: every clip needs both sizes; the ${aspect} ${size} one is missing`);
+      continue;
+    }
+    if (!c || typeof c !== "object") { p.push(`${size}: must be an object`); continue; }
+    for (const k of Object.keys(c)) need(CLIP_KEYS.has(k), `${size}: unknown field ${k}`);
+    need(typeof c.title === "string" && c.title.trim().length > 0 && c.title.length <= 80, `${size}.title: 1–80 characters`);
+    need(Number.isInteger(c.durationSec) && c.durationSec >= 10 && c.durationSec <= 600, `${size}.durationSec: whole seconds, 10–600`);
+    need(c.aspect === aspect, `${size}.aspect: ${aspect}`);
+    const src = c.source ?? {};
+    if (src.kind === "youtube") {
+      need(YT_ID.test(src.id ?? ""), `${size}.source.id: an 11-character YouTube id`);
+      need(!c.captions, `${size}.captions: YouTube clips use YouTube subtitles; captions is for files`);
+    } else if (src.kind === "file") place(src.src, VIDEO_PATH, "webm|mp4", `${size}.source.src`);
+    else p.push(`${size}.source.kind: youtube or file`);
+    if (c.poster !== undefined) place(c.poster, POSTER_PATH, "webp|jpg|jpeg|png", `${size}.poster`);
+    if (c.captions !== undefined) {
+      need(Array.isArray(c.captions) && c.captions.length > 0, `${size}.captions: a non-empty list`);
+      for (const cap of Array.isArray(c.captions) ? c.captions : []) {
+        place(cap.src, VTT_PATH, "vtt", `${size}.captions[].src`);
+        need(/^[a-z]{2}$/.test(cap.lang ?? "") && typeof cap.label === "string" && cap.label.length > 0, `${size}.captions[]: lang and label`);
+      }
     }
   }
   const mw = v.madeWith ?? {};

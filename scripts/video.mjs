@@ -4,19 +4,22 @@
 //
 //   node scripts/video.mjs brief <slug…> | --all [--out .cache/video-briefs]
 //       writes <out>/<slug>/brief.json, brief.md and diagram.svg for the clip maker
-//   node scripts/video.mjs add <slug> (--youtube <id|url> | --file <https url>) --duration <m:ss>
-//       --tool <name> [--skill <name>] [--title <text>] [--poster <url>] [--captions <url.vtt>]
-//       [--aspect 16:9|9:16] [--date YYYY-MM-DD] [--no-ai] [--note <text>] [--hash <briefHash>]
-//       registers (or replaces) the clip of a framework in data/videos.json
+//   node scripts/video.mjs add <slug> --size desktop|mobile (--youtube <id|url> | --file <videos/x.webm | https url>)
+//       --duration <m:ss> --tool <name> [--skill <name>] [--title <text>] [--poster <videos/x.webp | url>]
+//       [--captions <videos/x.th.vtt | url>] [--date YYYY-MM-DD] [--no-ai] [--note <text>] [--hash <briefHash>]
+//       registers (or replaces) one size of a framework's clip in data/videos.json; every clip needs both sizes
 //   node scripts/video.mjs remove <slug>
 //   node scripts/video.mjs check
 //       lists clips made from an older version of their framework, and frameworks without a clip
 import fs from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
-import { briefHash, briefMarkdown, buildBrief, parseDuration, standaloneDiagram, videoProblems, youtubeId } from "./video-lib.mjs";
+import { SIZES, briefHash, briefMarkdown, buildBrief, parseDuration, standaloneDiagram, videoProblems, youtubeId } from "./video-lib.mjs";
 
 const VIDEOS = "data/videos.json";
+const PUBLIC = "public";
+// "public/videos/x.webm" and "videos/x.webm" name the same file; the entry keeps the site-relative form
+const sitePath = (v) => (v && !/^https:/.test(v) ? v.replace(/^\.?\/?public\//, "") : v);
 const read = (f) => JSON.parse(fs.readFileSync(f, "utf8"));
 const { groups, frameworks } = read("data/frameworks.json");
 const useCases = read("data/use-cases.json");
@@ -61,6 +64,7 @@ if (cmd === "brief") {
     args: rest,
     allowPositionals: true,
     options: {
+      size: { type: "string" },
       youtube: { type: "string" },
       file: { type: "string" },
       duration: { type: "string" },
@@ -69,7 +73,6 @@ if (cmd === "brief") {
       title: { type: "string" },
       poster: { type: "string" },
       captions: { type: "string", multiple: true },
-      aspect: { type: "string", default: "16:9" },
       lang: { type: "string", default: "th" },
       date: { type: "string", default: new Date().toISOString().slice(0, 10) },
       "no-ai": { type: "boolean" },
@@ -84,30 +87,38 @@ if (cmd === "brief") {
     const id = youtubeId(values.youtube);
     if (!id) fail(`not a YouTube id or URL: ${values.youtube}`);
     source = { kind: "youtube", id };
-  } else source = { kind: "file", src: values.file };
+  } else source = { kind: "file", src: sitePath(values.file) };
   const current = briefHash(fw);
   if (values.hash && values.hash !== current) {
     console.warn(`video: warning: the clip was made from brief ${values.hash}, but ${fw.slug} has changed since (now ${current}); "check" will list it as outdated`);
   }
-  const entry = {
+  if (!SIZES[values.size]) fail("give --size desktop (16:9) or --size mobile (9:16)");
+  const clip = {
     title: values.title ?? `${fw.name} ใน ${Math.round(parseDuration(values.duration) / 60) || 1} นาที`,
     durationSec: parseDuration(values.duration),
-    lang: values.lang,
-    aspect: values.aspect,
+    aspect: SIZES[values.size],
     source,
-    ...(values.poster && { poster: values.poster }),
-    ...(values.captions && { captions: values.captions.map((src) => ({ src, lang: values.lang, label: values.lang === "th" ? "ไทย" : values.lang.toUpperCase() })) }),
+    ...(values.poster && { poster: sitePath(values.poster) }),
+    ...(values.captions && { captions: values.captions.map((src) => ({ src: sitePath(src), lang: values.lang, label: values.lang === "th" ? "ไทย" : values.lang.toUpperCase() })) }),
+  };
+  const videos = fs.existsSync(VIDEOS) ? read(VIDEOS) : {};
+  const old = videos[fw.slug] ?? {};
+  // shared facts follow the latest registration; the other size is kept as it was
+  const entry = {
+    lang: values.lang,
+    desktop: values.size === "desktop" ? clip : old.desktop,
+    mobile: values.size === "mobile" ? clip : old.mobile,
     madeWith: { tool: values.tool, ...(values.skill && { skill: values.skill }), date: values.date, ai: !values["no-ai"] },
     briefHash: values.hash ?? current,
-    ...(values.note && { note: values.note }),
+    ...((values.note ?? old.note) && { note: values.note ?? old.note }),
   };
-  const problems = videoProblems(fw.slug, entry, slugs);
+  Object.keys(entry).forEach((k) => entry[k] === undefined && delete entry[k]);
+  const problems = videoProblems(fw.slug, entry, slugs, { publicDir: PUBLIC, partial: true });
   if (problems.length) fail(`not registered:\n  - ${problems.join("\n  - ")}`);
-  const videos = fs.existsSync(VIDEOS) ? read(VIDEOS) : {};
-  const replaced = !!videos[fw.slug];
   videos[fw.slug] = entry;
   save(videos);
-  console.log(`${replaced ? "replaced" : "added"} ${fw.slug} in ${VIDEOS}; next: npm test, then add a data/changelog.json entry`);
+  const other = values.size === "desktop" ? "mobile" : "desktop";
+  console.log(`${values.size} clip of ${fw.slug} saved in ${VIDEOS}` + (entry[other] ? "; next: npm test, then add a data/changelog.json entry" : `; now add the ${other} size (${SIZES[other]}) — npm test fails until both are there`));
 } else if (cmd === "remove") {
   const videos = read(VIDEOS);
   const slug = rest[0];
@@ -119,7 +130,7 @@ if (cmd === "brief") {
   const videos = read(VIDEOS);
   let bad = 0;
   for (const [slug, v] of Object.entries(videos)) {
-    const problems = videoProblems(slug, v, slugs);
+    const problems = videoProblems(slug, v, slugs, { publicDir: PUBLIC });
     if (problems.length) {
       bad++;
       console.log(`✗ ${slug}: ${problems.join("; ")}`);

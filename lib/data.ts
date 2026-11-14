@@ -2,7 +2,7 @@ import raw from "@/data/frameworks.json";
 import diagrams from "@/data/diagrams.json";
 import useCases from "@/data/use-cases.json";
 import videos from "@/data/videos.json";
-import type { FrameworkVideo } from "@/lib/video";
+import type { ClipSize, FrameworkVideo } from "@/lib/video";
 
 export type GroupId = "diag" | "dec" | "plan" | "exec" | "ppl" | "think";
 
@@ -80,12 +80,12 @@ export function getUseCases(slug: string): UseCase[] {
   return (useCases as Record<string, UseCase[]>)[slug] ?? [];
 }
 
-/** The explainer clip of a framework, if one has been made (data/videos.json). */
+/** The explainer clip of a framework (both sizes), if one has been made (data/videos.json). */
 export function getVideo(slug: string): FrameworkVideo | undefined {
   return (videos as unknown as Record<string, FrameworkVideo>)[slug];
 }
 
 /** slug → clip length in seconds, for the "has a clip" marks in lists. */
-export function videoLengths(): Record<string, number> {
-  return Object.fromEntries(Object.entries(videos as unknown as Record<string, FrameworkVideo>).map(([s, v]) => [s, v.durationSec]));
+export function videoLengths(size: ClipSize = "desktop"): Record<string, number> {
+  return Object.fromEntries(Object.entries(videos as unknown as Record<string, FrameworkVideo>).map(([s, v]) => [s, v[size].durationSec]));
 }
