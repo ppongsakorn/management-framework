@@ -1,6 +1,7 @@
 import type { Framework, Group, UseCase } from "@/lib/data";
 import { tokenize } from "@/lib/search/tokenize";
 import { assetBase, basePath, searchVariant } from "@/lib/site";
+import { watchUrl, type FrameworkVideo } from "@/lib/video";
 
 /**
  * WebMCP tools (document.modelContext, W3C WebML CG draft). Every tool is
@@ -21,6 +22,7 @@ interface Data {
   frameworks: Framework[];
   groups: Group[];
   useCases: Record<string, UseCase[]>;
+  videos: Record<string, FrameworkVideo>;
   bySlug: Map<string, Framework>;
   search: (q: string) => { slug: string; score: number; why?: string }[];
 }
@@ -28,12 +30,13 @@ interface Data {
 let loading: Promise<Data> | null = null;
 function load(): Promise<Data> {
   loading ??= (async () => {
-    const [fw, uc, ph, { phraseEngine }] = await Promise.all([import("@/data/frameworks.json"), import("@/data/use-cases.json"), import("@/data/search-phrases.json"), import("@/lib/search/lexical")]);
+    const [fw, uc, vid, ph, { phraseEngine }] = await Promise.all([import("@/data/frameworks.json"), import("@/data/use-cases.json"), import("@/data/videos.json"), import("@/data/search-phrases.json"), import("@/lib/search/lexical")]);
     const frameworks = fw.default.frameworks as unknown as Framework[];
     return {
       frameworks,
       groups: fw.default.groups as unknown as Group[],
       useCases: uc.default as unknown as Record<string, UseCase[]>,
+      videos: vid.default as unknown as Record<string, FrameworkVideo>,
       bySlug: new Map(frameworks.map((f) => [f.slug, f])),
       search: phraseEngine(frameworks, ph.default as Record<string, string[]>),
     };
@@ -169,14 +172,16 @@ export function buildTools(): ModelContextTool[] {
     {
       name: "get_framework",
       title: "รายละเอียด framework",
-      description: "Get one framework by slug: when to use it, how it works in one line, its five steps, a worked example, where the idea comes from and which frameworks to use before, alongside and after it.",
+      description: "Get one framework by slug: when to use it, how it works in one line, its five steps, a worked example, where the idea comes from, which frameworks to use before, alongside and after it, and its explainer clip (title, length, watch URL) when one exists.",
       inputSchema: { type: "object", properties: { slug: { type: "string", description: "Framework slug, e.g. '5-whys' (from search_frameworks or list_frameworks)" } }, required: ["slug"] },
       annotations: { readOnlyHint: true },
       execute: async ({ slug }) => {
         const d = await load();
         const f = d.bySlug.get(str(slug));
         if (!f) return unknownSlug(slug);
-        return { ...summary(f), steps: f.steps, example: f.example, origin: f.origin, related: f.related ?? {}, useCaseCount: (d.useCases[f.slug] ?? []).length };
+        const v = d.videos[f.slug];
+        const video = v ? { title: v.title, durationSec: v.durationSec, url: watchUrl(v), aiGenerated: v.madeWith.ai } : null;
+        return { ...summary(f), steps: f.steps, example: f.example, origin: f.origin, related: f.related ?? {}, useCaseCount: (d.useCases[f.slug] ?? []).length, video };
       },
     },
     {

@@ -6,7 +6,8 @@ import { Diagram } from "@/components/Diagram";
 import { ShareButton } from "@/components/ShareButton";
 import { RelatedFrameworks } from "@/components/RelatedFrameworks";
 import { UseCases } from "@/components/UseCases";
-import { frameworks, frameworksIn, getDiagram, getFramework, getGroup, getUseCases } from "@/lib/data";
+import { VideoPlayer } from "@/components/VideoPlayer";
+import { frameworks, frameworksIn, getDiagram, getFramework, getGroup, getUseCases, getVideo } from "@/lib/data";
 import { aiEnabled } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -27,6 +28,7 @@ export default async function FrameworkPage({ params }: { params: Promise<{ slug
   const group = getGroup(fw.group);
   const svg = getDiagram(fw.slug);
   const cases = getUseCases(fw.slug);
+  const video = getVideo(fw.slug);
   const siblings = frameworksIn(fw.group).filter((f) => f.slug !== fw.slug);
   const idx = frameworks.findIndex((f) => f.slug === fw.slug);
   const prev = frameworks[idx - 1];
@@ -71,6 +73,13 @@ export default async function FrameworkPage({ params }: { params: Promise<{ slug
 
       <div className={aiEnabled ? "fw-layout" : "fw-layout solo"}>
         <article className="fw-main">
+          {video && (
+            <>
+              <h2>คลิปอธิบาย</h2>
+              <VideoPlayer video={video} name={fw.name} />
+            </>
+          )}
+
           {svg && (
             <>
               <h2>แผนภาพตัวอย่าง</h2>

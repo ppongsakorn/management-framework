@@ -87,3 +87,6 @@
 .m-app .case dt { padding-top: 6px; }
 
 .m-top .m-action { margin-left: auto; display: flex; align-items: center; }
+
+.m-fw .vid { margin: 0 0 16px; }
+.m-row-main small.m-vid { color: var(--c); font-weight: 600; font-size: 12.5px; }

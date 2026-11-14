@@ -7,7 +7,8 @@ import { ShareButton } from "@/components/ShareButton";
 import { RelatedFrameworks } from "@/components/RelatedFrameworks";
 import { MTop } from "@/components/mobile/MTop";
 import { UseCases } from "@/components/UseCases";
-import { frameworks, frameworksIn, getDiagram, getFramework, getGroup, getUseCases } from "@/lib/data";
+import { VideoPlayer } from "@/components/VideoPlayer";
+import { frameworks, frameworksIn, getDiagram, getFramework, getGroup, getUseCases, getVideo } from "@/lib/data";
 
 export const dynamicParams = false;
 
@@ -26,6 +27,7 @@ export default async function MobileFramework({ params }: { params: Promise<{ sl
   const group = getGroup(fw.group);
   const svg = getDiagram(fw.slug);
   const cases = getUseCases(fw.slug);
+  const video = getVideo(fw.slug);
   const siblings = frameworksIn(fw.group);
   const i = siblings.findIndex((f) => f.slug === fw.slug);
   const prev = siblings[i - 1];
@@ -102,6 +104,7 @@ export default async function MobileFramework({ params }: { params: Promise<{ sl
             <ShareButton slug={fw.slug} title={fw.name} text={`${fw.name} — ${fw.when}`} kind="copy" />
           </div>
         </header>
+        {video && <VideoPlayer video={video} name={fw.name} />}
         <MTabs tabs={tabs} />
         <nav className="m-pager" aria-label="ก่อนหน้า / ถัดไป">
           {prev ? (

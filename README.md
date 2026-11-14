@@ -391,6 +391,10 @@ docker run -p 3000:3000 -e ANTHROPIC_API_KEY=... management-framework
 
 กรณีที่ไม่ได้ติด `disputed` จะถูกส่งให้ที่ปรึกษา AI ด้วย เพื่อให้ยกตัวอย่างจากกรณีจริงแทนการแต่งเอง
 
+### คลิปอธิบาย (videos)
+
+`data/videos.json` เก็บคลิปอธิบายของแต่ละ framework (YouTube หรือไฟล์ https ภายนอก ไฟล์วิดีโอไม่เข้า repo) คลิปทำด้วย skill/tool ภายนอกจาก brief ที่ repo สร้างให้ (`npm run video:brief -- <slug>`) แล้วลงทะเบียนด้วย `npm run video:add` ขั้นตอนและรูปแบบข้อมูลทั้งหมดอยู่ที่ [docs/videos/README.md](docs/videos/README.md)
+
 ### บันทึกการอัปเดต (history log)
 
 ทุกครั้งที่เพิ่มหรือแก้เนื้อหา/ฟีเจอร์ ให้เพิ่มรายการไว้บนสุดของ `data/changelog.json` (เรียงจากล่าสุด) รายการจะแสดงที่หน้า `/updates` ในกล่อง "อัปเดตล่าสุด" บนหน้าแรก และในแท็บอัปเดตของแอปมือถือ
