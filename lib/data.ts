@@ -13,6 +13,15 @@ export interface Group {
   why: string;
 }
 
+/** One row of a step-by-step example: `q` is the question on the arrow into it, `k` its label, `hl` marks the key row. */
+export interface ExampleStep {
+  q?: string;
+  k?: string;
+  t: string;
+  note?: string;
+  hl?: boolean;
+}
+
 export interface Framework {
   slug: string;
   name: string;
@@ -20,7 +29,10 @@ export interface Framework {
   when: string;
   how: string;
   steps: string[];
+  /** Plain text read by search, the AI advisor and WebMCP. With `exampleSteps` it must be their flattened form (a test checks). */
   example: string;
+  /** Optional: the example as a chain of rows, shown instead of the paragraph. */
+  exampleSteps?: ExampleStep[];
   /** Discipline the idea comes from, plus its originator when widely credited. */
   origin: string;
   /** Other frameworks to use first, alongside, or next (slugs). */

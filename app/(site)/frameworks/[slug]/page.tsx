@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Chat } from "@/components/Chat";
 import { Diagram } from "@/components/Diagram";
+import { Example } from "@/components/Example";
 import { ShareButton } from "@/components/ShareButton";
 import { RelatedFrameworks } from "@/components/RelatedFrameworks";
 import { UseCases } from "@/components/UseCases";
@@ -95,7 +96,7 @@ export default async function FrameworkPage({ params }: { params: Promise<{ slug
           </ol>
 
           <h2>ตัวอย่างสถานการณ์</h2>
-          <p className="example">{fw.example}</p>
+          <Example fw={fw} paragraphClass="example" />
           <p className="source">แนวคิดจาก: {fw.origin}</p>
 
           {cases.length > 0 && (

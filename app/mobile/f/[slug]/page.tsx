@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Diagram } from "@/components/Diagram";
+import { Example } from "@/components/Example";
 import { MTabs } from "@/components/mobile/MTabs";
 import { ShareButton } from "@/components/ShareButton";
 import { RelatedFrameworks } from "@/components/RelatedFrameworks";
@@ -66,7 +67,7 @@ export default async function MobileFramework({ params }: { params: Promise<{ sl
       label: "ตัวอย่าง",
       content: (
         <>
-          <p className="m-example">{fw.example}</p>
+          <Example fw={fw} paragraphClass="m-example" />
           <p className="m-origin">แนวคิดจาก: {fw.origin}</p>
           {fw.related && (
             <>

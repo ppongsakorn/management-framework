@@ -153,6 +153,18 @@ button, input, textarea { font: inherit; color: inherit; }
 .steps li { counter-increment: s; display: grid; grid-template-columns: 32px 1fr; gap: 10px; align-items: start; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
 .steps li::before { content: counter(s); width: 28px; height: 28px; border-radius: 50%; background: var(--c); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: 14px; }
 .example { background: var(--cbg); border-radius: 10px; padding: 14px 16px; line-height: 1.7; }
+/* Step-by-step example (exampleSteps): cards joined by down arrows, each arrow labelled with the question that leads to the next card. */
+.ex-chain { list-style: none; margin: 0; padding: 14px; background: var(--cbg); border-radius: 10px; }
+.ex-card { display: grid; gap: 2px; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; line-height: 1.6; }
+.ex-k { font-size: 13px; font-weight: 700; color: var(--c); }
+.ex-t { font-size: 16px; }
+.ex-note { font-size: 13.5px; color: var(--ink2); }
+.ex-q { position: relative; display: flex; align-items: center; min-height: 34px; padding-left: 40px; font-size: 13.5px; font-weight: 700; color: var(--c); }
+.ex-q::before { content: ""; position: absolute; left: 24px; top: 0; bottom: 6px; width: 2px; background: var(--c); }
+.ex-q::after { content: ""; position: absolute; left: 20px; bottom: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 7px solid var(--c); }
+.ex-chain .hl .ex-card { border: 2px solid var(--c); }
+.ex-chain .hl .ex-k { justify-self: start; background: var(--c); color: var(--paper); border-radius: 999px; padding: 0 10px; }
+.ex-chain .hl .ex-t { font-weight: 600; }
 .source { font-size: 13.5px; color: var(--ink2); margin-top: 18px; }
 .related { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
 .related a { text-decoration: none; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 9px 12px; font-size: 14px; }
