@@ -153,6 +153,18 @@ button, input, textarea { font: inherit; color: inherit; }
 .steps li { counter-increment: s; display: grid; grid-template-columns: 32px 1fr; gap: 10px; align-items: start; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
 .steps li::before { content: counter(s); width: 28px; height: 28px; border-radius: 50%; background: var(--c); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: 14px; }
 .example { background: var(--cbg); border-radius: 10px; padding: 14px 16px; line-height: 1.7; }
+/* Step-by-step example (exampleSteps): cards joined by down arrows, each arrow labelled with the question that leads to the next card. */
+.ex-chain { list-style: none; margin: 0; padding: 14px; background: var(--cbg); border-radius: 10px; }
+.ex-card { display: grid; gap: 2px; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; line-height: 1.6; }
+.ex-k { font-size: 13px; font-weight: 700; color: var(--c); }
+.ex-t { font-size: 16px; }
+.ex-note { font-size: 13.5px; color: var(--ink2); }
+.ex-q { position: relative; display: flex; align-items: center; min-height: 34px; padding-left: 40px; font-size: 13.5px; font-weight: 700; color: var(--c); }
+.ex-q::before { content: ""; position: absolute; left: 24px; top: 0; bottom: 6px; width: 2px; background: var(--c); }
+.ex-q::after { content: ""; position: absolute; left: 20px; bottom: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 7px solid var(--c); }
+.ex-chain .hl .ex-card { border: 2px solid var(--c); }
+.ex-chain .hl .ex-k { justify-self: start; background: var(--c); color: var(--paper); border-radius: 999px; padding: 0 10px; }
+.ex-chain .hl .ex-t { font-weight: 600; }
 .source { font-size: 13.5px; color: var(--ink2); margin-top: 18px; }
 .related { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
 .related a { text-decoration: none; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 9px 12px; font-size: 14px; }
@@ -367,3 +379,23 @@ button, input, textarea { font: inherit; color: inherit; }
 .share-toast { position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom) + 84px); transform: translate(-50%, 12px); max-width: calc(100vw - 32px); padding: 10px 18px; border-radius: 999px; background: var(--ink); color: var(--bg); font-size: 14.5px; font-weight: 600; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; z-index: 60; }
 .share-toast.show { opacity: 1; transform: translate(-50%, 0); }
 @media (prefers-reduced-motion: reduce) { .share-toast { transition: none; } }
+
+/* Explainer clip (components/VideoPlayer.tsx): a poster until play, then the player */
+.vid { margin: 0 0 4px; }
+.vid-frame { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #000; }
+.vid-tall .vid-frame { aspect-ratio: 9 / 16; max-width: 360px; margin: 0 auto; }
+.vid-frame > iframe, .vid-frame > video, .vid-facade { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.vid-facade { padding: 0; margin: 0; cursor: pointer; background: var(--cbg); color: var(--c); font: inherit; }
+.vid-facade img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.vid-name { position: absolute; left: 6%; right: 6%; top: 9%; font-size: clamp(20px, 3.4vw, 32px); font-weight: 700; line-height: 1.2; text-align: left; overflow-wrap: anywhere; }
+.vid-play { position: absolute; left: 50%; top: 50%; width: 68px; height: 68px; margin: -34px 0 0 -34px; border-radius: 50%; display: grid; place-items: center; background: var(--c); color: var(--paper); box-shadow: 0 4px 18px rgb(0 0 0 / 0.25); transition: transform 0.15s; }
+.vid-play svg { margin-left: 3px; }
+.vid-facade:hover .vid-play, .vid-facade:focus-visible .vid-play { transform: scale(1.08); }
+.vid-facade:focus-visible { outline: 3px solid var(--c); outline-offset: -3px; }
+.vid-len { position: absolute; right: 10px; bottom: 10px; padding: 2px 8px; border-radius: 6px; background: rgb(0 0 0 / 0.72); color: #fff; font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.vid-cap { display: grid; gap: 2px; margin-top: 8px; font-size: 13px; color: var(--ink2); }
+.vid-cap b { color: var(--ink); font-size: 14.5px; font-weight: 600; }
+.vid-cap a { color: inherit; }
+.vid-cap a:hover { color: var(--c); }
+@media (prefers-reduced-motion: reduce) { .vid-play { transition: none; } }
+.card-vid { align-self: flex-start; font-size: 12px; font-weight: 600; color: var(--c); background: var(--cbg); border-radius: 999px; padding: 1px 9px; }

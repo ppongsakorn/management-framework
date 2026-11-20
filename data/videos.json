@@ -1,0 +1,31 @@
+{
+  "5-whys": {
+    "lang": "th",
+    "desktop": {
+      "title": "5 Whys: ถามทำไม 5 ชั้น จนเจอราก",
+      "durationSec": 70,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/5-whys.webm"
+      },
+      "poster": "videos/5-whys.webp"
+    },
+    "mobile": {
+      "title": "5 Whys: ถามทำไม 5 ชั้น จนเจอราก",
+      "durationSec": 70,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/5-whys-mobile.webm"
+      },
+      "poster": "videos/5-whys-mobile.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-15",
+      "ai": true
+    },
+    "briefHash": "9e89cd06c1bf"
+  }
+}
