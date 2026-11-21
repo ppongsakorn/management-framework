@@ -12,18 +12,18 @@
       "poster": "videos/5-whys.webp"
     },
     "mobile": {
-      "title": "5 Whys: ถามทำไม 5 ชั้น จนเจอราก",
-      "durationSec": 70,
+      "title": "5 Whys: คดีอาหารช้าทุกเสาร์ ใครผิด?",
+      "durationSec": 58,
       "aspect": "9:16",
       "source": {
         "kind": "file",
-        "src": "videos/5-whys-mobile.webm"
+        "src": "videos/5-whys-case-mobile.webm"
       },
-      "poster": "videos/5-whys-mobile.webp"
+      "poster": "videos/5-whys-case-mobile.webp"
     },
     "madeWith": {
       "tool": "Claude Motion + ElevenLabs",
-      "date": "2026-11-15",
+      "date": "2026-11-21",
       "ai": true
     },
     "briefHash": "9e89cd06c1bf"
