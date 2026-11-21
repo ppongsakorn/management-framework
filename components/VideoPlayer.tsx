@@ -67,17 +67,13 @@ export function VideoPlayer({ video, size, name }: { video: FrameworkVideo; size
       </div>
       <figcaption className="vid-cap">
         <b>{clip.title}</b>
-        <span>
-          {len} นาที · {video.madeWith.ai ? `สร้างด้วยเครื่องมือ AI (${video.madeWith.tool})` : `ผลิตด้วย ${video.madeWith.tool}`}
-          {source.kind === "youtube" && (
-            <>
-              {" · "}
-              <a href={watchUrl(clip)} target="_blank" rel="noopener noreferrer">
-                เปิดใน YouTube
-              </a>
-            </>
-          )}
-        </span>
+        {source.kind === "youtube" && (
+          <span>
+            <a href={watchUrl(clip)} target="_blank" rel="noopener noreferrer">
+              เปิดใน YouTube
+            </a>
+          </span>
+        )}
         {video.note && <span>{video.note}</span>}
       </figcaption>
     </figure>
