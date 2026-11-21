@@ -2,14 +2,14 @@
   "5-whys": {
     "lang": "th",
     "desktop": {
-      "title": "5 Whys: ถามทำไม 5 ชั้น จนเจอราก",
-      "durationSec": 70,
+      "title": "5 Whys: คดีอาหารช้าทุกเสาร์ ใครผิด?",
+      "durationSec": 58,
       "aspect": "16:9",
       "source": {
         "kind": "file",
-        "src": "videos/5-whys.webm"
+        "src": "videos/5-whys-case.webm"
       },
-      "poster": "videos/5-whys.webp"
+      "poster": "videos/5-whys-case.webp"
     },
     "mobile": {
       "title": "5 Whys: คดีอาหารช้าทุกเสาร์ ใครผิด?",
