@@ -3,9 +3,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Chat } from "@/components/Chat";
 import { Diagram } from "@/components/Diagram";
+import { Example } from "@/components/Example";
+import { ShareButton } from "@/components/ShareButton";
 import { RelatedFrameworks } from "@/components/RelatedFrameworks";
 import { UseCases } from "@/components/UseCases";
-import { frameworks, frameworksIn, getDiagram, getFramework, getGroup, getUseCases } from "@/lib/data";
+import { VideoPlayer } from "@/components/VideoPlayer";
+import { frameworks, frameworksIn, getDiagram, getFramework, getGroup, getUseCases, getVideo } from "@/lib/data";
 import { aiEnabled } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -26,6 +29,7 @@ export default async function FrameworkPage({ params }: { params: Promise<{ slug
   const group = getGroup(fw.group);
   const svg = getDiagram(fw.slug);
   const cases = getUseCases(fw.slug);
+  const video = getVideo(fw.slug);
   const siblings = frameworksIn(fw.group).filter((f) => f.slug !== fw.slug);
   const idx = frameworks.findIndex((f) => f.slug === fw.slug);
   const prev = frameworks[idx - 1];
@@ -57,6 +61,10 @@ export default async function FrameworkPage({ params }: { params: Promise<{ slug
         <h1>{fw.name}</h1>
         <div className="when">{fw.when}</div>
         <p className="how">{fw.how}</p>
+        <div className="share-row">
+          <ShareButton slug={fw.slug} title={fw.name} text={`${fw.name} — ${fw.when}`} kind="share" />
+          <ShareButton slug={fw.slug} title={fw.name} text={`${fw.name} — ${fw.when}`} kind="copy" />
+        </div>
         {aiEnabled && (
           <a href="#ask-ai" className="jump-ai">
             ถาม AI เกี่ยวกับ {fw.name} ↓
@@ -66,6 +74,13 @@ export default async function FrameworkPage({ params }: { params: Promise<{ slug
 
       <div className={aiEnabled ? "fw-layout" : "fw-layout solo"}>
         <article className="fw-main">
+          {video && (
+            <>
+              <h2>คลิปอธิบาย</h2>
+              <VideoPlayer video={video} size="desktop" name={fw.name} />
+            </>
+          )}
+
           {svg && (
             <>
               <h2>แผนภาพตัวอย่าง</h2>
@@ -81,7 +96,7 @@ export default async function FrameworkPage({ params }: { params: Promise<{ slug
           </ol>
 
           <h2>ตัวอย่างสถานการณ์</h2>
-          <p className="example">{fw.example}</p>
+          <Example fw={fw} paragraphClass="example" />
           <p className="source">แนวคิดจาก: {fw.origin}</p>
 
           {cases.length > 0 && (

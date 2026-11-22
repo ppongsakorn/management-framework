@@ -1,6 +1,7 @@
 import type { Framework, Group, UseCase } from "@/lib/data";
 import { tokenize } from "@/lib/search/tokenize";
 import { assetBase, basePath, searchVariant } from "@/lib/site";
+import { watchUrl, type FrameworkVideo } from "@/lib/video";
 
 /**
  * WebMCP tools (document.modelContext, W3C WebML CG draft). Every tool is
@@ -21,6 +22,7 @@ interface Data {
   frameworks: Framework[];
   groups: Group[];
   useCases: Record<string, UseCase[]>;
+  videos: Record<string, FrameworkVideo>;
   bySlug: Map<string, Framework>;
   search: (q: string) => { slug: string; score: number; why?: string }[];
 }
@@ -28,12 +30,13 @@ interface Data {
 let loading: Promise<Data> | null = null;
 function load(): Promise<Data> {
   loading ??= (async () => {
-    const [fw, uc, ph, { phraseEngine }] = await Promise.all([import("@/data/frameworks.json"), import("@/data/use-cases.json"), import("@/data/search-phrases.json"), import("@/lib/search/lexical")]);
+    const [fw, uc, vid, ph, { phraseEngine }] = await Promise.all([import("@/data/frameworks.json"), import("@/data/use-cases.json"), import("@/data/videos.json"), import("@/data/search-phrases.json"), import("@/lib/search/lexical")]);
     const frameworks = fw.default.frameworks as unknown as Framework[];
     return {
       frameworks,
       groups: fw.default.groups as unknown as Group[],
       useCases: uc.default as unknown as Record<string, UseCase[]>,
+      videos: vid.default as unknown as Record<string, FrameworkVideo>,
       bySlug: new Map(frameworks.map((f) => [f.slug, f])),
       search: phraseEngine(frameworks, ph.default as Record<string, string[]>),
     };
@@ -169,14 +172,17 @@ export function buildTools(): ModelContextTool[] {
     {
       name: "get_framework",
       title: "รายละเอียด framework",
-      description: "Get one framework by slug: when to use it, how it works in one line, its five steps, a worked example, where the idea comes from and which frameworks to use before, alongside and after it.",
+      description: "Get one framework by slug: when to use it, how it works in one line, its five steps, a worked example, where the idea comes from, which frameworks to use before, alongside and after it, and its explainer clip (title, length, watch URL) when one exists.",
       inputSchema: { type: "object", properties: { slug: { type: "string", description: "Framework slug, e.g. '5-whys' (from search_frameworks or list_frameworks)" } }, required: ["slug"] },
       annotations: { readOnlyHint: true },
       execute: async ({ slug }) => {
         const d = await load();
         const f = d.bySlug.get(str(slug));
         if (!f) return unknownSlug(slug);
-        return { ...summary(f), steps: f.steps, example: f.example, origin: f.origin, related: f.related ?? {}, useCaseCount: (d.useCases[f.slug] ?? []).length };
+        const v = d.videos[f.slug];
+        const abs = (u: string) => new URL(u, location.origin).href;
+        const video = v ? { title: v.desktop.title, durationSec: v.desktop.durationSec, url: abs(watchUrl(v.desktop)), mobileUrl: abs(watchUrl(v.mobile)), aiGenerated: v.madeWith.ai } : null;
+        return { ...summary(f), steps: f.steps, example: f.example, origin: f.origin, related: f.related ?? {}, useCaseCount: (d.useCases[f.slug] ?? []).length, video };
       },
     },
     {
@@ -230,7 +236,7 @@ export function buildTools(): ModelContextTool[] {
       name: "search_use_cases",
       title: "ค้นกรณีจริงข้ามทุก framework",
       description:
-        "Search the documented real-world cases across all frameworks by country (ISO code or name such as 'TH', 'Thailand', 'ญี่ปุ่น'), organisation or person (e.g. 'Toyota'), framework slug and/or free text. Each case has the public event, problem, how it was applied, the verified result and source links; disputed cases are flagged. Call with no arguments to get an overview of countries and counts.",
+        "Search the documented real-world cases across all frameworks by country (ISO code or name such as 'TH', 'Thailand', 'ญี่ปุ่น'), organisation or person (e.g. 'Toyota'), framework slug and/or free text. Each case has the public event, problem, how it was applied, the reported result and source links. Every case may carry a `note` with limits of the evidence (vendor-reported, simulated, projected, a different method than the framework): quote it whenever you cite the case and never present such results as proof that the framework caused them; disputed cases are flagged. Call with no arguments to get an overview of countries and counts.",
       inputSchema: {
         type: "object",
         properties: {
@@ -311,7 +317,7 @@ export function buildTools(): ModelContextTool[] {
     {
       name: "list_use_cases",
       title: "กรณีจริงของ framework",
-      description: "Documented real-world cases for one framework: the public event, the problem, how it was applied, the verified result and source links. Cases flagged disputed are stories whose details are contested. Use search_use_cases to search across frameworks.",
+      description: "Documented real-world cases for one framework: the public event, the problem, how it was applied, the reported result and source links. A case's `note` states limits of the evidence (vendor-reported, simulated, projected, a different method than the framework): quote it whenever you cite the case and never present such results as proof that the framework caused them. Cases flagged disputed are stories whose details are contested. Use search_use_cases to search across frameworks.",
       inputSchema: { type: "object", properties: { slug: { type: "string" }, limit: { type: "integer", minimum: 1, maximum: 20, default: 10 } }, required: ["slug"] },
       annotations: { readOnlyHint: true, untrustedContentHint: true },
       execute: async ({ slug, limit }) => {

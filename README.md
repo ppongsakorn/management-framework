@@ -391,6 +391,10 @@ docker run -p 3000:3000 -e ANTHROPIC_API_KEY=... management-framework
 
 กรณีที่ไม่ได้ติด `disputed` จะถูกส่งให้ที่ปรึกษา AI ด้วย เพื่อให้ยกตัวอย่างจากกรณีจริงแทนการแต่งเอง
 
+### คลิปอธิบาย (videos)
+
+`data/videos.json` เก็บคลิปอธิบายของแต่ละ framework ทุกคลิปมี 2 ขนาดจากเรื่องเดียวกัน (16:9 สำหรับหน้าเว็บ และ 9:16 สำหรับแอปมือถือและโซเชียล) ไฟล์ WebM เก็บใน repo ที่ `public/videos/` ไม่เกิน 20 MB ต่อไฟล์ ภาพทำด้วย Claude Motion เสียงทำด้วย ElevenLabs จาก brief ที่ repo สร้างให้ (`npm run video:brief -- <slug>`) แล้วลงทะเบียนทีละขนาดด้วย `npm run video:add -- <slug> --size desktop|mobile` ขั้นตอนและรูปแบบข้อมูลทั้งหมดอยู่ที่ [docs/videos/README.md](docs/videos/README.md)
+
 ### บันทึกการอัปเดต (history log)
 
 ทุกครั้งที่เพิ่มหรือแก้เนื้อหา/ฟีเจอร์ ให้เพิ่มรายการไว้บนสุดของ `data/changelog.json` (เรียงจากล่าสุด) รายการจะแสดงที่หน้า `/updates` ในกล่อง "อัปเดตล่าสุด" บนหน้าแรก และในแท็บอัปเดตของแอปมือถือ

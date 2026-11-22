@@ -25,7 +25,11 @@ export function UseCases({ cases }: { cases: UseCase[] }) {
             <dt>ผลลัพธ์</dt>
             <dd>{c.result}</dd>
           </dl>
-          {c.disputed && <p className="case-note">⚠ เรื่องนี้เล่าต่อกันแพร่หลาย แต่รายละเอียดยังเป็นที่ถกเถียง{c.note ? ` — ${c.note}` : ""}</p>}
+          {c.disputed ? (
+            <p className="case-note">⚠ เรื่องนี้เล่าต่อกันแพร่หลาย แต่รายละเอียดยังเป็นที่ถกเถียง{c.note ? ` — ${c.note}` : ""}</p>
+          ) : (
+            c.note && <p className="case-note case-caveat"><b>หมายเหตุเรื่องหลักฐาน:</b> {c.note}</p>
+          )}
           <p className="case-src">
             อ้างอิง:{" "}
             {c.sources.map((s, j) => (
