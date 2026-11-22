@@ -2,7 +2,7 @@ import Link from "next/link";
 import { CompassMark } from "@/components/CompassMark";
 
 /** Top app bar: a back button and title on inner screens, the brand on the home screen. */
-export function MTop({ title, back }: { title?: string; back?: { href: string; label: string } }) {
+export function MTop({ title, back, action }: { title?: string; back?: { href: string; label: string }; action?: React.ReactNode }) {
   return (
     <header className="m-top">
       {back ? (
@@ -19,6 +19,7 @@ export function MTop({ title, back }: { title?: string; back?: { href: string; l
         </span>
       )}
       {title && <span className="m-title">{title}</span>}
+      {action && <span className="m-action">{action}</span>}
     </header>
   );
 }

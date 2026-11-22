@@ -1,6 +1,8 @@
 import raw from "@/data/frameworks.json";
 import diagrams from "@/data/diagrams.json";
 import useCases from "@/data/use-cases.json";
+import videos from "@/data/videos.json";
+import type { ClipSize, FrameworkVideo } from "@/lib/video";
 
 export type GroupId = "diag" | "dec" | "plan" | "exec" | "ppl" | "think";
 
@@ -11,6 +13,15 @@ export interface Group {
   why: string;
 }
 
+/** One row of a step-by-step example: `q` is the question on the arrow into it, `k` its label, `hl` marks the key row. */
+export interface ExampleStep {
+  q?: string;
+  k?: string;
+  t: string;
+  note?: string;
+  hl?: boolean;
+}
+
 export interface Framework {
   slug: string;
   name: string;
@@ -18,7 +29,10 @@ export interface Framework {
   when: string;
   how: string;
   steps: string[];
+  /** Plain text read by search, the AI advisor and WebMCP. With `exampleSteps` it must be their flattened form (a test checks). */
   example: string;
+  /** Optional: the example as a chain of rows, shown instead of the paragraph. */
+  exampleSteps?: ExampleStep[];
   /** Discipline the idea comes from, plus its originator when widely credited. */
   origin: string;
   /** Other frameworks to use first, alongside, or next (slugs). */
@@ -76,4 +90,14 @@ export interface UseCase {
 
 export function getUseCases(slug: string): UseCase[] {
   return (useCases as Record<string, UseCase[]>)[slug] ?? [];
+}
+
+/** The explainer clip of a framework (both sizes), if one has been made (data/videos.json). */
+export function getVideo(slug: string): FrameworkVideo | undefined {
+  return (videos as unknown as Record<string, FrameworkVideo>)[slug];
+}
+
+/** slug → clip length in seconds, for the "has a clip" marks in lists. */
+export function videoLengths(size: ClipSize = "desktop"): Record<string, number> {
+  return Object.fromEntries(Object.entries(videos as unknown as Record<string, FrameworkVideo>).map(([s, v]) => [s, v[size].durationSec]));
 }

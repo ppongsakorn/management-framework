@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Catalog } from "@/components/Catalog";
-import { frameworks, groups } from "@/lib/data";
+import { frameworks, groups, videoLengths } from "@/lib/data";
 import { aiEnabled } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ export default function FrameworksPage() {
           {aiEnabled && " พร้อมปรึกษา AI"}
         </p>
       </div>
-      <Catalog groups={groups} frameworks={frameworks} />
+      <Catalog groups={groups} frameworks={frameworks} videos={videoLengths()} />
     </>
   );
 }

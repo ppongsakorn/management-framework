@@ -8,7 +8,7 @@ import { aiEnabled, assetBase, searchVariant } from "@/lib/site";
 
 const RESULT_LIMIT = 12;
 
-export function Catalog({ groups, frameworks }: { groups: Group[]; frameworks: Framework[] }) {
+export function Catalog({ groups, frameworks, videos = {} }: { groups: Group[]; frameworks: Framework[]; videos?: Record<string, number> }) {
   const [query, setQuery] = useState("");
   const [active, setActive] = useState<GroupId | "all">("all");
   const { hits } = useSearch(searchVariant, frameworks, query, assetBase);
@@ -87,7 +87,7 @@ export function Catalog({ groups, frameworks }: { groups: Group[]; frameworks: F
         <section className="results">
           <div className="grid">
             {visible.map(({ fw, why }) => (
-              <FrameworkCard key={fw.slug} fw={fw} why={why} />
+              <FrameworkCard key={fw.slug} fw={fw} why={why} video={videos[fw.slug]} />
             ))}
           </div>
         </section>
@@ -104,7 +104,7 @@ export function Catalog({ groups, frameworks }: { groups: Group[]; frameworks: F
               <p className="why">{g.why}</p>
               <div className="grid">
                 {items.map(({ fw }) => (
-                  <FrameworkCard key={fw.slug} fw={fw} />
+                  <FrameworkCard key={fw.slug} fw={fw} video={videos[fw.slug]} />
                 ))}
               </div>
             </section>

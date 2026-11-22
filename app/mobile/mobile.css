@@ -59,6 +59,9 @@
 .m-steps li { counter-increment: s; display: grid; grid-template-columns: 30px 1fr; gap: 10px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; line-height: 1.65; }
 .m-steps li::before { content: counter(s); width: 28px; height: 28px; border-radius: 50%; background: var(--c); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: 14px; }
 .m-example { background: var(--cbg); border-radius: 12px; padding: 14px 16px; line-height: 1.75; margin: 0; }
+.m-fw .ex-chain { border-radius: 12px; padding: 12px; }
+.m-fw .ex-card { border-radius: 12px; padding: 10px 12px; }
+.m-fw .ex-t { font-size: 15.5px; }
 .m-origin { font-size: 13.5px; color: var(--ink2); margin: 10px 4px 0; }
 .m-hint { font-size: 13.5px; color: var(--ink2); margin: 0 4px 8px; }
 .m-viz-scroll { overflow-x: auto; margin: 0 -16px; padding: 0 16px 8px; -webkit-overflow-scrolling: touch; }
@@ -85,3 +88,8 @@
 .m-app .cases { gap: 10px; }
 .m-app .case dl { grid-template-columns: 1fr; gap: 0; }
 .m-app .case dt { padding-top: 6px; }
+
+.m-top .m-action { margin-left: auto; display: flex; align-items: center; }
+
+.m-fw .vid { margin: 0 0 16px; }
+.m-row-main small.m-vid { color: var(--c); font-weight: 600; font-size: 12.5px; }

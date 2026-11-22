@@ -34,7 +34,8 @@ export function toDesktopPath(path: string): string {
 /**
  * Inline script for the desktop layout. On a phone-sized screen it replaces the
  * page with its mobile screen before paint, unless the visitor picked the full
- * site. Links marked data-view="mobile" clear that choice.
+ * site. Links marked data-view="mobile" clear that choice. The query string goes along,
+ * so ?q= searches and the utm_ tags on links shared from social posts survive the hop.
  */
 export function mobileRedirectScript(basePath: string): string {
   const map = toMobilePath.toString();
@@ -45,7 +46,7 @@ var full=false;try{full=localStorage.getItem(k)==="full"}catch(_){}
 if(full||!matchMedia("(max-width: 760px)").matches)return;
 var toMobilePath=${map};
 var path=location.pathname.slice(b.length)||"/";var t=toMobilePath(path,location.hash);
-if(t)location.replace(b+t);
+if(t)location.replace(b+t+location.search);
 }catch(_){}})();`;
 }
 

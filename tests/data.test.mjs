@@ -26,6 +26,22 @@ test("every framework is complete and uniquely addressable", () => {
   }
 });
 
+// Search, the AI advisor, WebMCP and the clip brief read the plain `example`; the page shows `exampleSteps` when present.
+const flattenExample = (steps) =>
+  steps.map((s) => `${s.q ? `${s.q} ` : ""}${s.k ? `${s.k}: ` : ""}${s.t}${s.note ? ` (${s.note})` : ""}`).join(" → ");
+
+test("step-by-step examples are well formed and match the plain-text example", () => {
+  for (const f of frameworks) {
+    if (f.exampleSteps === undefined) continue;
+    assert.ok(Array.isArray(f.exampleSteps) && f.exampleSteps.length >= 2, `${f.slug}: exampleSteps needs at least 2 rows`);
+    for (const s of f.exampleSteps) {
+      assert.ok(typeof s.t === "string" && s.t.trim(), `${f.slug}: every example row needs text (t)`);
+      for (const k of Object.keys(s)) assert.ok(["q", "k", "t", "note", "hl"].includes(k), `${f.slug}: unknown example row key ${k}`);
+    }
+    assert.equal(f.example, flattenExample(f.exampleSteps), `${f.slug}: "example" must equal the flattened exampleSteps`);
+  }
+});
+
 test("every framework has a diagram spec that renders cleanly", () => {
   for (const f of frameworks) {
     assert.ok(DIAGRAM_TYPES.includes(f.diagram?.type), `${f.slug} has unknown diagram type`);

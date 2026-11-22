@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MTop } from "@/components/mobile/MTop";
-import { frameworksIn, groups, routerPrompts, type GroupId } from "@/lib/data";
+import { frameworksIn, groups, routerPrompts, videoLengths, type GroupId } from "@/lib/data";
+import { formatDuration } from "@/lib/video";
 
 export const dynamicParams = false;
 
@@ -21,6 +22,7 @@ export default async function MobileGroup({ params }: { params: Promise<{ group:
   const g = groups.find((x) => x.id === id);
   if (!g) notFound();
   const items = frameworksIn(g.id as GroupId);
+  const videos = videoLengths("mobile");
   return (
     <div className={`g-${g.id}`}>
       <MTop back={{ href: "/mobile", label: "หน้าแรก" }} />
@@ -40,6 +42,7 @@ export default async function MobileGroup({ params }: { params: Promise<{ group:
                 <span className="m-row-main">
                   <b>{f.name}</b>
                   <small>{f.when}</small>
+                  {videos[f.slug] && <small className="m-vid">▶ มีคลิป {formatDuration(videos[f.slug])}</small>}
                 </span>
                 <span className="m-chev" aria-hidden="true">›</span>
               </Link>
