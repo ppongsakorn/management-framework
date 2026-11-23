@@ -1,0 +1,9 @@
+# Made again from the sources by the skill scripts or finish.sh; MP4/WebM go to public/videos or social, not here.
+out/
+check/
+timeline.json
+audio.m4a
+voice/raw/
+voice/.bus.wav
+voices/
+.DS_Store
