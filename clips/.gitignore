@@ -3,7 +3,7 @@ out/
 check/
 timeline.json
 audio.m4a
-voice/raw/
-voice/.bus.wav
+**/voice/raw/
+**/voice/.bus.wav
 voices/
 .DS_Store
