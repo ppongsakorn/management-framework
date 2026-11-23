@@ -109,7 +109,7 @@
         '<div class="lyr hook-lineup">' + CF.svg(L, lineup) + ['พ่อครัว', 'พนักงานเสิร์ฟ', 'แคชเชียร์'].map((n, i) => '<p class="name hook-n' + i + '" style="font-size:' + (V ? 30 : 26) + 'px">' + n + '</p>').join('') + '</div>' +
         '<div class="lyr hook-board" style="opacity:0">' + CF.svg(L, board) + '</div>' +
         '<p class="tape hook-tape" style="font-size:' + (V ? 34 : 30) + 'px">ตัวอย่างสมมติ · ร้านอาหาร</p>' +
-        '<p class="t hook-head" style="font-size:' + L.mid + 'px">อาหารช้าทุกเสาร์…</p>' +
+        '<p class="t hook-head" style="font-size:' + L.mid + 'px">อาหารช้าทุกวันเสาร์…</p>' +
         '<p class="t who hook-who" style="font-size:' + L.big + 'px">ใครผิด?</p>' +
         '<div class="hook-strike" style="position:absolute;left:0;top:0;height:' + Math.round(L.big * 0.11) + 'px;background:var(--second);border:6px solid var(--ink);border-radius:12px;transform-origin:0 50%"></div>' +
         '<p class="sticker hook-wrong" style="font-size:' + (V ? 64 : 56) + 'px">ผิดคำถาม!</p>' + whyHtml +
