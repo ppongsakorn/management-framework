@@ -193,7 +193,7 @@
       const L = this.L = LAY(api.W, api.H), V = L.V, T = CF.heard(api, 'check');
       this.C = { cmp: T('เทียบ'), num: T('ตัวเลข'), better: T('ดีขึ้น'), goal: T('ไม่ถึงเป้า', 'ถึงเป้า', 'เป้า') };
       const cw = (this.cw = V ? 880 : 850), ch = (this.ch = V ? 700 : 640), base = ch - 120, sc = (ch - 230) / 45;   // minutes -> px
-      this.geo = { base, sc, x0: cw * 0.2, x1: cw * 0.6, bw: cw * 0.22 };
+      this.geo = { base, sc, x0: cw * 0.1, x1: cw * 0.46, bw: cw * 0.2 };
       const bar = (cls, x, color, label, val) => '<rect class="' + cls + '" x="' + x + '" y="' + (base) + '" width="' + this.geo.bw + '" height="0" style="fill:' + color + ';stroke:#1D2430;stroke-width:5"/>' +
         '<text class="' + cls + '-v" x="' + (x + this.geo.bw / 2) + '" y="' + (base - val * sc - 18) + '" style="font-size:44px;font-weight:700;fill:#1D2430;text-anchor:middle;opacity:0">' + val + ' นาที</text>' +
         '<text x="' + (x + this.geo.bw / 2) + '" y="' + (base + 56) + '" style="font-size:42px;font-weight:700;fill:#1D2430;text-anchor:middle">' + label + '</text>';
@@ -217,7 +217,7 @@
       this.b1.setAttribute('y', g.base - h1); this.b1.setAttribute('height', h1); this.v1.style.opacity = seg(t, C.num + 0.3, C.num + 0.5).toFixed(2);
       this.ok.style.opacity = seg(t, C.better, C.better + 0.25).toFixed(2);
       this.goal.style.opacity = seg(t, C.goal - 0.1, C.goal + 0.3).toFixed(2);
-      CF.slam(this.no, t, C.goal, mid(cx - (V ? 0 : 20), cy - this.ch / 2 + (V ? 90 : 40)), -4, 2);
+      CF.slam(this.no, t, C.goal, mid(cx + (V ? 130 : 0), cy - this.ch / 2 - 60), -4, 2);
     },
   };
 
@@ -229,7 +229,7 @@
       const w = (this.w = V ? 880 : 850), h = (this.h2 = V ? 340 : 300);
       const lane = (cls, color, tag, body) => '<div class="card ' + cls + '" style="width:' + w + 'px;height:' + h + 'px;border-color:' + color + ';display:flex;align-items:center;gap:28px;padding:0 34px"><p style="flex:none;font-weight:700;font-size:' + (V ? 54 : 52) + 'px;color:' + color + ';line-height:1.15;width:' + (V ? 250 : 240) + 'px">' + tag + '</p>' + body + '</div>';
       host.insertAdjacentHTML('beforeend', CF.tape(L, 'ac-tape') + stepHead(L, 'ac-h', '4', 'Act', 'ปรับ', 'var(--a)') + cornerWheel(L, 'ac-cw') +
-        lane('ac-g', '#2B7A4B', 'ได้ผล<br>→ ทำต่อ', '<div style="position:relative;flex:1"><div style="background:#FFF4E3;border:5px solid var(--ink);border-radius:12px;padding:18px 22px;font-weight:700;font-size:' + (V ? 40 : 38) + 'px;line-height:1.3">ขั้นตอนงาน<br>เช็กยอดจองทุกเช้า</div><p class="stamp green ac-st" style="font-size:' + (V ? 54 : 50) + 'px;border-width:8px;padding:0 16px 8px">มาตรฐาน!</p></div>') +
+        lane('ac-g', '#2B7A4B', 'ได้ผล<br>→ ทำต่อ', '<div style="position:relative;flex:1"><div style="background:#FFF4E3;border:5px solid var(--ink);border-radius:12px;padding:18px 22px;font-weight:700;font-size:' + (V ? 40 : 38) + 'px;line-height:1.3">ขั้นตอนงาน<br>เช็กยอดจองทุกเช้า</div><p class="stamp green ac-st" style="position:relative;display:inline-block;margin-top:14px;font-size:' + (V ? 54 : 50) + 'px;border-width:8px;padding:0 16px 8px">มาตรฐาน!</p></div>') +
         lane('ac-r', '#E5402F', 'ไม่ถึงเป้า<br>→ กลับไป', '<div class="note pink ac-hy" style="position:relative;flex:1;font-size:' + (V ? 44 : 42) + 'px;box-shadow:6px 8px 0 rgba(0,0,0,.14)">สมมติฐานใหม่ ↻<br><span style="font-size:.7em;font-weight:600">แล้ววนอีกรอบ</span></div>'));
       Object.assign(this, { hd: q(host, '.ac-h'), th: q(host, '.ac-h-th'), g: q(host, '.ac-g'), r: q(host, '.ac-r'), st: q(host, '.ac-st'), hy: q(host, '.ac-hy') });
     },
@@ -238,7 +238,7 @@
       CF.pop(this.hd, t, 0.1, undefined, at(L.tx, L.ty)); CF.pop(this.th, t, 0.25, undefined, at(L.tx, L.ty + (V ? 120 : 128)));
       cornerRender(host, L, 'ac-cw', t, 3, 0.1);
       CF.pop(this.g, t, C.good - 0.15, undefined, mid(cx, top + this.h2 / 2), -1);
-      CF.slam(this.st, t, C.std, 'translate(' + (V ? 40 : 60) + 'px,' + (V ? 30 : 24) + 'px) translate(-50%,-50%)', -8, 2.2); this.st.style.left = (V ? '48%' : '40%'); this.st.style.top = '70%';
+      CF.slam(this.st, t, C.std, 'translate(0,0)', -4, 2.2);
       CF.pop(this.r, t, C.miss - 0.15, undefined, mid(cx, top + this.h2 * 1.5 + gap), 1);
       CF.pop(this.hy, t, C.hyp - 0.05, undefined, 'translate(0,0)');
     },
@@ -295,11 +295,11 @@
       CF.pop(this.l1, t, C.but - 0.05, undefined, at(L.tx, L.ty)); CF.pop(this.l2, t, C.slow - 0.1, undefined, at(L.tx, L.ty + lh));
       CF.pop(this.l3, t, C.real - 0.05, undefined, at(L.tx, L.ty + 2 * lh + 6));
       const calOut = seg(t, C.real + 0.3, C.real + 0.7);
-      CF.pop(this.cal, t, 0.2, undefined, mid(V ? R.x + 300 : R.x + 280, V ? R.y + 110 : R.y + 120), -2);
-      CF.slam(this.no, t, C.slow, mid(V ? R.x + 560 : R.x + 540, V ? R.y + 150 : R.y + 150), 8, 2.2);
+      CF.pop(this.cal, t, 0.2, undefined, mid(V ? R.x + 260 : R.x + 280, V ? R.y + 170 : R.y + 120), -2);
+      CF.slam(this.no, t, C.slow, mid(V ? R.x + 690 : R.x + 700, V ? R.y + 200 : R.y + 150), 8, 2.2);
       this.cal.style.opacity = (1 - 0.0 * calOut).toFixed(2);
       // the fish arrives when "ฟิชโบน" is said: spine first, then the bones one by one, then the question marks and the head
-      const f0 = C.fish - 0.4;
+      const f0 = C.fish - 0.9;
       CF.pop(this.fish, t, f0, undefined, mid(R.x + R.w / 2, V ? R.y + 520 : R.y + 430), 0);
       this.sp.style.strokeDashoffset = (100 * (1 - eo(seg(t, f0, f0 + 0.5)))).toFixed(1);
       this.bn.forEach((b, i) => { b.style.strokeDashoffset = (100 * (1 - eo(seg(t, f0 + 0.5 + i * 0.12, f0 + 0.8 + i * 0.12)))).toFixed(1); this.qs[i].style.opacity = seg(t, f0 + 0.9 + i * 0.12, f0 + 1.1 + i * 0.12).toFixed(2); });
@@ -327,8 +327,8 @@
     },
     render(t) {
       const L = this.L, C = this.C, V = L.V;
-      const P = V ? { pd: [80, 330], r1: [80, 520], next: [520, 960], see: [80, 1240], name: [80, 1316], url: [80, 1424], org: [80, 1472], ai: [80, 1512] }
-                  : { pd: [110, 150], r1: [110, 340], next: [1370, 330], see: [110, 560], name: [110, 650], url: [110, 790], org: [110, 850], ai: [110, 960] };
+      const P = V ? { pd: [80, 300], r1: [80, 540], next: [520, 860], see: [80, 1120], name: [80, 1185], url: [80, 1350], org: [80, 1400], ai: [80, 1445] }
+                  : { pd: [110, 150], r1: [110, 340], next: [1370, 330], see: [110, 560], name: [110, 650], url: [110, 830], org: [110, 890], ai: [110, 970] };
       CF.slam(this.pd, t, 0.15, at(P.pd[0], P.pd[1]), -4, 1.6);
       CF.pop(this.r1, t, 0.5, undefined, at(P.r1[0], P.r1[1]));
       CF.pop(this.next, t, C.next - 0.1, undefined, mid(P.next[0], P.next[1]), -2);
