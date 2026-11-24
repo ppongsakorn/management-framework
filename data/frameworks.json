@@ -1942,6 +1942,9 @@
         "with": [
           "retrospective",
           "feedback-loop"
+        ],
+        "after": [
+          "fishbone-ishikawa"
         ]
       },
       "diagram": {

@@ -27,5 +27,34 @@
       "ai": true
     },
     "briefHash": "9e89cd06c1bf"
+  },
+  "pdca": {
+    "lang": "th",
+    "desktop": {
+      "title": "PDCA: ทำให้ร้านไม่เจ๊ง วนวงล้อสี่ขั้น",
+      "durationSec": 68,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/pdca.webm"
+      },
+      "poster": "videos/pdca.webp"
+    },
+    "mobile": {
+      "title": "PDCA: ทำให้ร้านไม่เจ๊ง วนวงล้อสี่ขั้น",
+      "durationSec": 68,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/pdca-mobile.webm"
+      },
+      "poster": "videos/pdca-mobile.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-24",
+      "ai": true
+    },
+    "briefHash": "295f64e1172d"
   }
 }
