@@ -74,8 +74,8 @@
       // a word Whisper may write another way (numbers as digits) is tried in each spelling; the first one heard wins
       const heard = api.scene('hook').concat || '', nm = (w) => w.toLowerCase().replace(/[^\p{L}\p{N}\p{M}]/gu, '');
       const T = (...alts) => api.T('w:' + (alts.find((w) => heard.includes(nm(w))) || alts[0]), 'hook');
-      const who = T('ใครผิด'), wrong = T('ผิดคำถาม'), why = T('ทำไม'), stamp = T('ไฟว์วายส์', 'ไฟวาย', 'whys', 'wise');
-      this.HK = { lights: [0.15, 0.55, 0.95], who, nums: [T('หนึ่ง', '1'), T('สอง', '2'), T('สาม', '3')], wrong, flip: Math.max(wrong + 0.75, why - 0.45),
+      const who = T('ใครผิด'), wrong = T('ผิดคำถาม'), why = T('ทำไม'), stamp = T('ไฟว์วายส์', 'ไฟวาย', 'whys', 'wise'), fired = T('ไล่พ่อครัว', 'ไล่', 'ครัว');
+      this.HK = { lights: [0.15, 0.55, 0.95], who, nums: [T('หนึ่ง', '1'), T('สอง', '2'), T('สาม', '3')], wrong, fired, flip: Math.max(wrong + 0.75, why - 0.45),
         whys: [0, 1, 2, 3, 4].map((i) => why + i * Math.min(0.3, Math.max(0.18, (stamp - why - 0.25) / 5))), stamp };
       const [wx, wy, ww, wh] = L.wall;
       let lineup = '<rect x="' + wx + '" y="' + wy + '" width="' + ww + '" height="' + wh + '" style="fill:var(--wall)"/>';
@@ -109,23 +109,24 @@
         '<div class="lyr hook-lineup">' + CF.svg(L, lineup) + ['พ่อครัว', 'พนักงานเสิร์ฟ', 'แคชเชียร์'].map((n, i) => '<p class="name hook-n' + i + '" style="font-size:' + (V ? 30 : 26) + 'px">' + n + '</p>').join('') + '</div>' +
         '<div class="lyr hook-board" style="opacity:0">' + CF.svg(L, board) + '</div>' +
         '<p class="tape hook-tape" style="font-size:' + (V ? 34 : 30) + 'px">ตัวอย่างสมมติ · ร้านอาหาร</p>' +
-        '<p class="t hook-head" style="font-size:' + L.mid + 'px">อาหารช้าทุกวันเสาร์…</p>' +
+        '<p class="t hook-head" style="font-size:' + L.mid + 'px">ไล่พ่อครัวผิดคน!</p>' +
         '<p class="t who hook-who" style="font-size:' + L.big + 'px">ใครผิด?</p>' +
         '<div class="hook-strike" style="position:absolute;left:0;top:0;height:' + Math.round(L.big * 0.11) + 'px;background:var(--second);border:6px solid var(--ink);border-radius:12px;transform-origin:0 50%"></div>' +
-        '<p class="sticker hook-wrong" style="font-size:' + (V ? 64 : 56) + 'px">ผิดคำถาม!</p>' + whyHtml +
+        '<p class="sticker hook-wrong" style="font-size:' + (V ? 64 : 56) + 'px">ผิดคำถาม!</p>' +
+        '<p class="stamp hook-fired" style="font-size:' + (V ? 60 : 54) + 'px">ไล่ออก!</p>' + whyHtml +
         '<p class="stamp hook-stamp" style="font-size:' + L.stamp.size + 'px">5 Whys</p></div>' +
         '<p class="cap hook-c1" style="font-size:' + L.cap + 'px;color:var(--accent)">คุณว่าใคร? เมนต์มา 1 2 หรือ 3</p>' +
         '<p class="cap hook-c2" style="font-size:' + L.cap + 'px">ไม่ถามว่า "ใคร" แต่ถาม <b>"ทำไม" ×5</b></p>');
       const q = (c) => host.querySelector(c);
       Object.assign(this, { cam: q('.hook-cam'), lineup: q('.hook-lineup'), board: q('.hook-board'), dim: q('.hook-dim'), tape: q('.hook-tape'), head: q('.hook-head'), who: q('.hook-who'),
-        strike: q('.hook-strike'), wrong: q('.hook-wrong'), stamp: q('.hook-stamp'), c1: q('.hook-c1'), c2: q('.hook-c2'),
+        strike: q('.hook-strike'), wrong: q('.hook-wrong'), fired: q('.hook-fired'), stamp: q('.hook-stamp'), c1: q('.hook-c1'), c2: q('.hook-c2'),
         sp: [0, 1, 2].map((i) => q('.hook-sp' + i)), su: [0, 1, 2].map((i) => q('.hook-s' + i)), pl: [0, 1, 2].map((i) => q('.hook-p' + i)), nm: [0, 1, 2].map((i) => q('.hook-n' + i)),
         why: [0, 1, 2, 3, 4].map((i) => q('.hook-why' + i)) });
     },
     render(t) {
       const { seg, eio, lerp, clamp01 } = K, L = this.L, V = L.V, fs = L.fs, HK = this.HK;
       // camera: a slow push-in on the lineup, a jolt on each hit
-      const jolt = CF.shake(t, HK.who + 0.1, 10) + CF.shake(t, HK.wrong, 14) + CF.shake(t, HK.stamp + 0.1, 12);
+      const jolt = CF.shake(t, HK.fired + 0.1, 8) + CF.shake(t, HK.who + 0.1, 10) + CF.shake(t, HK.wrong, 14) + CF.shake(t, HK.stamp + 0.1, 12);
       const push = 1 + 0.035 * eio(seg(t, 0, HK.flip));
       this.cam.style.transform = 'translate(' + (jolt * 0.6).toFixed(1) + 'px,' + jolt.toFixed(1) + 'px)';
       this.lineup.style.transform = 'translateX(' + (-L.W * eio(seg(t, HK.flip, HK.flip + 0.4))).toFixed(1) + 'px) scale(' + push.toFixed(4) + ')';
@@ -149,9 +150,11 @@
       const lift = 'translateX(' + (-L.W * whip).toFixed(1) + 'px)';
       // once the pan is over, what left the frame is hidden
       const gone = whip > 0.97 ? 'hidden' : 'visible';
-      [this.lineup, this.tape, this.head, this.who, this.strike, this.wrong].forEach((el) => { el.style.visibility = gone; });
+      [this.lineup, this.tape, this.head, this.who, this.strike, this.wrong, this.fired].forEach((el) => { el.style.visibility = gone; });
       this.tape.style.transform = 'translate(' + (L.tx - 120) + 'px,' + L.tapeY + 'px) ' + lift + ' rotate(-3deg)';
       this.head.style.transform = 'translate(' + L.tx + 'px,' + L.headY + 'px) ' + lift;
+      // the cook gets fired: a stamp slams across him on the word "ไล่"
+      CF.slam(this.fired, t, HK.fired, 'translate(' + (L.sx[0] + 12) + 'px,' + (L.floor - 290 * fs) + 'px) translate(-50%,-50%) ' + lift, -9, 2.4);
       CF.slam(this.who, t, HK.who, 'translate(' + (L.tx - 10) + 'px,' + L.whoY + 'px) ' + lift, -4);
       // "wrong question": a bar strikes it through and a sticker slaps on
       const sw = K.eo(seg(t, HK.wrong, HK.wrong + 0.18));

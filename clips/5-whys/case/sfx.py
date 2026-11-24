@@ -20,6 +20,7 @@ fx = []
 add = lambda k, t, g: fx.append((k, t, g))
 # hook
 for t in (0.15, 0.55, 0.95): add('drop_1', t, .2)
+fired = T('hook', 'ไล่พ่อครัว', 'ไล่', 'ครัว'); add('bonk_2', fired, .5)
 who, wrong, why, stamp = T('hook', 'ใครผิด'), T('hook', 'ผิดคำถาม'), T('hook', 'ทำไม'), T('hook', 'ไฟว์วายส์', 'ไฟวาย', 'whys', 'wise')
 add('bonk_1', who, .5)
 for a in (('หนึ่ง', '1'), ('สอง', '2'), ('สาม', '3')): add('pop_1', T('hook', *a), .35)
