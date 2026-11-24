@@ -2,7 +2,7 @@
   "5-whys": {
     "lang": "th",
     "desktop": {
-      "title": "5 Whys: คดีอาหารช้าทุกเสาร์ ใครผิด?",
+      "title": "5 Whys: คดีอาหารช้าทุกวันเสาร์ ใครผิด?",
       "durationSec": 58,
       "aspect": "16:9",
       "source": {
@@ -12,7 +12,7 @@
       "poster": "videos/5-whys-case.webp"
     },
     "mobile": {
-      "title": "5 Whys: คดีอาหารช้าทุกเสาร์ ใครผิด?",
+      "title": "5 Whys: คดีอาหารช้าทุกวันเสาร์ ใครผิด?",
       "durationSec": 58,
       "aspect": "9:16",
       "source": {
@@ -23,7 +23,7 @@
     },
     "madeWith": {
       "tool": "Claude Motion + ElevenLabs",
-      "date": "2026-11-21",
+      "date": "2026-11-24",
       "ai": true
     },
     "briefHash": "9e89cd06c1bf"
