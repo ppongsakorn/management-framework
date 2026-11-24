@@ -40,6 +40,16 @@
       },
       "poster": "videos/pdca.webp"
     },
+    "mobile": {
+      "title": "PDCA: ทำให้ร้านไม่เจ๊ง วนวงล้อสี่ขั้น",
+      "durationSec": 68,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/pdca-mobile.webm"
+      },
+      "poster": "videos/pdca-mobile.webp"
+    },
     "madeWith": {
       "tool": "Claude Motion + ElevenLabs",
       "date": "2026-11-24",
