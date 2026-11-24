@@ -30,14 +30,14 @@ for w in ('วางแผน', 'ลงมือ', 'ตรวจ', 'ปรับ
 # four steps
 add('drop_1', st('plan') + .15, .3); add('pop_2', T('plan', 'ตั้งเป้า', 'เป้า'), .3); add('pop_1', T('plan', 'เช็กยอดจอง'), .3); add('pop_2', T('plan', 'วิธีวัด', 'วัด'), .3)
 add('drop_1', st('do') + .15, .3); add('pop_1', T('do', 'ลองเล็ก'), .3); add('pop_2', T('do', 'สองวัน', 'วันเสาร์'), .3)
-add('drop_1', st('check') + .15, .3); add('pop_1', T('check', 'เทียบ'), .3); add('pop_2', T('check', 'ตัวเลข'), .3); add('ding_1', T('check', 'ดีขึ้น'), .4); add('bonk_2', T('check', 'ไม่ถึงเป้า', 'ถึงเป้า', 'เป้า'), .55)
+add('drop_1', st('check') + .15, .3); add('pop_1', T('check', 'เทียบ'), .3); add('pop_2', T('check', 'ตัวเลข', 'เลข'), .3); add('ding_1', T('check', 'ดีขึ้น'), .4); add('bonk_2', T('check', 'ไม่ถึงเป้า', 'ถึงเป้า', 'เป้า'), .55)
 add('drop_1', st('act') + .15, .3); add('pop_1', T('act', 'ได้ผล'), .3); add('drop_2', T('act', 'มาตรฐาน'), .5); add('pop_2', T('act', 'ไม่ถึงเป้า', 'เป้า'), .3); add('reveal_2', T('act', 'สมมติฐานใหม่', 'สมมติฐาน'), .3)
 # owner
 add('pop_1', T('owner', 'เจ้าของร้าน'), .35); add('ding_2', T('owner', 'ไม่เจ๊ง'), .4); add('ding_1', T('owner', 'ไม่แย่'), .4)
 # twist
-add('bonk_1', T('twist', 'แต่แล้ว'), .5); add('bonk_2', T('twist', 'ยังช้า'), .55); add('reveal_1', T('twist', 'ปัญหาจริง'), .3); add('reveal_2', T('twist', 'ฟิชโบน', 'ก้างปลา', 'ฟิช') - .5, .35)
+add('bonk_1', T('twist', 'แต่แล้ว'), .5); add('bonk_2', T('twist', 'ยังช้า'), .55); add('reveal_1', T('twist', 'ปัญหาจริง'), .3); add('reveal_2', T('twist', 'ฟิชโบน', 'ก้างปลา', 'ฟิช', 'fishbone', 'fish') - .5, .35)
 # close
-add('drop_2', st('close') + .1, .5); add('pop_1', T('close', 'ดูวิธี'), .3); add('tada_2', T('close', 'เข็มทิศ'), .45); add('drop_1', T('close', 'ตอนหน้า'), .4); add('pop_2', T('close', 'ฟิชโบน', 'ฟิช'), .35)
+add('drop_2', st('close') + .1, .5); add('pop_1', T('close', 'ดูวิธี'), .3); add('tada_2', T('close', 'เข็มทิศ'), .45); add('drop_1', T('close', 'ตอนหน้า'), .4); add('pop_2', T('close', 'ฟิชโบน', 'ฟิช', 'fishbone', 'fish'), .35)
 args, filt, labs = ['ffmpeg', '-loglevel', 'error', '-y', '-i', src], [], ['[0:a]']
 for i, (k, t, g) in enumerate(fx, 1):
     args += ['-i', f'{SND}/{k}.mp3']; ms = max(0, int(t * 1000))

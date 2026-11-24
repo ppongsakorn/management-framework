@@ -191,7 +191,7 @@
   CF.scenes.check = {
     init(host, api) {
       const L = this.L = LAY(api.W, api.H), V = L.V, T = CF.heard(api, 'check');
-      this.C = { cmp: T('เทียบ'), num: T('ตัวเลข'), better: T('ดีขึ้น'), goal: T('ไม่ถึงเป้า', 'ถึงเป้า', 'เป้า') };
+      this.C = { cmp: T('เทียบ'), num: T('ตัวเลข', 'เลข'), better: T('ดีขึ้น'), goal: T('ไม่ถึงเป้า', 'ถึงเป้า', 'เป้า') };
       const cw = (this.cw = V ? 880 : 850), ch = (this.ch = V ? 700 : 640), base = ch - 120, sc = (ch - 230) / 45;   // minutes -> px
       this.geo = { base, sc, x0: cw * 0.1, x1: cw * 0.46, bw: cw * 0.2 };
       const bar = (cls, x, color, label, val) => '<rect class="' + cls + '" x="' + x + '" y="' + (base) + '" width="' + this.geo.bw + '" height="0" style="fill:' + color + ';stroke:#1D2430;stroke-width:5"/>' +
@@ -274,7 +274,7 @@
   CF.scenes.twist = {
     init(host, api) {
       const L = this.L = LAY(api.W, api.H), V = L.V, T = CF.heard(api, 'twist');
-      this.C = { but: T('แต่แล้ว'), slow: T('ยังช้า'), real: T('ปัญหาจริง'), fish: T('ฟิชโบน', 'ก้างปลา', 'ฟิช') };
+      this.C = { but: T('แต่แล้ว'), slow: T('ยังช้า'), real: T('ปัญหาจริง'), fish: T('ฟิชโบน', 'ก้างปลา', 'ฟิช', 'fishbone', 'fish') };
       const W = (this.fw = V ? 880 : 850), H = (this.fh = V ? 520 : 460);
       // fish skeleton: spine, head at the right, six bones with a question mark each
       let bones = '<path class="tw-sp" pathLength="100" d="M30 ' + H / 2 + ' H' + (W - 190) + '" style="fill:none;stroke:#1D2430;stroke-width:9;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100"/>';
@@ -311,7 +311,7 @@
   CF.scenes.close = {
     init(host, api) {
       const L = this.L = LAY(api.W, api.H), V = L.V, T = CF.heard(api, 'close');
-      this.C = { see: T('ดูวิธี'), name: T('เข็มทิศ'), next: T('ตอนหน้า'), fish: T('ฟิชโบน', 'ฟิช') };
+      this.C = { see: T('ดูวิธี'), name: T('เข็มทิศ'), next: T('ตอนหน้า'), fish: T('ฟิชโบน', 'ฟิช', 'fishbone', 'fish') };
       host.insertAdjacentHTML('beforeend',
         '<p class="stamp cl-pd" style="font-size:' + (V ? 140 : 120) + 'px;color:var(--d);border-color:var(--d)">PDCA</p>' +
         line('cl-r1', 'วนวงล้อ จนปัญหาไม่กลับมา', V ? 54 : 52) +
