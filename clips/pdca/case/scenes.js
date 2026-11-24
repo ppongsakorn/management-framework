@@ -101,7 +101,7 @@
         '<div style="position:relative;width:' + ic + 'px;height:' + ic + 'px;flex:none">' + icon + (stamp ? '<p class="stamp ' + cls + '-s" style="font-size:' + (V ? 44 : 50) + 'px;border-width:8px;padding:0 18px 8px">' + stamp + '</p>' : '') + '</div>' +
         '<p style="font-weight:700;font-size:' + (V ? 46 : 44) + 'px;line-height:1.2;text-align:' + (V ? 'left' : 'center') + '">' + label + '</p></div>';
       host.insertAdjacentHTML('beforeend', '<p class="tape rc-tape" style="font-size:' + (V ? 40 : 36) + 'px;transform:' + at(L.tx - 30, L.tapeY) + ' rotate(-3deg)">ตอนที่แล้ว…</p>' +
-        card('rc-a', chef, 'ไล่พ่อครัวผิดคน', 'ไล่ออก!') + card('rc-b', svg(pins, ic, ic), 'ไฟว์วายส์ ถามทำไม ×5') + card('rc-c', list, 'สาเหตุราก: ไม่เช็กยอดจอง'));
+        card('rc-a', chef, 'ไล่พ่อครัวผิดคน', 'ไล่ออก!') + card('rc-b', svg(pins, ic, ic), '5 Whys ถามทำไม ×5') + card('rc-c', list, 'สาเหตุราก: ไม่เช็กยอดจอง'));
       Object.assign(this, { tape: q(host, '.rc-tape'), a: q(host, '.rc-a'), b: q(host, '.rc-b'), c: q(host, '.rc-c'), as: q(host, '.rc-a-s') });
     },
     render(t) {
