@@ -32,7 +32,7 @@ export const viewport: Viewport = {
 /** Shared by the desktop site, app/(site), and the phone app, app/mobile — each brings its own chrome. */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="th" className={plex.variable}>
+    <html lang="th" className={plex.variable} data-scroll-behavior="smooth">
       <body>{children}</body>
     </html>
   );

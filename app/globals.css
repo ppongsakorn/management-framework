@@ -36,6 +36,11 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+/* Page changes: Next jumps to the top without the smooth scroll (data-scroll-behavior on <html>), and the new page
+   fades in. Opacity only, never transform, so sticky and fixed bars inside the page keep their positions. */
+.page-fade { animation: page-fade 220ms ease-out backwards; }
+@keyframes page-fade { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .page-fade { animation: none; } }
 body {
   margin: 0; background: var(--bg); color: var(--ink);
   font-family: var(--font-thai), "Noto Sans Thai", system-ui, sans-serif;
