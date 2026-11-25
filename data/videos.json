@@ -28,6 +28,25 @@
     },
     "briefHash": "9e89cd06c1bf"
   },
+  "fishbone-ishikawa": {
+    "lang": "th",
+    "desktop": {
+      "title": "Fishbone: แตกปัญหาเป็นก้างปลา ให้ครบทุกด้านก่อนแก้",
+      "durationSec": 72,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/fishbone.webm"
+      },
+      "poster": "videos/fishbone.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-25",
+      "ai": true
+    },
+    "briefHash": "aee81fe5a265"
+  },
   "pdca": {
     "lang": "th",
     "desktop": {
