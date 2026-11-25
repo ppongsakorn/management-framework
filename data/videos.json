@@ -40,6 +40,16 @@
       },
       "poster": "videos/fishbone.webp"
     },
+    "mobile": {
+      "title": "Fishbone: แตกปัญหาเป็นก้างปลา ให้ครบทุกด้านก่อนแก้",
+      "durationSec": 72,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/fishbone-mobile.webm"
+      },
+      "poster": "videos/fishbone-mobile.webp"
+    },
     "madeWith": {
       "tool": "Claude Motion + ElevenLabs",
       "date": "2026-11-25",
