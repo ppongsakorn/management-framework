@@ -42,7 +42,7 @@ add('pop_1', T('owner', 'เจ้าของร้าน'), .35); w3 = T('owne
 for k in range(3): add('pop_2', w3 + k * .3, .25)
 add('reveal_2', T('owner', 'พีดีซีเอ', 'pdca'), .35); add('ding_2', T('owner', 'ถึงเป้า', 'เป้า'), .4); add('tada_1', T('owner', 'ถึงเป้า', 'เป้า') + .1, .35)
 # close
-add('drop_2', st('close') + .1, .5); add('pop_1', T('close', 'ดูวิธี'), .3); add('tada_2', T('close', 'เข็มทิศ'), .45); add('drop_1', T('close', 'ตอนหน้า'), .4); add('pop_2', T('close', 'พาเรโต', 'pareto'), .35)
+add('drop_2', st('close') + .1, .5); add('pop_1', T('close', 'ดูวิธี'), .3); add('tada_2', T('close', 'เข็มทิศ'), .45); add('drop_1', T('close', 'ตอนหน้า'), .4); add('pop_2', T('close', 'พาเรโต้', 'พาเรโต', 'pareto'), .35)
 args, filt, labs = ['ffmpeg', '-loglevel', 'error', '-y', '-i', src], [], ['[0:a]']
 for i, (k, t, g) in enumerate(fx, 1):
     args += ['-i', f'{SND}/{k}.mp3']; ms = max(0, int(t * 1000))

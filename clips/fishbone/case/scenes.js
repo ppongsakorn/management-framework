@@ -251,7 +251,7 @@
   CF.scenes.close = {
     init(host, api) {
       const L = this.L = LAY(api.W, api.H), V = L.V, T = CF.heard(api, 'close');
-      this.C = { see: T('ดูวิธี'), name: T('เข็มทิศ'), next: T('ตอนหน้า'), par: T('พาเรโต', 'pareto') };
+      this.C = { see: T('ดูวิธี'), name: T('เข็มทิศ'), next: T('ตอนหน้า'), par: T('พาเรโต้', 'พาเรโต', 'pareto') };
       host.insertAdjacentHTML('beforeend',
         '<p class="stamp cl-pd" style="font-size:' + (V ? 130 : 112) + 'px">Fishbone</p>' +
         line('cl-r1', 'แตกปัญหาให้ครบทุกด้าน ก่อนลงมือแก้', V ? 46 : 46) +
