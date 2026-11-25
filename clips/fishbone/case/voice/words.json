@@ -2298,9 +2298,9 @@
   ]
  },
  "10": {
-  "text": "[excited] ดูวิธีเต็มที่เว็บ เข็มทิศ… กรอบ… ความคิด… ตอนหน้า พาเรโต!",
+  "text": "[excited] ดูวิธีเต็มที่เว็บ เข็มทิศ… กรอบ… ความคิด… ตอนหน้า พาเรโต้!",
   "cer": 0.125,
-  "file_mtime": 1795549415.0560336,
+  "file_mtime": 1795576616.029862,
   "words": [
    {
     "w": "ด",
@@ -2487,6 +2487,7 @@
     "s": 5.2,
     "e": 5.44
    }
-  ]
+  ],
+  "note": "Closing word replaced 2026-11-25: take A of the re-recorded line from 5.00 s to the end, so the word still starts at 5.08 s. Word timings are from the old take; the clip only uses them as cues."
  }
 }
