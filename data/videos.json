@@ -98,6 +98,16 @@
       },
       "poster": "videos/theory-of-constraints.webp"
     },
+    "mobile": {
+      "title": "Theory of Constraints: จ้างคนเพิ่ม ทำไมอาหารออกเท่าเดิม?",
+      "durationSec": 125,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/theory-of-constraints-mobile.webm"
+      },
+      "poster": "videos/theory-of-constraints-mobile.webp"
+    },
     "madeWith": {
       "tool": "Claude Motion + ElevenLabs",
       "date": "2026-11-27",
