@@ -57,6 +57,35 @@
     },
     "briefHash": "aee81fe5a265"
   },
+  "eisenhower-matrix": {
+    "lang": "th",
+    "desktop": {
+      "title": "Eisenhower Matrix: งานไหนสำคัญ งานไหนแค่ด่วน",
+      "durationSec": 122,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/eisenhower-matrix.webm"
+      },
+      "poster": "videos/eisenhower-matrix.webp"
+    },
+    "mobile": {
+      "title": "Eisenhower Matrix: งานไหนสำคัญ งานไหนแค่ด่วน",
+      "durationSec": 122,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/eisenhower-matrix-mobile.webm"
+      },
+      "poster": "videos/eisenhower-matrix-mobile.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-27",
+      "ai": true
+    },
+    "briefHash": "270284470777"
+  },
   "pareto-80-20": {
     "lang": "th",
     "desktop": {
@@ -85,6 +114,35 @@
       "ai": true
     },
     "briefHash": "1832f803d317"
+  },
+  "theory-of-constraints": {
+    "lang": "th",
+    "desktop": {
+      "title": "Theory of Constraints: จ้างคนเพิ่ม ทำไมอาหารออกเท่าเดิม?",
+      "durationSec": 125,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/theory-of-constraints.webm"
+      },
+      "poster": "videos/theory-of-constraints.webp"
+    },
+    "mobile": {
+      "title": "Theory of Constraints: จ้างคนเพิ่ม ทำไมอาหารออกเท่าเดิม?",
+      "durationSec": 125,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/theory-of-constraints-mobile.webm"
+      },
+      "poster": "videos/theory-of-constraints-mobile.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-27",
+      "ai": true
+    },
+    "briefHash": "379ab9edb89b"
   },
   "pdca": {
     "lang": "th",
