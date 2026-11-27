@@ -86,6 +86,25 @@
     },
     "briefHash": "1832f803d317"
   },
+  "theory-of-constraints": {
+    "lang": "th",
+    "desktop": {
+      "title": "Theory of Constraints: จ้างคนเพิ่ม ทำไมอาหารออกเท่าเดิม?",
+      "durationSec": 125,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/theory-of-constraints.webm"
+      },
+      "poster": "videos/theory-of-constraints.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-27",
+      "ai": true
+    },
+    "briefHash": "379ab9edb89b"
+  },
   "pdca": {
     "lang": "th",
     "desktop": {
