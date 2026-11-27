@@ -69,6 +69,16 @@
       },
       "poster": "videos/eisenhower-matrix.webp"
     },
+    "mobile": {
+      "title": "Eisenhower Matrix: งานไหนสำคัญ งานไหนแค่ด่วน",
+      "durationSec": 122,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/eisenhower-matrix-mobile.webm"
+      },
+      "poster": "videos/eisenhower-matrix-mobile.webp"
+    },
     "madeWith": {
       "tool": "Claude Motion + ElevenLabs",
       "date": "2026-11-27",
