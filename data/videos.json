@@ -57,6 +57,35 @@
     },
     "briefHash": "aee81fe5a265"
   },
+  "pareto-80-20": {
+    "lang": "th",
+    "desktop": {
+      "title": "Pareto 80/20: แก้ทุกเรื่อง หรือเลือกแก้ให้ถูกเรื่อง?",
+      "durationSec": 191,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/pareto-80-20.webm"
+      },
+      "poster": "videos/pareto-80-20.webp"
+    },
+    "mobile": {
+      "title": "Pareto 80/20: แก้ทุกเรื่อง หรือเลือกแก้ให้ถูกเรื่อง?",
+      "durationSec": 191,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/pareto-80-20-mobile.webm"
+      },
+      "poster": "videos/pareto-80-20-mobile.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-27",
+      "ai": true
+    },
+    "briefHash": "1832f803d317"
+  },
   "pdca": {
     "lang": "th",
     "desktop": {
