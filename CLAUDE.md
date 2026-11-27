@@ -2,7 +2,7 @@
 
 Public Thai educational site about management frameworks, with an optional AI advisor.
 Live: https://ppongsakorn.github.io/management-framework/ (GitHub Pages, auto-deploys on push to `main`).
-Owner: a Data & AI Team Lead; examples in the content are written for a data team on an Azure stack, except frameworks that have an explainer clip: their example tells the clip's story (5 Whys, PDCA and Fishbone, the restaurant series, rewritten 2026-11-15 and 2026-11-25; Pareto 80/20 joined it on 2026-11-26 ahead of its clip, owner request). **Owner rule (2026-11-25): whenever a clip is published or changed, rewrite that framework's `example` as `exampleSteps` cards and its `diagram` to match the clip (same situation, numbers and ending), in the same delivery as the clip.** Ask before moving the examples of frameworks without a clip.
+Owner: a Data & AI Team Lead; examples in the content are written for a data team on an Azure stack, except frameworks that have an explainer clip: their example tells the clip's story (5 Whys, PDCA and Fishbone, the restaurant series, rewritten 2026-11-15 and 2026-11-25; Pareto 80/20 joined it on 2026-11-26, its clip shipped 2026-11-27). **Owner rule (2026-11-25): whenever a clip is published or changed, rewrite that framework's `example` as `exampleSteps` cards and its `diagram` to match the clip (same situation, numbers and ending), in the same delivery as the clip.** Ask before moving the examples of frameworks without a clip.
 
 ## How the owner wants to work
 
