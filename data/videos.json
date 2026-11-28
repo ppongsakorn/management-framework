@@ -86,6 +86,25 @@
     },
     "briefHash": "a145ae4d7e6a"
   },
+  "porters-5-forces": {
+    "lang": "th",
+    "desktop": {
+      "title": "Porter's 5 Forces: ยังไม่ทันเปิดร้าน ทำไมเหมือนโดนล้อมไว้หมดแล้ว?",
+      "durationSec": 183,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/porters-5-forces.webm"
+      },
+      "poster": "videos/porters-5-forces.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-28",
+      "ai": true
+    },
+    "briefHash": "3a37562a57b2"
+  },
   "eisenhower-matrix": {
     "lang": "th",
     "desktop": {
