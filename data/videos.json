@@ -172,5 +172,92 @@
       "ai": true
     },
     "briefHash": "aaceb83e4a91"
+  },
+  "raci": {
+    "lang": "th",
+    "desktop": {
+      "title": "RACI: ใครทำ ใครรับผิดชอบ ใครต้องรู้",
+      "durationSec": 170,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/raci.webm"
+      },
+      "poster": "videos/raci.webp"
+    },
+    "mobile": {
+      "title": "RACI: ใครทำ ใครรับผิดชอบ ใครต้องรู้",
+      "durationSec": 170,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/raci-mobile.webm"
+      },
+      "poster": "videos/raci-mobile.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-28",
+      "ai": true
+    },
+    "briefHash": "7bb466f8ae9c"
+  },
+  "delegation-levels": {
+    "lang": "th",
+    "desktop": {
+      "title": "Delegation Levels: ใครตัดสินใจได้แค่ไหน",
+      "durationSec": 179,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/delegation-levels.webm"
+      },
+      "poster": "videos/delegation-levels.webp"
+    },
+    "mobile": {
+      "title": "Delegation Levels: ใครตัดสินใจได้แค่ไหน",
+      "durationSec": 179,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/delegation-levels-mobile.webm"
+      },
+      "poster": "videos/delegation-levels-mobile.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-28",
+      "ai": true
+    },
+    "briefHash": "aa9458fd6afc"
+  },
+  "skill-will-matrix": {
+    "lang": "th",
+    "desktop": {
+      "title": "Skill / Will Matrix: คนต่างกัน ต้องการการช่วยต่างกัน",
+      "durationSec": 196,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/skill-will-matrix.webm"
+      },
+      "poster": "videos/skill-will-matrix.webp"
+    },
+    "mobile": {
+      "title": "Skill / Will Matrix: คนต่างกัน ต้องการการช่วยต่างกัน",
+      "durationSec": 196,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/skill-will-matrix-mobile.webm"
+      },
+      "poster": "videos/skill-will-matrix-mobile.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-28",
+      "ai": true
+    },
+    "briefHash": "47aa0be5e691"
   }
 }
