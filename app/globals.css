@@ -426,3 +426,20 @@ button, input, textarea { font: inherit; color: inherit; }
 .clips-tall .clip-name { font-size: 15.5px; }
 .clips-tall .clip-q { font-size: 13px; }
 @media (prefers-reduced-motion: reduce) { .clip { transition: none; } }
+
+/* Next episode inside the player (components/VideoPlayer.tsx) */
+.vid-next { position: absolute; top: 10px; right: 10px; z-index: 2; display: inline-flex; align-items: baseline; gap: 6px; max-width: calc(100% - 20px); padding: 8px 14px 9px; border-radius: 999px; background: #FFC21A; color: #1D2430; border: 2px solid #1D2430; font-weight: 700; font-size: 15px; text-decoration: none; box-shadow: 0 4px 14px rgb(0 0 0 / 0.3); animation: vid-in 0.3s ease-out; }
+.vid-next span { font-size: 12.5px; color: #E5402F; }
+.vid-next:hover, .vid-next:focus-visible { transform: scale(1.04); outline: none; }
+.vid-end { position: absolute; inset: 0; z-index: 2; display: grid; place-content: center; justify-items: center; gap: 12px; padding: 16px; background: rgb(17 20 26 / 0.82); color: #fff; text-align: center; animation: vid-in 0.3s ease-out; }
+.vid-end-ep { margin: 0; font-size: 14px; opacity: 0.85; }
+.vid-end-next { display: grid; gap: 2px; padding: 12px 22px 14px; border-radius: 14px; background: #FFC21A; color: #1D2430; font-weight: 700; font-size: 14px; text-decoration: none; border: 2px solid #1D2430; }
+.vid-end-next b { font-size: 18px; }
+.vid-end-next:hover, .vid-end-next:focus-visible { transform: scale(1.03); outline: 3px solid #fff; outline-offset: 2px; }
+.vid-end-again { min-height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid rgb(255 255 255 / 0.6); background: transparent; color: #fff; font: inherit; font-size: 14.5px; cursor: pointer; }
+.vid-end-again:hover, .vid-end-again:focus-visible { background: rgb(255 255 255 / 0.12); }
+.vid-tap { position: absolute; inset: 0; z-index: 2; display: grid; place-content: center; justify-items: center; gap: 10px; border: 0; background: rgb(0 0 0 / 0.35); color: #fff; font: inherit; cursor: pointer; }
+.vid-tap .vid-play { position: static; margin: 0; }
+.vid-tap-t { font-weight: 600; font-size: 15px; }
+@keyframes vid-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .vid-next, .vid-end { animation: none; } }
