@@ -98,6 +98,16 @@
       },
       "poster": "videos/porters-5-forces.webp"
     },
+    "mobile": {
+      "title": "Porter's 5 Forces: ยังไม่ทันเปิดร้าน ทำไมเหมือนโดนล้อมไว้หมดแล้ว?",
+      "durationSec": 183,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/porters-5-forces-mobile.webm"
+      },
+      "poster": "videos/porters-5-forces-mobile.webp"
+    },
     "madeWith": {
       "tool": "Claude Motion + ElevenLabs",
       "date": "2026-11-28",
