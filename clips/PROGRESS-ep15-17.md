@@ -14,4 +14,5 @@ Canon fixes applied to the editorial text: "หัวหน้าหน้าร
 - [x] EP15: Whisper pick, layout stills, render, finish (WebM 5.3/5.1 MB, 2:04), cover at 100 s, previews in Shared/EP15-17/EP15
 - [x] EP15 on dev (PR #91 merged), checked live
 - [x] EP16 and EP17: Whisper pick, layout fixes, render, finish (WebM ~5 MB each, 2:17 each), covers (EP16 table at 88 s, EP17 owners table at 104 s), previews in Shared/EP15-17/EP16 and EP17
-- [ ] EP16 and EP17 on dev (one PR), live check, report
+- [x] EP16 and EP17 on dev: PR #92 merged. Its first deploy failed at type check (empty series.next read as never[]); fixed by typing lib/series.ts (fix/series-empty-next, merged). Second deploy succeeded; live check passed (17 clips on /clips, no overflow).
+- [ ] Waiting for ContentWriter's review. Promote dev to main only on the owner's word; the owner should listen to the names and pronunciation first.
