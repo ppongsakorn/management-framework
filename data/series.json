@@ -11,7 +11,13 @@
     "delegation-levels",
     "raci",
     "skill-will-matrix",
-    "situational-leadership"
+    "situational-leadership",
+    "kanban"
   ],
-  "next": [{ "slug": "kanban", "teaser": "ทุกคนเห็นสถานะงานร่วมกัน ไม่ต้องเดินถาม" }]
+  "next": [
+    {
+      "slug": "okr",
+      "teaser": "งานเสร็จเยอะ… แต่ธุรกิจดีขึ้นจริงไหม?"
+    }
+  ]
 }
