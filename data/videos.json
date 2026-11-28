@@ -173,6 +173,25 @@
     },
     "briefHash": "1832f803d317"
   },
+  "weighted-decision-matrix": {
+    "lang": "th",
+    "desktop": {
+      "title": "Weighted Decision Matrix: ลูกค้าใหม่หรือกำไร ใครเป็นคนตัดสิน?",
+      "durationSec": 137,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/weighted-decision-matrix.webm"
+      },
+      "poster": "videos/weighted-decision-matrix.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-28",
+      "ai": true
+    },
+    "briefHash": "561a203a66e6"
+  },
   "okr": {
     "lang": "th",
     "desktop": {
