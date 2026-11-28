@@ -1,6 +1,9 @@
-import series from "@/data/series.json";
+import seriesData from "@/data/series.json";
 import { getFramework, getVideo } from "@/lib/data";
 import type { ClipSize } from "@/lib/video";
+
+/** `next` may be empty once every announced episode is made; type it so an empty JSON array is not read as never[]. */
+const series: { name: string; about: string; episodes: string[]; next: { slug: string; teaser: string }[] } = seriesData;
 
 /** One episode of the clip series, ready for a list: number, framework, title, poster and length of one size. */
 export interface Episode {
