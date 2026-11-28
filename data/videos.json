@@ -243,6 +243,16 @@
       },
       "poster": "videos/pre-mortem.webp"
     },
+    "mobile": {
+      "title": "Pre-mortem: ยอดจองเต็ม แล้วร้านขาดทุนได้ยังไง?",
+      "durationSec": 137,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/pre-mortem-mobile.webm"
+      },
+      "poster": "videos/pre-mortem-mobile.webp"
+    },
     "madeWith": {
       "tool": "Claude Motion + ElevenLabs",
       "date": "2026-11-28",
