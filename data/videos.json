@@ -57,6 +57,25 @@
     },
     "briefHash": "aee81fe5a265"
   },
+  "swot": {
+    "lang": "th",
+    "desktop": {
+      "title": "SWOT: ร้านแรกขายดี เปิดร้านที่สองแล้วจะรวยขึ้นจริงเหรอ?",
+      "durationSec": 223,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/swot.webm"
+      },
+      "poster": "videos/swot.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-28",
+      "ai": true
+    },
+    "briefHash": "a145ae4d7e6a"
+  },
   "eisenhower-matrix": {
     "lang": "th",
     "desktop": {
