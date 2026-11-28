@@ -214,6 +214,16 @@
       },
       "poster": "videos/ansoff-matrix.webp"
     },
+    "mobile": {
+      "title": "Ansoff Matrix: โตได้ไหม ถ้ายังไม่เปิดสาขา?",
+      "durationSec": 124,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/ansoff-matrix-mobile.webm"
+      },
+      "poster": "videos/ansoff-matrix-mobile.webp"
+    },
     "madeWith": {
       "tool": "Claude Motion + ElevenLabs",
       "date": "2026-11-28",
