@@ -16,6 +16,7 @@ export function toMobilePath(path: string, hash = ""): string | null {
   const m = p.match(/^\/frameworks\/([a-z0-9-]+)$/);
   if (m) return `/mobile/f/${m[1]}/`;
   if (p === "/updates") return "/mobile/updates/";
+  if (p === "/clips") return "/mobile/clips/";
   return null;
 }
 
@@ -28,6 +29,7 @@ export function toDesktopPath(path: string): string {
   if (g) return `/frameworks/#${g[1]}`;
   if (p.endsWith("/mobile/search")) return "/frameworks/";
   if (p.endsWith("/mobile/updates")) return "/updates/";
+  if (p.endsWith("/mobile/clips")) return "/clips/";
   return "/";
 }
 
