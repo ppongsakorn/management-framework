@@ -1,0 +1,17 @@
+{
+  "name": "ซีรีส์ร้านอาหาร",
+  "about": "เรื่องเดียวกันในร้านอาหารร้านเดียว แต่ละตอนแก้ปัญหาที่ตอนก่อนทิ้งไว้ด้วย framework ใหม่ ดูเรียงตอนจะเห็นเจ้าของร้านเติบโตไปทีละขั้น",
+  "episodes": [
+    "5-whys",
+    "pdca",
+    "fishbone-ishikawa",
+    "pareto-80-20",
+    "theory-of-constraints",
+    "eisenhower-matrix",
+    "delegation-levels",
+    "raci",
+    "skill-will-matrix",
+    "situational-leadership"
+  ],
+  "next": [{ "slug": "kanban", "teaser": "ทุกคนเห็นสถานะงานร่วมกัน ไม่ต้องเดินถาม" }]
+}
