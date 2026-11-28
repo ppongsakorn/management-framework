@@ -3062,7 +3062,6 @@
       "diagram": {
         "type": "stack",
         "spec": {
-          "shape": "pyramid",
           "layers": [
             {
               "t": "1 Tell บอกให้ทำ",
