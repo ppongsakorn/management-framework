@@ -30,3 +30,5 @@ clips/_shared/finish.sh $SET 3.0
 | `publish/clips-page-check.mjs` | ตรวจหน้า `/clips` และ `/mobile/clips` |
 
 ขั้นตอนเต็มและบทเรียนทั้งหมด: `docs/videos/production.md` ในเว็บ (branch `dev`)
+
+`clips/<slug>/case/web.json` คือร่างเนื้อหาเว็บของตอนนั้น (`exampleSteps`, `diagram` และ `how`/`steps`/`origin` ถ้าเปลี่ยน) ใช้กับ `publish/apply-examples.js` ตอนขึ้นเว็บ
