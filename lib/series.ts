@@ -33,3 +33,17 @@ export function upcoming(): { n: number; slug: string; name: string; group: stri
 
 export const seriesName = series.name;
 export const seriesAbout = series.about;
+
+/** Where a framework sits in the series: its episode number and the episode after it (made or announced). */
+export interface SeriesPlace {
+  n: number;
+  next?: { n: number; slug: string; name: string; soon: boolean };
+}
+
+export function seriesPlace(slug: string): SeriesPlace | undefined {
+  const i = series.episodes.indexOf(slug);
+  if (i < 0) return undefined;
+  const nextSlug = series.episodes[i + 1] ?? series.next[0]?.slug;
+  const fw = nextSlug ? getFramework(nextSlug) : undefined;
+  return { n: i + 1, next: fw ? { n: i + 2, slug: fw.slug, name: fw.name, soon: !series.episodes.includes(fw.slug) } : undefined };
+}

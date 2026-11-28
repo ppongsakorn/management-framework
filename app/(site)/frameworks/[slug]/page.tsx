@@ -8,6 +8,7 @@ import { ShareButton } from "@/components/ShareButton";
 import { RelatedFrameworks } from "@/components/RelatedFrameworks";
 import { UseCases } from "@/components/UseCases";
 import { VideoPlayer } from "@/components/VideoPlayer";
+import { seriesPlace } from "@/lib/series";
 import { frameworks, frameworksIn, getDiagram, getFramework, getGroup, getUseCases, getVideo } from "@/lib/data";
 import { aiEnabled } from "@/lib/site";
 
@@ -77,7 +78,7 @@ export default async function FrameworkPage({ params }: { params: Promise<{ slug
           {video && (
             <>
               <h2>คลิปอธิบาย</h2>
-              <VideoPlayer video={video} size="desktop" name={fw.name} />
+              <VideoPlayer video={video} size="desktop" name={fw.name} place={seriesPlace(fw.slug)} base="/frameworks/" />
             </>
           )}
 

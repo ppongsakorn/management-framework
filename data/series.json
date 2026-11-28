@@ -12,12 +12,13 @@
     "raci",
     "skill-will-matrix",
     "situational-leadership",
-    "kanban"
+    "kanban",
+    "okr"
   ],
   "next": [
     {
-      "slug": "okr",
-      "teaser": "งานเสร็จเยอะ… แต่ธุรกิจดีขึ้นจริงไหม?"
+      "slug": "swot",
+      "teaser": "ก่อนเปิดสาขาสอง: จุดแข็ง จุดอ่อน โอกาส ความเสี่ยง"
     }
   ]
 }
