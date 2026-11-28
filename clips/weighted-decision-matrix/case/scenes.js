@@ -35,9 +35,9 @@
   const BG = ['#FFF4E3', '#E3EEFB', '#E3F3EA'];
 
   // scoring table: rows 0 = header, 1–3 = options; columns 0 = option, 1–4 = criteria, 5 = weighted total. Cells are .<cls>-c<i>_<j>
-  const tblHtml = (cls, L) => {
+  const tblHtml = (cls, L, rh) => {
     const V = L.V, fs = V ? 26 : 34, cell = (i, j, inner, extra) => '<div class="' + cls + '-c' + i + '_' + j + '" style="display:flex;align-items:center;justify-content:center;text-align:center;font-weight:700;line-height:1.15;font-size:' + fs + 'px;' + (extra || '') + '">' + inner + '</div>';
-    let h = '<div class="card ' + cls + '-t" style="width:' + (V ? 880 : 1700) + 'px;padding:10px;display:grid;grid-template-columns:' + (V ? '230px repeat(4,1fr) 120px' : '420px repeat(4,1fr) 220px') + ';grid-auto-rows:' + (V ? '104px' : '124px') + ';gap:6px;background:#fff">';
+    let h = '<div class="card ' + cls + '-t" style="width:' + (V ? 880 : 1700) + 'px;padding:10px;display:grid;grid-template-columns:' + (V ? '230px repeat(4,1fr) 120px' : '420px repeat(4,1fr) 220px') + ';grid-auto-rows:' + (V ? '104px' : (rh || 124) + 'px') + ';gap:6px;background:#fff">';
     h += cell(0, 0, '', '') + CRIT.map((c, k) => cell(0, k + 1, c[0] + '<br><span style="color:var(--main);font-size:' + (V ? 24 : 30) + 'px">' + c[1] + '%</span>')).join('') + cell(0, 5, 'รวม<br><span style="color:var(--ink2);font-size:' + (V ? 20 : 26) + 'px">เต็ม 5</span>');
     OPT.forEach((o, r) => { h += cell(r + 1, 0, o.n, 'background:' + BG[r] + ';border-radius:12px;font-size:' + (V ? 26 : 34) + 'px') + o.sc.map((v, k) => cell(r + 1, k + 1, '<span class="' + cls + '-v' + r + '_' + k + '">' + v + '</span>', 'font-size:' + (V ? 40 : 52) + 'px;border-radius:12px;background:#F6F2EA')).join('') + cell(r + 1, 5, '<span class="' + cls + '-tot' + r + '">' + o.tot + '</span>', 'font-size:' + (V ? 44 : 58) + 'px;border-radius:12px;background:#FFE680'); });
     return h + '</div>';
@@ -64,10 +64,10 @@
       CF.pop(this.tape, t, 0.02, undefined, at(L.tx - 120, L.tapeY), -3);
       CF.slam(this.a, t, 0.15, V ? mid(330, 500) : mid(520, 400), -3, 1.7);
       CF.slam(this.b, t, C.b - 0.5, V ? mid(750, 640) : mid(1250, 400), 3, 1.7);
-      CF.pop(this.o, t, C.laugh - 0.3, undefined, V ? mid(540, 820) : mid(960, 620), 0);
+      CF.pop(this.o, t, C.laugh - 0.3, undefined, V ? mid(540, 820) : mid(1560, 640), 0);
       this.is.forEach((e, i) => CF.pop(e, t, C.three - 0.5 + i * 0.15, undefined, V ? mid(200 + i * 340, 1010) : mid(560 + i * 400, 840), [-2, 1, 2][i]));
       CF.pop(this.s, t, C.count - 0.3, undefined, V ? mid(540, 1170) : mid(960, 980), -2);
-      CF.slam(this.st, t, C.what - 0.6, V ? mid(540, 1340) : mid(960, 560), -2, 1.7);
+      CF.slam(this.st, t, C.what - 0.6, V ? mid(540, 1340) : mid(900, 620), -2, 1.7);
     },
   };
 
@@ -86,9 +86,9 @@
     render(t) {
       const L = this.L, C = this.C, V = L.V;
       CF.pop(this.n, t, 0.1, undefined, at(L.tx, L.ty - 10), -2);
-      this.is.forEach((e, i) => { CF.pop(e, t, C.o[i] - 0.4, undefined, V ? mid(210 + i * 330, 520) : mid(300 + i * 420, 400), [-2, 1, 2][i]); e.style.filter = 'none'; if (t > C.flip) { const k = seg(t, C.flip, C.flip + 0.4); e.style.opacity = (+e.style.opacity * (1 - 0.55 * k)).toFixed(2); } });
-      CF.slam(this.qq, t, C.ask - 0.4, V ? mid(540, 700) : mid(1500, 400), -2, 1.5);
-      this.ks.forEach((e, k) => CF.pop(e, t, C.cr[k] - 0.5, undefined, V ? mid(540, 830 + k * 150) : mid(960, 520 + k * 130), [-1, 1, -1, 1][k]));
+      this.is.forEach((e, i) => { CF.pop(e, t, C.o[i] - 0.4, undefined, V ? mid(210 + i * 330, 520) : mid(260 + i * 340, 400), [-2, 1, 2][i]); e.style.filter = 'none'; if (t > C.flip) { const k = seg(t, C.flip, C.flip + 0.4); e.style.opacity = (+e.style.opacity * (1 - 0.55 * k)).toFixed(2); } });
+      CF.slam(this.qq, t, C.ask - 0.4, V ? mid(540, 700) : mid(1560, 400), -2, 1.5);
+      this.ks.forEach((e, k) => CF.pop(e, t, C.cr[k] - 0.5, undefined, V ? mid(540, 830 + k * 150) : mid(960, 590 + k * 135), [-1, 1, -1, 1][k]));
     },
   };
 
@@ -153,7 +153,7 @@
     init(host, api) {
       const L = this.L = LAY(api.W, api.H), V = L.V, T = HEARD(api, 'test'); this.host = host;
       this.C = { q: T('กำไรสี่นี่', 'รู้จริงหรือยัง'), three: T('จากสี่เป็นสาม', 'ลดคะแนน'), nine: T('สองจุดเก้า', 'ตกเหลือ'), lead: T('ขึ้นนำ', 'ชุดมื้อด่วนขึ้น'), quiet: T('ทั้งโต๊ะเงียบ', 'เงียบ'), real: T('มารับจริง') };
-      host.insertAdjacentHTML('beforeend', '<p class="pill ts-n" style="font-size:36px">ลองเปลี่ยนสมมติฐานเดียว</p>' + tblHtml('ts', L) +
+      host.insertAdjacentHTML('beforeend', '<p class="pill ts-n" style="font-size:36px">ลองเปลี่ยนสมมติฐานเดียว</p>' + tblHtml('ts', L, 92) +
         '<p class="note pink ts-q" style="font-size:' + (V ? 34 : 42) + 'px">กำไรสี่นี่… รู้จริงหรือยังว่า<br>จองแล้วมารับครบ?</p>' +
         '<p class="sticker ts-d" style="font-size:' + (V ? 34 : 42) + 'px">กำไรของ “จองอาหารล่วงหน้า” 4 → 3</p>' +
         '<p class="stamp ts-u" style="font-size:' + (V ? 44 : 56) + 'px">มารับจริง?</p>' +
@@ -166,14 +166,14 @@
       CF.pop(this.n, t, 0.1, undefined, at(L.tx, L.ty - 10), -2);
       CF.pop(this.tbl, t, 0.2, undefined, at(P.x, P.y), 0);
       for (const k of Object.keys(E)) E[k].style.opacity = 1;
-      CF.pop(this.qq, t, C.q - 0.4, undefined, V ? mid(540, 1150) : mid(1450, 910), -2);
-      CF.pop(this.d, t, C.three - 0.4, undefined, V ? mid(540, 1290) : mid(560, 910), 2);
+      CF.pop(this.qq, t, C.q - 0.4, undefined, V ? mid(540, 1150) : mid(1330, 880), -2);
+      CF.pop(this.d, t, C.three - 0.4, undefined, V ? mid(540, 1290) : mid(560, 890), 2);
       const k = seg(t, C.three, C.three + 0.3);                      // profit 4 → 3 for the first option
       this.v00.textContent = k > 0.5 ? '3' : '4'; E['1_1'].style.background = k > 0.5 ? '#F7C6BD' : '#F6F2EA';
       const k2 = seg(t, C.nine, C.nine + 0.3); this.tot0.textContent = k2 > 0.5 ? '2.9' : '3.3'; E['1_5'].style.background = k2 > 0.5 ? '#F7C6BD' : '#FFE680';
       const k3 = seg(t, C.lead, C.lead + 0.3); E['2_5'].style.boxShadow = k3 > 0.5 ? '0 0 0 6px var(--d)' : '';
-      CF.pop(this.one, t, C.lead - 0.2, undefined, V ? mid(540, 1000) : mid(1500, 700), -2);
-      CF.slam(this.u, t, C.real - 0.5, V ? mid(540, 1420) : mid(1450, 990), -3, 1.7);
+      CF.pop(this.one, t, C.lead - 0.2, undefined, V ? mid(540, 1000) : mid(1640, 285), -2);
+      CF.slam(this.u, t, C.real - 0.5, V ? mid(540, 1420) : mid(1650, 1000), -3, 1.7);
     },
   };
 

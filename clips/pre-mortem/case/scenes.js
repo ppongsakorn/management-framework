@@ -49,7 +49,7 @@
       const L = this.L, C = this.C, V = L.V;
       CF.pop(this.tape, t, 0.02, undefined, at(L.tx - 120, L.tapeY), -3);
       CF.slam(this.qq, t, 0.2, V ? mid(540, 480) : mid(1000, 330), -2, 1.7);
-      CF.pop(this.d, t, C.loss - 0.3, undefined, V ? mid(830, 640) : mid(1560, 560), 6);
+      CF.pop(this.d, t, C.loss - 0.3, undefined, V ? mid(830, 640) : mid(1700, 430), 6);
       CF.pop(this.p, t, C.stop - 0.4, undefined, V ? mid(380, 790) : mid(560, 640), -2);
       CF.pop(this.f, t, C.btn - 0.3, undefined, (V ? mid(470, 880) : mid(640, 740)) + ' translateY(' + (Math.sin(t * 5) * 6).toFixed(1) + 'px)', 0);
       CF.pop(this.s, t, C.six - 0.5, undefined, V ? mid(540, 1080) : mid(1360, 600), 2);
@@ -95,8 +95,8 @@
       const L = this.L, C = this.C, V = L.V;
       CF.pop(this.n, t, C.read - 0.5, undefined, at(L.tx, L.ty - 10), -2);
       const s = [C.a, C.b, C.c], e = [C.a2, C.b2, C.c2];
-      this.rs.forEach((el, k) => { CF.pop(el, t, s[k] - 0.5, undefined, V ? mid(540, 590 + k * 250) : mid(960, 440 + k * 215), [-1, 1, -1][k]); this.es[k].style.opacity = seg(t, e[k] - 0.4, e[k] - 0.1).toFixed(2); });
-      CF.slam(this.c, t, C.calm - 0.5, V ? mid(540, 1400) : mid(1500, 980), -2, 1.5);
+      this.rs.forEach((el, k) => { CF.pop(el, t, s[k] - 0.5, undefined, V ? mid(540, 590 + k * 250) : mid(860, 440 + k * 215), [-1, 1, -1][k]); this.es[k].style.opacity = seg(t, e[k] - 0.4, e[k] - 0.1).toFixed(2); });
+      CF.slam(this.c, t, C.calm - 0.5, V ? mid(540, 1400) : mid(1600, 560), -2, 1.5);
       this.c.style.display = ''; if (!V) this.c.style.fontSize = '44px';
     },
   };
