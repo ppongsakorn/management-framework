@@ -258,6 +258,8 @@ clips/_shared/finish.sh clips/<slug>/case 3.0                          # เส�
 | 13 | SWOT | 3:43 | 2026-11-28 | #84 |
 | 14 | Porter's 5 Forces | 3:03 | 2026-11-28 | #84 |
 | 15 | Ansoff Matrix | 2:04 | 2026-11-28 | PR ของ `feature/clip-ep15` (dev) |
+| 16 | Weighted Decision Matrix | 2:17 | 2026-11-28 | PR ของ `feature/clip-ep16-17` (dev) |
+| 17 | Pre-mortem | 2:17 | 2026-11-28 | PR ของ `feature/clip-ep16-17` (dev) |
 
 PR ที่ส่งต่อ dev → stg → main (ก่อนตัด stg): ตอน 7–9 #63, #64 · ตอน 10 และ `/clips` #67, #68 (หน้า `/clips` #66) · ตอน 11 และบันทึกนี้ #71, #72 · ตอน 12 ภาพปก best shot (#73) และปุ่มตอนถัดไป (#74) #76, #77 · ตอน 13–14 #85, #86
 

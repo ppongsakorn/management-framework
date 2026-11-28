@@ -16,12 +16,9 @@
     "okr",
     "swot",
     "porters-5-forces",
-    "ansoff-matrix"
+    "ansoff-matrix",
+    "weighted-decision-matrix",
+    "pre-mortem"
   ],
-  "next": [
-    {
-      "slug": "weighted-decision-matrix",
-      "teaser": "เลือกทีละทางด้วยคะแนนที่ตกลงกันก่อน"
-    }
-  ]
+  "next": []
 }
