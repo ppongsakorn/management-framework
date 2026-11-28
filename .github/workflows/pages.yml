@@ -1,18 +1,18 @@
 # Build the static site (no AI advisor) and publish it to GitHub Pages.
-# Three environments share one Pages site, one branch each:
+# Two environments share one Pages site, one branch each (stg was dropped on
+# 2026-11-28, owner decision):
 #   main -> /          (prd, with /v0 /v1 /v2 /v3 search comparison builds and /compare)
-#   stg  -> /stg/      (staging)
 #   dev  -> /dev/      (development)
-# A push to any of the three rebuilds all three from their branch heads and
-# redeploys, so a push to dev never removes production. Promote with PRs:
-# dev -> stg -> main (see the "Promote" workflow). One-time setup: Settings ->
+# A push to either rebuilds both from their branch heads and redeploys, so a
+# push to dev never removes production. Promote with a PR dev -> main (see the
+# "Promote" workflow), merged with a merge commit. One-time setup: Settings ->
 # Pages -> Source: "GitHub Actions"; Settings -> Environments -> github-pages
-# must allow deployments from main, stg and dev.
+# must allow deployments from main and dev.
 name: Deploy static site to GitHub Pages
 
 on:
   push:
-    branches: [main, stg, dev]
+    branches: [main, dev]
   workflow_dispatch:
 
 permissions:
@@ -49,10 +49,10 @@ jobs:
           python-version: "3.12"
       - id: pages
         uses: actions/configure-pages@v5
-      - name: Check out stg and dev (skipped while a branch does not exist yet)
+      - name: Check out dev (skipped while the branch does not exist)
         working-directory: src/prd
         run: |
-          for e in stg dev; do
+          for e in dev; do
             if git ls-remote --exit-code --heads origin "$e" >/dev/null; then
               git fetch --quiet origin "$e"
               git worktree add "../$e" "origin/$e"
@@ -98,7 +98,7 @@ jobs:
             STATIC_EXPORT=1 SEARCH_VARIANT=$v PAGES_BASE_PATH="$BASE/$v" PAGES_ASSET_BASE="$BASE" npm run build
             mv out "$GITHUB_WORKSPACE/site/$v"
           done
-          for e in stg dev; do
+          for e in dev; do
             if [ -d "$GITHUB_WORKSPACE/src/$e" ]; then build_env "$e" "$BASE/$e" "$GITHUB_WORKSPACE/site/$e"; fi
           done
           cd "$GITHUB_WORKSPACE"

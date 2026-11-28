@@ -92,7 +92,7 @@
 
 - **MP4 สำหรับโซเชียล:** `out/<slug>-final.mp4` ยังไม่ได้ส่งให้เจ้าของตั้งแต่ตอน 5 ไฟล์อยู่ในเครื่องที่เรนเดอร์ ไม่ได้อยู่ใน git
 - **Next.js มีช่องโหว่:** `next build` จะเตือน และบางครั้ง exit 1 แม้หน้าเว็บ build ครบ ควรอัปเดตเป็นงานแยก แล้วรันเทสต์และตรวจทุกหน้า
-- **ตัด stg ให้เสร็จ:** ยังเหลือ branch `stg`, ตัวเลือก dev → stg / stg → main ใน workflow Promote และ `/stg/` ที่ยัง build อยู่ ต้องถามเจ้าของก่อนลบ branch หรือแก้ workflow
+- **branch `stg`:** workflow ไม่ใช้แล้ว (`pages.yml` build แค่ main และ dev, Promote มีแค่ dev → main) เหลือแค่ตัว branch ใน git ถ้าจะลบ ต้องถามเจ้าของก่อน
 - **workflow Promote:** สร้าง PR เองไม่ได้ เจ้าของต้องเปิดสิทธิ์ "Actions allowed to create PRs"
 
 ## 5. ที่เก็บของ

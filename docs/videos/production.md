@@ -214,9 +214,9 @@ clips/_shared/finish.sh clips/<slug>/case 3.0                          # เส�
 ตั้งแต่ 2026-11-28 เจ้าของตัดสินใจเหลือแค่ 2 สภาพแวดล้อม คือ **dev และ prd** ไม่ใช้ stg แล้ว
 
 - PR `feature/…` → `dev` แล้ว merge ด้วย **merge commit** รอ Pages ประมาณ 5 นาที แล้วตรวจ `/dev/`
-- ตรวจ dev ผ่านแล้ว เปิด PR `dev` → `main` เอง merge ด้วย merge commit แล้วตรวจ prd
-  - workflow "Promote" ยังมีแค่ตัวเลือก dev → stg และ stg → main จึงยังใช้ไม่ได้
-- branch `stg` และ `/stg/` ยังอยู่จนกว่าจะลบ branch: workflow ข้าม branch ที่ไม่มีอยู่แล้ว ลบ branch `stg` อย่างเดียวก็ไม่สร้าง `/stg/` อีก ระหว่างนี้ไม่ต้องสนใจ stg
+- ตรวจ dev ผ่านแล้ว เปิด PR `dev` → `main` merge ด้วย merge commit แล้วตรวจ prd
+  - workflow "Promote" มีตัวเลือกเดียวคือ dev → main แต่ยังสร้าง PR เองไม่ได้จนกว่าเจ้าของจะเปิดสิทธิ์ "Actions allowed to create PRs" ระหว่างนี้ให้เปิด PR เอง
+- workflow `pages.yml` build แค่ `main` (`/`) และ `dev` (`/dev/`) แล้ว `/stg/` จึงหายจากเว็บตั้งแต่ deploy ครั้งถัดไป ส่วน branch `stg` ยังอยู่ใน git แต่ไม่ได้ใช้ เจ้าของลบเองได้
 - รอ deploy ด้วยการ curl จนเจอชื่อไฟล์คลิปหรือข้อความใหม่ (`until curl … | grep -q …; do sleep 20; done`) ต้องเช็กสิ่งที่ใหม่จริง หรือดูสถานะ Actions งาน deploy ขึ้น Pages บางครั้งค้างหลายนาที
 - ตรวจทั้ง dev และ prd ด้วย:
   - `node …/publish/verify-live.mjs <''|dev/> <dir> <slug>=<ข้อความในเรื่อง>`: คลิปเล่นได้ ขนาดภาพ ความยาว ข้อความเรื่อง และไม่ล้นแนวนอน ทั้งจอคอมและ iPhone 13
