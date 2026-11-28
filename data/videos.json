@@ -185,6 +185,16 @@
       },
       "poster": "videos/weighted-decision-matrix.webp"
     },
+    "mobile": {
+      "title": "Weighted Decision Matrix: ลูกค้าใหม่หรือกำไร ใครเป็นคนตัดสิน?",
+      "durationSec": 137,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/weighted-decision-matrix-mobile.webm"
+      },
+      "poster": "videos/weighted-decision-matrix-mobile.webp"
+    },
     "madeWith": {
       "tool": "Claude Motion + ElevenLabs",
       "date": "2026-11-28",
