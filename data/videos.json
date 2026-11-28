@@ -243,6 +243,16 @@
       },
       "poster": "videos/skill-will-matrix.webp"
     },
+    "mobile": {
+      "title": "Skill / Will Matrix: คนต่างกัน ต้องการการช่วยต่างกัน",
+      "durationSec": 196,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/skill-will-matrix-mobile.webm"
+      },
+      "poster": "videos/skill-will-matrix-mobile.webp"
+    },
     "madeWith": {
       "tool": "Claude Motion + ElevenLabs",
       "date": "2026-11-28",
