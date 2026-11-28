@@ -185,6 +185,16 @@
       },
       "poster": "videos/delegation-levels.webp"
     },
+    "mobile": {
+      "title": "Delegation Levels: ใครตัดสินใจได้แค่ไหน",
+      "durationSec": 179,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/delegation-levels-mobile.webm"
+      },
+      "poster": "videos/delegation-levels-mobile.webp"
+    },
     "madeWith": {
       "tool": "Claude Motion + ElevenLabs",
       "date": "2026-11-28",
