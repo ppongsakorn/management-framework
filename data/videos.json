@@ -57,6 +57,64 @@
     },
     "briefHash": "aee81fe5a265"
   },
+  "swot": {
+    "lang": "th",
+    "desktop": {
+      "title": "SWOT: ร้านแรกขายดี เปิดร้านที่สองแล้วจะรวยขึ้นจริงเหรอ?",
+      "durationSec": 223,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/swot.webm"
+      },
+      "poster": "videos/swot.webp"
+    },
+    "mobile": {
+      "title": "SWOT: ร้านแรกขายดี เปิดร้านที่สองแล้วจะรวยขึ้นจริงเหรอ?",
+      "durationSec": 223,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/swot-mobile.webm"
+      },
+      "poster": "videos/swot-mobile.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-28",
+      "ai": true
+    },
+    "briefHash": "a145ae4d7e6a"
+  },
+  "porters-5-forces": {
+    "lang": "th",
+    "desktop": {
+      "title": "Porter's 5 Forces: ยังไม่ทันเปิดร้าน ทำไมเหมือนโดนล้อมไว้หมดแล้ว?",
+      "durationSec": 183,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/porters-5-forces.webm"
+      },
+      "poster": "videos/porters-5-forces.webp"
+    },
+    "mobile": {
+      "title": "Porter's 5 Forces: ยังไม่ทันเปิดร้าน ทำไมเหมือนโดนล้อมไว้หมดแล้ว?",
+      "durationSec": 183,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/porters-5-forces-mobile.webm"
+      },
+      "poster": "videos/porters-5-forces-mobile.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-28",
+      "ai": true
+    },
+    "briefHash": "3a37562a57b2"
+  },
   "eisenhower-matrix": {
     "lang": "th",
     "desktop": {
