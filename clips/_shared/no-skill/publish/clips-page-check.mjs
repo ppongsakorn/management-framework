@@ -1,5 +1,5 @@
 // node clips-page-check.mjs <site base url> <shot dir>: /clips and /mobile/clips at 1280 (light, dark), 360 and iPhone 13: items, posters loaded, overflow, phone tabs, video requests (must be 0).
-import { chromium, devices } from '/opt/node-tools/node_modules/playwright/index.mjs';
+const { chromium, devices } = await import(process.env.PLAYWRIGHT_MJS || '/opt/node-tools/node_modules/playwright/index.mjs');
 const B = process.argv[2], S = process.argv[3]; const br = await chromium.launch();
 for (const [name, opt, path] of [['desktop', { viewport: { width: 1280, height: 900 }, deviceScaleFactor: 1 }, 'clips/'], ['desktop-dark', { viewport: { width: 1280, height: 900 }, colorScheme: 'dark' }, 'clips/'], ['phone360', { viewport: { width: 360, height: 760 }, isMobile: true, hasTouch: true }, 'mobile/clips/'], ['iphone', devices['iPhone 13'], 'mobile/clips/']]) {
   const p = await br.newPage(opt); const bad = []; p.on('response', (r) => { if (r.status() >= 400) bad.push(r.status() + ' ' + r.url().split('/').slice(-2).join('/')); });

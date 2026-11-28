@@ -1,5 +1,5 @@
 // render.mjs <size dir> [check t1,t2,...]: frame-by-frame capture through window.__frameAt, piped to ffmpeg (or stills for a check)
-import { chromium } from '/opt/node-tools/node_modules/playwright/index.mjs';
+const { chromium } = await import(process.env.PLAYWRIGHT_MJS || '/opt/node-tools/node_modules/playwright/index.mjs');
 import { spawn } from 'node:child_process'; import fs from 'node:fs'; import http from 'node:http'; import path from 'node:path';
 const dir = path.resolve(process.argv[2]), check = process.argv[3];
 const tl = JSON.parse(fs.readFileSync(dir + '/timeline.json')); const W = tl.width, H = tl.height, fps = tl.fps || 30;

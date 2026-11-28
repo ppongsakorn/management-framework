@@ -7,3 +7,8 @@ Canon fixes applied to the editorial text: "หัวหน้าหน้าร
 ## Status
 - [x] trimmed scripts (clips/<slug>/case/trimmed.txt)
 - [x] scaffolds (clip.json, index.html, symlinks)
+- [x] editorial v2 applied (no specific menu: booking / waiting time / cost / actual pickup); v1 voice for EP15 discarded and regenerated
+- [x] EP15–17 narration takes generated (ElevenLabs eleven_v4, voice Mind, 2 takes per scene)
+- [x] scenes.js written for EP15, EP16, EP17; sfx.py cues for all three
+- [x] render.mjs and publish/*.mjs accept PLAYWRIGHT_MJS (fallback to /opt/node-tools)
+- [ ] Whisper take pick (running, CPU), build, layout stills, render, finish, previews

@@ -1,5 +1,5 @@
 // node verify-live.mjs <env: '' | dev/ | stg/> <shot dir> slug=text …: per slug and per size (desktop 1280 / iPhone 13), the story text is on the page, the clip plays (size, length) and nothing overflows sideways.
-import { chromium, devices } from '/opt/node-tools/node_modules/playwright/index.mjs';
+const { chromium, devices } = await import(process.env.PLAYWRIGHT_MJS || '/opt/node-tools/node_modules/playwright/index.mjs');
 const env = process.argv[2] ?? '', S = process.argv[3]; const B = 'https://ppongsakorn.github.io/management-framework/' + env;
 const expect = Object.fromEntries(process.argv.slice(4).map((a) => a.split('='))), slugs = Object.keys(expect);
 const br = await chromium.launch();

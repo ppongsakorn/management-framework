@@ -1,5 +1,5 @@
 // node diagram-overlap.mjs <out.png> <slug>: render one diagram from data/diagrams.json with the real font and count overlapping texts (run npm run data first).
-import { chromium } from '/opt/node-tools/node_modules/playwright/index.mjs';
+const { chromium } = await import(process.env.PLAYWRIGHT_MJS || '/opt/node-tools/node_modules/playwright/index.mjs');
 import fs from 'fs';
 const d = JSON.parse(fs.readFileSync('data/diagrams.json','utf8')); const svg = d[process.argv[3]]?.svg ?? d[process.argv[3]];
 const b = await chromium.launch(); const p = await b.newPage({viewport:{width:760,height:700}});
