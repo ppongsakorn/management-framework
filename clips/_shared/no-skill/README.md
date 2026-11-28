@@ -22,6 +22,7 @@ clips/_shared/finish.sh $SET 3.0
 
 | ไฟล์ | ทำอะไร |
 | --- | --- |
+| `cover.py` | ภาพปกแบบ best shot: เลือกเฟรมที่มีเนื้อหามากที่สุด (ข้ามการ์ดปิด) หรือ `--at <วินาที>` ถ้าภาพที่เลือกเฉลยตอนจบ ใช้หลัง `finish.sh` ทุกครั้ง |
 | `stills.sh` | ภาพนิ่งท้ายทุกฉากทั้ง 2 ขนาด + contact sheet ใช้ตรวจ layout ก่อนเรนเดอร์จริง |
 | `publish/apply-examples.js` | เขียน `exampleSteps` + `example` แบบแบน + `diagram` (และ `how`/`steps`/`origin`) ลง `data/frameworks.json` |
 | `publish/diagram-overlap.mjs` | นับข้อความที่ทับกันในแผนภาพหนึ่งตัวด้วยฟอนต์จริง |

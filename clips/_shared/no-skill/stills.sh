@@ -3,7 +3,7 @@
 # and one contact sheet per size. Needs voice/words.json and build.py run first.
 #   clips/_shared/no-skill/stills.sh clips/<slug>/case <out dir>
 set -euo pipefail
-C=$(cd "$1" && pwd); OUT=${2:-/tmp}; HERE=$(cd "$(dirname "$0")" && pwd)
+C=$(cd "$1" && pwd); OUT=${2:-/tmp}; mkdir -p "$OUT"; HERE=$(cd "$(dirname "$0")" && pwd)
 T=$(python3 -c "import json;tl=json.load(open('$C/desktop/timeline.json'));print(','.join(str(round(s['end']-0.6,1)) for s in tl['scenes']))")
 for sz in desktop mobile; do rm -rf "${C:?}/${sz:?}/check"; node "$HERE/render.mjs" "$C/$sz" "$T" 2>&1 | grep -iE -A6 "error|issue" || true; done
 python3 - "$C" "$OUT" <<'PY'
