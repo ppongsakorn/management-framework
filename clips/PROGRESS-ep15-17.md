@@ -11,4 +11,5 @@ Canon fixes applied to the editorial text: "หัวหน้าหน้าร
 - [x] EP15–17 narration takes generated (ElevenLabs eleven_v4, voice Mind, 2 takes per scene)
 - [x] scenes.js written for EP15, EP16, EP17; sfx.py cues for all three
 - [x] render.mjs and publish/*.mjs accept PLAYWRIGHT_MJS (fallback to /opt/node-tools)
-- [ ] Whisper take pick (running, CPU), build, layout stills, render, finish, previews
+- [x] EP15: Whisper pick, layout stills, render, finish (WebM 5.3/5.1 MB, 2:04), cover at 100 s, previews in Shared/EP15-17/EP15
+- [ ] EP15 on dev (PR), EP16 and EP17 pick/render/finish
