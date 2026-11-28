@@ -249,22 +249,24 @@
         '<p class="t cl-b" style="font-size:' + (V ? 66 : 72) + 'px">→ <span style="color:var(--main)">ผู้บริหาร</span>ที่รู้ว่าเวลาควรไปอยู่ตรงไหน</p>' +
         '<div class="cl-eps" style="position:absolute;left:0;top:0;display:flex;flex-wrap:wrap;gap:12px;width:' + (V ? 900 : 1700) + 'px">' + EPS.map((e, i) => '<span class="pill" style="position:static;font-size:' + (V ? 32 : 32) + 'px;' + (i === 5 ? 'background:var(--main)' : '') + '">' + (i + 1) + ' · ' + e + '</span>').join('') + '</div>' +
         line('cl-r', 'ไม่ต้องทำทุกอย่างเอง แต่ต้องรู้ว่าอะไรควรทำเอง!', V ? 46 : 50) +
+        '<div class="cl-next" style="position:absolute;left:0;top:0;width:' + (V ? 860 : 720) + 'px;padding:22px 34px 28px;background:var(--accent);color:var(--ink);border-radius:20px;border:7px solid var(--ink);box-shadow:12px 14px 0 rgba(0,0,0,.25);transform-origin:50% 50%"><p style="font-weight:700;font-size:' + (V ? 36 : 32) + 'px;color:var(--main)">ตอนหน้า</p><p style="font-weight:700;font-size:' + (V ? 66 : 60) + 'px;line-height:1.05;white-space:nowrap">Delegation Levels ▶</p><p style="font-weight:700;font-size:' + (V ? 34 : 30) + 'px">มอบงานแล้ว… ทำไมยังเหนื่อย?</p></div>' +
         line('cl-see', 'ดูวิธีเต็ม ๆ ได้ที่เว็บ', V ? 44 : 40) +
         '<p class="cl-name" style="position:absolute;left:0;top:0;font-weight:700;font-size:' + (V ? 84 : 76) + 'px;background:var(--ink);color:#fff;padding:10px 40px 22px;border-radius:22px;box-shadow:12px 12px 0 var(--main);white-space:nowrap;transform-origin:0 50%">เข็มทิศกรอบความคิด</p>' +
         '<p class="t mute cl-url" style="font-size:' + (V ? 32 : 30) + 'px">ppongsakorn.github.io/management-framework</p>' +
         '<p class="t mute cl-org" style="font-size:26px;font-weight:600">แนวคิดจาก: Time Management · Dwight D. Eisenhower</p>' +
         '<p class="t mute cl-ai" style="font-size:24px;font-weight:600">คลิปนี้ทำด้วยเครื่องมือ AI</p>');
-      Object.assign(this, { a: q(host, '.cl-a'), b: q(host, '.cl-b'), eps: q(host, '.cl-eps'), r: q(host, '.cl-r'), see: q(host, '.cl-see'), name: q(host, '.cl-name'), url: q(host, '.cl-url'), org: q(host, '.cl-org'), ai: q(host, '.cl-ai') });
+      Object.assign(this, { next: q(host, '.cl-next'), a: q(host, '.cl-a'), b: q(host, '.cl-b'), eps: q(host, '.cl-eps'), r: q(host, '.cl-r'), see: q(host, '.cl-see'), name: q(host, '.cl-name'), url: q(host, '.cl-url'), org: q(host, '.cl-org'), ai: q(host, '.cl-ai') });
     },
     render(t) {
       const L = this.L, C = this.C, V = L.V;
-      const P = V ? { a: [80, 300], b: [80, 380], eps: [80, 560], r: [80, 720], see: [80, 960], name: [80, 1025], url: [80, 1215], org: [80, 1265], ai: [80, 1310] }
-                  : { a: [110, 130], b: [110, 210], eps: [110, 340], r: [110, 450], see: [110, 600], name: [110, 680], url: [110, 860], org: [110, 910], ai: [110, 970] };
+      const P = V ? { a: [80, 300], b: [80, 380], eps: [80, 560], r: [80, 720], next: [540, 900], see: [80, 1110], name: [80, 1175], url: [80, 1365], org: [80, 1415], ai: [80, 1458] }
+                  : { a: [110, 130], b: [110, 210], eps: [110, 340], r: [110, 450], next: [1430, 760], see: [110, 600], name: [110, 680], url: [110, 860], org: [110, 910], ai: [110, 970] };
       if (V) this.b.style.whiteSpace = 'normal', this.b.style.width = '900px';
       CF.pop(this.a, t, C.fire - 0.2, undefined, at(P.a[0], P.a[1]));
       CF.pop(this.b, t, C.boss - 0.2, undefined, at(P.b[0], P.b[1]));
       CF.pop(this.eps, t, C.boss + 0.8, undefined, at(P.eps[0], P.eps[1]));
       CF.pop(this.r, t, C.all - 0.3, undefined, at(P.r[0], P.r[1]));
+      CF.pop(this.next, t, C.see - 0.6, undefined, mid(P.next[0], P.next[1]), -2);
       CF.pop(this.see, t, C.see, undefined, at(P.see[0], P.see[1]));
       CF.pop(this.name, t, C.name, undefined, at(P.name[0], P.name[1]), -2);
       CF.pop(this.url, t, C.name + 0.4, undefined, at(P.url[0], P.url[1]));
