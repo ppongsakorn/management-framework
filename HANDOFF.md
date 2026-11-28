@@ -2,16 +2,16 @@
 
 เอกสารส่งต่องานให้ OpenBot ทำต่อ เขียนเมื่อ 2026-11-28 หลังจบตอน 14 อ่านไฟล์นี้ก่อน แล้วค่อยอ่าน `CLAUDE.md`, `docs/videos/production.md` และ `docs/videos/series.md`
 
-> **English summary.** Public Thai site of management frameworks (Next.js static export on GitHub Pages; `main` = prd, `stg`, `dev`). A continuing restaurant clip series, one episode per framework, in 16:9 and 9:16, with each framework page's example rewritten to tell the clip's story. Episodes 1–12 are live. Episodes 13 (SWOT) and 14 (Porter's Five Forces) were approved and published together (branch `feature/clip-ep13-14`). Next episode: 15, Ansoff Matrix. Reply to the owner in Thai. Never publish before the owner OKs a clip; always verify on the live site with real numbers.
+> **English summary.** Public Thai site of management frameworks (Next.js static export on GitHub Pages; `main` = prd, `dev`; stg is no longer used). A continuing restaurant clip series, one episode per framework, in 16:9 and 9:16, with each framework page's example rewritten to tell the clip's story. Episodes 1–12 are live. Episodes 1–14 are live (13 SWOT and 14 Porter's Five Forces published together). Next episode: 15, Ansoff Matrix. Reply to the owner in Thai. Never publish before the owner OKs a clip; always verify on the live site with real numbers.
 
 ## 1. สถานะตอนนี้
 
 | | สถานะ |
 | --- | --- |
 | เว็บ prd | https://ppongsakorn.github.io/management-framework/ คลิปตอน 1–12 ขึ้นแล้ว, หน้า `/clips` (ซีรีส์เรียงตอน), ปุ่มตอนถัดไปในวิดีโอ, ภาพปกแบบ best shot |
-| branch | `main` = `stg` = `dev` เนื้อหาตรงกันทั้งสาม (merge ล่าสุด PR #80) |
-| ตอน 13 SWOT | เจ้าของ OK แล้ว ขึ้นเว็บใน PR ของ `feature/clip-ep13-14` (ดูสถานะ dev/stg/prd ใน PR ล่าสุด) |
-| ตอน 14 Porter's 5 Forces | เจ้าของ OK แล้ว ขึ้นเว็บพร้อมตอน 13 (3:03) |
+| สภาพแวดล้อม | เหลือ 2 ชั้น: `dev` (`/dev/`) และ `main` (prd) ตามที่เจ้าของตัดสินใจ 2026-11-28 ไม่ใช้ stg แล้ว |
+| ตอน 13 SWOT | ขึ้น prd แล้ว 3:43 (PR #84, #86) |
+| ตอน 14 Porter's 5 Forces | ขึ้น prd แล้ว 3:03 (PR #84, #86) |
 | ตอน 15 | Ansoff Matrix (ตอน 14 ทิ้งท้ายไว้แล้ว) เจ้าของยังไม่ส่งบท |
 | คะแนนค้นหาล่าสุดบน prd | MRR v2 0.867, v3 0.910 (100 queries) |
 
@@ -62,11 +62,9 @@
    - ตั้ง `next` เป็น `ansoff-matrix` พร้อม teaser "โตได้หลายทาง ไม่ต้องเปิดสาขาก่อน"
 7. `docs/videos/series.md`: เพิ่มแถวของตอน 13–14 ใน storyline, พัฒนาการของเจ้าของร้าน และ canon ใหม่ ดูเนื้อหาจาก `web.json` และ `trimmed.txt`
 8. `data/changelog.json` และตาราง "ตอนที่ทำแล้ว" ใน `docs/videos/production.md`
-9. PR เข้า `dev` แล้ว merge ด้วย **merge commit** จากนั้นตรวจ dev แล้วเปิด PR `dev → stg` เอง ตรวจ stg แล้วเปิด PR `stg → main`
-   - workflow "Promote" ยังติดสิทธิ์ จึงต้องเปิด PR เอง
-   - ห้ามใช้ rebase หรือ squash เพราะ branch จะไม่ตรงกัน
+9. PR เข้า `dev` แล้ว merge ด้วย **merge commit** ตรวจ `/dev/` ผ่านแล้ว เปิด PR `dev → main` เอง (merge commit) แล้วตรวจ prd ไม่ใช้ stg แล้ว ห้ามใช้ rebase หรือ squash เพราะ branch จะไม่ตรงกัน
 10. ตรวจทุกชั้นด้วยสคริปต์ใน `clips/_shared/no-skill/publish/`:
-    - `verify-live.mjs <''|dev/|stg/> <dir> swot="ข้อความในการ์ด"`
+    - `verify-live.mjs <''|dev/> <dir> swot="ข้อความในการ์ด"`
     - `clips-page-check.mjs <base url> <dir>`
     - ทดสอบปุ่มตอนถัดไป เช่น จบ OKR แล้วต้องไป SWOT และเล่นเอง
 
@@ -94,13 +92,14 @@
 
 - **MP4 สำหรับโซเชียล:** `out/<slug>-final.mp4` ยังไม่ได้ส่งให้เจ้าของตั้งแต่ตอน 5 ไฟล์อยู่ในเครื่องที่เรนเดอร์ ไม่ได้อยู่ใน git
 - **Next.js มีช่องโหว่:** `next build` จะเตือน และบางครั้ง exit 1 แม้หน้าเว็บ build ครบ ควรอัปเดตเป็นงานแยก แล้วรันเทสต์และตรวจทุกหน้า
+- **ตัด stg ให้เสร็จ:** ยังเหลือ branch `stg`, ตัวเลือก dev → stg / stg → main ใน workflow Promote และ `/stg/` ที่ยัง build อยู่ ต้องถามเจ้าของก่อนลบ branch หรือแก้ workflow
 - **workflow Promote:** สร้าง PR เองไม่ได้ เจ้าของต้องเปิดสิทธิ์ "Actions allowed to create PRs"
 
 ## 5. ที่เก็บของ
 
 | อะไร | ที่ไหน |
 | --- | --- |
-| เว็บ | repo `ppongsakorn/management-framework` branch `main`/`stg`/`dev` |
+| เว็บ | repo `ppongsakorn/management-framework` branch `main` (prd) และ `dev` (branch `stg` ยังอยู่แต่ไม่ใช้แล้ว) |
 | ซอร์สคลิปตอน 7–14, ร่าง `web.json`, ไฟล์ release ของตอน 13–14, เครื่องมือ no-skill | branch `feature/clips-ep7-9` ใต้ `clips/` (ไม่ merge เข้าเว็บ) |
 | ซอร์สตอน 4 และ 5–6 | `feature/pareto-clip`, `feature/clips-ep5-6` |
 | ขั้นตอนผลิตทีละขั้น | `docs/videos/production.md` |
@@ -152,8 +151,8 @@
 | 10 | Situational Leadership | 3:14 | #65 |
 | 11 | Kanban | 3:07 | #70 |
 | 12 | OKR | 3:53 | #75 |
-| 13 | SWOT | 3:43 | PR ของ `feature/clip-ep13-14` |
-| 14 | Porter's 5 Forces | 3:03 | PR ของ `feature/clip-ep13-14` |
+| 13 | SWOT | 3:43 | #84 |
+| 14 | Porter's 5 Forces | 3:03 | #84 |
 
 ฟีเจอร์ที่เกี่ยวกับคลิป:
 
