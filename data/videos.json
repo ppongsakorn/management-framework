@@ -173,6 +173,35 @@
     },
     "briefHash": "aaceb83e4a91"
   },
+  "kanban": {
+    "lang": "th",
+    "desktop": {
+      "title": "Kanban: ทุกคนยุ่งหมด แล้วทำไมงานไม่เสร็จ?",
+      "durationSec": 187,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/kanban.webm"
+      },
+      "poster": "videos/kanban.webp"
+    },
+    "mobile": {
+      "title": "Kanban: ทุกคนยุ่งหมด แล้วทำไมงานไม่เสร็จ?",
+      "durationSec": 187,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/kanban-mobile.webm"
+      },
+      "poster": "videos/kanban-mobile.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-28",
+      "ai": true
+    },
+    "briefHash": "aa13cd52fa81"
+  },
   "raci": {
     "lang": "th",
     "desktop": {
