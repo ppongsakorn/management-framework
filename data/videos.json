@@ -173,6 +173,25 @@
     },
     "briefHash": "aaceb83e4a91"
   },
+  "raci": {
+    "lang": "th",
+    "desktop": {
+      "title": "RACI: ใครทำ ใครรับผิดชอบ ใครต้องรู้",
+      "durationSec": 170,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/raci.webm"
+      },
+      "poster": "videos/raci.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-28",
+      "ai": true
+    },
+    "briefHash": "7bb466f8ae9c"
+  },
   "delegation-levels": {
     "lang": "th",
     "desktop": {
