@@ -172,5 +172,24 @@
       "ai": true
     },
     "briefHash": "aaceb83e4a91"
+  },
+  "delegation-levels": {
+    "lang": "th",
+    "desktop": {
+      "title": "Delegation Levels: ใครตัดสินใจได้แค่ไหน",
+      "durationSec": 179,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/delegation-levels.webm"
+      },
+      "poster": "videos/delegation-levels.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-28",
+      "ai": true
+    },
+    "briefHash": "aa9458fd6afc"
   }
 }
