@@ -14,6 +14,7 @@
   const mid = (x, y, e) => at(x, y) + ' translate(-50%,-50%)' + (e || '');
   const q = (h, c) => h.querySelector(c);
   const fade = (el, k) => { el.style.opacity = (+el.style.opacity * (1 - k)).toFixed(2); };
+  const slamO = (el, t, t0, out, base, rot, from) => { CF.slam(el, t, t0, base, rot, from); fade(el, seg(t, out, out + 0.25)); };
   const line = (cls, text, size, color) => '<p class="t ' + (color || '') + ' ' + cls + '" style="font-size:' + size + 'px">' + text + '</p>';
   const siteBlock = (V, org) => line('cl-see', 'ดูวิธีเต็ม ๆ ได้ที่เว็บ', V ? 44 : 40) +
     '<p class="cl-name" style="position:absolute;left:0;top:0;font-weight:700;font-size:' + (V ? 84 : 76) + 'px;background:var(--ink);color:#fff;padding:10px 40px 22px;border-radius:22px;box-shadow:12px 12px 0 var(--main);white-space:nowrap;transform-origin:0 50%">เข็มทิศกรอบความคิด</p>' +
@@ -155,10 +156,10 @@
     },
     render(t) {
       const L = this.L, C = this.C, V = L.V, out = C.see - 0.3;
-      CF.slam(this.nm, t, C.name - 0.1, out, V ? at(L.tx, L.ty - 20) : at(L.tx, L.ty - 40), -2, 1.5);
+      slamO(this.nm, t, C.name - 0.1, out, V ? at(L.tx, L.ty - 20) : at(L.tx, L.ty - 40), -2, 1.5);
       CF.pop(this.d, t, C.tell - 0.4, out, V ? at(L.tx, 560) : at(L.tx, 440), 0);
       CF.pop(this.p, t, C.sched - 0.5, out, V ? mid(540, 920) : mid(520, 760), -2);
-      CF.slam(this.qq, t, C.ask - 0.5, out, V ? mid(540, 1170) : mid(1200, 760), -2, 1.5);
+      slamO(this.qq, t, C.ask - 0.5, out, V ? mid(540, 1170) : mid(1200, 760), -2, 1.5);
       CF.pop(this.e, t, C.day1 - 0.4, out, V ? mid(540, 1360) : mid(1100, 940), 1);
       const Pp = V ? { see: [80, 960], name: [80, 1025], url: [80, 1215], org: [80, 1265], ai: [80, 1310] } : { see: [110, 560], name: [110, 650], url: [110, 830], org: [110, 890], ai: [110, 970] };
       CF.pop(this.see, t, C.see, undefined, at(Pp.see[0], Pp.see[1]));

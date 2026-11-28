@@ -14,6 +14,7 @@
   const mid = (x, y, e) => at(x, y) + ' translate(-50%,-50%)' + (e || '');
   const q = (h, c) => h.querySelector(c);
   const fade = (el, k) => { el.style.opacity = (+el.style.opacity * (1 - k)).toFixed(2); };
+  const slamO = (el, t, t0, out, base, rot, from) => { CF.slam(el, t, t0, base, rot, from); fade(el, seg(t, out, out + 0.25)); };
   const nextCard = (V, cls, title, sub) => '<div class="' + cls + '" style="position:absolute;left:0;top:0;width:' + (V ? 880 : 800) + 'px;padding:26px 36px 32px;background:var(--accent);color:var(--ink);border-radius:20px;border:7px solid var(--ink);box-shadow:12px 14px 0 rgba(0,0,0,.25);transform-origin:50% 50%">' +
     '<p style="font-weight:700;font-size:' + (V ? 38 : 34) + 'px;color:var(--main)">ตอนหน้า</p><p style="font-weight:700;font-size:' + (V ? 60 : 58) + 'px;line-height:1.05;white-space:nowrap">' + title + ' ▶</p>' +
     '<p style="font-weight:700;font-size:' + (V ? 36 : 32) + 'px;line-height:1.35">' + sub + '</p></div>';
@@ -196,7 +197,7 @@
       [C.got, C.left, C.prof].forEach((c0, k) => CF.pop(this.ms[k], t, c0 - 0.4, out, mid(MP[k][0], MP[k][1]), [-2, 2, -1][k]));
       CF.pop(this.r, t, C.again - 0.4, out, V ? mid(540, 930) : mid(1380, 520), 2);
       CF.pop(this.a, t, C.ann - 0.5, out, V ? mid(540, 1060) : mid(1380, 700), -2);
-      CF.slam(this.h, t, C.hand - 0.4, out, V ? mid(540, 1250) : mid(960, 890), -2, 1.5);
+      slamO(this.h, t, C.hand - 0.4, out, V ? mid(540, 1250) : mid(960, 890), -2, 1.5);
       const Pp = V ? { next: [540, 560], see: [80, 960], name: [80, 1025], url: [80, 1215], org: [80, 1265], ai: [80, 1310] } : { next: [1380, 330], see: [110, 560], name: [110, 650], url: [110, 830], org: [110, 890], ai: [110, 970] };
       CF.pop(this.next, t, C.see - 0.1, undefined, mid(Pp.next[0], Pp.next[1]), -2);
       CF.pop(this.see, t, C.see, undefined, at(Pp.see[0], Pp.see[1]));

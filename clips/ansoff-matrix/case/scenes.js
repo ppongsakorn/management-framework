@@ -13,6 +13,7 @@
   const mid = (x, y, e) => at(x, y) + ' translate(-50%,-50%)' + (e || '');
   const q = (h, c) => h.querySelector(c);
   const fade = (el, k) => { el.style.opacity = (+el.style.opacity * (1 - k)).toFixed(2); };
+  const slamO = (el, t, t0, out, base, rot, from) => { CF.slam(el, t, t0, base, rot, from); fade(el, seg(t, out, out + 0.25)); };
   const nextCard = (V, cls, title, sub) => '<div class="' + cls + '" style="position:absolute;left:0;top:0;width:' + (V ? 880 : 800) + 'px;padding:26px 36px 32px;background:var(--accent);color:var(--ink);border-radius:20px;border:7px solid var(--ink);box-shadow:12px 14px 0 rgba(0,0,0,.25);transform-origin:50% 50%">' +
     '<p style="font-weight:700;font-size:' + (V ? 38 : 34) + 'px;color:var(--main)">ตอนหน้า</p><p style="font-weight:700;font-size:' + (V ? 56 : 54) + 'px;line-height:1.05;white-space:nowrap">' + title + ' ▶</p>' +
     '<p style="font-weight:700;font-size:' + (V ? 36 : 32) + 'px;line-height:1.35">' + sub + '</p></div>';
@@ -77,7 +78,7 @@
         X.prev.map((p, k) => '<p class="pill ' + id + '-p' + k + '" style="font-size:' + (V ? 26 : 28) + 'px;background:var(--ink2)">' + IDEA[p].n + ' ' + IDEA[p].s + '</p>').join('') +
         X.chips.map((c, k) => '<p class="sticker ' + id + '-c' + k + '" style="font-size:' + (V ? 32 : 36) + 'px">' + c[0] + '</p>').join('') +
         X.ideas.map((c, k) => ideaHtml(id + '-i' + k, c[0], L)).join('') +
-        '<p class="stamp green ' + id + '-r" style="font-size:' + (V ? 36 : 40) + 'px;white-space:normal;width:' + (V ? 900 : 860) + 'px;text-align:center">' + X.rule + '</p>');
+        '<p class="stamp green ' + id + '-r" style="font-size:' + (V ? 36 : 40) + 'px;white-space:normal;width:' + (V ? 900 : 1500) + 'px;text-align:center">' + X.rule + '</p>');
       Object.assign(this, { n: q(host, '.' + id + '-n'), qq: q(host, '.' + id + '-q'), em: q(host, '.' + id + '-em'), ps: X.prev.map((_, k) => q(host, '.' + id + '-p' + k)), cs: X.chips.map((_, k) => q(host, '.' + id + '-c' + k)), is: X.ideas.map((_, k) => q(host, '.' + id + '-i' + k)), r: q(host, '.' + id + '-r') });
     },
     render(t) {
@@ -88,7 +89,7 @@
       CF.pop(this.em, t, C.quote - 0.2, undefined, V ? mid(540, 780) : mid(1500, 400), 4);
       const CP = V ? [[540, 910], [540, 1020]] : [[430, 600], [430, 700]];
       this.cs.forEach((e, k) => CF.pop(e, t, C.chips[k] - 0.4, undefined, mid(CP[k][0], CP[k][1]), [-2, 2][k]));
-      const IP = V ? [[540, 1160], [540, 1290]] : [[1420, 640], [1420, 830]];
+      const IP = V ? [[540, 1160], [540, 1290]] : [[1420, 590], [1420, 780]];
       this.is.forEach((e, k) => CF.pop(e, t, C.ideas[k] - 0.4, undefined, mid(IP[k][0], IP[k][1]), [-2, 2][k]));
       CF.slam(this.r, t, C.rule - 0.5, V ? mid(540, X.ideas.length > 1 ? 1440 : 1380) : mid(960, 960), -2, 1.5);
     },
@@ -102,7 +103,7 @@
       this.C = { what: T('ขายอะไร'), who: T('ขายให้ใคร'), four: T('สี่ใบ', 'กระดาษ'), name: T('แอนซอฟฟ์', 'เมทริกซ์'), proof: T('หลักฐาน', 'วงสิ่งที่') };
       const cw = V ? 340 : 400, ch = V ? 300 : 270;
       host.insertAdjacentHTML('beforeend', '<p class="pill mx-n" style="font-size:36px">ไอเดียโต 4 แบบ</p>' +
-        '<p class="t red mx-name" style="font-size:' + (V ? 92 : 120) + 'px;line-height:1.05">Ansoff<br>Matrix</p>' +
+        '<p class="t red mx-name" style="font-size:' + (V ? 96 : 120) + 'px;line-height:1.05">' + (V ? 'Ansoff Matrix' : 'Ansoff<br>Matrix') + '</p>' +
         '<p class="t mute mx-sub" style="font-size:' + (V ? 36 : 44) + 'px">ขายอะไร × ขายให้ใคร</p>' +
         '<p class="t mx-r0" style="font-size:' + (V ? 28 : 34) + 'px">เมนูเดิม</p><p class="t mx-r1" style="font-size:' + (V ? 28 : 34) + 'px">สินค้าใหม่</p>' +
         '<p class="t mx-c0" style="font-size:' + (V ? 30 : 34) + 'px">ลูกค้าเดิม</p><p class="t mx-c1" style="font-size:' + (V ? 30 : 34) + 'px">ตลาดใหม่</p>' +
@@ -113,10 +114,10 @@
     },
     render(t) {
       const L = this.L, C = this.C, V = L.V, cw = V ? 340 : 400, ch = V ? 300 : 270;
-      const gx = V ? 190 : 1010, gy = V ? 600 : 360, gap = 20;
+      const gx = V ? 190 : 1010, gy = V ? 640 : 360, gap = 20;
       const cell = (i) => { const row = [0, 1, 0, 1][i], col = [0, 0, 1, 1][i]; return [gx + col * (cw + gap) + cw / 2, gy + row * (ch + gap) + ch / 2]; };
       CF.pop(this.n, t, 0.1, undefined, at(L.tx, L.ty - 10), -2);
-      CF.slam(this.nm, t, C.name - 0.1, V ? at(L.tx, 440) : at(L.tx, 340), -2, 1.5);
+      CF.slam(this.nm, t, C.name - 0.1, V ? at(L.tx, 430) : at(L.tx, 340), -2, 1.5);
       CF.pop(this.sub, t, C.name + 0.5, undefined, V ? at(L.tx, 590 - 70 + 0) : at(L.tx, 580));
       this.sub.style.display = V ? 'none' : '';
       CF.pop(this.r[0], t, C.what - 0.3, undefined, V ? mid(130, cell(0)[1]) : mid(gx - 110, cell(0)[1]));
@@ -149,10 +150,10 @@
       // the fourth card is parked: it slides away and dims once "พักไว้ก่อน" is said, leaving three
       const pk = seg(t, C.park - 0.2, C.park + 0.5);
       this.is[3].style.opacity = (+this.is[3].style.opacity * (1 - 0.65 * pk)).toFixed(2);
-      CF.slam(this.pk, t, C.park - 0.3, out, V ? mid(790, 720) : mid(1650, 400), -8, 1.6);
+      slamO(this.pk, t, C.park - 0.3, out, V ? mid(790, 720) : mid(1650, 400), -8, 1.6);
       const WP = V ? [[290, 880], [540, 880], [790, 880]] : [[700, 640], [1010, 640], [1320, 640]];
       [C.a, C.b, C.c].forEach((c0, k) => CF.pop(this.ws[k], t, c0 - 0.3, C.which - 0.5, mid(WP[k][0], WP[k][1]), [-2, 2, -1][k]));
-      CF.slam(this.ask, t, C.which - 0.6, out, V ? mid(540, 1120) : mid(960, 800), -2, 1.5);
+      slamO(this.ask, t, C.which - 0.6, out, V ? mid(540, 1120) : mid(960, 800), -2, 1.5);
       const Pp = V ? { next: [540, 560], see: [80, 960], name: [80, 1025], url: [80, 1215], org: [80, 1265], ai: [80, 1310] } : { next: [1380, 330], see: [110, 560], name: [110, 650], url: [110, 830], org: [110, 890], ai: [110, 970] };
       CF.pop(this.next, t, C.see - 0.1, undefined, mid(Pp.next[0], Pp.next[1]), -2);
       CF.pop(this.see, t, C.see, undefined, at(Pp.see[0], Pp.see[1]));
