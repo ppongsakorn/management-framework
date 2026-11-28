@@ -173,6 +173,35 @@
     },
     "briefHash": "1832f803d317"
   },
+  "weighted-decision-matrix": {
+    "lang": "th",
+    "desktop": {
+      "title": "Weighted Decision Matrix: ลูกค้าใหม่หรือกำไร ใครเป็นคนตัดสิน?",
+      "durationSec": 137,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/weighted-decision-matrix.webm"
+      },
+      "poster": "videos/weighted-decision-matrix.webp"
+    },
+    "mobile": {
+      "title": "Weighted Decision Matrix: ลูกค้าใหม่หรือกำไร ใครเป็นคนตัดสิน?",
+      "durationSec": 137,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/weighted-decision-matrix-mobile.webm"
+      },
+      "poster": "videos/weighted-decision-matrix-mobile.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-28",
+      "ai": true
+    },
+    "briefHash": "561a203a66e6"
+  },
   "okr": {
     "lang": "th",
     "desktop": {
@@ -201,6 +230,35 @@
       "ai": true
     },
     "briefHash": "11af24ccf446"
+  },
+  "pre-mortem": {
+    "lang": "th",
+    "desktop": {
+      "title": "Pre-mortem: ยอดจองเต็ม แล้วร้านขาดทุนได้ยังไง?",
+      "durationSec": 137,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/pre-mortem.webm"
+      },
+      "poster": "videos/pre-mortem.webp"
+    },
+    "mobile": {
+      "title": "Pre-mortem: ยอดจองเต็ม แล้วร้านขาดทุนได้ยังไง?",
+      "durationSec": 137,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/pre-mortem-mobile.webm"
+      },
+      "poster": "videos/pre-mortem-mobile.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-28",
+      "ai": true
+    },
+    "briefHash": "0a17f74ecb94"
   },
   "ansoff-matrix": {
     "lang": "th",
