@@ -127,6 +127,16 @@
       },
       "poster": "videos/okr.webp"
     },
+    "mobile": {
+      "title": "OKR: งานเสร็จเต็มกระดาน แล้วทำไมธุรกิจไม่โต?",
+      "durationSec": 233,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/okr-mobile.webm"
+      },
+      "poster": "videos/okr-mobile.webp"
+    },
     "madeWith": {
       "tool": "Claude Motion + ElevenLabs",
       "date": "2026-11-28",
