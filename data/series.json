@@ -15,12 +15,13 @@
     "kanban",
     "okr",
     "swot",
-    "porters-5-forces"
+    "porters-5-forces",
+    "ansoff-matrix"
   ],
   "next": [
     {
-      "slug": "ansoff-matrix",
-      "teaser": "โตได้หลายทาง ไม่ต้องเปิดสาขาก่อน"
+      "slug": "weighted-decision-matrix",
+      "teaser": "เลือกทีละทางด้วยคะแนนที่ตกลงกันก่อน"
     }
   ]
 }
