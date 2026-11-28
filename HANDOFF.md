@@ -2,7 +2,7 @@
 
 เอกสารส่งต่องานให้ OpenBot ทำต่อ เขียนเมื่อ 2026-11-28 หลังจบตอน 14 อ่านไฟล์นี้ก่อน แล้วค่อยอ่าน `CLAUDE.md`, `docs/videos/production.md` และ `docs/videos/series.md`
 
-> **English summary.** Public Thai site of management frameworks (Next.js static export on GitHub Pages; `main` = prd, `stg`, `dev`). A continuing restaurant clip series, one episode per framework, in 16:9 and 9:16, with each framework page's example rewritten to tell the clip's story. Episodes 1–12 are live. Episodes 13 (SWOT) and 14 (Porter's Five Forces) are rendered and **waiting for the owner to listen**; their release files and web-content drafts are on branch `feature/clips-ep7-9`. Next episode: 15, Ansoff Matrix. Reply to the owner in Thai. Never publish before the owner OKs a clip; always verify on the live site with real numbers.
+> **English summary.** Public Thai site of management frameworks (Next.js static export on GitHub Pages; `main` = prd, `stg`, `dev`). A continuing restaurant clip series, one episode per framework, in 16:9 and 9:16, with each framework page's example rewritten to tell the clip's story. Episodes 1–12 are live. Episodes 13 (SWOT) and 14 (Porter's Five Forces) were approved and published together (branch `feature/clip-ep13-14`). Next episode: 15, Ansoff Matrix. Reply to the owner in Thai. Never publish before the owner OKs a clip; always verify on the live site with real numbers.
 
 ## 1. สถานะตอนนี้
 
@@ -10,8 +10,8 @@
 | --- | --- |
 | เว็บ prd | https://ppongsakorn.github.io/management-framework/ คลิปตอน 1–12 ขึ้นแล้ว, หน้า `/clips` (ซีรีส์เรียงตอน), ปุ่มตอนถัดไปในวิดีโอ, ภาพปกแบบ best shot |
 | branch | `main` = `stg` = `dev` เนื้อหาตรงกันทั้งสาม (merge ล่าสุด PR #80) |
-| ตอน 13 SWOT | เรนเดอร์แล้ว 3:43 **รอเจ้าของฟัง** |
-| ตอน 14 Porter's 5 Forces | เรนเดอร์แล้ว 3:03 **รอเจ้าของฟัง** (เกินเป้า 2–3 นาทีอยู่ 3 วินาที ได้แจ้งเจ้าของแล้ว) |
+| ตอน 13 SWOT | เจ้าของ OK แล้ว ขึ้นเว็บใน PR ของ `feature/clip-ep13-14` (ดูสถานะ dev/stg/prd ใน PR ล่าสุด) |
+| ตอน 14 Porter's 5 Forces | เจ้าของ OK แล้ว ขึ้นเว็บพร้อมตอน 13 (3:03) |
 | ตอน 15 | Ansoff Matrix (ตอน 14 ทิ้งท้ายไว้แล้ว) เจ้าของยังไม่ส่งบท |
 | คะแนนค้นหาล่าสุดบน prd | MRR v2 0.867, v3 0.910 (100 queries) |
 
@@ -33,7 +33,7 @@
 
 ## 3. งานที่ต้องทำต่อทันที
 
-### 3.1 ขึ้นเว็บตอน 13 และ 14 (หลังเจ้าของ OK)
+### 3.1 ขั้นตอนขึ้นเว็บหนึ่งตอน (ตอน 13–14 ทำตามนี้แล้ว ใช้เป็นแบบสำหรับตอนต่อไป)
 
 ไฟล์พร้อมใช้อยู่บน branch `feature/clips-ep7-9`:
 
@@ -152,8 +152,8 @@
 | 10 | Situational Leadership | 3:14 | #65 |
 | 11 | Kanban | 3:07 | #70 |
 | 12 | OKR | 3:53 | #75 |
-| 13 | SWOT | 3:43 | รอเจ้าของฟัง |
-| 14 | Porter's 5 Forces | 3:03 | รอเจ้าของฟัง |
+| 13 | SWOT | 3:43 | PR ของ `feature/clip-ep13-14` |
+| 14 | Porter's 5 Forces | 3:03 | PR ของ `feature/clip-ep13-14` |
 
 ฟีเจอร์ที่เกี่ยวกับคลิป:
 
