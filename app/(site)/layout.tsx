@@ -31,6 +31,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
           <nav className="nav" aria-label="หลัก">
             <WebMcpBadge />
             <Link href="/frameworks">Frameworks</Link>
+            <Link href="/clips">คลิป</Link>
             <Link href="/updates">อัปเดต</Link>
             {aiEnabled && (
               <Link href="/advisor" className="cta">

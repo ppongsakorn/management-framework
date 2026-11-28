@@ -94,3 +94,15 @@ test("related frameworks point at real, different frameworks", () => {
     }
   }
 });
+
+test("the clip series lists every clip once, in episode order, and announces a framework without one", () => {
+  const series = JSON.parse(fs.readFileSync("data/series.json", "utf8"));
+  const videos = JSON.parse(fs.readFileSync("data/videos.json", "utf8"));
+  const slugs = new Set(frameworks.map((f) => f.slug));
+  assert.equal(new Set(series.episodes).size, series.episodes.length, "an episode is listed twice");
+  for (const s of series.episodes) assert.ok(videos[s], `episode ${s} has no clip in data/videos.json`);
+  for (const s of Object.keys(videos)) assert.ok(series.episodes.includes(s), `clip ${s} is missing from data/series.json`);
+  for (const x of series.next) {
+    assert.ok(slugs.has(x.slug) && !videos[x.slug] && x.teaser, `next episode ${x.slug} must be a framework without a clip, with a teaser`);
+  }
+});
