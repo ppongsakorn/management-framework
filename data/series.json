@@ -13,12 +13,14 @@
     "skill-will-matrix",
     "situational-leadership",
     "kanban",
-    "okr"
+    "okr",
+    "swot",
+    "porters-5-forces"
   ],
   "next": [
     {
-      "slug": "swot",
-      "teaser": "ก่อนเปิดสาขาสอง: จุดแข็ง จุดอ่อน โอกาส ความเสี่ยง"
+      "slug": "ansoff-matrix",
+      "teaser": "โตได้หลายทาง ไม่ต้องเปิดสาขาก่อน"
     }
   ]
 }
