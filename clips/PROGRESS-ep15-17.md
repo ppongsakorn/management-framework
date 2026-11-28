@@ -12,4 +12,6 @@ Canon fixes applied to the editorial text: "หัวหน้าหน้าร
 - [x] scenes.js written for EP15, EP16, EP17; sfx.py cues for all three
 - [x] render.mjs and publish/*.mjs accept PLAYWRIGHT_MJS (fallback to /opt/node-tools)
 - [x] EP15: Whisper pick, layout stills, render, finish (WebM 5.3/5.1 MB, 2:04), cover at 100 s, previews in Shared/EP15-17/EP15
-- [ ] EP15 on dev (PR), EP16 and EP17 pick/render/finish
+- [x] EP15 on dev (PR #91 merged), checked live
+- [x] EP16 and EP17: Whisper pick, layout fixes, render, finish (WebM ~5 MB each, 2:17 each), covers (EP16 table at 88 s, EP17 owners table at 104 s), previews in Shared/EP15-17/EP16 and EP17
+- [ ] EP16 and EP17 on dev (one PR), live check, report
