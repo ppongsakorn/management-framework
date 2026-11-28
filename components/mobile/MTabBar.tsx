@@ -8,6 +8,7 @@ import { toDesktopPath } from "@/lib/mobile";
 const ICON = {
   home: "M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z",
   search: "M10.5 3a7.5 7.5 0 0 1 5.9 12.1l4.8 4.8-1.4 1.4-4.8-4.8A7.5 7.5 0 1 1 10.5 3zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11z",
+  clips: "M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2v10h14V7zm5 2 5 3-5 3z",
   updates: "M12 3a9 9 0 1 1-8.5 6h2.2A7 7 0 1 0 12 5V3zm-1 4h2v5.6l3.7 2.2-1 1.7L11 13.7z",
   desktop: "M3 4h18a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-7v2h3v2H7v-2h3v-2H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm1 2v9h16V6z",
 };
@@ -27,6 +28,7 @@ export function MTabBar() {
   const tabs = [
     { href: "/mobile", label: "หน้าแรก", icon: ICON.home, on: at("/mobile") || at("/mobile/g") || at("/mobile/f") },
     { href: "/mobile/search", label: "ค้นหา", icon: ICON.search, on: at("/mobile/search") },
+    { href: "/mobile/clips", label: "คลิป", icon: ICON.clips, on: at("/mobile/clips") },
     { href: "/mobile/updates", label: "อัปเดต", icon: ICON.updates, on: at("/mobile/updates") },
   ];
   return (
