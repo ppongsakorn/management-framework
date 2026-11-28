@@ -17,3 +17,15 @@ for size in desktop mobile; do
 done
 clips/_shared/finish.sh $SET 3.0
 ```
+
+## เพิ่มเติม (ตอน 7–11)
+
+| ไฟล์ | ทำอะไร |
+| --- | --- |
+| `stills.sh` | ภาพนิ่งท้ายทุกฉากทั้ง 2 ขนาด + contact sheet ใช้ตรวจ layout ก่อนเรนเดอร์จริง |
+| `publish/apply-examples.js` | เขียน `exampleSteps` + `example` แบบแบน + `diagram` (และ `how`/`steps`/`origin`) ลง `data/frameworks.json` |
+| `publish/diagram-overlap.mjs` | นับข้อความที่ทับกันในแผนภาพหนึ่งตัวด้วยฟอนต์จริง |
+| `publish/verify-live.mjs` | ตรวจหน้าเว็บจริง (prd/stg/dev): ข้อความเรื่อง คลิปเล่นได้ ขนาด ความยาว ไม่ล้น ทั้งจอคอมและ iPhone 13 |
+| `publish/clips-page-check.mjs` | ตรวจหน้า `/clips` และ `/mobile/clips` |
+
+ขั้นตอนเต็มและบทเรียนทั้งหมด: `docs/videos/production.md` ในเว็บ (branch `dev`)
