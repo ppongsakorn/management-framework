@@ -202,6 +202,35 @@
     },
     "briefHash": "7bb466f8ae9c"
   },
+  "situational-leadership": {
+    "lang": "th",
+    "desktop": {
+      "title": "Situational Leadership: ทำไมบริหารทุกคนเหมือนกันไม่ได้",
+      "durationSec": 194,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/situational-leadership.webm"
+      },
+      "poster": "videos/situational-leadership.webp"
+    },
+    "mobile": {
+      "title": "Situational Leadership: ทำไมบริหารทุกคนเหมือนกันไม่ได้",
+      "durationSec": 194,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/situational-leadership-mobile.webm"
+      },
+      "poster": "videos/situational-leadership-mobile.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-28",
+      "ai": true
+    },
+    "briefHash": "00623b4bb502"
+  },
   "delegation-levels": {
     "lang": "th",
     "desktop": {
