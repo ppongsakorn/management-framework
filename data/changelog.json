@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-11-28",
+    "kind": "feature",
+    "title": "คลิปใหม่ 3 ตอน: Delegation Levels, RACI และ Skill / Will Matrix",
+    "items": [
+      "ตอนที่ 7 Delegation Levels: มอบงานแล้วแต่พนักงานยังเดินมาถามเจ้าของร้านทั้งวัน จึงตกลงว่าแต่ละเรื่องใครตัดสินใจได้แค่ไหน 7 ระดับ ตั้งแต่ Tell ถึง Delegate พร้อมขอบเขตงบ หน้าเว็บเปลี่ยนเป็น 7 ระดับตามแนวคิด Delegation Poker ของ Management 3.0",
+      "ตอนที่ 8 RACI: วัตถุดิบไม่มาส่งเพราะหัวหน้าครัวกับฝ่ายจัดซื้อต่างคิดว่าอีกคนสั่งแล้ว ทำตาราง RACI แล้วพบงานที่ไม่มีผู้รับผิดชอบ (A) และงานที่มี A ถึง 3 คน",
+      "ตอนที่ 9 Skill / Will Matrix: พนักงานใหม่ที่ตั้งใจแต่ยังผิดบ่อย กับพนักงานเก่าที่คล่องแต่หมดไฟ ต้องการการช่วยคนละแบบ",
+      "ตัวอย่างและแผนภาพของทั้ง 3 ตอนเล่าเรื่องเดียวกับคลิปในร้านเดิม คลิปตอนที่ 6 เพิ่มการ์ดตอนหน้า ทุกคลิปมี 2 ขนาด สร้างด้วยเครื่องมือ AI"
+    ],
+    "links": [
+      {
+        "label": "ดูคลิป Delegation Levels",
+        "href": "/frameworks/delegation-levels/"
+      },
+      {
+        "label": "ดูคลิป RACI",
+        "href": "/frameworks/raci/"
+      },
+      {
+        "label": "ดูคลิป Skill / Will Matrix",
+        "href": "/frameworks/skill-will-matrix/"
+      }
+    ]
+  },
+  {
     "date": "2026-11-27",
     "kind": "feature",
     "title": "คลิปใหม่ 2 ตอน: Theory of Constraints และ Eisenhower Matrix",
