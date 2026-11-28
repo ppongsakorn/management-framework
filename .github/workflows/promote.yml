@@ -1,4 +1,5 @@
-# Promote a change one step up: dev -> stg, or stg -> main (production).
+# Promote dev to main (production). stg was dropped on 2026-11-28: two
+# environments only, dev and prd.
 # Opens a pull request so the change is reviewed and merged on purpose; merging
 # it triggers the Pages workflow. Needs Settings -> Actions -> General ->
 # "Allow GitHub Actions to create and approve pull requests".
@@ -12,8 +13,7 @@ on:
         type: choice
         required: true
         options:
-          - dev -> stg
-          - stg -> main (production)
+          - dev -> main (production)
 
 permissions:
   contents: read
@@ -31,10 +31,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           STEP: ${{ inputs.step }}
         run: |
-          case "$STEP" in
-            "dev -> stg") head=dev; base=stg ;;
-            *) head=stg; base=main ;;
-          esac
+          head=dev; base=main
           ahead=$(git rev-list --count "origin/$base..origin/$head")
           if [ "$ahead" = 0 ]; then echo "$head has nothing new for $base"; exit 0; fi
           existing=$(gh pr list --head "$head" --base "$base" --state open --json number --jq '.[0].number')
