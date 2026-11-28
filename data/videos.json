@@ -202,6 +202,25 @@
     },
     "briefHash": "11af24ccf446"
   },
+  "ansoff-matrix": {
+    "lang": "th",
+    "desktop": {
+      "title": "Ansoff Matrix: โตได้ไหม ถ้ายังไม่เปิดสาขา?",
+      "durationSec": 124,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/ansoff-matrix.webm"
+      },
+      "poster": "videos/ansoff-matrix.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-28",
+      "ai": true
+    },
+    "briefHash": "f563e032a835"
+  },
   "theory-of-constraints": {
     "lang": "th",
     "desktop": {
