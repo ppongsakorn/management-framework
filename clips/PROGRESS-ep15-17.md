@@ -16,3 +16,5 @@ Canon fixes applied to the editorial text: "หัวหน้าหน้าร
 - [x] EP16 and EP17: Whisper pick, layout fixes, render, finish (WebM ~5 MB each, 2:17 each), covers (EP16 table at 88 s, EP17 owners table at 104 s), previews in Shared/EP15-17/EP16 and EP17
 - [x] EP16 and EP17 on dev: PR #92 merged. Its first deploy failed at type check (empty series.next read as never[]); fixed by typing lib/series.ts (fix/series-empty-next, merged). Second deploy succeeded; live check passed (17 clips on /clips, no overflow).
 - [ ] Waiting for ContentWriter's review. Promote dev to main only on the owner's word; the owner should listen to the names and pronunciation first.
+- [x] EP15 approved by ContentWriter (relaying the owner's go-ahead) and promoted to prd on 2026-11-28 23:24: PR #94 (release/ep15 pinned at dev commit 742813c, EP15 only, merge commit, no stg). prd checked: both WebM play (124 s, 1920x1080 and 1080x1920), no overflow, /clips and /mobile/clips list 16 clips plus the next card, EP16-17 files absent (404). MRR on prd: v2 0.864, v3 0.907.
+- [ ] EP16 and EP17: still waiting for review; later dev to main merge is clean because 742813c is an ancestor of dev.
