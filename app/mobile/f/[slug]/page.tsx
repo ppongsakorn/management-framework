@@ -9,6 +9,7 @@ import { RelatedFrameworks } from "@/components/RelatedFrameworks";
 import { MTop } from "@/components/mobile/MTop";
 import { UseCases } from "@/components/UseCases";
 import { VideoPlayer } from "@/components/VideoPlayer";
+import { seriesPlace } from "@/lib/series";
 import { frameworks, frameworksIn, getDiagram, getFramework, getGroup, getUseCases, getVideo } from "@/lib/data";
 
 export const dynamicParams = false;
@@ -105,7 +106,7 @@ export default async function MobileFramework({ params }: { params: Promise<{ sl
             <ShareButton slug={fw.slug} title={fw.name} text={`${fw.name} — ${fw.when}`} kind="copy" />
           </div>
         </header>
-        {video && <VideoPlayer video={video} size="mobile" name={fw.name} />}
+        {video && <VideoPlayer video={video} size="mobile" name={fw.name} place={seriesPlace(fw.slug)} base="/mobile/f/" />}
         <MTabs tabs={tabs} />
         <nav className="m-pager" aria-label="ก่อนหน้า / ถัดไป">
           {prev ? (
