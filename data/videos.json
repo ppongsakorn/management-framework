@@ -69,6 +69,16 @@
       },
       "poster": "videos/swot.webp"
     },
+    "mobile": {
+      "title": "SWOT: ร้านแรกขายดี เปิดร้านที่สองแล้วจะรวยขึ้นจริงเหรอ?",
+      "durationSec": 223,
+      "aspect": "9:16",
+      "source": {
+        "kind": "file",
+        "src": "videos/swot-mobile.webm"
+      },
+      "poster": "videos/swot-mobile.webp"
+    },
     "madeWith": {
       "tool": "Claude Motion + ElevenLabs",
       "date": "2026-11-28",
