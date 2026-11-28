@@ -231,6 +231,25 @@
     },
     "briefHash": "11af24ccf446"
   },
+  "pre-mortem": {
+    "lang": "th",
+    "desktop": {
+      "title": "Pre-mortem: ยอดจองเต็ม แล้วร้านขาดทุนได้ยังไง?",
+      "durationSec": 137,
+      "aspect": "16:9",
+      "source": {
+        "kind": "file",
+        "src": "videos/pre-mortem.webm"
+      },
+      "poster": "videos/pre-mortem.webp"
+    },
+    "madeWith": {
+      "tool": "Claude Motion + ElevenLabs",
+      "date": "2026-11-28",
+      "ai": true
+    },
+    "briefHash": "0a17f74ecb94"
+  },
   "ansoff-matrix": {
     "lang": "th",
     "desktop": {
